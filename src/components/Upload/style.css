@@ -57,6 +57,14 @@
 .upload-area .form-control-wrap > * {
   flex: 1;
 }
+.upload-area .form-control-wrap .categories-input-search {
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  width: 100%;
+  font-style: italic;
+  border: 1px solid #88b9f598;
+  margin: 0.8rem 0;
+}
 .upload-area .form-control-wrap .form-file-wrap {
   position: relative;
 }
@@ -103,7 +111,9 @@
   color: #313131;
   line-height: 1.2;
   font-size: 1.5rem;
-  padding: 2rem 0;
+  padding: 1rem 0 0.1rem 0;
+  margin: 1rem 0 0 0;
+  border-top: 1px solid #ccc;
 }
 .upload-area .checkbox-label {
   display: inline-block;
@@ -152,4 +162,4 @@
   transform: rotate(45deg);
 }
 
-/*# sourceMappingURL=upload.css.map */
+/*# sourceMappingURL=style.css.map */

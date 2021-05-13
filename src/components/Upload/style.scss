@@ -67,6 +67,16 @@
             flex: 1;
         }
 
+        .categories-input-search {
+            padding: 0.6rem 1rem;
+            font-size: 1.2rem;
+            width: 100%;
+            font-style: italic;
+            border: 1px solid $base-color-lightest;
+            margin: 0.8rem 0;
+            
+        }    
+
         .form-file-wrap {
             position: relative;
         }
@@ -121,7 +131,9 @@
         color: $text-color;
         line-height: 1.2;
         font-size: 1.5rem;
-        padding: 2rem 0;
+        padding: 1rem 0 0.1rem 0;
+        margin: 1rem 0 0 0;
+        border-top: 1px solid #ccc;
     }
 
     .checkbox-label {

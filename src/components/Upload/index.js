@@ -1,6 +1,6 @@
 import FormUpload from "../FormUpload";
 import ImagePreview from "../ImagePreview";
-import CategoriesList from "../CategoriesList";
+import CategoriesUpload from "../CategoriesUpload";
 import "./style.css";
 
 export default function Upload() {
@@ -23,7 +23,7 @@ export default function Upload() {
                 Bạn chưa chọn hình ảnh, hoặc chưa nhập caption, hoặc chưa chọn
                 danh mục
               </div>
-              <CategoriesList />
+              <CategoriesUpload />
             </div>
           </div>
         </div>

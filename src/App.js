@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="body-wrapper">
-      <HomePage />
+      <UploadPage />
     </div>
   );
 }
