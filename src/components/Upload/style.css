@@ -1,0 +1,155 @@
+.col-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.col-wrap .main-col-8 {
+  width: calc(66.66666666666666% - 1.2rem);
+}
+.col-wrap .main-col-4 {
+  width: calc(33.33333333333333% - 1.2rem);
+}
+@media screen and (max-width: 992px) {
+  .col-wrap {
+    display: block;
+  }
+  .col-wrap .main-col-8 {
+    width: 100%;
+  }
+  .col-wrap .main-col-4 {
+    width: 100%;
+  }
+}
+
+.upload-area {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 1.7rem;
+  margin: 0 0 1rem 0;
+}
+.upload-area .form-control-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+.upload-area .form-control-wrap .form-control-icon {
+  width: 3.3rem;
+  margin-right: 0.75rem;
+}
+.upload-area .form-control-wrap .caption-input {
+  width: 100%;
+}
+.upload-area .form-control-wrap .label-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #313131;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.upload-area .form-control-wrap + .form-control-wrap {
+  margin-top: 1rem;
+}
+.upload-area .form-control-wrap > * {
+  flex: 1;
+}
+.upload-area .form-control-wrap .form-file-wrap {
+  position: relative;
+}
+.upload-area .form-control-wrap .label-text-file {
+  margin: 0.5rem 0;
+  display: inline-block;
+  padding: 12px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: bold;
+  color: #3482e2;
+  text-align: center;
+  transition: all 0.15s ease;
+  width: 100%;
+}
+.upload-area .form-control-wrap .label-text-file:hover {
+  background-color: #88b9f598;
+}
+.upload-area .form-control-wrap input[type=file] {
+  position: absolute;
+  z-index: -1;
+  top: 10px;
+  left: 8px;
+  font-size: 17px;
+  color: #b8b8b8;
+}
+.upload-area .btn-upload-wrap {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.upload-area .btn-upload-wrap > * {
+  flex: 1;
+}
+.upload-area .errors-upload {
+  line-height: 1.3;
+  font-size: 1.6rem;
+  color: #ff4700;
+  font-weight: 500;
+  padding: 0 0.5rem;
+}
+.upload-area .tags-list-title {
+  color: #313131;
+  line-height: 1.2;
+  font-size: 1.5rem;
+  padding: 2rem 0;
+}
+.upload-area .checkbox-label {
+  display: inline-block;
+  position: relative;
+  padding-left: 3.2rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+  color: #313131;
+}
+.upload-area input[type=checkbox] {
+  visibility: hidden;
+}
+.upload-area .mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #88b9f598;
+  border-radius: 5px;
+}
+.upload-area .checkbox-label input:checked + .mark {
+  background-color: #4a95f1;
+}
+.upload-area .mark:after {
+  content: "";
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+}
+.upload-area .checkbox-label input:checked + .mark:after {
+  opacity: 1;
+  visibility: visible;
+}
+.upload-area .checkbox-label .mark:after {
+  left: 8px;
+  bottom: 5px;
+  width: 6px;
+  height: 12px;
+  border: solid #eee;
+  border-width: 0 4px 4px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*# sourceMappingURL=upload.css.map */

@@ -1,0 +1,108 @@
+@import "./../../assets/css/variables.scss";
+
+.main-content {
+    margin-top: 2.4rem;
+}
+
+.col-ct-5 {
+    width: 41.66666666666666666666666%;
+    margin: 0 auto;
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
+}
+
+.login-section {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 2.5rem 2.5rem 2.5rem;
+
+    .login-header {
+        padding: 1rem 0;
+        text-align: center;
+        
+        &-link {
+            font-size: 2.2rem;
+            color: $base-color;
+            word-break: break-all;
+        }
+    }
+
+    .login-title {
+        color: $text-color;
+        padding: 1.2rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &-icon {
+            width: 2.7rem;
+            margin: 0 0.8rem 0 0;
+        }
+
+        &-text {
+            font-size: 1.8rem;
+            font-weight: 500;
+            word-break: break-word;
+        }
+    }
+
+    .form-login {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-ctl-wrap {
+        padding: 0.5rem 0;
+        flex: 1;
+        display: flex;
+        flex-shrink: 1;
+        flex-wrap: wrap;
+        margin: 0.5rem 0;
+
+        .form-control-icon {
+            width: 2.5rem;
+            margin-right: 0.75rem;
+            opacity: 0.85;
+        }
+
+        .form-control {
+            width: calc(100% - 3.25rem);
+        }
+    }
+
+    .login-btn-group {
+        padding: 1rem 0 0.5rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .option-register {
+            font-size: 1.15rem;
+            color: $text-color-lighter;
+            display: flex;
+            flex-direction: column;
+
+            &-btn {
+                color: #3130CC;
+                font-weight: 500;
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            flex-direction: column-reverse;
+
+            .option-register {
+                align-items: center;
+                padding: 1rem 0 0 0;
+            }
+        }
+    }
+}

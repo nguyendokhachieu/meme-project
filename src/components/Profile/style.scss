@@ -1,0 +1,127 @@
+@import "./../../assets/css/variables.scss";
+
+.user-posts-list-title {
+    margin: 2rem 0 1.75rem 0;
+    padding: 0.2rem 0 0.2rem 1rem;
+    color: $text-color;
+    font-size: 1.9rem;
+    text-align: left;
+    font-weight: 500;
+    border-left: 6px solid $base-color;
+    border-radius: 5px 0 0 5px;
+}
+
+.user-posts-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+
+    .col-6 {
+        width: calc(50% - 1rem);
+        margin-top: 1.25rem;
+    }
+}
+
+.post-item {
+    & + .post-item {
+        margin-top: 1.2rem;
+    }
+
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+    padding: 2rem 1.7rem;
+
+    &-header {
+        display: flex;
+        align-items: stretch;
+        justify-self: flex-start;
+
+        .post-item-avatar-link {
+            align-self: center;
+            overflow: hidden;
+
+            .post-item-avatar {
+                width: 3.5rem;
+                height: 3.5rem;
+                object-fit: cover;
+                border-radius: 69px;
+            }
+        }
+
+        .post-item-info {
+            padding: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .post-item-author {
+                font-weight: 500;
+                font-size: 1.7rem;
+                color: $text-color;
+                line-height: 1;
+            }
+
+            .post-item-time-ago {
+                a {
+                    font-size: 1.3rem;
+                    color: #999;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    &-content {
+        .post-item-text:first-child {
+            margin-top: 1rem;
+        }
+
+        .post-item-text {
+            font-size: 1.6rem;
+            line-height: 1.2;
+            padding: 0.25rem 0;
+            color: $text-color;
+        }
+
+        .post-item-image-wrap {
+            padding: 1rem 0 1rem 0;
+        }
+    }
+
+    &-footer {
+        display: flex;
+        justify-content: flex-start;
+
+        .post-item-show {
+            padding: 0.4rem 2rem;
+            transition: all 0.15s ease;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+
+            &:hover {
+                background-color: $base-color-lightest;
+            }
+        }
+
+        .heart-icon {
+            width: 1.7rem;
+        }
+
+        .comment-icon {
+            width: 2.3rem;
+        }
+
+        .comment-count {
+            padding: 0 0.3rem;
+            font-weight: 500;
+            color: $base-color-lighter;
+            font-size: 1.5rem;
+        }
+    }
+}

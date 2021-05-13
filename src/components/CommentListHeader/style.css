@@ -1,0 +1,32 @@
+.comment-header {
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.comment-header .total-comment-count {
+  font-size: 1.7rem;
+  color: #313131;
+  font-weight: 600;
+}
+.comment-header .comment-sort .comment-sort-title {
+  font-size: 1.2rem;
+  color: rgba(49, 49, 49, 0.733);
+  font-style: italic;
+  font-weight: 500;
+  padding: 0 0.1rem;
+}
+.comment-header .comment-sort .comment-sort-link {
+  padding: 0 1rem;
+  color: #3482e2;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.comment-header .comment-sort .comment-sort-link:last-child {
+  padding: 0;
+}
+.comment-header .comment-sort .comment-sort-link:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=style.css.map */

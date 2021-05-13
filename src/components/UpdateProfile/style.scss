@@ -1,0 +1,126 @@
+@import "./../../assets/css/variables.scss";
+
+.col-ct-5 {
+    width: 41.66666666666666666666666%;
+    margin: 0 auto;
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
+}
+
+.change-profile-section {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 1rem 1rem 1rem;
+    margin-bottom: 2rem;
+
+    .change-profile-header {
+        padding: 1rem 0;
+        text-align: center;
+        
+        .profile-fullname {
+            font-size: 2rem;
+            color: $text-color;
+            word-break: break-all;
+            line-height: 1.2;
+        }
+    }
+
+    .profile-img-wrap {
+        height: 127px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .profile-img {
+            display: inline-block;
+            width: 127px;
+            object-fit: cover;
+            border-radius: 6969px;
+        }
+    }
+
+    .change-profile-title {
+        color: $text-color;
+        padding: 1.2rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &-svg {
+            width: 2.5rem;
+            margin: 0 0.7rem;
+        }
+
+        &-text {
+            font-size: 1.75rem;
+            font-weight: 500;
+            word-break: break-word;
+        }
+    }
+
+    .form-change-profile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-ctl-wrap {
+        padding: 0.5rem 0;
+        flex: 1;
+        display: flex;
+        flex-shrink: 1;
+        flex-wrap: wrap;
+        margin: 0.5rem 0;
+
+        .form-control-icon {
+            width: 2.5rem;
+            margin-right: 0.75rem;
+        }
+
+        & > * {
+            width: calc(100% - 3.25rem);
+        }
+
+        .textarea-form {
+            width: 100%;
+        }
+    }
+
+    .change-profile-btn-group {
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+
+        @media screen and (max-width: 992px) {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+    }
+}
+
+.form-file-wrap {
+    position: relative;
+}
+
+.label-text-file {
+    display: inline-block;
+    padding: 12px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: $body-background-color;
+    font-size: 16px;
+    font-weight: bold;
+    color: $base-color;
+    text-align: center;
+    transition: all 0.15s ease;
+}
+
+input[type=file] {
+    position: absolute;
+    z-index: -1;
+    top: 10px;
+    left: 8px;
+    font-size: 17px;
+    color: #b8b8b8;
+}

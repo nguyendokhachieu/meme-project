@@ -1,0 +1,26 @@
+.col-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.col-wrap .main-col-8 {
+  width: calc(66.66666666666666% - 1.2rem);
+}
+.col-wrap .main-col-4 {
+  width: calc(33.33333333333333% - 1.2rem);
+}
+@media screen and (max-width: 992px) {
+  .col-wrap {
+    display: block;
+  }
+  .col-wrap .main-col-8 {
+    width: 100%;
+  }
+  .col-wrap .main-col-4 {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
