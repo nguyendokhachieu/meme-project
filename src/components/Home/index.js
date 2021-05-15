@@ -1,7 +1,22 @@
-import PostItem from "../PostItem";
 import "./style.css";
+import PostItem from "../PostItem";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { actFetchPostsPaginationAsync } from "./../../store/posts/actions";
 
 export default function Home() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      actFetchPostsPaginationAsync({
+        page: 1, 
+        per_page: 3,
+      })
+    );
+  }, [dispatch]);
+
   return (
     <div className="main-content">
       <div className="container">
