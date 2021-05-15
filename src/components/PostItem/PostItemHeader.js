@@ -1,6 +1,32 @@
 import { Link } from "react-router-dom";
 import isUrl from "is-url";
 
+const dayjs = require('dayjs');
+const relativeTime = require('dayjs/plugin/relativeTime');
+const updateLocale = require('dayjs/plugin/updateLocale');
+dayjs.extend(relativeTime);
+dayjs.extend(updateLocale);
+
+const localeObject = {
+  relativeTime: {
+    future: 'trong %s',
+    past: '%s trước',
+    s: 'vài giây',
+    m: 'một phút',
+    mm: '%d phút',
+    h: 'một giờ',
+    hh: '%d giờ',
+    d: 'một ngày',
+    dd: '%d ngày',
+    M: 'một tháng',
+    MM: '%d tháng',
+    y: 'một năm',
+    yy: '%d năm'
+  }
+}
+
+dayjs.updateLocale('en', localeObject);
+
 const defaultAvatar = [
   "/assets/images/default-avatar/ava-1.png",
   "/assets/images/default-avatar/ava-2.png",
@@ -34,7 +60,9 @@ export default function PostItemHeader({ post }) {
           { post.user_name }
         </Link>
         <span className="post-item-time-ago">
-          <Link to="/post/abcxyz">2 giờ trước</Link>
+          <Link to={ `/post/${ post.id }` }>
+            { dayjs(post.created_at).fromNow() }
+          </Link>
         </span>
       </div>
     </div>

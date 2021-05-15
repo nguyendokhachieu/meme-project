@@ -12,7 +12,7 @@ export default function Home() {
     dispatch(
       actFetchPostsPaginationAsync({
         page: 1, 
-        per_page: 3,
+        per_page: 10,
       })
     );
   }, [dispatch]);
