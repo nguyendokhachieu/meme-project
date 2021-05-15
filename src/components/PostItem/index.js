@@ -59,7 +59,7 @@ export default function PostItem({
             className="post-item-icon heart-icon"
             alt="heart-icon"
           />
-          <span className="comment-count">123</span>
+          <span className="comment-count">{ post.liked_count }</span>
         </a>
         <a href="#" className="post-item-show">
           <img
@@ -67,7 +67,7 @@ export default function PostItem({
             className="post-item-icon comment-icon"
             alt="heart-icon"
           />
-          <span className="comment-count">123</span>
+          <span className="comment-count">{ post.total_comments }</span>
         </a>
       </div>
     </div>
