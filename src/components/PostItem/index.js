@@ -1,20 +1,32 @@
 import { Link } from "react-router-dom";
 import "./style.css";
 
-export default function PostItem() {
+export default function PostItem({
+  post
+}) 
+{
+  if (!post) {
+    return null;
+  }
+
   return (
     <div className="post-item">
       <div className="post-item-header">
-        <Link to="/profile?id=abcxyz" className="post-item-avatar-link">
+        <Link to={ `/profile?id=${post.user_id}` } className="post-item-avatar-link">
           <img
             className="post-item-avatar"
-            src="https://huyhoanhotel.com/wp-content/uploads/2016/05/765-default-avatar.png"
-            alt=""
+            src=
+            {
+              post.user_img_url 
+                ? post.user_img_url 
+                : null
+            }
+            alt="user avatar"
           />
         </Link>
         <div className="post-item-info">
-          <Link to="/profile?id=abcxyz" className="post-item-author">
-            Thanos
+          <Link to={ `/profile?id=${post.user_id}` } className="post-item-author">
+            { post.user_name }
           </Link>
           <span className="post-item-time-ago">
             <Link to="/post/abcxyz">2 giờ trước</Link>
@@ -23,22 +35,18 @@ export default function PostItem() {
       </div>
       <div className="post-item-content">
         <p className="post-item-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et inventore
-          obcaecati eum deserunt ut, aperiam quas! Placeat blanditiis
-          consequatur, deserunt facere iusto amet a ad suscipit laudantium unde
-          quidem perferendis!
-        </p>
-        <p className="post-item-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et inventore
-          obcaecati eum deserunt ut, aperiam quas! Placeat blanditiis
-          consequatur, deserunt facere iusto amet a ad suscipit laudantium unde
-          quidem perferendis!
+          { post.content }
         </p>
         <div className="post-item-image-wrap">
           <Link to="/post/abcxyz" className="post-item-image-link">
             <img
               className="post-item-image"
-              src="https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300"
+              src=
+              {
+                post.img_url
+                  ? post.img_url
+                  : null
+              }
               alt=""
             />
           </Link>

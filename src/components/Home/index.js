@@ -1,13 +1,13 @@
 import "./style.css";
 import PostItem from "../PostItem";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actFetchPostsPaginationAsync } from "./../../store/posts/actions";
 
 export default function Home() {
-
   const dispatch = useDispatch();
-
+  const { posts } = useSelector(state => state.posts);
+  
   useEffect(() => {
     dispatch(
       actFetchPostsPaginationAsync({
@@ -24,10 +24,14 @@ export default function Home() {
           <div className="main-col-8">
             <h3 className="featured-posts-header">Bài viết mới nhất</h3>
             <div className="posts-list">
-              
-            <PostItem />
-            <PostItem />
-
+              {
+                posts.length !== 0 
+                  ? posts.map((post, index) => {
+                        return <PostItem key={ index } post={ post } />
+                      }
+                    )
+                  : null //loading
+              }
             </div>
             <div className="load-more-btn-wrap">
               <button className="btn btn-transparent-bc">Tải thêm</button>
