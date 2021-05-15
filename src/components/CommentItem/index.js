@@ -1,21 +1,22 @@
+import { Link } from "react-router-dom";
 import "./style.css";
 
 export default function CommentItem() {
   return (
     <div className="comment-item">
       <div className="comment-item-inner-wrap">
-        <a href="#" className="comment-avatar-wrap">
+        <Link to="/profile?id=abcxyz" className="comment-avatar-wrap">
           <img
             src="https://ict-imgs.vgcloud.vn/2020/09/01/19/huong-dan-tao-facebook-avatar.jpg"
             alt=""
           />
-        </a>
+        </Link>
         <div className="comment-content">
           <p className="comment-author">
-            <a className="comment-author-name" href>
+            <Link to="/profile?id=abcxyz" className="comment-author-name" href>
               John Doe
-            </a>
-            <a className="comment-author-time-ago" href>
+            </Link>
+            <a className="comment-author-time-ago">
               2 giờ trước
             </a>
           </p>
@@ -26,7 +27,7 @@ export default function CommentItem() {
           <div className="comment-footer">
             <a href="#" className="comment-show">
               <img
-                src="./assets/images/heart-icon-no-filled.svg"
+                src="/assets/images/heart-icon-no-filled.svg"
                 className="heart-icon"
                 alt="heart-icon"
               />
@@ -34,7 +35,7 @@ export default function CommentItem() {
             </a>
             <a href="#" className="comment-show">
               <img
-                src="./assets/images/comment_icon.svg"
+                src="/assets/images/comment_icon.svg"
                 className="comment-icon"
                 alt="comment-icon"
               />

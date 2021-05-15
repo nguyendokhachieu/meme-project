@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./style.css";
 
 export default function UpdateProfile() {
@@ -7,9 +8,9 @@ export default function UpdateProfile() {
         <div className="col-ct-5">
           <div className="change-profile-section">
             <h1 className="change-profile-header">
-              <a className="profile-fullname" href>
+              <Link to="/profile?id=abcxyz" className="profile-fullname" href>
                 Hiếu Nguyễn
-              </a>
+              </Link>
             </h1>
             <div className="profile-img-wrap">
               <img

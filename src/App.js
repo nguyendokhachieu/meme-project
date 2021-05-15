@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import HomePage from "./pages/HomePage";
 import ChangePasswordPage from "./pages/ChangePasswordPage";
 import UpdateProfilePage from "./pages/UpdateProfilePage";
@@ -8,6 +10,7 @@ import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 import UploadPage from "./pages/UploadPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
 
@@ -19,9 +22,21 @@ function App() {
   }, []);
 
   return (
-    <div className="body-wrapper">
-      <UploadPage />
-    </div>
+    <BrowserRouter>
+      <div className="body-wrapper">
+        <Switch>
+          <Route path="/upload"><UploadPage /></Route>
+          <Route path="/update"><UpdateProfilePage /></Route>
+          <Route path="/register"><RegisterPage /></Route>
+          <Route path="/profile"><ProfilePage /></Route>
+          <Route path="/login"><LoginPage /></Route>
+          <Route path="/post/:postID"><DetailPostPage /></Route>
+          <Route path="/change-password"><ChangePasswordPage /></Route>
+          <Route path="/" exact><HomePage /></Route>
+          <Route><NotFoundPage /></Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 

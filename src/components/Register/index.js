@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./style.css";
 
 export default function Register() {
@@ -73,9 +74,9 @@ export default function Register() {
               <div className="register-btn-group">
                 <p className="option-login">
                   <span className="option-login-text">Đã có tài khoản?</span>
-                  <a href className="option-login-btn">
+                  <Link to="/login" href className="option-login-btn">
                     Đăng nhập
-                  </a>
+                  </Link>
                 </p>
                 <input
                   type="submit"

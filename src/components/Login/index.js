@@ -1,5 +1,7 @@
 import "./style.css";
 
+import { Link } from "react-router-dom";
+
 export default function Login() {
   return (
     <div className="main-content">
@@ -7,9 +9,9 @@ export default function Login() {
         <div className="col-ct-5">
           <div className="login-section">
             <h1 className="login-header">
-              <a className="login-header-link" href>
+              <Link to="/" className="login-header-link">
                 MEME
-              </a>
+              </Link>
             </h1>
             <h2 className="login-title">
               <img
@@ -51,9 +53,9 @@ export default function Login() {
                   <span className="option-register-text">
                     Chưa có tài khoản?
                   </span>
-                  <a href className="option-register-btn">
+                  <Link to="/register" className="option-register-btn">
                     Đăng ký một tài khoản
-                  </a>
+                  </Link>
                 </p>
                 <input
                   type="submit"

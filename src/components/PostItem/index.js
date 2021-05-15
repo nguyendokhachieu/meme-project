@@ -1,22 +1,23 @@
+import { Link } from "react-router-dom";
 import "./style.css";
 
 export default function PostItem() {
   return (
     <div className="post-item">
       <div className="post-item-header">
-        <a href="#" className="post-item-avatar-link">
+        <Link to="/profile?id=abcxyz" className="post-item-avatar-link">
           <img
             className="post-item-avatar"
             src="https://huyhoanhotel.com/wp-content/uploads/2016/05/765-default-avatar.png"
             alt=""
           />
-        </a>
+        </Link>
         <div className="post-item-info">
-          <a href className="post-item-author">
+          <Link to="/profile?id=abcxyz" className="post-item-author">
             Thanos
-          </a>
+          </Link>
           <span className="post-item-time-ago">
-            <a href>2 giờ trước</a>
+            <Link to="/post/abcxyz">2 giờ trước</Link>
           </span>
         </div>
       </div>
@@ -34,19 +35,19 @@ export default function PostItem() {
           quidem perferendis!
         </p>
         <div className="post-item-image-wrap">
-          <a className="post-item-image-link" href="bai-viet-chi-tiet.html">
+          <Link to="/post/abcxyz" className="post-item-image-link">
             <img
               className="post-item-image"
               src="https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300"
               alt=""
             />
-          </a>
+          </Link>
         </div>
       </div>
       <div className="post-item-footer">
         <a href="#" className="post-item-show">
           <img
-            src="./assets/images/heart-icon-no-filled.svg"
+            src="/assets/images/heart-icon-no-filled.svg"
             className="post-item-icon heart-icon"
             alt="heart-icon"
           />
@@ -54,7 +55,7 @@ export default function PostItem() {
         </a>
         <a href="#" className="post-item-show">
           <img
-            src="./assets/images/comment-icon-footer.svg"
+            src="/assets/images/comment-icon-footer.svg"
             className="post-item-icon comment-icon"
             alt="heart-icon"
           />

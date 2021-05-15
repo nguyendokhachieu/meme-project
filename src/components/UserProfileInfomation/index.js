@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import "./style.css";
 
 export default function UserProfileInfomation() {
   return (
     <div className="user-content">
       <div className="user-image-wrap">
-        <a href="#" className="user-image-wrap-link">
+        <a href className="user-image-wrap-link">
           <img
             src="./assets/images/default-avatar/ava-3.png"
             className="user-image"
@@ -17,15 +18,15 @@ export default function UserProfileInfomation() {
           <h3>Hiếu Nguyễn</h3>
         </div>
         <div className="user-info-options">
-          <a href="#" className="mr-1 btn btn-transparent-bc">
+          <a className="mr-1 btn btn-transparent-bc">
             Theo dõi
           </a>
-          <a href="#" className="mr-1 btn btn-transparent-bc">
+          <Link to="change-password" className="mr-1 btn btn-transparent-bc">
             Đổi mật khẩu
-          </a>
-          <a href="#" className="btn btn-transparent-bc">
+          </Link>
+          <Link to="/update" className="btn btn-transparent-bc">
             Change Profile
-          </a>
+          </Link>
         </div>
         <div className="user-info-statistic">
           <p className="statistic-item">

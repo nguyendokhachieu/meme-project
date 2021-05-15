@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./style.css";
 
 export default function Header() {
@@ -5,20 +6,20 @@ export default function Header() {
     <header className="header">
       <div className="container">
         <div className="header-logo">
-          <a href="#" className="header-logo-link">
+          <Link to="/" className="header-logo-link">
             Meme
-          </a>
+          </Link>
         </div>
         <div className="header-group">
           <ul className="header-nav">
             <li className="header-nav-item">
-              <a className="header-nav-item-link" href="#">News</a>
+              <Link className="header-nav-item-link" to="/">News</Link>
             </li>
             <li className="header-nav-item">
-              <a className="header-nav-item-link" href="#">Tags</a>
+              <Link className="header-nav-item-link" to="/categories">Categories</Link>
             </li>
             <li className="header-nav-item">
-              <a className="header-nav-item-link" href="#">Your posts</a>
+              <Link className="header-nav-item-link" to="/profile?id=abcxyz">Your posts</Link>
             </li>
           </ul>
           <div className="header-search">
@@ -35,12 +36,12 @@ export default function Header() {
             </form>
           </div>
           <div className="header-btn-group">
-            <a href="#" className="btn header-upload-btn">
+            <Link to="/upload" className="btn header-upload-btn">
               Upload
-            </a>
-            <a href className="btn header-login-btn">
+            </Link>
+            <Link to="/login" className="btn header-login-btn">
               Login
-            </a>
+            </Link>
           </div>
         </div>
         <div className="icon-bar" id="icon-bar">

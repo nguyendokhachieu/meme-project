@@ -7,7 +7,7 @@ export default function FormAddComment() {
         <form action className="form-change-profile">
           <div className="form-ctl-wrap">
             <img
-              src="./assets/images/comment_icon.svg"
+              src="/assets/images/comment_icon.svg"
               className="comment-icon"
               alt="comment-icon"
             />
