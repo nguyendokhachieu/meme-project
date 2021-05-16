@@ -10,18 +10,22 @@ export const actFetchPostsPaginationAsync = ({
 } = {}) =>  
 {
     return async (dispatch) => {
-        const response = await PostService.getPostsPagination({
-            page,
-            per_page,
-            order_by,
-            order_dir,
-        });
-
-        dispatch(actFetchPostsPagination({
-            page,
-            per_page,
-            posts: response.data.data,
-        }));
+        try {
+            const response = await PostService.getPostsPagination({
+                page,
+                per_page,
+                order_by,
+                order_dir,
+            });
+    
+            dispatch(actFetchPostsPagination({
+                page,
+                per_page,
+                posts: response.data.data,
+            }));
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
