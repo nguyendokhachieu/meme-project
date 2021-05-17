@@ -69,3 +69,14 @@ body {
 .display-block {
     display: block;
 }
+
+.align-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.padding-tb-2rem {
+   padding: 2rem 0;
+}
+  

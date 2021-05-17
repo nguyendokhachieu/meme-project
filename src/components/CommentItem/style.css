@@ -2,6 +2,9 @@
   margin-left: calc(3.75rem + 5px);
   margin-top: 2rem;
 }
+.comment-item + .comment-item {
+  margin-top: 2rem;
+}
 
 .comment-item-inner-wrap {
   display: flex;
@@ -28,6 +31,7 @@
   border-radius: 5px;
   margin-left: 5px;
   padding: 0.5rem 1rem;
+  width: 100%;
 }
 .comment-item-inner-wrap .comment-content .comment-author .comment-author-name {
   font-size: 1.45rem;

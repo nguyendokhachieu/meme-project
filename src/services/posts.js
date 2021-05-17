@@ -30,4 +30,12 @@ export const PostService = {
             }
         })
     },
+
+    getDetailPostById(id) {
+        return api.call().get("/getDetailPostById.php", {
+            params: {
+                id
+            }
+        })
+    }
 }

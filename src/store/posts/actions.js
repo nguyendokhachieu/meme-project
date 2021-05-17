@@ -2,6 +2,18 @@ import { PostService } from "./../../services/posts";
 
 export const ACT_FETCH_POSTS_PAGINATION = 'ACT_FETCH_POSTS_PAGINATION';
 
+export const actFetchDetailPostAsync = (id) => {
+    return async () => {
+        try {
+            const response = await PostService.getDetailPostById(id);
+
+            return response.data.data[0];
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
 export const actFetchPostsPaginationAsync = ({
     page = 1,
     per_page = 2,

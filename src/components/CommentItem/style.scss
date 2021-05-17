@@ -5,6 +5,10 @@
         margin-left: calc(3.75rem + 5px);
         margin-top: 2rem;
     }
+
+    & + .comment-item {
+        margin-top: 2rem;
+    }
 }
 
 .comment-item-inner-wrap {
@@ -34,6 +38,7 @@
         border-radius: 5px;
         margin-left: 5px;
         padding: 0.5rem 1rem;
+        width: 100%;
 
         .comment-author {
             .comment-author-name {
