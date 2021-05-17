@@ -3,6 +3,7 @@ import PostItem from "../PostItem";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actFetchPostsPaginationAsync } from "./../../store/posts/actions";
+import Loading from "../shared/Loading";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ export default function Home() {
                         return <PostItem key={ index } post={ post } />
                       }
                     )
-                  : null //loading
+                  : <div className="align-center padding-tb-2rem"><Loading /></div>
               }
             </div>
             <div className="load-more-btn-wrap">
