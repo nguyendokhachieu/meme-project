@@ -3,6 +3,7 @@
   height: 0.5rem;
   position: relative;
   margin: 0 auto;
+  color: rgba(74, 149, 241, 1);
 }
 .line-loading:before {
   content: "";
@@ -10,7 +11,7 @@
   right: auto;
   left: 0;
   height: 100%;
-  background-color: #4a95f1;
+  background-color: currentColor;
   animation: lineLoading 1s forwards infinite linear;
 }
 

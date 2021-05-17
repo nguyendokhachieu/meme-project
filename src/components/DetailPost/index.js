@@ -45,22 +45,22 @@ export default function DetailPost({
           <div className="main-col-8">
             {
               !post 
-                ? <div className="align-center padding-tb-2rem"><Loading /></div>
+                ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.9 } /></div>
                 : <PostItem post={ post } />
             }
             {
               !post 
-                ? <div className="align-center padding-tb-2rem"><Loading /></div>
+                ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.7 } /></div>
                 : <FormAddComment />
             }
             {
               !post
-                ? <div className="align-center padding-tb-2rem"><Loading /></div>
+                ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.5 } /></div>
                 : <CommentListHeader totalComments={ totalComments } />
             }
             {
               !post
-                ? <div className="align-center padding-tb-2rem"><Loading /></div>
+                ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.2 } /></div>
                 : <CommentList postID={ postID } commentCount={ countTotalComments } />
             }
           </div>
