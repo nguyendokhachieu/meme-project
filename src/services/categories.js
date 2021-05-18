@@ -6,7 +6,7 @@ export const CategoryService = {
         order_dir = 'ASC',
     }) 
     {
-        return api.call().get("/getAllCategories.php", {
+        return api.call().get("/getAllCategories", {
             params: {
                 order_by,
                 order_dir,
@@ -21,7 +21,7 @@ export const CategoryService = {
         order_dir = 'ASC',
     }) 
     {
-        return api.call().get("/getCategoriesPagination.php", {
+        return api.call().get("/getCategoriesPagination", {
             params: {
                 page,
                 per_page,

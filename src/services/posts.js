@@ -6,7 +6,7 @@ export const PostService = {
         order_dir = 'DESC',
     } = {}) 
     {
-        return api.call().get("/getAllPosts.php", {
+        return api.call().get("/getAllPosts", {
             params: {
                 order_by,
                 order_dir,
@@ -21,7 +21,7 @@ export const PostService = {
         order_dir = 'DESC',
     } = {}) 
     {
-        return api.call().get("/getPostsPagination.php", {
+        return api.call().get("/getPostsPagination", {
             params: {
                 page,
                 per_page,
@@ -32,7 +32,7 @@ export const PostService = {
     },
 
     getDetailPostById(id) {
-        return api.call().get("/getDetailPostById.php", {
+        return api.call().get("/getDetailPostById", {
             params: {
                 id
             }
