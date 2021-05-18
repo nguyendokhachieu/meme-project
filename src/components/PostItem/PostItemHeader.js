@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import isUrl from "is-url";
+import { useAvatarLinkSrc } from "../../hooks/useAvatarLinkSrc";
 
 const dayjs = require('dayjs');
 const relativeTime = require('dayjs/plugin/relativeTime');
@@ -27,17 +27,8 @@ const localeObject = {
 
 dayjs.updateLocale('en', localeObject);
 
-const defaultAvatar = [
-  "/assets/images/default-avatar/ava-1.png",
-  "/assets/images/default-avatar/ava-2.png",
-  "/assets/images/default-avatar/ava-3.png",
-  "/assets/images/default-avatar/ava-4.png",
-  "/assets/images/default-avatar/ava-5.png",
-  "/assets/images/default-avatar/ava-6.png",
-];
-
 export default function PostItemHeader({ post }) {
-  const defaultAvatarIndex = Number(post.user_id) % Number(defaultAvatar.length);
+  const { link } = useAvatarLinkSrc(post);
 
   return (
     <div className="post-item-header">
@@ -47,11 +38,7 @@ export default function PostItemHeader({ post }) {
       >
         <img
           className="post-item-avatar"
-          src={
-            isUrl(post.user_img_url)
-              ? post.user_img_url
-              : defaultAvatar[defaultAvatarIndex]
-          }
+          src={ link }
           alt="user avatar"
         />
       </Link>
