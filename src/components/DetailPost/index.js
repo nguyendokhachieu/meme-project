@@ -8,6 +8,7 @@ import PostItem from "../PostItem";
 import Loading from "./../shared/Loading";
 import { actFetchDetailPostAsync } from "./../../store/posts/actions";
 import { useDispatch } from "react-redux";
+import NotFound from "../NotFound";
 
 export default function DetailPost({
   postID
@@ -15,6 +16,7 @@ export default function DetailPost({
 {
   const dispatch = useDispatch();
   const [post, setPost] = useState({} = false);
+  const [hasErrors, setHasErrors] = useState(false);
   const [totalComments, setTotalComments] = useState(0);
 
   const countTotalComments = (totalComments) => {
@@ -22,6 +24,8 @@ export default function DetailPost({
   }
 
   useEffect(async () => {
+    setHasErrors(false);
+
     if (!isNaN(postID)) {
       try {
         const p = await dispatch(actFetchDetailPostAsync(postID));
@@ -29,15 +33,20 @@ export default function DetailPost({
         if (p) {
           setPost(p);
         } else {
-          // error
+          setHasErrors(true);
         }
       } catch (error) {
-        // error
+        setHasErrors(true);
       }
     } else {
-      //load 404
+      setHasErrors(true);
     }
   }, [postID]);
+
+  if (hasErrors) {
+    return <NotFound />;
+  }
+
   return (
     <div className="main-content">
       <div className="container">
