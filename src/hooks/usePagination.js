@@ -80,7 +80,7 @@ export const usePagination = ({
         buttonLoadMore: hasMoreItems 
                             ?   (
                                     <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
-                                        { isLoading ? "Đang tải" : "Tải thêm" }
+                                        { isLoading ? <i class="fa fa-spinner fa-spin"></i> : "Tải thêm" }
                                     </button>
                                 )
                             :   null,
