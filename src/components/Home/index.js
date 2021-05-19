@@ -4,18 +4,59 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actFetchPostsPaginationAsync } from "./../../store/posts/actions";
 import Loading from "../shared/Loading";
+import { useState } from "react";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasMorePosts, setHasMorePosts] = useState(true);
   const dispatch = useDispatch();
-  const { posts } = useSelector(state => state.posts);
+  const { posts } = useSelector(state => state);
+
+  const handleLoadMore = (e) => {
+    if (isLoading) {
+      return;
+    }
+    
+    setIsLoading(true);
+
+    if (posts.posts.length !== 0 && posts.total_posts !== 0) {
+      if (posts.posts.length >= posts.total_posts) {
+        setHasMorePosts(false);
+      }
+    }
+    
+    dispatch(
+      actFetchPostsPaginationAsync({
+        page: posts.page + 1, 
+        per_page: 5,
+      })
+      ).then(() => {
+        setIsLoading(false);
+    }).catch(() => {
+      setIsLoading(false);
+    });
+  }
   
   useEffect(() => {
+    setIsLoading(true);
+
+    if (posts.posts.length !== 0 && posts.total_posts !== 0) {
+      if (posts.posts.length >= posts.total_posts) {
+        setHasMorePosts(false);
+      }
+    }
+
     dispatch(
       actFetchPostsPaginationAsync({
         page: 1, 
-        per_page: 10,
+        per_page: 5,
       })
-    );
+      ).then(() => {
+      setIsLoading(false);
+    }).catch(() => {
+      setIsLoading(false);
+    });
+
   }, [dispatch]);
 
   return (
@@ -26,8 +67,8 @@ export default function Home() {
             <h3 className="featured-posts-header">Bài viết mới nhất</h3>
             <div className="posts-list">
               {
-                posts.length !== 0 
-                  ? posts.map((post, index) => {
+                posts.posts.length !== 0 
+                  ? posts.posts.map((post, index) => {
                         return <PostItem key={ index } post={ post } />
                       }
                     )
@@ -35,7 +76,15 @@ export default function Home() {
               }
             </div>
             <div className="load-more-btn-wrap">
-              <button className="btn btn-transparent-bc">Tải thêm</button>
+              {
+                hasMorePosts && (
+                  <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
+                    {
+                      isLoading ? "Đang tải" : "Tải thêm"
+                    }
+                  </button>
+                )
+              }
             </div>
           </div>
           <div className="main-col-4">

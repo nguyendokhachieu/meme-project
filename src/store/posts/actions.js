@@ -33,6 +33,7 @@ export const actFetchPostsPaginationAsync = ({
             dispatch(actFetchPostsPagination({
                 page,
                 per_page,
+                total_posts: response.data.total_posts,
                 posts: response.data.data,
             }));
         } catch (error) {
@@ -44,6 +45,7 @@ export const actFetchPostsPaginationAsync = ({
 const actFetchPostsPagination = ({
     page = 1,
     per_page = 2,
+    total_posts = 0,
     posts = [],
 }) => {
     return {
@@ -51,6 +53,7 @@ const actFetchPostsPagination = ({
         payload: {
             page,
             per_page,
+            total_posts,
             posts,
         }
     }

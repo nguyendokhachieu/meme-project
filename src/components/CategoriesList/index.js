@@ -34,7 +34,7 @@ export default function CategoriesList() {
     useEffect(() => {
         setIsLoading(true);
 
-        if (categories.categoriesPaging.length > categories.total_categories) {
+        if (categories.categoriesPaging.length >= categories.total_categories) {
             setHasMoreCategories(false);
         }
 
@@ -65,13 +65,15 @@ export default function CategoriesList() {
             </div>
             <div className="load-more-btn-wrap">
               {
-                  hasMoreCategories && (
-                    <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
-                        {
-                            isLoading ? "Đang tải" : "Tải thêm"
-                        }
-                    </button>
-                  )
+                  hasMoreCategories 
+                    ?   (
+                            <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
+                                {
+                                    isLoading ? "Đang tải" : "Tải thêm"
+                                }
+                            </button>
+                        )
+                    : null
               }
             </div>
           </div>
