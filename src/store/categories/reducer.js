@@ -1,10 +1,11 @@
-import { actFetchCategoriesAsync, ACT_FETCH_CATEGORIES } from "./actions";
+import { ACT_FETCH_ALL_CATEGORIES, ACT_FETCH_CATEGORIES } from "./actions";
 
 const initState = {
     page: 1,
     per_page: 5,
     total_categories: 0,
     categoriesPaging: [],
+    categories: [],
 }
 
 export const categoriesReducer = (state = initState, action) => {
@@ -23,6 +24,12 @@ export const categoriesReducer = (state = initState, action) => {
                                     ]
             }
         
+        case ACT_FETCH_ALL_CATEGORIES: 
+            return {
+                ...state,
+                categories: [...action.payload.data],
+            }
+
         default:
             return state;
     }

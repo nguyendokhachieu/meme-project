@@ -1,6 +1,30 @@
 import { CategoryService } from "./../../services/categories";
 
 export const ACT_FETCH_CATEGORIES = 'ACT_FETCH_CATEGORIES';
+export const ACT_FETCH_ALL_CATEGORIES = 'ACT_FETCH_ALL_CATEGORIES';
+
+export const actFetchAllCategoriesAsync = ({
+    order_by = 'name',
+    order_dir = 'ASC',
+} = {}) => {
+    return async (dispatch) => {
+        const response = await CategoryService.getAllCategories({
+            order_by,
+            order_dir,
+        });
+
+        dispatch(actFetchAllCategories(response.data.data));
+    }
+}
+
+const actFetchAllCategories = (data) => {
+    return {
+        type: ACT_FETCH_ALL_CATEGORIES,
+        payload: {
+            data
+        }
+    }
+}
 
 export const actFetchCategoriesAsync = ({
     page = 1, 
