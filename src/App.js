@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
@@ -13,14 +11,11 @@ import UploadPage from "./pages/UploadPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
+import { useScriptTag } from "./hooks/useScriptTag";
+
 function App() {
 
-  useEffect(() => {
-    const scriptTag = document.createElement("script");
-    scriptTag.src = "/assets/js/main.js";
-    
-    document.body.append(scriptTag);
-  }, []);
+  useScriptTag("/assets/js/main.js");
 
   return (
     <BrowserRouter>
