@@ -43,6 +43,9 @@
   padding: 1.2rem 1.8rem;
   color: #3482e2;
 }
+.header .container .header-group .header-nav .header-nav-item.active {
+  border-bottom-color: #4a95f1;
+}
 .header .container .header-group .header-search {
   margin: 0 0.75rem;
   align-self: center;

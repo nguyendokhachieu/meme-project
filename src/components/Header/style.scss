@@ -50,6 +50,10 @@
                         color: $base-color;
                     }
                 }
+
+                .header-nav-item.active {
+                    border-bottom-color: $base-color-lighter;
+                }
             }
 
             .header-search {

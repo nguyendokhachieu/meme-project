@@ -40,7 +40,7 @@ export default function CategoriesControl({
                     />
                     <i class="fal fa-info-circle tooltip-icon">
                         <div className="tooltip-content">
-                            Chọn vào <i>Hiển thị tất cả</i> sẽ cho nhiều kết quả hơn
+                            Chọn vào <i>Hiển thị tất cả</i> sẽ cho nhiều kết quả tìm kiếm hơn
                         </div>
                     </i>
                 </form>
