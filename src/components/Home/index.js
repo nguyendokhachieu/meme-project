@@ -5,10 +5,10 @@ import Loading from "../shared/Loading";
 import { usePagination } from "../../hooks/usePagination";
 
 export default function Home() {
-  const { arrPaging, buttonLoadMore } = usePagination({
-                                                        per_page: 5,
-                                                        action: actFetchPostsPaginationAsync,
-                                                        type: 'posts',
+  const { arrPaging, buttonLoadMore } = usePagination({ 
+    per_page: 5, 
+    action: actFetchPostsPaginationAsync, 
+    type: 'posts'
   });
 
   return (
