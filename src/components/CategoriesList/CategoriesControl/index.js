@@ -44,6 +44,10 @@ export default function CategoriesControl({
                         </div>
                     </i>
                 </form>
+                <div className="tooltip-content-mobile">
+                    <i class="fal fa-info-circle tooltip-icon-mobile"></i>
+                    Chọn vào <i>Hiển thị tất cả</i> sẽ cho nhiều kết quả tìm kiếm hơn
+                </div>
                 <form>
                     <select className="select-show-option" onChange={ onSelectChange }>
                         <option value="page">Hiển thị ít hơn</option>

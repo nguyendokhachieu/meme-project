@@ -10,7 +10,8 @@ export default function HeaderBtn() {
         auth 
           ? (
             <Link to="/upload" className="btn header-upload-btn">
-              Upload
+              <i class="fad fa-upload header-btn-icon"></i>
+              Tạo bài viết mới
             </Link>
           )
           : null
@@ -19,7 +20,8 @@ export default function HeaderBtn() {
         !auth
           ? (
             <Link to="/login" className="btn header-login-btn">
-              Login
+              <i class="fad fa-sign-in-alt header-btn-icon"></i>
+              Đăng nhập
             </Link>
           )
           : null

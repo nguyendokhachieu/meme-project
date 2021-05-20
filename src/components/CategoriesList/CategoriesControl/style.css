@@ -61,3 +61,39 @@
     visibility: hidden;
     transition: all 0.15s ease;
 }
+
+.tooltip-icon-mobile {
+    margin-right: 0.5rem;
+    color: #3482e2;
+}
+
+.tooltip-content-mobile {
+    margin: 1.1rem 0;
+    font-size: 1.3rem;
+    text-align: center;
+    word-break: break-word;
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .categories-control {
+        flex-direction: column;
+    }
+
+    .categories-control > form:first-child {
+        width: 100%;
+    }
+
+    .categories-search-input {
+        width: 100%;
+        padding: 0.55rem 1.1rem;
+    }
+
+    .tooltip-icon {
+        display: none;
+    }
+
+    .tooltip-content-mobile {
+        display: block;
+    }
+}
