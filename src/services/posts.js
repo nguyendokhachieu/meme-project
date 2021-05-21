@@ -37,5 +37,23 @@ export const PostService = {
                 id
             }
         })
+    },
+
+    getPostsByUserIdPagination({
+        user_id, 
+        page = 1, 
+        per_page = 5, 
+        order_by = 'created_at', 
+        order_dir ='DESC',
+    }) {
+        return api.call().get("/getPostsByUserIdPagination", {
+            params: {
+                user_id, 
+                page, 
+                per_page, 
+                order_by, 
+                order_dir,
+            }
+        })
     }
 }

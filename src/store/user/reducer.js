@@ -1,4 +1,4 @@
-import { ACT_LOGIN_SUCCESSFULLY } from "./actions";
+import { ACT_LOGIN_SUCCESSFULLY, ACT_AUTHORIZATION } from "./actions";
 
 const initState = {
     token: null,
@@ -30,6 +30,19 @@ export const userReducer = (state = initState, action) => {
                 img_url: action.payload.userData.img_url,
             }
                 
+        case ACT_AUTHORIZATION:       
+            return {
+                ...state,
+                token: action.payload.userData.token,
+                id: action.payload.userData.user.id,
+                name: action.payload.userData.user.name,
+                username: action.payload.userData.user.username,
+                created_at: action.payload.userData.user.created_at,
+                birthday: action.payload.userData.user.birthday,
+                sex: action.payload.userData.user.sex,
+                status: action.payload.userData.user.status,
+                img_url: action.payload.userData.user.img_url,
+            }
         default:
             return state;
     }
