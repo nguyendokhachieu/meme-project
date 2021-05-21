@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 export const usePagination = ({
     per_page,
     action,
-    type = 'categories',
+    type = 'categories'
 }) => {
     let arr = [];
     let total_items = 0;

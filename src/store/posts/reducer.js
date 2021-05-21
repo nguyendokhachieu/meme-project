@@ -8,6 +8,7 @@ const initState = {
     user: {
         page: 1,
         per_page: 5,
+        total_user_posts: 0,
         posts: [],
     },
 };
@@ -34,6 +35,7 @@ export const postsReducer = (state = initState, action) => {
                 user: {
                     page: action.payload.page,
                     per_page: action.payload.per_page,
+                    total_user_posts: action.payload.total_user_posts,
                     posts: action.payload.page === 1
                             ? action.payload.posts
                             : [

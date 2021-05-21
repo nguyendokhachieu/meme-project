@@ -10,6 +10,7 @@ export const actFetchPostsByUserIdPaginationAsync = ({
     order_by = 'created_at', 
     order_dir ='DESC',
 }) => {
+
     return async (dispatch) => {
         try {
             const response = await PostService.getPostsByUserIdPagination({
@@ -19,11 +20,13 @@ export const actFetchPostsByUserIdPaginationAsync = ({
                 order_by, 
                 order_dir,
             });
+            console.log();
 
             dispatch(actFetchPostsByUserIdPagination({
                 page,
                 per_page,
-                posts: response.data.data,
+                total_user_posts: Number(response.data.total_user_posts),
+                posts: !response.data.data ? [] : response.data.data,
             }))
         } catch (error) {
             
@@ -34,6 +37,7 @@ export const actFetchPostsByUserIdPaginationAsync = ({
 const actFetchPostsByUserIdPagination = ({
     page,
     per_page,
+    total_user_posts,
     posts
 }) => {
     return {
@@ -41,6 +45,7 @@ const actFetchPostsByUserIdPagination = ({
         payload: {
             page,
             per_page,
+            total_user_posts,
             posts,
         }
     }

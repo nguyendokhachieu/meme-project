@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuthorization } from "./../../../hooks/useAuthorization";
 import PostItem from "../../PostItem";
@@ -7,17 +7,45 @@ import { actFetchPostsByUserIdPaginationAsync } from "../../../store/posts/actio
 
 export default function UserPostsList() {
     const dispatch = useDispatch();
+    const [hasMoreItems, setHasMoreItems] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const { auth } = useAuthorization();
     const { user, posts } = useSelector(state => state);
 
-    useEffect(() => {
+    const handleLoadMore = () => {
+      if (isLoading) {
+        return;
+      }
+
+      if (posts.user.total_user_posts <= posts.user.posts.length) {
+        setHasMoreItems(false);
+      }
+
+      setIsLoading(true);
+
+      if (auth) {
+        dispatch(actFetchPostsByUserIdPaginationAsync({
+            page: posts.user.page + 1,
+            per_page: 2,
+            user_id: Number(user.id)
+        })).then(() => {
+          setIsLoading(false);
+        }).catch(() => {
+          setIsLoading(false);
+        });
+      } 
+
+    }
+  
+    useEffect(async () => {
         if (auth) {
-            dispatch(actFetchPostsByUserIdPaginationAsync({
+            await dispatch(actFetchPostsByUserIdPaginationAsync({
                 page: 1,
+                per_page: 2,
                 user_id: Number(user.id)
-            }))
+            }));
         }
-    }, [auth]);
+    }, [auth, user]);
 
   return (
     <div className="main-col-4">
@@ -42,6 +70,21 @@ export default function UserPostsList() {
               )
           )
       }
+      <div className="load-more-btn-wrap">
+        {
+          hasMoreItems 
+          ?   (
+                  auth 
+                    ? (
+                      <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
+                        { isLoading ? <i class="fa fa-spinner fa-spin"></i> : "Tải thêm" }
+                      </button>
+                    ) 
+                    : null
+              )
+          :   null
+        }
+      </div>
     </div>
   );
 }
