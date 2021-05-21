@@ -2,7 +2,7 @@
   background-color: #fff;
   border-radius: 0.5rem;
   box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
-  padding: 2rem 1.7rem;
+  padding: 1.5rem 1.5rem 1rem 1.5rem !important;
 }
 .post-item + .post-item {
   margin-top: 1.2rem;
@@ -56,9 +56,11 @@
 .post-item-footer {
   display: flex;
   justify-content: flex-start;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
 }
 .post-item-footer .post-item-show {
-  padding: 0.4rem 2rem;
+  padding: 0.5rem 2.2rem;
   transition: all 0.15s ease;
   border-radius: 5px;
   display: flex;
@@ -74,7 +76,7 @@
   width: 2.3rem;
 }
 .post-item-footer .comment-count {
-  padding: 0 0.3rem;
+  padding: 0 0.6rem !important;
   font-weight: 500;
   color: #4a95f1;
   font-size: 1.5rem;

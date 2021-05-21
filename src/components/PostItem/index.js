@@ -1,7 +1,7 @@
+import "./style.css";
 import PostItemHeader from "./PostItemHeader";
 import PostItemContent from "./PostItemContent";
 import PostItemFooter from "./PostItemFooter";
-import "./style.css";
 
 export default function PostItem({
   post

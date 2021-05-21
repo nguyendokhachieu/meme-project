@@ -2,6 +2,49 @@ import { CategoryService } from "./../../services/categories";
 
 export const ACT_FETCH_CATEGORIES = 'ACT_FETCH_CATEGORIES';
 export const ACT_FETCH_ALL_CATEGORIES = 'ACT_FETCH_ALL_CATEGORIES';
+export const ACT_FETCH_USER_CATEGORIES = 'ACT_FETCH_USER_CATEGORIES';
+
+export const actFetchUserCategoriesAsync = ({
+    user_id,
+    page = 1,
+    per_page = 5,
+    order_by = 'name',
+    order_dir = 'ASC',
+}) => {
+    return async (dispatch) => {
+        const response = await CategoryService.getUserCategoriesByUserIdPagination({
+            user_id,
+            page,
+            per_page,
+            order_by,
+            order_dir,
+        });
+
+        dispatch(actFetchUserCategories({
+            page,
+            per_page,
+            total_user_categories: Number(response.data.total_user_categories),
+            categories: response.data.data ? response.data.data : [],
+        }))
+    }
+}
+
+const actFetchUserCategories = ({
+    page,
+    per_page,
+    total_user_categories,
+    categories,
+}) => {
+    return {
+        type: ACT_FETCH_USER_CATEGORIES,
+        payload: {
+            page,
+            per_page,
+            total_user_categories,
+            categories,
+        }
+    }
+}
 
 export const actFetchAllCategoriesAsync = ({
     order_by = 'name',

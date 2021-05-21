@@ -65,7 +65,7 @@ export default function UserPostsList() {
                   </p>
                 )
               : posts.user.posts.map(post => {
-                  return <PostItem post={ post } />
+                  return <PostItem key={ post.id } post={ post } />
                 }
               )
           )

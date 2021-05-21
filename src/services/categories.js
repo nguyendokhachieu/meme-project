@@ -29,5 +29,23 @@ export const CategoryService = {
                 order_dir,
             }
         })
+    },
+
+    getUserCategoriesByUserIdPagination({
+        user_id, 
+        page = 1,
+        per_page = 5,
+        order_by = 'name',
+        order_dir = 'ASC',
+    }) {
+        return api.call().get('/getUserCategoriesByUserIdPagination', {
+            params: {
+                user_id,
+                page,
+                per_page,
+                order_by,
+                order_dir,
+            }
+        })
     }
 };
