@@ -22,5 +22,22 @@ export const UserService = {
                 'Content-Type': 'application/json',
             }
         })
+    },
+
+    register({
+        username,
+        fullname,
+        email,
+        password,
+    }) {
+        return api.call().post('/register', {
+            username,
+            fullname,
+            email,
+            password,
+        }, {
+            method: 'POST',
+            'Content-Type': 'application/json',
+        })
     }
 }
