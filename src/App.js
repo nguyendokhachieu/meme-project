@@ -1,5 +1,6 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
 
+import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import ChangePasswordPage from "./pages/ChangePasswordPage";
 import UpdateProfilePage from "./pages/UpdateProfilePage";
@@ -9,23 +10,25 @@ import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 import UploadPage from "./pages/UploadPage";
 import CategoriesPage from "./pages/CategoriesPage";
-import NotFoundPage from "./pages/NotFoundPage";
-
-import { useScriptTag } from "./hooks/useScriptTag";
+import NotFoundPage from "./pages/NotFoundPage"
 
 function App() {
-
-  useScriptTag("/assets/js/main.js");
+  const { pathname } = useLocation();
+  const isShowHeader = !['/login', '/register'].includes(pathname);
 
   return (
-    <BrowserRouter>
       <div className="body-wrapper">
+        {
+          isShowHeader 
+            ? <Header />
+            : null
+        }
         <Switch>
           <Route path="/categories"><CategoriesPage /></Route>
           <Route path="/upload"><UploadPage /></Route>
-          <Route path="/update"><UpdateProfilePage /></Route>
+          <Route path="/update"><UpdateProfilePage /></Route> 
           <Route path="/register"><RegisterPage /></Route>
-          <Route path="/profile"><ProfilePage /></Route>
+          <Route path="/profile"><ProfilePage /></Route> 
           <Route path="/login"><LoginPage /></Route>
           <Route path="/post/:postID"><DetailPostPage /></Route>
           <Route path="/change-password"><ChangePasswordPage /></Route>
@@ -33,7 +36,6 @@ function App() {
           <Route><NotFoundPage /></Route>
         </Switch>
       </div>
-    </BrowserRouter>
   );
 }
 

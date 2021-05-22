@@ -1,25 +1,33 @@
 import { Link, useLocation } from "react-router-dom";
+import { useAuthorization } from "../../../hooks/useAuthorization";
 
 export default function HeaderNav() {
   const { pathname } = useLocation();
+  const { auth } = useAuthorization();
 
   return (
     <ul className="header-nav">
       <li className={ pathname === '/' ? 'header-nav-item active' : 'header-nav-item' } >
         <Link className='header-nav-item-link' to="/" >
-          News
+          Mới nhất
         </Link>
       </li>
       <li className={ pathname === '/categories' ? 'header-nav-item active' : 'header-nav-item' } >
         <Link className='header-nav-item-link' to="/categories" >
-          Categories
+          Danh mục
         </Link>
       </li>
-      <li className={ pathname === '/profile' ? 'header-nav-item active' : 'header-nav-item' } >
-        <Link className='header-nav-item-link' to="/profile?id=abcxyz" >
-          Your posts
-        </Link>
-      </li>
+      {
+        auth 
+          ? (
+            <li className={ pathname === '/profile' ? 'header-nav-item active' : 'header-nav-item' } >
+              <Link className='header-nav-item-link' to="/profile?id=abcxyz" >
+                Bài viết của bạn
+              </Link>
+            </li>
+          )
+          : null
+      }
     </ul>
   );
 }
