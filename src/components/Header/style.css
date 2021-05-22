@@ -64,6 +64,31 @@
 .header .container .header-group .header-btn-icon {
   margin-right: 0.75rem;
 }
+.header .container .header-group .log-out-btn {
+  border: 0;
+  font-size: 1.4rem;
+  position: relative;
+}
+.header .container .header-group .log-out-btn .log-out-icon {
+  margin: 0;
+}
+.header .container .header-group .log-out-btn .tooltip-logout {
+  position: absolute;
+  top: 143%;
+  left: -25px;
+  width: 10rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.15s ease;
+}
+.header .container .header-group .log-out-btn:hover > .tooltip-logout {
+  visibility: visible;
+  opacity: 1;
+}
 .header .container .icon-bar {
   display: none;
   align-items: center;
