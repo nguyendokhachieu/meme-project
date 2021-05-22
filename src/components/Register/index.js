@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { UserService } from "../../services/user";
+import { useAuthorization } from "../../hooks/useAuthorization"; 
 import Input from "../shared/Input";
 import "./style.css";
 
@@ -15,6 +16,8 @@ export default function Register() {
   const [hasErrors, setHasErrors] = useState('hasnot'); // has, hasnot, password_mismatch
   const [message, setMessage] = useState('');
   const [redirect, setRedirect] = useState(false);
+
+  const { auth } = useAuthorization();
 
   const register = async (e) => {
     e.preventDefault();
@@ -48,6 +51,14 @@ export default function Register() {
     )
   }, [redirect]);
 
+  useEffect(() => {
+    auth && (
+      window.setTimeout(() => {
+        history.push('/');
+      }, 1500)
+    )
+  }, [auth]);
+
   return (
     <div className="main-content">
       <div className="container">
@@ -75,6 +86,10 @@ export default function Register() {
             <div className={ redirect ? "register active" : "register" }>
               <p className="register-icon-wrap"><i class="fal fa-check-circle register-icon"></i></p>
               <p className="register-text">Đăng ký tài khoản thành công, vui lòng đăng nhập lại.</p>
+            </div>
+            <div className={ auth ? "register active" : "register" }>
+              <p className="register-icon-wrap"><i class="fal fa-check-circle register-icon"></i></p>
+              <p className="register-text">Bạn đã đăng nhập, đang chuyển hướng đến trang chủ. Xin vui lòng chờ</p>
             </div>
             <form className="form-register" onSubmit={ register }>
               <div className="form-ctl-wrap">
