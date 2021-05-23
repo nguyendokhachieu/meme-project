@@ -46,7 +46,6 @@ export const PostService = {
         order_by = 'created_at', 
         order_dir ='DESC',
     }) {
-
         return api.call().get("/getPostsByUserIdPagination", {
             params: {
                 user_id, 

@@ -59,12 +59,14 @@ body {
 }
 
 .btn:hover {
-    background-color: #4a95f1;
+    background-color: #7ab5fc;
+    border-color: transparent;
     color: #fff;
 }
 
 .btn:active {
     transform: scale(0.95);
+    background-color: #4a95f1;
 }
 
 .display-block {

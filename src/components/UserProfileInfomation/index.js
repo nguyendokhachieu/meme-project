@@ -1,4 +1,5 @@
-import "./style.css";
+import "./style.scss";
+
 import UserAvatar from "./UserAvatar";
 import UserName from "./UserName";
 import UserOptions from "./UserOptions";

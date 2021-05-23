@@ -1,18 +1,51 @@
+import "./style.scss";
+
 import { useEffect, useState } from "react";
 import PostItem from "../PostItem";
+import UserProfileLoading from "../UserProfileInfomation/UserProfileLoading";
 import UserProfileInfomation from "../UserProfileInfomation";
 import { UserService } from "../../services/user";
-import "./style.css";
+import { actFetchPostsByUserIdPaginationAsync } from "../../store/posts/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Profile({ 
   id,
   history
-}) {
+}) 
+{
+  const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({});
+  const [loadingUser, setLoadingUser] = useState(true);
+  const [loadingPosts, setLoadingPosts] = useState(true);
+  const [hasMorePosts, setHasMorePosts] = useState(true);
+
+  const { posts, total_user_posts, page } = useSelector(state => state.posts.user);
+
+  const handleLoadMore = () => {
+    if (loadingPosts) {
+      return;
+    }
+
+    if (posts.length >= total_user_posts) {
+      setHasMorePosts(false);
+    }
+
+    dispatch(actFetchPostsByUserIdPaginationAsync({
+      user_id: id,
+      page: page + 1,
+      per_page: 3,
+    })).then(() => {
+      setLoadingPosts(false);
+    }).catch(() => {
+      setLoadingPosts(false);
+    });
+  }
 
   useEffect(async () => {
     const response = await UserService.getUserInfoByUserId(id);
-    
+
+    setLoadingUser(false);
+
     if (response.data.status === 200) {
       setUserInfo(response.data.data);
     } else {
@@ -20,15 +53,49 @@ export default function Profile({
     }
   }, [id]);
 
+  useEffect(async () => {
+    setLoadingPosts(true);
+
+    dispatch(actFetchPostsByUserIdPaginationAsync({
+      user_id: id,
+      page: 1,
+      per_page: 3,
+    })).then(() => {
+      setLoadingPosts(false);
+    }).catch(() => {
+      setLoadingPosts(false);
+    });
+  }, [id]);
+
   return (
     <div className="main-content">
       <div className="container">
-        <UserProfileInfomation userInfo={ userInfo } />
-        <h3 className="user-posts-list-title">Danh sách bài viết của bạn</h3>
+        {
+          loadingUser
+            ? <UserProfileLoading />
+            : <UserProfileInfomation userInfo={ userInfo } />
+        }
+        <h3 className="user-posts-list-title">Danh sách bài viết</h3>
         <div className="user-posts-list">
           <div className="col-6">
-            <PostItem />
+            {
+              posts.length !== 0
+                ? posts.map(post => {
+                  return <PostItem post={ post } />
+                })
+                : null
+            }
+            {
+              hasMorePosts && (
+                <div align="center" style={{margin: "2rem 0"}}>
+                  <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
+                    { loadingPosts ? <i class="fa fa-spinner fa-spin"></i> : "Tải thêm" }
+                  </button>
+                </div>
+              )
+            }
           </div>
+          
           <div className="col-6">
             <PostItem />   
           </div>

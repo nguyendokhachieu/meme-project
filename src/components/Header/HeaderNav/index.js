@@ -24,7 +24,7 @@ export default function HeaderNav() {
           ? (
             <li className={ pathname === '/profile' ? 'header-nav-item active' : 'header-nav-item' } >
               <Link className='header-nav-item-link' to={ `/profile?id=${ id }` } >
-                Bài viết của bạn
+                Profile
               </Link>
             </li>
           )
