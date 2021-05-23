@@ -39,5 +39,13 @@ export const UserService = {
             method: 'POST',
             'Content-Type': 'application/json',
         })
+    },
+
+    getUserInfoByUserId(id) {
+        return api.call().get('/getUserInfoByUserId', {
+            params: {
+                user_id: Number(id) 
+            }
+        })
     }
 }

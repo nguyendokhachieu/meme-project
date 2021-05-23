@@ -1,69 +1,22 @@
-import { Link } from "react-router-dom";
 import "./style.css";
+import UserAvatar from "./UserAvatar";
+import UserName from "./UserName";
+import UserOptions from "./UserOptions";
+import UserStatistics from "./UserStatistics";
+import UserDescription from "./UserDescription";
 
-export default function UserProfileInfomation() {
+export default function UserProfileInfomation({
+  userInfo
+}) {
+
   return (
     <div className="user-content">
-      <div className="user-image-wrap">
-        <a href className="user-image-wrap-link">
-          <img
-            src="./assets/images/default-avatar/ava-3.png"
-            className="user-image"
-            alt="avatar"
-          />
-        </a>
-      </div>
+      <UserAvatar userInfo={ userInfo } />
       <div className="user-info">
-        <div className="user-info-username">
-          <h3>Hiếu Nguyễn</h3>
-        </div>
-        <div className="user-info-options">
-          <a className="mr-1 btn btn-transparent-bc">
-            Theo dõi
-          </a>
-          <Link to="change-password" className="mr-1 btn btn-transparent-bc">
-            Đổi mật khẩu
-          </Link>
-          <Link to="/update" className="btn btn-transparent-bc">
-            Change Profile
-          </Link>
-        </div>
-        <div className="user-info-statistic">
-          <p className="statistic-item">
-            <img
-              src="./assets/images/article-icon.svg"
-              className="statistic-item-icon post-icon"
-              alt="following"
-            />
-            <span className="statistic-item-text">Bài viết: </span>
-            <span className="statistic-item-count">9192</span>
-          </p>
-          <p className="statistic-item">
-            <img
-              src="./assets/images/follower.svg"
-              className="statistic-item-icon follow-icon"
-              alt="follower"
-            />
-            <span className="statistic-item-text">Theo dõi: </span>
-            <span className="statistic-item-count">111</span>
-          </p>
-          <p className="statistic-item">
-            <img
-              src="./assets/images/following.svg"
-              className="statistic-item-icon follow-icon"
-              alt="following"
-            />
-            <span className="statistic-item-text">Đang theo dõi: </span>
-            <span className="statistic-item-count">123</span>
-          </p>
-        </div>
-        <div className="user-info-description">
-          Lorem ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Atque libero ipsam deserunt nesciunt est! Fugit illum quam veritatis
-          facere eius voluptas, non quis inventore, alias perspiciatis hic
-          dignissimos, voluptate itaque. dolor sit amet, consectetur adipisicing
-          elit.
-        </div>
+        <UserName userInfo={ userInfo } />
+        <UserOptions userInfo={ userInfo } />
+        <UserStatistics userInfo={ userInfo } />
+        <UserDescription userInfo={ userInfo } />
       </div>
     </div>
   );
