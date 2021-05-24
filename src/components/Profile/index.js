@@ -7,6 +7,7 @@ import UserProfileInfomation from "../UserProfileInfomation";
 import { UserService } from "../../services/user";
 import { actFetchPostsByUserIdPaginationAsync } from "../../store/posts/actions";
 import { useDispatch, useSelector } from "react-redux";
+import Modal from "../shared/Modal";
 
 export default function Profile({ 
   id,
@@ -69,6 +70,7 @@ export default function Profile({
 
   return (
     <div className="main-content">
+      <Modal />
       <div className="container">
         {
           loadingUser
@@ -76,29 +78,30 @@ export default function Profile({
             : <UserProfileInfomation userInfo={ userInfo } />
         }
         <h3 className="user-posts-list-title">Danh sách bài viết</h3>
-        <div className="user-posts-list">
-          <div className="col-6">
-            {
-              posts.length !== 0
-                ? posts.map(post => {
-                  return <PostItem post={ post } />
-                })
-                : null
-            }
-            {
-              hasMorePosts && (
-                <div align="center" style={{margin: "2rem 0"}}>
-                  <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
-                    { loadingPosts ? <i class="fa fa-spinner fa-spin"></i> : "Tải thêm" }
-                  </button>
+          <div className="user-posts-list">
+            <div className="container">
+              <div className="col-wrap">
+                <div className="main-col-8">
+                    {
+                      posts.length !== 0
+                        ? posts.map(post => {
+                          return <PostItem post={ post } />
+                        })
+                        : null
+                    }
+                    {
+                      hasMorePosts && (
+                        <div align="center" style={{margin: "2rem 0"}}>
+                          <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
+                            { loadingPosts ? <i class="fa fa-spinner fa-spin"></i> : "Tải thêm" }
+                          </button>
+                        </div>
+                      )
+                    }
                 </div>
-              )
-            }
-          </div>
-          
-          <div className="col-6">
-            <PostItem />   
-          </div>
+                <div className="main-col-4"></div>
+              </div>
+            </div>
         </div>
       </div>
     </div>

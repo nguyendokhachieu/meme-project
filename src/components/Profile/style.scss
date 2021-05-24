@@ -1,5 +1,33 @@
 @import "./../../assets/css/variables.scss";
 
+.col-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+
+    .main-col-8 {
+        width: calc(66.66666666666666% - 1.2rem);
+    }
+
+    .main-col-4 {
+        width: calc(33.33333333333333% - 1.2rem);
+    }
+
+    @media screen and (max-width: 992px) {
+        display: block;
+
+        .main-col-8 {
+            width: 100%;
+        }
+
+        .main-col-4 {
+            width: 100%;
+        }
+    }
+}
+
+
 .user-posts-list-title {
     margin: 2rem 0 1.75rem 0;
     padding: 0.2rem 0 0.2rem 1rem;
