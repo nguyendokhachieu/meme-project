@@ -1,0 +1,210 @@
+@import "../../assets/css/variables.scss";
+
+.upload-section {
+    .col-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: space-between;
+    
+        .main-col-8 {
+            width: calc(66.66666666666666% - 1.2rem);
+        }
+    
+        .main-col-4 {
+            width: calc(33.33333333333333% - 1.2rem);
+        }
+    
+        @media screen and (max-width: 992px) {
+            display: block;
+    
+            .main-col-8 {
+                width: 100%;
+            }
+    
+            .main-col-4 {
+                width: 100%;
+            }
+        }
+    }
+    
+    .upload-area {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem 1.7rem;
+        margin: 0 0 1rem 0;
+    
+        .form-control-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0.5rem 0;
+    
+            .form-control-icon {
+                width: 3.3rem;
+                margin-right: 0.75rem;
+            }
+    
+            .caption-input {
+                width: 100%;
+            }
+    
+            .label-text {
+                font-size: 1.6rem;
+                color: $text-color;
+                margin-bottom: 0.5rem;
+                text-align: center;
+            }
+
+            .plus-icon {
+                font-size: 1.7rem;
+                margin: 0 1rem;
+            }
+
+            .upload-icon {
+                font-size: 2.7rem;
+                color: rgb(117, 117, 117);
+            }
+    
+            & + .form-control-wrap {
+                margin-top: 1rem;
+            }
+             
+            & > * {
+                flex: 1;
+            }
+    
+            .categories-input-search {
+                padding: 0.7rem 1.1rem;
+                font-size: 1.45rem;
+                width: 100%;
+                font-style: italic;
+                border-bottom: 1px solid $base-color-lightest;
+                border-top: 0;
+                border-left: 0;
+                border-right: 0;
+                border-radius: 0;
+                margin: 0.8rem 0;
+                transition: all 0.15s ease;
+
+                &:focus {
+                    background-color: #fff;
+                    border-bottom-color: $base-color;
+                }
+                
+            }    
+    
+            .form-file-wrap {
+                position: relative;
+            }
+    
+            .label-text-file {
+                margin: 0.5rem 0;
+                display: inline-block;
+                padding: 12px 0;
+                cursor: pointer;
+                border-radius: 5px;
+                background-color: transparent;
+                font-size: 16px;
+                font-weight: bold;
+                color: $base-color;
+                text-align: center;
+                transition: all 0.15s ease;
+                width: 100%;
+    
+                &:hover {
+                    background-color: $base-color-lightest;
+                }
+            }
+    
+            input[type=file] {
+                position: absolute;
+                z-index: -1;
+                top: 10px;
+                left: 8px;
+                font-size: 17px;
+                color: #b8b8b8;
+            }
+        }
+    
+        .btn-upload-wrap {
+            display: flex;
+            margin-bottom: 1rem;
+    
+            & > * {
+                flex: 1;
+            }
+        }
+    
+        .errors-upload {
+            line-height: 1.3;
+            font-size: 1.6rem;
+            color: $error-color;
+            font-weight: 500;
+            padding: 0 0.5rem;
+        }
+    
+        .tags-list-title {
+            color: $text-color;
+            line-height: 1.2;
+            font-size: 1.5rem;
+            padding: 1rem 0 0.1rem 0;
+            margin: 1rem 0 0 0;
+            border-top: 1px solid #ccc;
+        }
+    
+        .checkbox-label {
+            display: inline-block;
+            position: relative;
+            padding-left: 3.2rem;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            font-size: 1.6rem;
+            color: $text-color;
+        }
+    
+        input[type=checkbox] {
+            visibility: hidden;
+        }
+    
+        .mark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: $base-color-lightest;
+            border-radius: 5px;
+        }
+    
+        .checkbox-label input:checked + .mark {
+            background-color: $base-color-lighter;
+        }
+    
+        .mark:after {
+            content: "";
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+        }
+    
+        .checkbox-label input:checked + .mark:after {
+            opacity: 1;
+            visibility: visible;
+        }
+    
+        .checkbox-label .mark:after {
+            left: 8px;
+            bottom: 5px;
+            width: 6px;
+            height: 12px;
+            border: solid #eee;
+            border-width: 0 4px 4px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    }
+}

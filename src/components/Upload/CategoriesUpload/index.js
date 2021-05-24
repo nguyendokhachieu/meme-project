@@ -1,5 +1,5 @@
-import SearchCategoriesUpload from "../SearchCategoriesUpload";
-import ListCategoriesUpload from "../ListCategoriesUpload";
+import SearchCategoriesUpload from "./SearchCategoriesUpload";
+import ListCategoriesUpload from "./ListCategoriesUpload";
 
 export default function CategoriesUpload() {
   return (
