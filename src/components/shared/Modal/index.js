@@ -6,6 +6,7 @@ import ModalUserItem from "../ModalUserItem";
 const className = "float-modal-wrap";
 
 export default function Modal({
+    title,
     listUser,
     loading,
     setOuterShowState = function(){},
@@ -27,9 +28,9 @@ export default function Modal({
     return (
         <div className={ innerHide ? 'float-modal-wrap hide' : 'float-modal-wrap' }>
             <div className="float-modal">
-                <h3 className="modal-title" title="Danh sách những người đang theo dõi bạn">
+                <h3 className="modal-title" title={ title }>
                     <i class="fal fa-list"></i>
-                    Danh sách những người đang theo dõi bạn 
+                    { title }
                 </h3>
                 <div className="inner-modal">
                     {

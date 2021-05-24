@@ -15,7 +15,7 @@ export default function Profile({
 {
   const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({});
-  const [loadingUser, setLoadingUser] = useState(true);
+  const [loadingUser, setLoadingUser] = useState(false);
   const [loadingPosts, setLoadingPosts] = useState(true);
   const [hasMorePosts, setHasMorePosts] = useState(true);
 
@@ -42,9 +42,11 @@ export default function Profile({
   }
 
   useEffect(async () => {
+    setLoadingUser(true);
+
     const response = await UserService.getUserInfoByUserId(id);
 
-    setLoadingUser(false);
+    if (response) setLoadingUser(false);
 
     if (response.data.status === 200) {
       setUserInfo(response.data.data);

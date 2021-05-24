@@ -4,25 +4,10 @@ import Modal from "../../shared/Modal";
 
 export default function UserStatistics({ userInfo }) {
   const [show, setShow] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasErrors, setHasErrors] = useState(false);
-
-  const showPeopleFollowYou = async () => {
-    setShow(!show);
-    const response = await UserService.getListPeopleFollowYou(userInfo.user_id);
-
-    if (response) setLoading(false); 
-    setList(response.data.data);
-  };
-
-  const showPeopleYouFollow = async () => {
-    setShow(!show);
-    const response = await UserService.getListPeopleYouFollowing(userInfo.user_id);
-
-    if (response) setLoading(false); 
-    setList(response.data.data);
-  };
 
   const showModalPeople = async (type) => {
     setShow(!show);
@@ -31,17 +16,18 @@ export default function UserStatistics({ userInfo }) {
 
     try {
       if (type === 'follow-you') {
+        setModalTitle('Danh sách những người đang theo dõi bạn');
         response = await UserService.getListPeopleFollowYou(userInfo.user_id);
       } else {
+        setModalTitle('Danh sách những người bạn đang theo dõi');
         response = await UserService.getListPeopleYouFollowing(userInfo.user_id);
       }
+
+      if (response) setLoading(false); 
+      setList(response.data.data);
     } catch (error) {
       setHasErrors(true);
     }
-    
-    if (response) setLoading(false); 
-    setList(response.data.data);
-    setHasErrors(false);
   }
 
   useEffect(() => {
@@ -55,6 +41,7 @@ export default function UserStatistics({ userInfo }) {
       {
         show
           ? <Modal 
+              title={ modalTitle }
               listUser={ list } 
               setOuterShowState={ val => { setShow(false) } } 
               loading={ loading }
@@ -74,7 +61,6 @@ export default function UserStatistics({ userInfo }) {
         <span className="statistic-item-count">{ userInfo.count_follower }</span>
         <button
           className="btn-show-more-statistic"
-          // onClick={showPeopleFollowYou}
           onClick={ () => { showModalPeople('follow-you') } }
         >
           <i class="fal fa-info-square show-more-statistic"></i>
@@ -86,7 +72,6 @@ export default function UserStatistics({ userInfo }) {
         <span className="statistic-item-count">{userInfo.count_following}</span>
         <button
           className="btn-show-more-statistic"
-          // onClick={showPeopleYouFollow}
           onClick={ () => { showModalPeople('you-follow') } }
         >
           <i class="fal fa-info-square show-more-statistic"></i>
