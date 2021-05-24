@@ -47,5 +47,21 @@ export const UserService = {
                 user_id: Number(id) 
             }
         })
+    },
+
+    getListPeopleFollowYou(user_id) {
+        return api.call().get('/getListPeopleFollowYou', {
+            params: {
+                user_id,
+            }
+        })
+    },
+
+    getListPeopleYouFollowing(user_id) {
+        return api.call().get('/getListPeopleYouFollowing', {
+            params: {
+                user_id,
+            }
+        })
     }
 }

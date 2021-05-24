@@ -7,7 +7,6 @@ import UserProfileInfomation from "../UserProfileInfomation";
 import { UserService } from "../../services/user";
 import { actFetchPostsByUserIdPaginationAsync } from "../../store/posts/actions";
 import { useDispatch, useSelector } from "react-redux";
-import Modal from "../shared/Modal";
 
 export default function Profile({ 
   id,
@@ -70,7 +69,6 @@ export default function Profile({
 
   return (
     <div className="main-content">
-      <Modal />
       <div className="container">
         {
           loadingUser

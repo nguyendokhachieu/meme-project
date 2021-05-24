@@ -16,12 +16,40 @@
         transform: translate(-50%, -50%);
 
         width: 50%;
-        height: 40%;
-        padding: 1.5rem 1rem;
+        height: 60%;
+        padding: 1.5rem 2rem;
 
         background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.4);
+
+        .modal-title {
+            color: rgb(49, 49, 49);
+            font-size: 1.8rem;
+            padding-bottom: 2rem;
+            height: 3rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-bottom: 1px solid #ccc;
+
+            i {
+                padding-right: 1rem;
+                color: rgb(99, 99, 99);
+                font-size: 1.8rem;
+            }
+        }
+
+        .inner-modal {
+            font-size: 1.6rem;
+            padding-top: 1rem;
+            height: calc(100% - 3rem);
+            overflow: auto;
+        }
+
+        .spinner-loading-icon {
+            font-size: 2.5rem;
+        }
     }
 }
 

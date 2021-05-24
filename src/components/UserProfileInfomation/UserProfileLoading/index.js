@@ -1,6 +1,6 @@
 import "./style.scss";
 
-export default function UserProfileInfomation() {
+export default function UserProfileLoading() {
   return (
     <div className="user-content-loading">
       <div className="user-image-wrap">
@@ -13,16 +13,15 @@ export default function UserProfileInfomation() {
           <h3></h3>
         </div>
         <div className="user-info-options">
-      <a className="mr-1 btn btn-transparent-bc">Theo dõi</a>
-      <a to="change-password" className="mr-1 btn btn-transparent-bc">
-                Đổi mật khẩu
-              </a>
-              <a to="/update" className="btn btn-transparent-bc">
-              Change Profile
-              </a>
-      
-    </div>
-    <div className="user-info-statistic">
+          <a className="mr-1 btn btn-transparent-bc">Theo dõi</a>
+          <a to="change-password" className="mr-1 btn btn-transparent-bc">
+            Đổi mật khẩu
+          </a>
+          <a to="/update" className="btn btn-transparent-bc">
+            Change Profile
+          </a>
+        </div>
+        <div className="user-info-statistic">
           <p className="statistic-item">
             <span
               className="statistic-item-icon post-icon"
@@ -48,8 +47,7 @@ export default function UserProfileInfomation() {
             <span className="statistic-item-count"></span>
           </p>
         </div>
-        <div className="user-info-description">
-        </div>
+        <div className="user-info-description"></div>
       </div>
     </div>
   );

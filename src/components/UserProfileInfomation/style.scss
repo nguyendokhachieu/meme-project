@@ -61,6 +61,26 @@
             &-count {
                 font-weight: 500;
             }
+
+            .left-statistic-icon {
+                color: rgb(78, 78, 78);
+                margin-right: 0.5rem;
+                font-size: 1.6rem;
+            }
+
+            .btn-show-more-statistic {
+                background-color: transparent;
+                border: 0;
+                outline: none;
+                cursor: pointer;
+            }
+
+            .show-more-statistic {
+                margin: 0 0.5rem;
+                padding: 0 0.5rem;
+                color: #999;
+                font-size: 1.6rem;
+            }
         }
 
         .user-info-description {
