@@ -6,12 +6,12 @@ import ModalUserItem from "../ModalUserItem";
 const className = "float-modal-wrap";
 
 export default function Modal({
-    title,
-    listUser,
-    loading,
+    title = '',
+    listUser = [],
+    loading = false,
     setOuterShowState = function(){},
     setOuterLoadingState = function(){},
-    hasErrors,
+    hasErrors = false,
 }) {
     const [innerHide, setInnerHide] = useState(false);
 

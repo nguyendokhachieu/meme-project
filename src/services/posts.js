@@ -55,5 +55,17 @@ export const PostService = {
                 order_dir,
             }
         })
+    },
+
+    upload(formDataObject) {
+        const token = localStorage.getItem('tstring');
+        
+        return api.call().post('/upload', formDataObject, {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'multipart/form-data',
+            }
+        });
     }
 }

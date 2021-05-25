@@ -5,7 +5,7 @@ export default function HeaderBtn() {
   const { auth } = useAuthorization();
 
   const handleLogout = () => {
-    localStorage.setItem('tstring', null);
+    localStorage.setItem('tstring', '');
 
     window.location.reload();
   }
