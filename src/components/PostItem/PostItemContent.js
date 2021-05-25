@@ -9,7 +9,7 @@ export default function PostItemHeader({
           { post.content }
         </p>
         <div className="post-item-image-wrap">
-          <Link to="/post/abcxyz" className="post-item-image-link">
+          <Link to={ `/post/${ post.id }` } className="post-item-image-link">
             <img
               className="post-item-image"
               src=
