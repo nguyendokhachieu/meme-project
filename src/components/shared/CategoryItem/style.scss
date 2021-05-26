@@ -1,0 +1,27 @@
+.tags-item {
+  display: inline-block;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: rgba(19, 210, 184, 0.15);
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+
+  .tags-text {
+    white-space: nowrap;
+    color: rgb(3, 126, 109);
+    font-size: 1.6rem;
+  }
+}
+
+.size-small {
+  padding: 0.2rem 1.2rem;
+
+  .tags-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+}
+
+
+
+

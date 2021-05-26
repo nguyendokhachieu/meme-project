@@ -8,8 +8,35 @@ export default function ListCategoriesUpload({
   const [page, setPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasMoreItems, setHasMoreItems] = useState(true);
   const [selectedCate, setSelectedCate] = useState([]);
+
+  const totalPage = Math.ceil(totalItems / 5);
+  const renderPagination = (totalPage, range) => {
+
+    if (totalPage !== 0) {
+      const indents = [];
+
+      let start = page;
+      if (range >= totalPage) {
+        start = 1;
+      }
+
+      let end = page + range;
+      if (end > totalPage) {
+        end = totalPage;
+      }
+
+      for (let i = start; i <= end; i++) {
+        indents.push(<li className={ page === i ? `page-item active` : `page-item` } onClick={ () => { handleLoadMore(i) } }>{ i }</li>);
+      }
+
+      if (page !== totalPage) {
+        indents.push(<li className="page-item inactive">...</li>)
+      } 
+
+      return indents;
+    }
+  }
 
   const handleSelectedCategories = (e) => {
     if (e.target.checked) {
@@ -22,26 +49,19 @@ export default function ListCategoriesUpload({
       }));
     }
   }
-  
-  const handleLoadMore = async () => {
-    if (isLoading) {
-      return;
-    }
 
-    if (categories.length >= totalItems) {
-      setHasMoreItems(false);
-    }
+  const handleLoadMore = async (page) => {
+    setPage(page);
 
     setIsLoading(true);
-    const res = await CategoryService.getCategoriesPagination({
-      page: page + 1,
-      per_page: 5
+    const response = await CategoryService.getCategoriesPagination({
+      page: page,
+      per_page: 5,
     });
 
-    setPage(page + 1);
     setIsLoading(false);
-    if (res.data.data.length !== 0) {
-      setCategories([...categories, ...res.data.data]);
+    if (response.data.data.length !== 0) {
+      setCategories(response.data.data);
     }
   }
 
@@ -57,10 +77,7 @@ export default function ListCategoriesUpload({
 
     setIsLoading(false);
     if (res.data.data.length !== 0) {
-      setCategories(page === 1 
-        ? res.data.data 
-        : [...categories, ...res.data.data]
-      );
+      setCategories(res.data.data);
     }
   }, []);
 
@@ -72,30 +89,47 @@ export default function ListCategoriesUpload({
     <>
       <form>
         {
-          categories.length !== 0
-            ? categories.map(cate => {
-              return (
-                <label className="checkbox-label">
-                    { cate.name }
-                    <input type="checkbox" className="checkbox-input" value={ cate.id } onChange={ handleSelectedCategories } />
-                    <span className="mark" />
-                </label>
-              )
-            })
-            : null
+          isLoading
+            ? <div align="center"><i class="fa fa-spinner fa-spin icon-fz-16 icon-color-light"></i></div>
+            : categories.length !== 0
+              ? categories.map(cate => {
+                  return (
+                    <label key={ cate.id } className="checkbox-label">
+                        { cate.name }
+                        <input 
+                          type="checkbox" 
+                          className="checkbox-input" 
+                          value={ cate.id } 
+                          onChange={ handleSelectedCategories } 
+                        />
+                        <span className="mark" />
+                    </label>
+                )
+              })
+              : null
         }
     </form>
-    {
-      hasMoreItems 
-        ? (
-          <div align="center">
-            <button className="btn-load-more-categories" onClick={ handleLoadMore }>
-                { isLoading ? <i class="fa fa-spinner fa-spin"></i> : "Tải thêm" }
-            </button>
-          </div>
-        )
-        : null
-    }
+    <div align="center">
+      <div className="pagination">
+        <ul className="paginations">
+          <li 
+            className={ page === 1 ? `page-item inactive` : `page-item` } 
+            onClick={ () => { if (page - 1 > 0) { handleLoadMore(page - 1 ) } } }
+          >
+            <i class="fal fa-chevron-left"></i>
+          </li>
+          {
+            renderPagination(totalPage, 3)
+          }
+          <li 
+            className={ page === totalPage ? `page-item inactive` : `page-item` } 
+            onClick={ () => { if (page < totalPage) { handleLoadMore(page + 1 ) } } }
+          >
+            <i class="fal fa-chevron-right"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
     </>
   );
 }

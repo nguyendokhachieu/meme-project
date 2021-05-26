@@ -160,6 +160,10 @@
             font-weight: 500;
             padding: 0 0.5rem;
         }
+
+        .selected-categories {
+
+        }
     
         .tags-list-title {
             color: $text-color;
@@ -168,6 +172,21 @@
             padding: 1rem 0 0.1rem 0;
             margin: 1rem 0 0 0;
             border-top: 1px solid #ccc;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .p-b-1rem {
+            padding-bottom: 1rem;
+        }
+
+        .icon-fz-16 {
+            font-size: 1.6rem;
+        }
+
+        .icon-color-light {
+            color: #999;
         }
 
         .form-control-search {
@@ -257,6 +276,41 @@
 
             &:active {
                 transform: scale(0.95);
+            }
+        }
+
+        .pagination {
+            margin: 0.5rem 0;
+
+            .paginations {
+                padding: 0.5rem 2rem;
+                display: flex;
+                justify-content: space-between;
+
+                .page-item {
+                    color: $text-color-lighter;
+                    font-size: 1.5rem;
+                    padding: 0.4rem 0.8rem;
+                    border: 1px solid #ccc;
+                    cursor: pointer;
+                    transition: all 0.15s ease;
+
+                    &:hover {
+                        border-color: $base-color;
+                        color: $base-color;
+                    }
+                }
+
+                .page-item.active {
+                    border-color: $base-color;
+                    color: $base-color;
+                }
+
+                .page-item.inactive {
+                    cursor: default;
+                    border-color: #ddd;
+                    color: #ddd;
+                }
             }
         }
     }

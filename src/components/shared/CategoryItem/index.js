@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import "./style.css";
+import "./style.scss";
 
 export default function CategoryItem({
-  category
+  category,
+  small = false,
 }) 
 {
   if (!category) {
@@ -10,7 +11,7 @@ export default function CategoryItem({
   }
 
   return (
-    <Link to={ `/categories?id=${ category.id }` } class="tags-item">
+    <Link to={ `/categories?id=${ category.id }` } class={ small ? 'tags-item size-small' : 'tags-item' }>
       <span class="tags-text">{ category.name }</span>
     </Link>
   );
