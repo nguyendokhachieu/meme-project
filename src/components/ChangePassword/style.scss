@@ -22,10 +22,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        
-        &-svg {
-            width: 2.5rem;
-            margin: 0 0.7rem;
+
+        .title-icon {
+            padding: 0 1rem;
+            font-size: 2rem;
+            color: rgb(100, 100, 100);
         }
 
         &-text {
@@ -49,13 +50,14 @@
         margin: 0.5rem 0;
 
         .password-icon {
-            width: 2.5rem;
-            opacity: 0.85;
-            margin-right: 0.75rem;
+            align-self: center;
+            padding: 0 0.75rem 0 0.2rem;
+            font-size: 1.6rem;
+            color: rgb(100, 100, 100);
         }
 
         .form-control {
-            width: calc(100% - 3.25rem);
+            flex: 1;
             border: 1px solid transparent;
             transition: all 0.25s ease;
 
@@ -63,6 +65,83 @@
                 border-color: $base-color;
             }
         }
+    }
+
+    .change-password-error {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 0 2rem 0;
+        align-items: center;
+        display: none;
+    }
+
+    .change-password-error-icon-wrap {
+        width: 3.2rem;
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .change-password-error-icon {
+        font-size: 2.5rem;
+        color: $error-color;
+    }
+
+    .change-password-error-text {
+        width: calc(100% - 3.2rem);
+        font-size: 1.6rem;
+        color: $text-color;
+        padding: 0.75rem;
+        padding-left: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 0 5px 0px #ccc;
+        border-left: 3px solid $error-color;
+        background-color: $body-background-color;
+    }
+
+    .change-password-error.active {
+        display: flex;
+    }
+
+    .change-password {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 0 2rem 0;
+        align-items: center;
+        display: none;
+    }
+
+    .change-password-icon-wrap {
+        width: 3.2rem;
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .change-password-icon {
+        font-size: 2.5rem;
+        margin-right: 0.8rem;
+        color: #72bf00;
+    }
+
+    .change-password-text {
+        width: calc(100% - 3.2rem);
+        font-size: 1.6rem;
+        color: $text-color;
+        padding: 0.75rem;
+        padding-left: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 0 5px 0px #ccc;
+        border-left: 3px solid #72bf00;
+        background-color: $body-background-color;
+    }
+
+    .change-password.active {
+        display: flex;
     }
 
     .change-password-btn-group {

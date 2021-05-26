@@ -1,4 +1,4 @@
-import "./style.css";
+import "./style.scss";
 
 import { Link, useHistory } from "react-router-dom";
 import Input from "./../shared/Input";
