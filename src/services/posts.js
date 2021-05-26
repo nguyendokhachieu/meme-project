@@ -67,5 +67,52 @@ export const PostService = {
                 'Content-Type': 'multipart/form-data',
             }
         });
+    },
+
+    checkLiked(user_id, post_id) {
+        return api.call().post('/checkLiked', JSON.stringify({
+            user_id,
+            post_id,
+        }), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+    },
+
+    like(user_id, post_id) {
+        return api.call().post('/like', JSON.stringify({
+            user_id,
+            post_id,
+        }), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+    },
+
+    unlike(user_id, post_id) {
+        return api.call().post('/unlike', JSON.stringify({
+            user_id,
+            post_id,
+        }), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+    },
+
+    countLike(post_id) {
+        return api.call().post('/countLike', JSON.stringify({
+            post_id,
+        }), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
     }
 }

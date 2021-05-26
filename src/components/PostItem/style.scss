@@ -77,30 +77,42 @@
         padding-top: 1rem;
 
         .post-item-show {
-            padding: 0.5rem 2.2rem;
+            padding: 0.65rem 2.5rem;
             transition: all 0.15s ease;
             border-radius: 5px;
             display: flex;
             align-items: center;
+            cursor: pointer;
 
             &:hover {
-                background-color: $base-color-lightest;
+                background-color: #eee;
+            }
+
+            &:active {
+                background-color: #ccc;
+                transform: scale(0.95);
             }
         }
 
-        .heart-icon {
-            width: 1.7rem;
+        .post-footer-icon {
+            font-size: 1.8rem;
+            padding: 0 0.25rem;
+            color: #999;
+        }     
+        
+        .post-footer-icon.active {
+            color: $error-color;
         }
 
-        .comment-icon {
-            width: 2.3rem;
-        }
-
-        .comment-count {
+        .count {
             padding: 0 0.6rem !important;
             font-weight: 500;
-            color: $base-color-lighter;
+            color: #999;
             font-size: 1.5rem;
+        }
+
+        .count.active {
+            color: $error-color;
         }
     }
 }

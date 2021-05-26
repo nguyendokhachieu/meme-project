@@ -1,4 +1,4 @@
-import "./style.css";
+import "./style.scss";
 import PostItemHeader from "./PostItemHeader";
 import PostItemContent from "./PostItemContent";
 import PostItemFooter from "./PostItemFooter";
