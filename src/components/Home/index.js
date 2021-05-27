@@ -1,6 +1,5 @@
 import "./style.css";
 import LatestPostsList from "./LatestPostsList";
-import UserPostsList from "./UserPostsList";
 
 export default function Home() {
   return (
@@ -8,7 +7,8 @@ export default function Home() {
       <div className="container">
         <div className="col-wrap">
           <LatestPostsList />
-          <UserPostsList />
+          <div className="main-col-4">
+          </div>
         </div>
       </div>
     </div>
