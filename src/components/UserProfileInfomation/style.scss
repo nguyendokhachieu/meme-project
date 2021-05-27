@@ -45,6 +45,32 @@
             .mr-1 {
                 margin-right: 1rem;
             }
+
+            .no-hover {
+                &:hover {
+                    background-color: transparent;
+                    color: none;
+                }
+            }
+
+            .gray-color {
+                border-color: $text-color-lighter;
+                color: $text-color-lighter;
+
+                &:hover {
+                    background-color: transparent;
+                    color: $text-color;
+                }
+            }
+
+            .following {
+                border-color: $green-ok-color;
+                color: $green-ok-color;
+            }
+
+            .tick-icon {
+                padding: 0 0.5rem 0 0;
+            }
         }
 
         .statistic-item {

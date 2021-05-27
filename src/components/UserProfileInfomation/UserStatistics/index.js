@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 import { UserService } from "../../../services/user";
 import Modal from "../../shared/Modal";
 
-export default function UserStatistics({ userInfo }) {
+export default function UserStatistics({ 
+  userInfo, 
+  countFollowed 
+}) 
+{
   const [show, setShow] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasErrors, setHasErrors] = useState(false);
+  const [following, setFollowing] = useState(0);
+  const [follower, setFollower] = useState(0);
 
   const showModalPeople = async (type) => {
     setShow(!show);
@@ -34,7 +40,17 @@ export default function UserStatistics({ userInfo }) {
     setShow(false);
     setLoading(true);
     setHasErrors(false);
+    setFollowing(Number(userInfo.count_following));
+    setFollower(Number(userInfo.count_follower));
   }, [userInfo]);
+
+  useEffect(() => {
+    if (countFollowed === '+') {
+      setFollower(follower + 1);
+    } else {
+      setFollower(follower - 1);
+    }
+  }, [countFollowed]);
 
   return (
     <div className="user-info-statistic">
@@ -58,7 +74,7 @@ export default function UserStatistics({ userInfo }) {
       <p className="statistic-item">
         <i class="fal fa-user-friends left-statistic-icon"></i>
         <span className="statistic-item-text">Được theo dõi: </span>
-        <span className="statistic-item-count">{ userInfo.count_follower }</span>
+        <span className="statistic-item-count">{ follower }</span>
         <button
           className="btn-show-more-statistic"
           onClick={ () => { showModalPeople('follow-you') } }
@@ -69,7 +85,7 @@ export default function UserStatistics({ userInfo }) {
       <p className="statistic-item">
         <i class="fal fa-user-plus left-statistic-icon"></i>
         <span className="statistic-item-text">Đang theo dõi: </span>
-        <span className="statistic-item-count">{userInfo.count_following}</span>
+        <span className="statistic-item-count">{ following }</span>
         <button
           className="btn-show-more-statistic"
           onClick={ () => { showModalPeople('you-follow') } }

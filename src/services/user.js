@@ -79,10 +79,45 @@ export const UserService = {
                                     + 'Bearer ' + token,
             },
         })
+    },
+
+    isFollowing(user_id, follow_user_id) {
+        return api.call().post('/isFollowing', JSON.stringify({
+            user_id,
+            follow_user_id,
+        }), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+    },
+
+    follow(user_id, follow_user_id) {
+        const token = localStorage.getItem('tstring');
+
+        return api.call().post('/follow', JSON.stringify({
+            user_id, 
+            follow_user_id,
+        }), {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
+        })
+    },
+
+    unfollow(user_id, follow_user_id) {
+        const token = localStorage.getItem('tstring');
+
+        return api.call().post('/unfollow', JSON.stringify({
+            user_id, 
+            follow_user_id,
+        }), {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
+        })
     }
 }
-
-// {
-//     'Authorization': 'Bearer ' + token,
-//     'Authorization': 'Basic ' + window.btoa(oldPassword.concat('.').concat(newPassword).concat('.').concat(renewPassword)), 
-// }
