@@ -22,8 +22,8 @@
                 overflow: hidden;
     
                 .post-item-avatar {
-                    width: 3.5rem;
-                    height: 3.5rem;
+                    width: 4rem;
+                    height: 4rem;
                     border-radius: 69px;
                     background-color: #ccc;
                 }
@@ -36,6 +36,7 @@
                 justify-content: space-between;
     
                 .post-item-author {
+                    margin: 0.5rem 0;
                     font-weight: 500;
                     font-size: 1.7rem;
                     color: transparent;
@@ -46,6 +47,7 @@
                 }
     
                 .post-item-time-ago {
+                    margin: 0.5rem 0;
                     a {
                         font-size: 1.3rem;
                         color: transparent;
