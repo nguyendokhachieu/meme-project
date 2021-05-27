@@ -1,25 +1,36 @@
+import "./style.scss";
+import { useEffect } from "react";
+
 import HeaderLogo from "./HeaderLogo";
 import HeaderNav from "./HeaderNav";
 import HeaderSearch from "./HeaderSearch";
 import HeaderBtn from "./HeaderBtn";
-import { useScriptTag } from "../../hooks/useScriptTag";
-import "./style.css";
+import HeaderMobile from "./HeaderMobile";
 
 export default function Header() {
-  useScriptTag("/assets/js/main.js");
+
+  useEffect(() => {
+    const menuInput = document.getElementById('menu-input');
+
+    document.addEventListener('click', (e) => {
+      if (e.target.className === 'header-overlay') {
+        menuInput.checked = false;
+      }
+    })
+  }, []);
   
   return (
     <header className="header">
       <div className="container">
-        <HeaderLogo />
-        <div className="header-group">
-          <HeaderNav />
-          <HeaderSearch />
-          <HeaderBtn />
-        </div>
-        <div className="icon-bar" id="icon-bar">
-          <img src="/assets/images/bar-menu.svg" className="bar-menu-button" alt="bar-menu-button" />
-        </div>
+        <section className="header-section">
+          <HeaderLogo />
+          <div className="header-group">
+            <HeaderNav />
+            <HeaderSearch />
+            <HeaderBtn />
+          </div>
+          <HeaderMobile />
+        </section>
       </div>
     </header>
   );
