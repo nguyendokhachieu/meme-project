@@ -8,7 +8,7 @@
   top: 0;
   left: 0;
   right: 0;
-
+  z-index: 102;
 
   .container {
 
@@ -146,7 +146,7 @@
       bottom: 0;
       right: 0;
       background-color: rgba(63, 63, 63, 0.6);
-      z-index: -12;
+      z-index: 19;
       visibility: hidden;
       opacity: 0;
     }
@@ -174,7 +174,7 @@
       top: 0;
       left: 0;
       bottom: 0;
-      z-index: 12;
+      z-index: 99;
       padding: 0.5rem;
       background-color: #fff;
       min-width: 30rem;
@@ -311,7 +311,7 @@
       }
 
       & ~ .header-overlay {
-        z-index: 1;
+        z-index: 97;
         visibility: visible;
         opacity: 1;
       }
