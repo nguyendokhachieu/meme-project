@@ -8,9 +8,23 @@ export default function HeaderMobile() {
       <div className="header-overlay"></div>
       <div className="side-bar">
         <div className="side-bar-wrap">
+          <span id="close-side-bar" className="close-side-bar">
+            <i class="fad fa-arrow-alt-circle-left close-icon"></i>
+            <span className="tooltip">Đóng lại</span>
+          </span>
           <h1 className="side-bar-page-title">
             <a className="title-link">MEME</a>
           </h1>
+          <div className="nav-search">
+            <form action="#">
+                <input
+                  type="search"
+                  name="search-text"
+                  className="form-control"
+                  placeholder="Tìm kiếm ..."
+                />
+            </form>
+          </div>
           <ul className="nav">
             <li className="nav-item">
               <a className="nav-item-link active">

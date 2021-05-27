@@ -1,52 +1,62 @@
 @import "./../../assets/css/variables.scss";
 
-.col-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: space-between;
+.main-content {
 
-    .main-col-8 {
-        width: calc(66.66666666666666% - 1.2rem);
-    }
+    .container {
 
-    .main-col-4 {
-        width: calc(33.33333333333333% - 1.2rem);
-    }
+        .profile-section {
+            margin-top: 7.4rem;
 
-    @media screen and (max-width: 992px) {
-        display: block;
-
-        .main-col-8 {
-            width: 100%;
+            .col-wrap {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: stretch;
+                justify-content: space-between;
+            
+                .main-col-8 {
+                    width: calc(66.66666666666666% - 1.2rem);
+                }
+            
+                .main-col-4 {
+                    width: calc(33.33333333333333% - 1.2rem);
+                }
+            
+                @media screen and (max-width: 992px) {
+                    display: block;
+            
+                    .main-col-8 {
+                        width: 100%;
+                    }
+            
+                    .main-col-4 {
+                        width: 100%;
+                    }
+                }
+            }
+            
+            
+            .user-posts-list-title {
+                margin: 2rem 0 1.75rem 0;
+                padding: 0.2rem 0 0.2rem 1rem;
+                color: $text-color;
+                font-size: 1.9rem;
+                text-align: left;
+                font-weight: 500;
+                border-left: 6px solid $base-color;
+                border-radius: 5px 0 0 5px;
+            }
+            
+            .user-posts-list {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 2rem;
+            
+                .col-6 {
+                    width: calc(50% - 1rem);
+                    margin-top: 1.25rem;
+                }
+            }
         }
-
-        .main-col-4 {
-            width: 100%;
-        }
-    }
-}
-
-
-.user-posts-list-title {
-    margin: 2rem 0 1.75rem 0;
-    padding: 0.2rem 0 0.2rem 1rem;
-    color: $text-color;
-    font-size: 1.9rem;
-    text-align: left;
-    font-weight: 500;
-    border-left: 6px solid $base-color;
-    border-radius: 5px 0 0 5px;
-}
-
-.user-posts-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 2rem;
-
-    .col-6 {
-        width: calc(50% - 1rem);
-        margin-top: 1.25rem;
     }
 }

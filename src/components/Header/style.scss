@@ -1,18 +1,24 @@
 @import "./../../assets/css/variables.scss";
 
 .header {
-  // padding: 0.8rem 0;
   background-color: #fff;
   box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
-  position: relative;
+  // position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
 
   .container {
+
     .header-section {
       display: flex;
       flex-wrap: wrap;
       align-items: stretch;
       justify-content: space-between;
       min-height: 5rem;
+      
 
       .header-logo {
         font-size: 2.5rem;
@@ -50,11 +56,18 @@
               display: inline-block;
               padding: 1.2rem 1.8rem;
               color: $base-color;
+
+              .nav-icon {
+                padding-right: 1rem;
+                font-size: 2rem;
+              }
             }
           }
 
           .header-nav-item.active {
             border-bottom-color: $base-color-lighter;
+            font-weight: bold;
+            font-size: 1.7rem;
           }
         }
 
@@ -115,6 +128,10 @@
             display: none;
           }
 
+          .header-search {
+            display: none;
+          }
+
           .header-btn-group {
             display: none;
           }
@@ -160,12 +177,49 @@
       z-index: 12;
       padding: 0.5rem;
       background-color: #fff;
-      min-width: 33rem;
+      min-width: 30rem;
       box-shadow: 0 0 2px 1px #ccc;
       transform: translateX(-100%);
       transition: all 0.35s ease;
 
       .side-bar-wrap {
+
+        .close-side-bar {
+          position: fixed;
+          bottom: 10px;
+          right: 10px;
+          z-index: 14;
+          cursor: pointer;
+
+          .close-icon {
+            font-size: 2.75rem;
+            color: rgba(112, 112, 112, 0.76);
+          }
+
+          .tooltip {
+            position: absolute;
+            right: 120%;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.623);
+            color: #fff;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            padding: 0.25rem 0.75rem;
+            white-space: nowrap;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.15s ease;
+          }
+
+          &:hover {
+            .tooltip {
+              visibility: visible;
+              opacity: 1;
+            }
+          }
+        }
+
         height: 100%;
         overflow: auto;
 
@@ -178,6 +232,19 @@
 
           .title-link {
             color: $base-color;
+          }
+        }
+
+        .nav-search {
+          margin-bottom: 2rem;
+          padding-bottom: 2rem;
+          border-bottom: 1px solid rgb(221, 221, 221);
+          
+          form {
+            padding: 0 0.5rem;
+            .form-control {
+              width: 100%;
+            }
           }
         }
 

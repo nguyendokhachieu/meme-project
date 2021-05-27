@@ -11,11 +11,13 @@ export default function HeaderNav() {
     <ul className="header-nav">
       <li className={ pathname === '/' ? 'header-nav-item active' : 'header-nav-item' } >
         <Link className='header-nav-item-link' to="/" >
+          <i class="fad fa-home nav-icon"></i>
           Mới nhất
         </Link>
       </li>
       <li className={ pathname === '/categories' ? 'header-nav-item active' : 'header-nav-item' } >
         <Link className='header-nav-item-link' to="/categories" >
+          <i class="fad fa-list-alt nav-icon"></i>
           Danh mục
         </Link>
       </li>
@@ -24,6 +26,7 @@ export default function HeaderNav() {
           ? (
             <li className={ pathname === '/profile' ? 'header-nav-item active' : 'header-nav-item' } >
               <Link className='header-nav-item-link' to={ `/profile?id=${ id }` } >
+                <i class="fad fa-user-alt nav-icon"></i>
                 Profile
               </Link>
             </li>

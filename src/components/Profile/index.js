@@ -72,37 +72,39 @@ export default function Profile({
   return (
     <div className="main-content">
       <div className="container">
-        {
-          loadingUser
-            ? <UserProfileLoading />
-            : <UserProfileInfomation userInfo={ userInfo } />
-        }
-        <h3 className="user-posts-list-title">Danh sách bài viết</h3>
-          <div className="user-posts-list">
-            <div className="container">
-              <div className="col-wrap">
-                <div className="main-col-8">
-                    {
-                      posts.length !== 0
-                        ? posts.map(post => {
-                          return <PostItem post={ post } />
-                        })
-                        : null
-                    }
-                    {
-                      hasMorePosts && (
-                        <div align="center" style={{margin: "2rem 0"}}>
-                          <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
-                            { loadingPosts ? <i class="fa fa-spinner fa-spin"></i> : "Tải thêm" }
-                          </button>
-                        </div>
-                      )
-                    }
+        <section className="profile-section">
+          {
+            loadingUser
+              ? <UserProfileLoading />
+              : <UserProfileInfomation userInfo={ userInfo } />
+          }
+          <h3 className="user-posts-list-title">Danh sách bài viết</h3>
+            <div className="user-posts-list">
+              <div className="container">
+                <div className="col-wrap">
+                  <div className="main-col-8">
+                      {
+                        posts.length !== 0
+                          ? posts.map(post => {
+                            return <PostItem post={ post } />
+                          })
+                          : null
+                      }
+                      {
+                        hasMorePosts && (
+                          <div align="center" style={{margin: "2rem 0"}}>
+                            <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
+                              { loadingPosts ? <i class="fa fa-spinner fa-spin"></i> : "Tải thêm" }
+                            </button>
+                          </div>
+                        )
+                      }
+                  </div>
+                  <div className="main-col-4"></div>
                 </div>
-                <div className="main-col-4"></div>
               </div>
-            </div>
-        </div>
+          </div>
+        </section>
       </div>
     </div>
   );

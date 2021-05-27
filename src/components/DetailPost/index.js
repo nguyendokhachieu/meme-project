@@ -1,10 +1,11 @@
-import "./style.css";
+import "./style.scss";
 
 import { useEffect, useState } from "react";
 import CommentList from "../CommentList";
 import CommentListHeader from "../CommentListHeader";
 import FormAddComment from "../FormAddComment";
 import PostItem from "../PostItem";
+import PostItemLoading from "../PostItem/PostItemLoading";
 import Loading from "./../shared/Loading";
 import { actFetchDetailPostAsync } from "./../../store/posts/actions";
 import { useDispatch } from "react-redux";
@@ -50,36 +51,35 @@ export default function DetailPost({
   return (
     <div className="main-content">
       <div className="container">
-        <div className="col-wrap">
-          <div className="main-col-8">
-            {
-              !post 
-                ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.9 } /></div>
-                : <PostItem post={ post } />
-            }
-            {
-              !post 
-                ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.7 } /></div>
-                : <FormAddComment />
-            }
-            {
-              !post
-                ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.5 } /></div>
-                : <CommentListHeader totalComments={ totalComments } />
-            }
-            {
-              !post
-                ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.2 } /></div>
-                : <CommentList postID={ postID } commentCount={ countTotalComments } />
-            }
+        <section className="detail-post-section">
+          <div className="col-wrap">
+            <div className="main-col-8">
+              {
+                !post 
+                  ? <PostItemLoading />
+                  : <PostItem post={ post } />
+              }
+              {
+                !post 
+                  ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.7 } /></div>
+                  : <FormAddComment />
+              }
+              {
+                !post
+                  ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.5 } /></div>
+                  : <CommentListHeader totalComments={ totalComments } />
+              }
+              {
+                !post
+                  ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.2 } /></div>
+                  : <CommentList postID={ postID } commentCount={ countTotalComments } />
+              }
+            </div>
+            <div className="main-col-4">
+              
+            </div>
           </div>
-          <div className="main-col-4">
-            <h3 className="featured-posts-header">Bài viết của bạn</h3>
-            <p className="notification">
-              Bạn chưa đăng nhập. Vui lòng đăng nhập để xem bài viết của mình
-            </p>
-          </div>
-        </div>
+        </section>
       </div>
     </div>
   );

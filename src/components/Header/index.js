@@ -11,9 +11,10 @@ export default function Header() {
 
   useEffect(() => {
     const menuInput = document.getElementById('menu-input');
+    const closeSidebar = document.getElementById('close-side-bar');
 
     document.addEventListener('click', (e) => {
-      if (e.target.className === 'header-overlay') {
+      if (e.target.className === 'header-overlay' || e.target.className.includes('close-icon')) {
         menuInput.checked = false;
       }
     })

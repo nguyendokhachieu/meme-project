@@ -1,50 +1,56 @@
 @import "./../../assets/css/variables.scss";
 
 .main-content {
-    margin-top: 2.4rem;
-}
+    
+    .container {
 
-.col-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: space-between;
+        .categories-page {
+            margin-top: 7.4rem;
 
-    .main-col-8 {
-        width: calc(66.66666666666666% - 1.2rem);
-    }
-
-    .main-col-4 {
-        width: calc(33.33333333333333% - 1.2rem);
-    }
-
-    @media screen and (max-width: 992px) {
-        display: block;
-
-        .main-col-8 {
-            width: 100%;
+            .col-wrap {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: stretch;
+                justify-content: space-between;
+            
+                .main-col-8 {
+                    width: calc(66.66666666666666% - 1.2rem);
+                }
+            
+                .main-col-4 {
+                    width: calc(33.33333333333333% - 1.2rem);
+                }
+            
+                @media screen and (max-width: 992px) {
+                    display: block;
+            
+                    .main-col-8 {
+                        width: 100%;
+                    }
+            
+                    .main-col-4 {
+                        width: 100%;
+                    }
+                }
+            }
+            
+            .featured-posts-header {
+                font-size: 1.9rem;
+                color: $text-color;
+                padding: 0 0 1rem 0;
+                letter-spacing: 0.08rem;
+            }
+            
+            .notification {
+                font-size: 1.6rem;
+                line-height: 1.2;
+                color: $text-color;
+            }
+            
+            .load-more-btn-wrap {
+                padding: 2rem 0;
+                text-align: center;
+            }
         }
-
-        .main-col-4 {
-            width: 100%;
-        }
     }
-}
-
-.featured-posts-header {
-    font-size: 1.9rem;
-    color: $text-color;
-    padding: 0 0 1rem 0;
-    letter-spacing: 0.08rem;
-}
-
-.notification {
-    font-size: 1.6rem;
-    line-height: 1.2;
-    color: $text-color;
-}
-
-.load-more-btn-wrap {
-    padding: 2rem 0;
-    text-align: center;
 }

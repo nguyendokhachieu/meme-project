@@ -17,7 +17,7 @@ export default function HeaderBtn() {
           ? (
             <Link to="/upload" className="btn header-upload-btn">
               <i class="fad fa-upload header-btn-icon"></i>
-              Bài viết mới
+              Mới
             </Link>
           )
           : null

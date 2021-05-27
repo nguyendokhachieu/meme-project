@@ -1,29 +1,36 @@
 @import "./../../assets/css/variables.scss";
 
-.col-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: space-between;
-    margin-bottom: 2rem;
+.main-content {
+    
+    .detail-post-section {
+        margin-top: 7.4rem;
 
-    .main-col-8 {
-        width: calc(66.66666666666666% - 1.2rem);
-    }
-
-    .main-col-4 {
-        width: calc(33.33333333333333% - 1.2rem);
-    }
-
-    @media screen and (max-width: 992px) {
-        display: block;
-
-        .main-col-8 {
-            width: 100%;
-        }
-
-        .main-col-4 {
-            width: 100%;
+        .col-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        
+            .main-col-8 {
+                width: calc(66.66666666666666% - 1.2rem);
+            }
+        
+            .main-col-4 {
+                width: calc(33.33333333333333% - 1.2rem);
+            }
+        
+            @media screen and (max-width: 992px) {
+                display: block;
+        
+                .main-col-8 {
+                    width: 100%;
+                }
+        
+                .main-col-4 {
+                    width: 100%;
+                }
+            }
         }
     }
 }
