@@ -17,10 +17,6 @@ export default function PostItemLoading() {
         </div>
         <div className="post-item-content">
           <p className="post-item-text">
-              <p>Nội dung xxxxxxxxxxxxxxxxxx</p>
-              <p>Nội dung đang được tải</p>
-              <p>Nội dung đang load </p>
-              <p>Nội dung của bài viết</p>
           </p>
           <div className="post-item-image-wrap">
             <a className="post-item-image-link"></a>
