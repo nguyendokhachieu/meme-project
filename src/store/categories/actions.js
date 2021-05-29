@@ -60,7 +60,7 @@ export const actFetchAllCategoriesAsync = ({
     }
 }
 
-const actFetchAllCategories = (data) => {
+export const actFetchAllCategories = (data) => {
     return {
         type: ACT_FETCH_ALL_CATEGORIES,
         payload: {

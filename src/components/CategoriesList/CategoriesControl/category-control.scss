@@ -1,0 +1,31 @@
+.categories-control {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+}
+
+.categories-search-input {
+    padding: 0.35rem 1rem;
+    font-size: 1.4rem;
+    background-color: transparent;
+    border: 1px solid #999;
+    color: rgb(78, 78, 78);
+}
+
+@media screen and (max-width: 992px) {
+    .categories-control {
+        flex-direction: column;
+    }
+
+    .categories-control > form:first-child {
+        width: 100%;
+    }
+
+    .categories-search-input {
+        width: 100%;
+        padding: 0.55rem 1.1rem;
+    }
+}
