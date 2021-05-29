@@ -79,7 +79,7 @@ export default function UserStatistics({
           className="btn-show-more-statistic"
           onClick={ () => { showModalPeople('follow-you') } }
         >
-          <i class="fal fa-info-square show-more-statistic"></i>
+          <i class="fad fa-eye show-more-statistic"></i>
         </button>
       </p>
       <p className="statistic-item">
@@ -90,7 +90,7 @@ export default function UserStatistics({
           className="btn-show-more-statistic"
           onClick={ () => { showModalPeople('you-follow') } }
         >
-          <i class="fal fa-info-square show-more-statistic"></i>
+          <i class="fad fa-eye show-more-statistic"></i>
         </button>
       </p>
     </div>
