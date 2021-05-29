@@ -6,14 +6,15 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 
 export default function CategoriesList({
-    loading
+    loading,
+    hidden,
 }) 
 {
     const [searchString, setSearchString] = useState('');
     const { categories } = useSelector(state => state.categories);
 
     return (
-        <div className="main-col-8">
+        <div className={ hidden ? 'main-col-8 general-list hidden' : 'main-col-8 general-list' }>
             <h3 className="featured-posts-header">Danh mục hiện có</h3>
             <CategoriesControl onSearchString={ searchString => { setSearchString(searchString) } } />
             <p className="notification">

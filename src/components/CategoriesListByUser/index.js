@@ -6,7 +6,7 @@ import { useAuthorization } from "../../hooks/useAuthorization";
 import { actFetchUserCategoriesAsync } from "../../store/categories/actions";
 import CategoryItem from "../shared/CategoryItem";
 
-export default function CategoriesListByUser() {
+export default function CategoriesListByUser({ hidden }) {
   const dispatch = useDispatch();
   const [hasMoreItems, setHasMoreItems] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -52,7 +52,7 @@ export default function CategoriesListByUser() {
   }, [auth, user]);
 
   return (
-    <div className="main-col-4">
+    <div className={ hidden ? 'main-col-4 user-list hidden' : 'main-col-4 user-list' }>
       <h3 className="featured-posts-header">Quản lý danh mục của bạn</h3>
       {
         auth 

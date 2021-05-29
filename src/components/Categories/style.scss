@@ -7,6 +7,40 @@
         .categories-page {
             margin-top: 7.4rem;
 
+            .categories-tab-mobile {
+                display: flex;
+                margin-bottom: 1rem;
+                display: none;
+
+                .item {
+                    width: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 1.5rem 0;
+                    color: rgb(90, 90, 90);
+                    cursor: pointer;
+                    border-bottom: 1px solid #ccc;
+                    font-size: 1.6rem;
+                    transition: all 0.15s ease;
+                    border-radius: 10px 10px 0 0;
+
+                    &:active {
+                        background-color: rgb(192, 192, 192);
+                    }
+                }
+
+                .item.active {
+                    font-weight: bold;
+                    border-bottom-width: 2px;
+                    border-bottom-color: #999;
+                }
+
+                @media screen and (max-width: 992px) {
+                    display: flex;
+                }
+            }
+
             .col-wrap {
                 display: flex;
                 flex-wrap: wrap;
@@ -19,6 +53,14 @@
             
                 .main-col-4 {
                     width: calc(33.33333333333333% - 1.2rem);
+                }
+
+                .general-list.hidden {
+                    display: none;
+                }
+
+                .user-list.hidden {
+                    display: none;
                 }
             
                 @media screen and (max-width: 992px) {
@@ -39,6 +81,10 @@
                 color: $text-color;
                 padding: 0 0 1rem 0;
                 letter-spacing: 0.08rem;
+
+                @media screen and (max-width: 992px) {
+                    display: none;
+                }
             }
             
             .notification {

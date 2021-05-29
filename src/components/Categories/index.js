@@ -1,18 +1,53 @@
+import "./style.scss";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import { useEffect, useState } from "react";
 import CategoriesList from "../CategoriesList";
 import CategoriesListByUser from "../CategoriesListByUser";
-import "./style.scss";
 
 export default function Categories({
   loading
 }) 
 {
+  const { width } = useWindowSize();
+  const [tab, setTab] = useState('general');
+  const [hidden, setHidden] = useState(false);
+
+  const handleTabClick = (which) => {
+    setTab(which);
+  }
+
+  useEffect(() => {
+    if (width <= 992) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  }, [width]);
+
   return (
     <div className="main-content">
       <div className="container">
         <section className="categories-page">
+          <div className="categories-tab-mobile">
+            <a 
+              onClick={ () => { handleTabClick('general') } } 
+              className={ tab === 'general' ? 'item active' : 'item' }
+            >
+              Danh mục hiện có
+            </a>
+            <a 
+              onClick={ () => { handleTabClick('yourself') } } 
+              className={ tab === 'yourself' ? 'item active' : 'item' }
+            >
+              Quản lý danh mục của bạn
+            </a>
+          </div>
           <div className="col-wrap">
-            <CategoriesList loading={ loading } />
-            <CategoriesListByUser />
+            <CategoriesList 
+              hidden={ !hidden ? false : ('yourself' === tab) } 
+              loading={ loading } 
+            />
+            <CategoriesListByUser hidden={ !hidden ? false : 'general' === tab } />
           </div>
         </section>
       </div>
