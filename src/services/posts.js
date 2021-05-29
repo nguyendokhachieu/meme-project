@@ -114,5 +114,23 @@ export const PostService = {
                 'Content-Type': 'application/json',
             }
         })
+    },
+
+    getPostsByCategoryId({
+        category_id, 
+        page = 1, 
+        per_page = 5, 
+        order_by = 'created_at', 
+        order_dir = 'DESC'
+    }) {
+        return api.call().get('/getPostsByCategoryId', {
+            params: {
+                category_id,
+                page,
+                per_page,
+                order_by,
+                order_dir,
+            }
+        })
     }
 }
