@@ -1,6 +1,17 @@
 import "./post-item-loading.scss";
 
-export default function PostItemLoading() {
+export default function PostItemLoading({
+  noOfItems = 4,
+}) 
+{
+  const rendered = [];
+  for (let i = 0; i < noOfItems; i++) {
+    rendered.push(<PIL />);
+  }
+  return rendered;
+}
+
+function PIL() {
   return (
     <div className="post-item-loading">
       <div className="post-item">

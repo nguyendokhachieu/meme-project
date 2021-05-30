@@ -16,6 +16,24 @@
             
                 .main-col-8 {
                     width: calc(66.66666666666666% - 1.2rem);
+
+                    .posts-list {
+                        padding-bottom: 4rem;
+
+                        .end-of-list {
+                            padding-top: 4rem;
+                            color: #999;
+                            font-size: 1.6rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            .end-icon {
+                                margin: 0 1rem;
+                                font-size: 2rem;
+                            }
+                        }
+                    }
                 }
             
                 .main-col-4 {
