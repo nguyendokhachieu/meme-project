@@ -58,7 +58,7 @@ export default function UserStatistics({
         show
           ? <Modal 
               title={ modalTitle }
-              listUser={ list } 
+              list={ list } 
               setOuterShowState={ val => { setShow(false) } } 
               loading={ loading }
               setOuterLoadingState={ val => { setLoading(true) } }
