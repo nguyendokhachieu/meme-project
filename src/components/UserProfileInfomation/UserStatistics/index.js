@@ -22,10 +22,10 @@ export default function UserStatistics({
 
     try {
       if (type === 'follow-you') {
-        setModalTitle('Danh sách những người đang theo dõi bạn');
+        setModalTitle(`Danh sách những người đang theo dõi ${ userInfo.name }`);
         response = await UserService.getListPeopleFollowYou(userInfo.user_id);
       } else {
-        setModalTitle('Danh sách những người bạn đang theo dõi');
+        setModalTitle(`Danh sách những người ${ userInfo.name } đang theo dõi`);
         response = await UserService.getListPeopleYouFollowing(userInfo.user_id);
       }
 

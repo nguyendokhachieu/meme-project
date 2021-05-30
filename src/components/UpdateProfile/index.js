@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import "./style.scss";
+import { Link } from "react-router-dom";
 
 export default function UpdateProfile() {
   return (
@@ -20,22 +20,14 @@ export default function UpdateProfile() {
               />
             </div>
             <h2 className="change-profile-title">
-              <img
-                src="./assets/images/profile-icon.svg"
-                className="change-profile-title-svg"
-                alt="change-profile"
-              />
+              <i class="fad fa-user-cog user-icon"></i>
               <span className="change-profile-title-text">
                 Cập nhật thông tin cá nhân
               </span>
             </h2>
             <form action className="form-change-profile">
               <div className="form-ctl-wrap">
-                <img
-                  src="./assets/images/username-icon.svg"
-                  className="form-control-icon"
-                  alt="username"
-                />
+                <i class="fad fa-user form-control-icon"></i>
                 <input
                   type="text"
                   className="form-control"
@@ -44,11 +36,7 @@ export default function UpdateProfile() {
                 />
               </div>
               <div className="form-ctl-wrap">
-                <img
-                  src="./assets/images/gender-icon.svg"
-                  className="form-control-icon"
-                  alt="username"
-                />
+                <i class="fad fa-venus-mars form-control-icon"></i>
                 <select name="sex" id="sex" className="form-control">
                   <option value={2}>Chọn giới tính</option>
                   <option value={0}>Nữ</option>
@@ -56,11 +44,7 @@ export default function UpdateProfile() {
                 </select>
               </div>
               <div className="form-ctl-wrap form-file-wrap">
-                <img
-                  src="./assets/images/file-upload-icon.svg"
-                  className="form-control-icon"
-                  alt="username"
-                />
+                <i class="fad fa-cloud-upload-alt form-control-icon"></i>
                 <label className="label-text label-text-file" htmlFor="file">
                   Tải lên ảnh đại diện mới
                 </label>
