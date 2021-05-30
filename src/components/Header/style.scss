@@ -251,6 +251,8 @@
         .nav-icon {
           padding-right: 1rem;
           font-size: 2rem;
+          display: inline-block;
+          width: 3rem;
         }
 
         .nav {
@@ -267,8 +269,8 @@
 
             .nav-item-link {
               display: inline-block;
-              text-align: center;
-              padding: 1.5rem 0;
+              text-align: left;
+              padding: 1.5rem 1rem;
               font-size: 1.6rem;
               transition: all 0.15s ease;
 
@@ -294,8 +296,9 @@
           flex-direction: column;
 
           .btn-item {
+            padding: 1.5rem 1rem;
             border: 0;
-            text-align: center;
+            text-align: left;
 
             &:not(:last-child) {
               margin-bottom: 1rem;
