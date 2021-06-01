@@ -1,0 +1,42 @@
+.notification-card {
+    position: fixed;
+    left: 4rem;
+    bottom: 3rem;
+    z-index: 1999;
+    max-width: 30rem;
+    // min-height: 10rem;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px 0px #999;
+    transition: all 0.25s ease;
+    transform: translateY(0);
+
+    .inner-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        .content {
+            color: #fff;
+            font-size: 1.6rem;
+            overflow: auto;
+            word-break: break-word;
+        }
+
+        .close-button {
+            padding-left: 1rem;
+            color: #ccc;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+    }
+}
+
+.notification-card.hidden {
+    // display: none;
+    transform: translateY(calc(100% + 20rem));
+}

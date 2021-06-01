@@ -1,11 +1,30 @@
 @import "./../../assets/css/variables.scss";
 
-.col-ct-5 {
-    width: 41.66666666666666666666666%;
-    margin: 0 auto;
+.main-content {
+    
+    .update-profile-wrap {
+        margin-top: 5rem;
+        display: flex;
+        justify-content: space-between;
 
-    @media screen and (max-width: 767px) {
-        width: 100%;
+        .left-nav-bar {
+            width: 30%;
+            position: relative;
+        }
+
+        .right-content {
+            width: 70%;
+        }
+
+        @media screen and (max-width: 767px) {
+            .left-nav-bar {
+                width: 15%;
+            }
+    
+            .right-content {
+                width: 85%;
+            }
+        }
     }
 }
 

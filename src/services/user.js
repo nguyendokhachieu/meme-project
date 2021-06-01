@@ -2,7 +2,7 @@ import { api } from "./api";
 
 export const UserService = {
     login(username, password) {
-        return api.call().post("/login", JSON.stringify({
+        return api.call().post("/user/login", JSON.stringify({
             username,
             password,
         }), {
@@ -14,7 +14,7 @@ export const UserService = {
     },
 
     auth(token) {
-        return api.call().post("/auth", null, {
+        return api.call().post("/user/auth", null, {
             method: 'POST',
             headers: {
                 'Authorization': "Bearer " + token,
@@ -30,7 +30,7 @@ export const UserService = {
         email,
         password,
     }) {
-        return api.call().post('/register', {
+        return api.call().post('/user/register', {
             username,
             fullname,
             email,
@@ -42,7 +42,7 @@ export const UserService = {
     },
 
     getUserInfoByUserId(id) {
-        return api.call().get('/getUserInfoByUserId', {
+        return api.call().get('/user/getUserInfoByUserId', {
             params: {
                 user_id: Number(id) 
             }
@@ -50,7 +50,7 @@ export const UserService = {
     },
 
     getListPeopleFollowYou(user_id) {
-        return api.call().get('/getListPeopleFollowYou', {
+        return api.call().get('/user/getListPeopleFollowYou', {
             params: {
                 user_id,
             }
@@ -58,7 +58,7 @@ export const UserService = {
     },
 
     getListPeopleYouFollowing(user_id) {
-        return api.call().get('/getListPeopleYouFollowing', {
+        return api.call().get('/user/getListPeopleYouFollowing', {
             params: {
                 user_id,
             }
@@ -72,7 +72,7 @@ export const UserService = {
         h.append('Authorization', 'Bearer ' + token);
         h.append('Authorization', 'Basic ' + window.btoa(oldPassword.concat('.').concat(newPassword).concat('.').concat(renewPassword)));
 
-        return api.call().post('/changepassword', null, {
+        return api.call().post('/user/changepassword', null, {
             method: 'POST',
             headers: {
                     'Authorization': 'Basic ' + window.btoa(oldPassword.concat('.').concat(newPassword).concat('.').concat(renewPassword)) + ', ' 
@@ -82,7 +82,7 @@ export const UserService = {
     },
 
     isFollowing(user_id, follow_user_id) {
-        return api.call().post('/isFollowing', JSON.stringify({
+        return api.call().post('/user/isFollowing', JSON.stringify({
             user_id,
             follow_user_id,
         }), {
@@ -96,7 +96,7 @@ export const UserService = {
     follow(user_id, follow_user_id) {
         const token = localStorage.getItem('tstring');
 
-        return api.call().post('/follow', JSON.stringify({
+        return api.call().post('/user/follow', JSON.stringify({
             user_id, 
             follow_user_id,
         }), {
@@ -110,7 +110,7 @@ export const UserService = {
     unfollow(user_id, follow_user_id) {
         const token = localStorage.getItem('tstring');
 
-        return api.call().post('/unfollow', JSON.stringify({
+        return api.call().post('/user/unfollow', JSON.stringify({
             user_id, 
             follow_user_id,
         }), {

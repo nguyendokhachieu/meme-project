@@ -1,14 +1,45 @@
-import "./style.scss";
-import { Link } from "react-router-dom";
+import "./update-profile.scss";
+import SideBar from "./SideBar";
+import RightContent from "./RightContent";
+import NotificationCard from "../shared/NotificationCard";
+import { useAuthorization } from "../../hooks/useAuthorization";
+import { useEffect, useState } from "react";
 
 export default function UpdateProfile() {
+  const { auth } = useAuthorization();
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (!auth) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  }, [auth]);
+
   return (
     <div className="main-content">
-      <div className="container">
-        <div className="col-ct-5">
-          <div className="change-profile-section">
+      <NotificationCard 
+        content="Bạn chưa đăng nhập"
+        showCloseButton={ false }
+        show={ show }
+      /> 
+      <div className="update-profile-wrap">
+        <div className="left-nav-bar">
+          <SideBar />
+        </div>
+        <div className="right-content">
+          <RightContent />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * <div className="change-profile-section">
             <h1 className="change-profile-header">
-              <Link to="/profile?id=abcxyz" className="profile-fullname" href>
+              <Link to={ `/profile?id=1` } className="profile-fullname">
                 Hiếu Nguyễn
               </Link>
             </h1>
@@ -31,7 +62,7 @@ export default function UpdateProfile() {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Username"
+                  placeholder="Họ và tên"
                   required
                 />
               </div>
@@ -70,8 +101,4 @@ export default function UpdateProfile() {
               </div>
             </form>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+ */

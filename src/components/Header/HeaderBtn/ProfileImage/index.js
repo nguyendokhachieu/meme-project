@@ -12,6 +12,7 @@ export default function ProfileImage() {
     tagNamesToCloseBox.includes(e.target.tagName.toLowerCase()) && setHidden(true);
     e.stopPropagation();
   }
+
   useEffect(() => {
     const click = (e) => {
       !hidden && setHidden(true);

@@ -1,1 +1,1 @@
-export const baseURL = 'https://www.ndkhieu.xyz/api/';
+export const baseURL = 'https://www.ndkhieu.xyz/meme/api/v1/';

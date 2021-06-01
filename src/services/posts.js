@@ -6,7 +6,7 @@ export const PostService = {
         order_dir = 'DESC',
     } = {}) 
     {
-        return api.call().get("/getAllPosts", {
+        return api.call().get("/post/getAllPosts", {
             params: {
                 order_by,
                 order_dir,
@@ -21,7 +21,7 @@ export const PostService = {
         order_dir = 'DESC',
     } = {}) 
     {
-        return api.call().get("/getPostsPagination", {
+        return api.call().get("/post/getPostsPagination", {
             params: {
                 page,
                 per_page,
@@ -32,7 +32,7 @@ export const PostService = {
     },
 
     getDetailPostById(id) {
-        return api.call().get("/getDetailPostById", {
+        return api.call().get("/post/getDetailPostById", {
             params: {
                 id
             }
@@ -46,7 +46,7 @@ export const PostService = {
         order_by = 'created_at', 
         order_dir ='DESC',
     }) {
-        return api.call().get("/getPostsByUserIdPagination", {
+        return api.call().get("/post/getPostsByUserIdPagination", {
             params: {
                 user_id, 
                 page, 
@@ -60,7 +60,7 @@ export const PostService = {
     upload(formDataObject) {
         const token = localStorage.getItem('tstring');
         
-        return api.call().post('/upload', formDataObject, {
+        return api.call().post('/post/upload', formDataObject, {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + token,
@@ -70,7 +70,7 @@ export const PostService = {
     },
 
     checkLiked(user_id, post_id) {
-        return api.call().post('/checkLiked', JSON.stringify({
+        return api.call().post('/post/checkLiked', JSON.stringify({
             user_id,
             post_id,
         }), {
@@ -82,7 +82,7 @@ export const PostService = {
     },
 
     like(user_id, post_id) {
-        return api.call().post('/like', JSON.stringify({
+        return api.call().post('/post/like', JSON.stringify({
             user_id,
             post_id,
         }), {
@@ -94,7 +94,7 @@ export const PostService = {
     },
 
     unlike(user_id, post_id) {
-        return api.call().post('/unlike', JSON.stringify({
+        return api.call().post('/post/unlike', JSON.stringify({
             user_id,
             post_id,
         }), {
@@ -106,7 +106,7 @@ export const PostService = {
     },
 
     countLike(post_id) {
-        return api.call().post('/countLike', JSON.stringify({
+        return api.call().post('/post/countLike', JSON.stringify({
             post_id,
         }), {
             method: 'POST',
@@ -123,7 +123,7 @@ export const PostService = {
         order_by = 'created_at', 
         order_dir = 'DESC'
     }) {
-        return api.call().get('/getPostsByCategoryId', {
+        return api.call().get('/post/getPostsByCategoryId', {
             params: {
                 category_id,
                 page,

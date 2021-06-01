@@ -1,0 +1,76 @@
+@import "../../../assets/css/variables.scss";
+
+.update-profile-side-bar {
+  padding: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 0 2px 1px #ccc;
+  transition: all 0.35s ease;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  .side-bar-wrap {
+      height: calc(100vh - 5rem);
+      // height: 100%;
+      overflow: auto;
+
+      .title {
+        text-align: center;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #ccc;
+        font-size: 2rem;
+        word-break: break-word;
+        color: $text-color;
+      }
+     
+      .nav-icon {
+        padding-right: 1rem;
+        font-size: 2.2rem;
+        display: inline-block;
+        width: 3rem;
+      }
+
+      .nav {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgb(221, 221, 221);
+
+        .nav-item {
+          &:not(:last-child) {
+            margin-bottom: 0.5rem;
+          }
+
+          .nav-item-link {
+            display: inline-block;
+            text-align: left;
+            padding: 1.5rem 1rem;
+            font-size: 1.6rem;
+            transition: all 0.15s ease;
+
+            color: $base-color;
+            width: 100%;
+            border-radius: 10px;
+
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            
+            &:hover {
+              background-color: #eee;
+              cursor: pointer;
+            }
+          }
+
+          .nav-item-link.active {
+            font-weight: bold;
+            font-size: 1.7rem;
+          }
+        }
+      }
+    }
+  }
