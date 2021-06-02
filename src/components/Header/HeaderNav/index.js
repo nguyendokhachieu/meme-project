@@ -1,11 +1,7 @@
-import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { useAuthorization } from "../../../hooks/useAuthorization";
 
 export default function HeaderNav() {
   const { pathname } = useLocation();
-  const { auth } = useAuthorization();
-  const { id } = useSelector(state => state.user);
 
   return (
     <ul className="header-nav">
@@ -21,18 +17,6 @@ export default function HeaderNav() {
           Danh mục
         </Link>
       </li>
-      {
-        auth 
-          ? (
-            <li className={ pathname === '/profile' ? 'header-nav-item active' : 'header-nav-item' } >
-              <Link className='header-nav-item-link' to={ `/profile?id=${ id }` } >
-                <i class="fad fa-user-alt nav-icon"></i>
-                Profile
-              </Link>
-            </li>
-          )
-          : null
-      }
     </ul>
   );
 }

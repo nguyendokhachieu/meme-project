@@ -8,8 +8,7 @@ export default function Home() {
         <section className="home-page">
           <div className="col-wrap">
             <LatestPostsList />
-            <div className="main-col-4">
-            </div>
+            <div className="main-col-4"></div>
           </div>
         </section>
       </div>

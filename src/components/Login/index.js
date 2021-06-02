@@ -44,9 +44,7 @@ export default function Login() {
   }, []);
 
   if (isLoggedIn || auth) {    
-    window.setTimeout(() => {
-      history.push('/');
-    }, 1500);
+    history.push('/');
   }
 
   return (
