@@ -1,17 +1,19 @@
 import { useState } from "react";
-import NotificationCard from "../../../../shared/NotificationCard";
 import dayjs from "dayjs";
+import { UserService } from "../../../../../services/user";
 
 export default function FormEdit({ 
     setHideForm = function() {},
+    setContentRendered = function() {},
     hidden = true, 
     type = 'text',
+    formData = null,
+    showNotif = function() {},
+    contentNotif = function() {},
 }) 
 {
-  const [showNotif, setShowNotif] = useState(false);
-  const [contentNotif, setContentNotif] = useState('');
   const [name, setName] = useState('');
-  const [sex, setSex] = useState(0);
+  const [sex, setSex] = useState(-1);
   const [birthday, setBirthday] = useState('0000-00-00');
 
   if (hidden) {
@@ -40,8 +42,11 @@ export default function FormEdit({
                 id="sex" 
                 onChange={ e => { setSex(e.target.value) } }
               >
-                  <option value="1">Nam</option>
-                  <option value="0">Nữ</option>
+                {
+                  formData.map(v => {
+                    return <option value={ v.id }>{ v.val }</option>;
+                  })
+                }
               </select>
           );
           
@@ -78,26 +83,66 @@ export default function FormEdit({
           break;
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     const id = e.target.children[0].children[0].id;
     
+    showNotif(false);
+    contentNotif('');
+
     if (id === 'name') {
       if (name.trim() === '') {
-        setContentNotif('Họ và tên không được rỗng');
-        setShowNotif(true);
+        contentNotif('Họ và tên không được rỗng');
+        showNotif(true);
 
         return;
       }
 
-      setShowNotif(false);
-      setContentNotif('');
-
       const frm = new FormData();
       frm.append(id, name);
 
-      
+      const response = await UserService.update(frm);
+
+      contentNotif(response.data.message);
+      showNotif(true);
+
+      setContentRendered(name);
+      setName('');
+      setHideForm(true);
+    }
+
+    if (id === 'sex') {
+      if (Number(sex) === -1) {
+        contentNotif("Bạn chưa chọn giới tính");
+        showNotif(true);
+
+        return;
+      }
+
+      const frm = new FormData();
+      frm.append(id, sex);
+
+      const response = await UserService.update(frm);
+
+      contentNotif(response.data.message);
+      showNotif(true);
+      setContentRendered(Number(sex) === 1 ? 'Nam' : 'Nữ');
+      setSex(0);
+      setHideForm(true);
+    }
+
+    if (id === 'birthday') {
+      const frm = new FormData();
+      frm.append(id, birthday);
+
+      const response = await UserService.update(frm);
+
+      contentNotif(response.data.message);
+      showNotif(true);
+      setContentRendered(dayjs(birthday).format('DD - MM + YYYY').replace('-', 'tháng').replace('+', 'năm'));
+      setBirthday('0000-00-00');
+      setHideForm(true);
     }
   }
 
@@ -110,11 +155,6 @@ export default function FormEdit({
         <input type="submit" className="edit-button" value="Sửa thông tin" />
         <input type="submit" className="edit-button" value="Hủy" onClick={ e => { setHideForm(true) } } />
       </div>
-      <NotificationCard 
-        show={ showNotif }
-        showCloseButton={ false }
-        content={ contentNotif }
-      />
     </form>
   );
 }

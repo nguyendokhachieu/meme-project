@@ -119,5 +119,16 @@ export const UserService = {
                 'Authorization': 'Bearer ' + token,
             }
         })
+    },
+
+    update(formDataObject) {
+        const token = localStorage.getItem('tstring');
+
+        return api.call().post('/user/update', formDataObject, {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'multipart/form-data',
+            }
+        })
     }
 }

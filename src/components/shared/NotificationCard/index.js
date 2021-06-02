@@ -11,6 +11,10 @@ export default function NotificationCard({
   useEffect(() => {
     if (show) {
       setHidden(false);
+
+      window.setTimeout(() => {
+        setHidden(true);
+      }, 5000);
     } else {
       setHidden(true);
     }
