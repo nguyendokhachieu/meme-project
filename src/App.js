@@ -10,7 +10,8 @@ import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 import UploadPage from "./pages/UploadPage";
 import CategoriesPage from "./pages/CategoriesPage";
-import NotFoundPage from "./pages/NotFoundPage"
+import NotificationPage from "./pages/NotificationPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   const { pathname } = useLocation();
@@ -24,6 +25,7 @@ function App() {
             : null
         }
         <Switch>
+          <Route path="/notifications"><NotificationPage /></Route>
           <Route path="/categories"><CategoriesPage /></Route>
           <Route path="/upload"><UploadPage /></Route>
           <Route path="/update"><UpdateProfilePage /></Route> 

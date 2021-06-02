@@ -1,0 +1,47 @@
+.item {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5rem;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    border-radius: 5px;
+
+    & + .item {
+      margin-top: 1rem;
+    }
+
+    .profile-img-wrap {
+      flex-shrink: 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 69px;
+      width: 5.5rem;
+      height: 5.5rem;
+      overflow: hidden;
+
+      img {
+        width: 5.5rem;
+        height: 5.5rem;
+      }
+    }
+
+    .text {
+      word-break: break-word;
+      font-size: 1.5rem;
+      line-height: 1.333;
+      padding: 0 1rem;
+      width: calc(100% - 5.5rem);
+      color: rgb(58, 58, 58);
+
+      .date {
+        font-size: 1.25rem;
+        color: #999;
+        margin-left: 0.5rem;
+        padding-left: 0.5rem;
+      }
+    }
+
+    &:hover {
+      background-color: rgba(204, 204, 204, 0.5);
+    }
+  }

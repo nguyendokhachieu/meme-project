@@ -12,7 +12,7 @@
     position: absolute;
     top: calc(100% + 1.5rem);
     right: 0;
-    width: 30rem;
+    width: 37rem;
     z-index: 1111;
     background-color: #fff;
     border-radius: 5px;
@@ -23,7 +23,36 @@
 
     .title {
       font-size: 2.2rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+
+      .see-all {
+        margin-left: auto;
+        font-size: 1.5rem;
+        align-self: center;
+        color: blue;
+        font-weight: 400;
+        cursor: pointer;
+      }
     }
+
+    .content {
+
+      .empty {
+        text-align: left;
+        color: #999;
+        font-size: 1.6rem;
+        padding: 1rem 0;
+
+        .icon {
+          padding: 0 1rem 0 0;
+        }
+      }
+    }
+
+    
 
     @media screen and (max-width: 767px) {
       right: -7.5rem;

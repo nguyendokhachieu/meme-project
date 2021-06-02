@@ -1,0 +1,36 @@
+.all-notifications {
+    margin-top: 7.4rem;
+    height: 20rem;
+
+    .inner-notif-content {
+        max-width: 100%;
+        width: 60rem;
+        margin: 0 auto;
+
+        .title {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 3px 0px #ccc;
+            margin-bottom: 1rem;
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .load {
+            font-size: 1.6rem;
+            text-align: center;
+            padding: 1rem;
+            color: #999;
+        }
+
+        .items {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 3px 0px #ccc;
+        }
+    }
+}
