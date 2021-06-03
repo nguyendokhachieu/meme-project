@@ -1,5 +1,5 @@
-import "./assets/css/reset.css";
-import "./assets/css/mutual.css";
+import "./assets/css/reset.scss";
+import "./assets/css/mutual.scss";
 
 import React from 'react';
 import ReactDOM from 'react-dom';
