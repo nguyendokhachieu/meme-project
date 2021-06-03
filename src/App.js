@@ -11,6 +11,7 @@ import RegisterPage from "./pages/RegisterPage";
 import UploadPage from "./pages/UploadPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import NotificationPage from "./pages/NotificationPage";
+import SearchPage from "./pages/SearchPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         }
         <Switch>
           <Route path="/notifications"><NotificationPage /></Route>
+          <Route path="/search"><SearchPage /></Route>
           <Route path="/categories"><CategoriesPage /></Route>
           <Route path="/upload"><UploadPage /></Route>
           <Route path="/update"><UpdateProfilePage /></Route> 
