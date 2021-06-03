@@ -87,6 +87,27 @@
                     margin: 0 1rem;
                     color: rgb(104, 104, 104);
                 }
+
+                .keyword {
+                    font-size: 1.6rem;
+                    color: rgba(143, 143, 143, 0.9);
+                    margin: 0 2rem;
+                }
+            }
+
+            .no-posts-found {
+                background-color: #fff;
+                padding: 1.5rem;
+                text-align: center;
+                font-size: 1.6rem;
+                box-shadow: 0 0 3px 0 #ccc;
+                border-radius: 5px;
+                color: rgb(99, 99, 99);
+
+                .icon {
+                    font-size: 1.8rem;
+                    margin: 0 1rem;
+                }
             }
 
             .load-more {
