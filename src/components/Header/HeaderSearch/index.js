@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
-export default function HeaderNav() {
+export default function HeaderSearch() {
   const history = useHistory();
   const [query, setQuery] = useState("");
 
