@@ -1,3 +1,4 @@
+import "./results.scss";
 import PostItem from "../../PostItem";
 import PostItemLoading from "../../PostItem/PostItemLoading";
 
@@ -5,6 +6,9 @@ export default function Results({
     q,
     results,
     loading,
+    buttonLoading,
+    loadMore = function() {},
+    hasMore,
 }) 
 {
   return (
@@ -21,25 +25,24 @@ export default function Results({
             loading 
                 ? <PostItemLoading noOfItems={ 2 } />
                 : results.length === 0
-                    ? (
-                        <div className="no-posts-found">
-                            <i class="fad fa-empty-set icon"></i>
-                            Không có bài viết nào
-                        </div>
-                    )
+                    ? null
                     : results.map(post => {
                         return <PostItem post={ post } />
                     })
         }
       </div>
       {
-          results.length !== 0 
+          hasMore
             ? (
                 <div className="load-more">
-                    <button className="load-more-btn">Tải thêm bài viết</button>
+                    <button className="load-more-btn" onClick={ e => { loadMore(true) } }>
+                      {
+                        buttonLoading ? "Đang tải" : "Tải thêm bài viết"
+                      }
+                    </button>
                 </div>
             )
-            : null
+            : <div className="load-more"><span className="load-more-btn">Bạn đã xem hết bài viết</span></div>
       }
     </div>
   );

@@ -5,138 +5,24 @@
         display: flex;
         justify-content: space-between;
 
-        .search-sidebar {
-            height: 10rem;
+        .search-sidebar-wrap {
             width: calc(30% - 1.5rem);
-
-            .title {
-                border-radius: 5px;
-                box-shadow: 0 0 3px 0 #ccc;
-                background-color: #fff;
-                padding: 1.5rem;
-                margin-bottom: 1rem;
-                font-size: 1.95rem;
-                color: rgb(24, 24, 24);
-
-                .icon {
-                    margin: 0 1rem;
-                    color: rgb(104, 104, 104);
-                }
-            }
-
-            .search-filter {
-                padding: 1.5rem;
-                background-color: #fff;
-                box-shadow: 0 0 3px 0 #ccc;
-                border-radius: 5px;
-
-                .order {
-
-                    & + .order {
-                        margin-top: 2rem;
-                        padding-top: 2rem;
-                        border-top: 1px solid #ccc;
-                    }
-
-                    .cri-title {
-                        font-size: 1.6rem;
-                        font-weight: 500;
-
-                        .icon  {
-                            margin-left: 1rem;
-                            color: #999;
-                        }
-                    }
-
-                    .form-group {
-                        margin: 1rem 0;
-
-                        .input-wrap {
-                            display: flex;
-                            justify-content: flex-start;
-                            align-items: center;
-                            padding: 0.5rem 0;
-
-                            .order-input {
-
-                            }
-
-                            .order-label {
-                                margin-left: 1rem;
-                                font-size: 1.6rem;
-                            }
-                        }
-                    }
-                }
-            }
         }
 
-        .search-results {
+        .search-results-wrap {
             width: calc(70% - 1.5rem);
+        }
 
-            .title {
-                border-radius: 5px;
-                box-shadow: 0 0 3px 0 #ccc;
-                background-color: #fff;
-                padding: 1.5rem;
-                margin-bottom: 1rem;
-                font-size: 1.95rem;
-                color: rgb(24, 24, 24);
+        @media screen and (max-width: 992px) {
+            flex-direction: column;
 
-                .icon {
-                    margin: 0 1rem;
-                    color: rgb(104, 104, 104);
-                }
-
-                .keyword {
-                    font-size: 1.6rem;
-                    color: rgba(143, 143, 143, 0.9);
-                    margin: 0 2rem;
-                }
+            .search-sidebar-wrap {
+                display: none;
             }
 
-            .no-posts-found {
-                background-color: #fff;
-                padding: 1.5rem;
-                text-align: center;
-                font-size: 1.6rem;
-                box-shadow: 0 0 3px 0 #ccc;
-                border-radius: 5px;
-                color: rgb(99, 99, 99);
-
-                .icon {
-                    font-size: 1.8rem;
-                    margin: 0 1rem;
-                }
-            }
-
-            .load-more {
-                text-align: center;
-                padding: 1.5rem;
-
-                .load-more-btn {
-                    min-width: 18rem;
-                    background-color: transparent;
-                    padding: 1rem 2rem;
-                    outline: none;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    font-size: 1.6rem;
-                    color: rgb(90, 90, 90);
-                    transition: all 0.15s ease;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-
-                    &:hover {
-                        color: rgb(59, 59, 59);
-                    }
-
-                    &:active {
-                        transform: scale(0.955);
-                    }
-                }
+            .search-results-wrap {
+                margin-top: 3rem;
+                width: 100%;
             }
         }
     }
