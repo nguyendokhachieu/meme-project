@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAvatarLinkSrc } from "../../hooks/useAvatarLinkSrc";
 import { useDateTime } from "../../hooks/useDateTime";
+import dayjs from "dayjs";
 
 export default function PostItemHeader({ post }) {
   const { link } = useAvatarLinkSrc(post);
@@ -26,6 +27,16 @@ export default function PostItemHeader({ post }) {
           <Link to={ `/post/${ post.id }` }>
             { timeAgo }
           </Link>
+          <span className="tooltip">
+            { 
+              dayjs(post.created_at).format('hh - mm -- ss + DD ++ MM +++ YYYY')
+              .replace('-', 'giờ')
+              .replace('--', 'phút')
+              .replace('+', 'giây, ngày')
+              .replace('++', 'tháng')
+              .replace('+++', 'năm') 
+            }
+          </span>
         </span>
       </div>
     </div>

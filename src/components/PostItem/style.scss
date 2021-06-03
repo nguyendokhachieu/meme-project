@@ -42,12 +42,37 @@
             }
 
             .post-item-time-ago {
+                position: relative;
+
                 a {
                     font-size: 1.3rem;
                     color: #999;
 
                     &:hover {
                         text-decoration: underline;
+                    }
+                }
+
+                .tooltip {
+                    position: absolute;
+                    top: 110%;
+                    left: 0;
+                    white-space: nowrap;
+                    color: #fff;
+                    padding: 0.5rem 1rem;
+                    border-radius: 5px;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    background-color: rgba(0, 0, 0, 0.7);
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.2s ease;
+                }
+
+                &:hover {
+                    .tooltip {
+                        opacity: 1;
+                        visibility: visible;
                     }
                 }
             }
