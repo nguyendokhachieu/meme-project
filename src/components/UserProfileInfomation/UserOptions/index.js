@@ -47,7 +47,7 @@ export default function UserOptions({
         setIsFollowing(true);
       }
     }
-  }, [id]);
+  }, [id, userInfo]);
 
   return (
     <div className="user-info-options">
