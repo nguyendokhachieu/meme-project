@@ -25,17 +25,15 @@ export const UserService = {
     register({
         username,
         fullname,
-        email,
         password,
+        rePassword,
     }) {
-        return api.call().post('/user/register', {
-            username,
-            fullname,
-            email,
-            password,
-        }, {
+        return api.call().post('/user/register', null, {
             method: 'POST',
-            'Content-Type': 'application/json',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic ' + window.btoa(username.concat('.').concat(unescape(encodeURIComponent(fullname))).concat('.').concat(password).concat('.').concat(rePassword)),
+            }
         })
     },
 

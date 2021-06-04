@@ -1,21 +1,21 @@
+import "./register.scss";
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { UserService } from "../../services/user";
 import { useAuthorization } from "../../hooks/useAuthorization"; 
 import Input from "../shared/Input";
-import "./style.css";
 
 export default function Register() {
   const history = useHistory();
   const [username, setUsername] = useState('');
   const [fullname, setFullname] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
 
   const [hasErrors, setHasErrors] = useState('hasnot'); // has, hasnot, password_mismatch
   const [message, setMessage] = useState('');
   const [redirect, setRedirect] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { auth } = useAuthorization();
 
@@ -27,13 +27,15 @@ export default function Register() {
     } else {
       setHasErrors('hasnot');
 
+      setLoading(true);
       const response = await UserService.register({
         username,
         fullname,
-        email,
         password,
+        rePassword
       });
 
+      setLoading(false);
       if (response.data.status === 200) {
         setRedirect(true);
       } else {
@@ -52,11 +54,7 @@ export default function Register() {
   }, [redirect]);
 
   useEffect(() => {
-    auth && (
-      window.setTimeout(() => {
-        history.push('/');
-      }, 1500)
-    )
+    auth && history.push('/');
   }, [auth]);
 
   return (
@@ -65,14 +63,14 @@ export default function Register() {
         <div className="col-ct-5">
           <div className="register-section">
             <h1 className="register-header">
-              <Link to="/">MEME</Link>
+              <Link to="/">Meme</Link>
             </h1>
             <h2 className="register-title">
-              <img
-                src="./assets/images/register.png"
-                className="register-title-icon"
-                alt="register"
-              />
+              {
+                loading 
+                ? <i class="fa fa-spinner fa-spin icon"></i>
+                : <i class="fad fa-user-plus icon"></i>
+              }
               <span className="register-title-text">Đăng ký một tài khoản</span>
             </h2>
             <div className={ hasErrors === 'has' ? "register-error active" : "register-error" }>
@@ -93,78 +91,56 @@ export default function Register() {
             </div>
             <form className="form-register" onSubmit={ register }>
               <div className="form-ctl-wrap">
-                <img
-                  src="./assets/images/username-icon.svg"
-                  className="form-control-icon"
-                  alt="icon"
-                />
-                <Input
+                <i class="fad fa-user icon"></i>
+                <input
                   type="text"
-                  className="form-control"
+                  className="form-control username-input"
                   placeholder="Username"
                   required
                   value={ username }
-                  onChange={ val => { setUsername(val) } }
+                  onChange={ e => { setUsername(e.target.value) } }
                 />
+                <div className="username-tooltip tooltip">
+                  Bắt đầu bằng chữ cái hoặc dấu gạch dưới, không có khoảng trắng, chiều dài từ 5 đến 31 ký tự
+                </div>
               </div>
               <div className="form-ctl-wrap">
-                <img
-                  src="./assets/images/full-name.png"
-                  className="form-control-icon"
-                  alt="icon"
-                />
-                <Input
+                <i class="fad fa-portrait icon"></i>
+                <input
                   type="text"
-                  className="form-control"
+                  className="form-control fullname-input"
                   placeholder="Tên hiển thị"
                   required
                   value={ fullname } 
-                  onChange={ val => { setFullname(val) } }
+                  onChange={ e => { setFullname(e.target.value) } }
                 />
+                <div className="fullname-tooltip tooltip">
+                  Chỉ bao gồm chữ cái và khoảng trắng
+                </div>
               </div>
               <div className="form-ctl-wrap">
-                <img
-                  src="./assets/images/email-icon.svg"
-                  className="form-control-icon"
-                  alt="icon"
-                />
-                <Input
-                  type="email"
-                  className="form-control"
-                  placeholder="Email"
-                  required
-                  value={ email } 
-                  onChange={ val => { setEmail(val) } }
-                />
-              </div>
-              <div className="form-ctl-wrap">
-                <img
-                  src="./assets/images/new-password.svg"
-                  className="form-control-icon"
-                  alt="icon"
-                />
-                <Input
+                <i class="fal fa-lock-alt icon"></i>
+                <input
                   type="password"
-                  className="form-control"
+                  className="form-control password-input"
                   placeholder="Mật khẩu"
                   required
                   value={ password }
-                  onChange={ val => { setPassword(val) } }
+                  onChange={ e => { setPassword(e.target.value) } }
                 />
+                <div className="password-tooltip tooltip">
+                  Mật khẩu từ 8 ký tự trở lên
+                </div>
               </div>
               <div className="form-ctl-wrap">
-                <img
-                  src="./assets/images/new-password.svg"
-                  className="form-control-icon"
-                  alt="icon"
-                />
-                <Input
+                <i class="fal fa-lock-alt icon"></i>
+                <input
                   type="password"
                   className="form-control"
                   placeholder="Nhập lại mật khẩu"
                   required
                   value={ rePassword }
-                  onChange={ val => { setRePassword(val) } }
+                  onChange={ e => { setRePassword(e.target.value) } }
                 />
               </div>
               <div className="register-btn-group">

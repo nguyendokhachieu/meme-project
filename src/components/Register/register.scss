@@ -14,7 +14,7 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
-    padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+    padding: 0.5rem 2.5rem 2.5rem 2.5rem;
 
     .register-header {
         padding: 1rem 0;
@@ -28,15 +28,15 @@
     }
 
     .register-title {
-        color: #3130CC;
+        color: #313131;
         padding: 1.2rem 0;
         display: flex;
         align-items: center;
         justify-content: center;
         
-        &-icon {
-            width: 2.7rem;
-            margin: 0 0.8rem;
+        .icon {
+            margin-right: 1rem;
+            color: rgb(92, 92, 92);
         }
         
         &-text {
@@ -131,19 +131,64 @@
     .form-ctl-wrap {
         padding: 0.5rem 0;
         flex: 1;
-        display: flex;
         flex-shrink: 1;
         flex-wrap: wrap;
         margin: 0.5rem 0;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
 
-        .form-control-icon {
-            width: 2.5rem;
-            margin-right: 0.75rem;
-            opacity: 0.85;
+        .icon {
+            align-self: center;
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: #636363;
         }
 
         .form-control {
-            width: calc(100% - 3.25rem);
+            flex: 1;
+            // width: calc(100% - 3.25rem);
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            top: -6rem;
+            transform: translateY(-50%);
+            left: 0;
+            transform: translateX(50%);
+            max-width: 20rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1.2rem;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.15s ease;
+        }
+
+        .fullname-tooltip {
+            top: -4.25rem;
+        }
+
+        .password-tooltip {
+            top: -2.5rem;
+            left: 2rem;
+        }
+
+        .username-input:focus + .username-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .fullname-input:focus + .fullname-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .password-input:focus + .password-tooltip {
+            visibility: visible;
+            opacity: 1;
         }
     }
 
