@@ -1,28 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router";
 import { UserService } from "../../services/user";
 import "./style.scss";
 
 export default function ChangePassword() {
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
   const [oldPass, setOldPass] = useState('');
   const [newPass, setNewPass] = useState('');
   const [renewPass, setRenewPass] = useState('');
   const [hasErrors, setHasErrors] = useState(false);
   const [errorText, setErrorText] = useState('');
   const [OK, setOK] = useState(false);
+  const oldPassInputRef = useRef();
 
   const changePassword = async e => {
     e.preventDefault();
 
+    setLoading(true);
     const response = await UserService.changePassword(oldPass, newPass, renewPass);
 
+    setLoading(false);
     if (response.data.status === 404) {
       setHasErrors(true);
       setOldPass('');
       setNewPass('');
       setRenewPass('');
       setErrorText(response.data.message);
+      oldPassInputRef.current && oldPassInputRef.current.focus();
     } else {
       setHasErrors(false);
       setOK(true);
@@ -31,12 +36,12 @@ export default function ChangePassword() {
 
       setTimeout(() => {
         history.push('/login');
-      }, 2000);
+      }, 1500);
     }
   }
 
   useEffect(() => {
-    document.getElementById('oldPass').focus();
+    oldPassInputRef.current && oldPassInputRef.current.focus();
   }, []);
 
   return (
@@ -45,7 +50,11 @@ export default function ChangePassword() {
         <div className="col-ct-5">
           <section className="change-password-section">
             <h2 className="change-password-title">
-              <i class="far fa-exchange-alt title-icon"></i>
+              {
+                loading 
+                  ? <i class="fa fa-spinner fa-spin icon"></i>
+                  : <i class="far fa-exchange-alt icon"></i>
+              }
               <span className="change-password-title-text">
                 Thay đổi mật khẩu
               </span>
@@ -74,10 +83,10 @@ export default function ChangePassword() {
               <div className="form-ctl-wrap">
                 <i class="fal fa-unlock-alt password-icon"></i>
                 <input
-                  type="text"
+                  type="password"
                   className="form-control"
                   placeholder="Mật khẩu cũ"
-                  id="oldPass"
+                  ref={ oldPassInputRef }
                   value={ oldPass }
                   onChange={ e => { setOldPass(e.target.value) } }
                   required
@@ -86,7 +95,7 @@ export default function ChangePassword() {
               <div className="form-ctl-wrap">
                 <i class="fal fa-lock-alt password-icon"></i>
                 <input
-                  type="text"
+                  type="password"
                   className="form-control"
                   placeholder="Mật khẩu mới"
                   value={ newPass }
@@ -97,7 +106,7 @@ export default function ChangePassword() {
               <div className="form-ctl-wrap">
                 <i class="fal fa-lock-alt password-icon"></i>
                 <input
-                  type="text"
+                  type="password"
                   className="form-control"
                   placeholder="Nhập lại mật khẩu mới"
                   value={ renewPass }

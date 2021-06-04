@@ -64,10 +64,6 @@ export const UserService = {
     changePassword(oldPassword, newPassword, renewPassword) {
         const token = localStorage.getItem('tstring');
 
-        const h = new Headers();
-        h.append('Authorization', 'Bearer ' + token);
-        h.append('Authorization', 'Basic ' + window.btoa(oldPassword.concat('.').concat(newPassword).concat('.').concat(renewPassword)));
-
         return api.call().post('/user/changepassword', null, {
             method: 'POST',
             headers: {
