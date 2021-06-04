@@ -17,7 +17,7 @@ export default function Notification() {
         ? (
           <Link to="/login" className="btn header-login-btn">
             <i class="fad fa-sign-in header-btn-icon"></i>
-            Đăng nhập
+            Đăng nhập / Đăng ký
           </Link>
         )
         : null

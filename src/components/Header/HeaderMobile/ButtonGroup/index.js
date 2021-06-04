@@ -38,7 +38,7 @@ export default function ButtonGroup() {
           ? (
             <Link to="/login" className="btn btn-item">
               <i class="fad fa-sign-in nav-icon"></i>
-              Đăng nhập
+              Đăng nhập / Đăng ký
             </Link>
           )
           : null
