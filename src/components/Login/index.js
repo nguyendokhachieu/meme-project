@@ -17,14 +17,18 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [hasErrors, setHasErrors] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { auth } = useAuthorization();
 
   const login = async (e) => {
     e.preventDefault();
     
+    setHasErrors(false); 
+    setLoading(true);
     const response = await UserService.login(username, password);
 
+    setLoading(false);
     if (response.data.status === 200) {
       dispatch(actLoginSuccessfully(response.data.user));
 
@@ -54,15 +58,15 @@ export default function Login() {
           <div className="login-section">
             <h1 className="login-header">
               <Link to="/" className="login-header-link">
-                MEME
+                Meme
               </Link>
             </h1>
             <h2 className="login-title">
-              <img
-                src="/assets/images/login-icon.svg"
-                className="login-title-icon"
-                alt="login-icon"
-              />
+              {
+                loading 
+                  ? <i class="fa fa-spinner fa-spin icon"></i>
+                  : <i class="fad fa-sign-in icon"></i>
+              }
               <span className="login-title-text">Đăng nhập</span>
             </h2>
             <div className={ hasErrors ? "login-error active" : "login-error" }>
@@ -71,15 +75,11 @@ export default function Login() {
             </div>
             <div className={ (isLoggedIn || auth) ? "login active" : "login" }>
               <p className="login-icon-wrap"><i class="fal fa-check-circle login-icon"></i></p>
-              <p className="login-text">Đăng nhập thành công, đang chuyển hướng bạn đến trang chủ.</p>
+              <p className="login-text">Đăng nhập thành công</p>
             </div>
             <form action className="form-login" onSubmit={ login } >
               <div className="form-ctl-wrap">
-                <img
-                  src="/assets/images/username-icon.svg"
-                  className="form-control-icon"
-                  alt="username-icon"
-                />
+                <i class="fad fa-user icon"></i>
                 <Input 
                   type="text"
                   placeholder="Username"
@@ -90,11 +90,7 @@ export default function Login() {
                 />
               </div>
               <div className="form-ctl-wrap">
-                <img
-                  src="/assets/images/new-password.svg"
-                  className="form-control-icon"
-                  alt="password-icon"
-                />
+                <i class="fal fa-lock-alt icon"></i>
                 <Input
                   type="password"
                   placeholder="Password"

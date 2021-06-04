@@ -2,13 +2,11 @@ import { api } from "./api";
 
 export const UserService = {
     login(username, password) {
-        return api.call().post("/user/login", JSON.stringify({
-            username,
-            password,
-        }), {
+        return api.call().post("/user/login", null, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': 'Basic ' + window.btoa(username.concat('.').concat(password))
             }
         })
     },
