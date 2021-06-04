@@ -6,6 +6,7 @@ import CategoriesUpload from "./CategoriesUpload";
 import { useEffect, useState } from "react";
 import { PostService } from "../../services/posts";
 import { useHistory } from "react-router";
+import NotificationCard from "../shared/NotificationCard";
 
 export default function Upload() {
   const history = useHistory();
@@ -34,7 +35,11 @@ export default function Upload() {
       frm.append('categories', JSON.stringify(categoriesList));
 
       try {
+        setSuccess(false);
+        setHasErrors(false);
+
         const response = await PostService.upload(frm);
+
         if (response.data.status === 404) {
           setHasErrors(true);
           setStatusText(response.data.message);
@@ -44,7 +49,7 @@ export default function Upload() {
           
           setTimeout(() => {
             history.push('/');
-          }, 2000);
+          }, 1500);
         }
         
       } catch (error) {
@@ -70,6 +75,11 @@ export default function Upload() {
 
   return (
     <div className="main-content">
+      <NotificationCard 
+        show={ hasErrors || success }
+        content={ statusText }
+        showCloseButton={ true }
+      />
       <div className="container">
         <section className="upload-section">
           <div className="col-wrap">
@@ -94,24 +104,6 @@ export default function Upload() {
                     Đăng bài
                   </button>
                 </div>
-                {
-                  hasErrors 
-                    ? (
-                      <div className="errors-upload">
-                        { statusText }
-                      </div>
-                    )
-                    : null
-                }
-                {
-                  success 
-                    ? (
-                        <div className="success-upload">
-                          { statusText }
-                        </div>
-                    )
-                    : null
-                }
                 <CategoriesUpload categoriesList={ list => { setCategoriesList(list) } } />
               </div>
             </div>
