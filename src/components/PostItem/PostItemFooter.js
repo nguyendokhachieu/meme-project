@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { PostService } from "../../services/posts";
+import NotificationCard from "../shared/NotificationCard";
 
 export default function PostItemHeader({
     post
@@ -9,9 +10,16 @@ export default function PostItemHeader({
   const [liked, setLiked] = useState(false);
   const [totalLikes, setTotalLikes] = useState(0);
   const [callingAPI, setCallingAPI] = useState(false);
+  const [showNotif, setShowNotif] = useState(false);
 
   const likeThisPost = async () => {
     if (!user.id) {
+      setShowNotif(true);
+      
+      setTimeout(() => {
+        setShowNotif(false);
+      }, 5000);
+
       return;
     }
 
@@ -51,15 +59,22 @@ export default function PostItemHeader({
   }, [user, post]);
 
     return (
-      <div className="post-item-footer">
-        <a className="post-item-show" onClick={ likeThisPost } >
-          <i className={ liked ? 'fas fa-heart post-footer-icon active' : 'fal fa-heart post-footer-icon'}></i>
-          <span className={ liked ? 'count active' : 'count'}>{ totalLikes }</span>
-        </a>
-        <a className="post-item-show">
-          <i className="fal fa-comment-dots post-footer-icon"></i>
-          <span className="count">{ post.total_comments }</span>
-        </a>
-      </div>
+      <>
+        <NotificationCard 
+          show={ showNotif }
+          showCloseButton={ true }
+          content="Bạn chưa đăng nhập, đăng nhập để thả tym bài viết này"
+        />
+        <div className="post-item-footer">
+          <a className="post-item-show" onClick={ likeThisPost } >
+            <i className={ liked ? 'fas fa-heart post-footer-icon active' : 'fal fa-heart post-footer-icon'}></i>
+            <span className={ liked ? 'count active' : 'count'}>{ totalLikes }</span>
+          </a>
+          <a className="post-item-show">
+            <i className="fal fa-comment-dots post-footer-icon"></i>
+            <span className="count">{ post.total_comments }</span>
+          </a>
+        </div>
+      </>
     );
 }
