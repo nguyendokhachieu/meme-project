@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useAvatarLinkSrc } from "../../hooks/useAvatarLinkSrc";
 import { useDateTime } from "../../hooks/useDateTime";
 import dayjs from "dayjs";
+import Options from "./Options";
 
 export default function PostItemHeader({ post }) {
   const { link } = useAvatarLinkSrc(post);
@@ -39,6 +40,7 @@ export default function PostItemHeader({ post }) {
           </span>
         </span>
       </div>
+      <Options post={ post }/>
     </div>
   );
 }

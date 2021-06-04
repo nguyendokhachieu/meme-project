@@ -132,5 +132,17 @@ export const PostService = {
                 order_dir,
             }
         })
+    },
+
+    delete(id) {
+        const token = localStorage.getItem('tstring');
+
+        return api.call().post('/post/delete', JSON.stringify({id}), {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json',
+            }
+        })
     }
 }
