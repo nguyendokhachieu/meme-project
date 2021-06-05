@@ -1,9 +1,10 @@
 import "./new-post.scss";
 import { useEffect, useState } from "react";
 import { useAuthorization } from "../../../../hooks/useAuthorization";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 
 export default function Notification() {
+  const { pathname } = useLocation();
   const history = useHistory();
   const { auth } = useAuthorization();
   const [showThis, setShowThis] = useState(false);
@@ -21,7 +22,10 @@ export default function Notification() {
   }
 
   return (
-    <a className="header-new-post" onClick={ e => { history.push('/upload') } }>
+    <a 
+      className={ pathname === '/upload' ? 'header-new-post active' : 'header-new-post' } 
+      onClick={ e => { history.push('/upload') } }
+    >
       <i class="fad fa-plus-circle icon"></i>
     </a>
   );
