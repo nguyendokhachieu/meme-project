@@ -55,24 +55,20 @@ export default function DetailPost({
           <div className="col-wrap">
             <div className="main-col-8">
               {
-                !post 
-                  ? <PostItemLoading />
-                  : <PostItem post={ post } />
-              }
-              {
-                !post 
-                  ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.7 } /></div>
-                  : <FormAddComment />
-              }
-              {
-                !post
-                  ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.5 } /></div>
-                  : <CommentListHeader totalComments={ totalComments } />
-              }
-              {
-                !post
-                  ? <div className="align-center padding-tb-2rem"><Loading opacity={ 0.2 } /></div>
-                  : <CommentList postID={ postID } commentCount={ countTotalComments } />
+                post 
+                  ? (
+                    <>
+                      <PostItem post={ post } />
+                      <FormAddComment post_id={ postID } />
+                      <CommentListHeader totalComments={ totalComments } />
+                      <CommentList postID={ postID } commentCount={ countTotalComments } />
+                    </>
+                  )
+                  : (
+                    <>
+                      <PostItemLoading noOfItems={ 1 } />
+                    </>
+                  )
               }
             </div>
             <div className="main-col-4">

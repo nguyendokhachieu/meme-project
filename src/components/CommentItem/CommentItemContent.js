@@ -22,21 +22,13 @@ export default function CommentItemContent({
       </p>
       <p className="comment-text">{comment.content}</p>
       <div className="comment-footer">
-        <a href="#" className="comment-show">
-          <img
-            src="/assets/images/heart-icon-no-filled.svg"
-            className="heart-icon"
-            alt="heart-icon"
-          />
-          <span className="comment-count">{comment.liked_count}</span>
+        <a href="#" className="comment-show like active">
+          <i class="fal fa-heart icon"></i>
+          <span className="count">{comment.liked_count}</span>
         </a>
         <a href="#" className="comment-show">
-          <img
-            src="/assets/images/comment_icon.svg"
-            className="comment-icon"
-            alt="comment-icon"
-          />
-          <span className="comment-count">123</span>
+          <i class="fal fa-comment-dots icon"></i>
+          <span className="count">123</span>
         </a>
       </div>
     </div>

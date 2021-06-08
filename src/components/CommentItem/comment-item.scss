@@ -24,8 +24,9 @@
         flex-shrink: 0;
         
         img {
-            width: 100%;
-            height: 100%;
+            width: 3.75rem;
+            height: 3.75rem;
+            border: 1px solid #ccc;
             border-radius: 69px;
             object-fit: cover;
         }
@@ -42,15 +43,15 @@
 
         .comment-author {
             .comment-author-name {
-                font-size: 1.45rem;
+                font-size: 1.4rem;
                 font-weight: 500; 
-                color: $text-color;
+                color: rgb(59, 59, 59);
             }
 
             .comment-author-time-ago {
-                padding: 0 0.5rem;
+                padding: 0 1rem;
                 font-weight: 400;
-                font-size: 1.05rem;
+                font-size: 1.1rem;
                 color: $text-color-lighter;
 
                 &:hover {
@@ -61,10 +62,11 @@
         }
 
         .comment-text {
-            padding: 0.4rem 0;
-            color: $text-color-lighter;
+            padding: 0.75rem 0;
+            color: $text-color;
             line-height: 1.25;
             font-size: 1.5rem;
+            word-break: break-word;
         }
 
         .comment-footer {
@@ -72,30 +74,41 @@
             justify-content: flex-start;
 
             .comment-show {
-                padding: 0.3rem 1.8rem;
+                padding: 0.65rem 2.2rem;
                 transition: all 0.15s ease;
                 border-radius: 5px;
                 display: flex;
                 align-items: center;
 
+                .icon {
+                    font-size: 1.4rem;
+                    color: #999;
+                }
+
+                .count {
+                    color: #999;
+                    font-size: 1.4rem;
+                    padding: 0 0.6rem;
+                    font-weight: 500;
+                }
+
                 &:hover {
-                    background-color: $base-color-lightest;
+                    background-color: rgba(238, 238, 238, 0.5);
+                }
+
+                &:active {
+                    transform: scale(0.955);
+                    background-color: rgb(212, 212, 212);
                 }
             }
 
-            .heart-icon {
-                width: 1.5rem;
-            }
-
-            .comment-icon {
-                width: 2.1rem;
-            }
-
-            .comment-count {
-                font-size: 1.15rem;
-                padding: 0 0.6rem;
-                font-weight: 500;
-                color: $base-color-lighter;
+            .like.active {
+                .icon {
+                    color: $error-color;
+                }
+                .count {
+                    color: $error-color;
+                }
             }
         }
     }

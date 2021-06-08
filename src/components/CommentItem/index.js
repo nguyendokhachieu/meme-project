@@ -1,4 +1,4 @@
-import "./style.css";
+import "./comment-item.scss";
 
 import CommentItemAvatar from "./CommentItemAvatar";
 import CommentItemContent from "./CommentItemContent";

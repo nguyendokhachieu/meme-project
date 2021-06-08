@@ -1,0 +1,55 @@
+@import "../../assets/css/variables.scss";
+
+.add-comment-wrap {
+  padding: 2rem 0;
+  margin: 2rem 0;
+  border: 1px solid #ccc;
+  border-left: 0;
+  border-right: 0;
+
+  .add-comment {
+    box-shadow: 0 0 8px 0 #eee;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 1rem;
+
+    .comment-form {
+      display: inline-block;
+      width: 100%;
+
+      .form-ctl-wrap {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .icon {
+          margin-right: 1rem;
+          font-size: 1.6rem;
+          color: #999;
+        }
+
+        .comment-input {
+          flex: 1;
+          border-radius: 5px;
+          padding: 1rem;
+          outline: none;
+          border: none;
+          background-color: $body-background-color;
+          font-size: 1.6rem;
+          line-height: 1.333;
+          min-height: 8rem;
+        }
+
+        .comment-input::-webkit-scrollbar {
+          width: 0.5rem;
+        }
+
+        .comment-input::-webkit-scrollbar-thumb {
+          border-radius: 5px;
+          background-color: #ccc;
+          outline: none;
+        }
+      }
+    }
+  }
+}

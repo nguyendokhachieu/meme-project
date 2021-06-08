@@ -298,40 +298,5 @@
                 transform: scale(0.95);
             }
         }
-
-        .pagination {
-            margin: 0.5rem 0;
-
-            .paginations {
-                padding: 0.5rem 2rem;
-                display: flex;
-                justify-content: space-between;
-
-                .page-item {
-                    color: $text-color-lighter;
-                    font-size: 1.5rem;
-                    padding: 0.4rem 0.8rem;
-                    border: 1px solid #ccc;
-                    cursor: pointer;
-                    transition: all 0.15s ease;
-
-                    &:hover {
-                        border-color: $base-color;
-                        color: $base-color;
-                    }
-                }
-
-                .page-item.active {
-                    border-color: $base-color;
-                    color: $base-color;
-                }
-
-                .page-item.inactive {
-                    cursor: default;
-                    border-color: #ddd;
-                    color: #ddd;
-                }
-            }
-        }
     }
 }
