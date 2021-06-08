@@ -23,6 +23,10 @@
         border-radius: 10px;
         box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.4);
 
+        @media screen and (max-width: 767px) {
+            width: 90%;
+        }
+
         .modal-title {
             color: rgb(49, 49, 49);
             font-size: 1.8rem;

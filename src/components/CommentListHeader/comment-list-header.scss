@@ -36,4 +36,12 @@
             text-decoration: underline;
         }
     }
+
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+
+        .total-comment-count {
+            margin-bottom: 1rem;
+        }
+    }
 }

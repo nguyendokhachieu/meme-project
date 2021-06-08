@@ -37,99 +37,7 @@
         padding: 1.5rem 1.7rem;
         margin: 0 0 1rem 0;
     
-        .form-control-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0.5rem 0;
-    
-            .form-control-icon {
-                width: 3.3rem;
-                margin-right: 0.75rem;
-            }
-    
-            .caption-input {
-                width: 100%;
-            }
-    
-            .label-text {
-                font-size: 1.6rem;
-                color: $text-color;
-                margin-bottom: 0.5rem;
-                text-align: center;
-            }
-
-            .plus-icon {
-                font-size: 1.7rem;
-                margin: 0 1rem;
-            }
-
-            .upload-icon {
-                font-size: 2.7rem;
-                color: rgb(117, 117, 117);
-            }
-    
-            & + .form-control-wrap {
-                margin-top: 1rem;
-            }
-    
-            .categories-input-search {
-                padding: 0.7rem 1.1rem;
-                font-size: 1.45rem;
-                width: 100%;
-                font-style: italic;
-                background-color: transparent;
-                border-bottom: 1px solid $base-color-lightest;
-                border-top: 0;
-                border-left: 0;
-                border-right: 0;
-                border-radius: 0;
-                margin: 0.8rem 0;
-                transition: all 0.15s ease;
-            }    
-    
-            .form-file-wrap {
-                position: relative;
-            }
-    
-            .label-text-file {
-                margin: 0.5rem 0;
-                display: inline-block;
-                padding: 12px 0;
-                cursor: pointer;
-                border-radius: 5px;
-                background-color: transparent;
-                font-size: 16px;
-                font-weight: bold;
-                color: $base-color;
-                text-align: center;
-                transition: all 0.15s ease;
-                width: 100%;
-    
-                &:hover {
-                    background-color: $base-color-lightest;
-                }
-            }
-    
-            input[type=file] {
-                position: absolute;
-                z-index: -1;
-                top: 10px;
-                left: 8px;
-                font-size: 17px;
-                color: #b8b8b8;
-            }
-        }
-    
-        .filename-preview {
-            font-size: 1.4rem;
-            color: #999;
-            span {
-                padding: 0 0.5rem;
-                font-size: 1.5rem;
-                font-style: italic;
-            }
-        }
+        
 
         .btn-upload-wrap {
             display: flex;
@@ -158,6 +66,21 @@
                 padding: 1rem;
             }
         }
+
+        .categories-input-search {
+            padding: 0.7rem 1.1rem;
+            font-size: 1.45rem;
+            width: 100%;
+            font-style: italic;
+            background-color: transparent;
+            border-bottom: 1px solid $base-color-lightest;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            border-radius: 0;
+            margin: 0.8rem 0;
+            transition: all 0.15s ease;
+        }    
     
         .tags-list-title {
             color: $text-color;
@@ -184,20 +107,7 @@
         }
 
         .form-control-search {
-            display: flex;
-            flex-direction: row;
-            
-            i {
-                padding: 0.9rem 1.1rem;
-                font-size: 1.45rem;
-                border-bottom: 1px solid $base-color-lightest;
-                border-top: 0;
-                border-left: 0;
-                border-right: 0;
-                border-radius: 0;
-                transition: all 0.15s ease;
-                color: #999;
-            }
+            display: flex;            
         }
 
         .categories-list-section {
@@ -277,26 +187,6 @@
             -webkit-transform: rotate(45deg);
             -ms-transform: rotate(45deg);
             transform: rotate(45deg);
-        }
-
-        .btn-load-more-categories {
-            background-color: transparent;
-            outline: none;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 0.75rem 1.5rem;
-            min-width: 10rem;
-            color: rgb(100, 100, 100);
-            transition: all 0.15s ease;
-            
-            &:hover {
-                color: rgb(48, 48, 48);
-                cursor: pointer;
-            }
-
-            &:active {
-                transform: scale(0.95);
-            }
         }
     }
 }

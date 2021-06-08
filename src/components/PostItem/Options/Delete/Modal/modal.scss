@@ -6,10 +6,9 @@
     left: 0;
     bottom: 0;
     right: 0;
-    z-index: 999;
-
-    background-color: rgba(0, 0, 0, 0.2);
-
+    z-index: 1999;
+    box-shadow: 0 0 0 3000px rgba(255, 255, 255, 0.377);
+    
     .float-modal {
         position: absolute;
         top: 50%;
@@ -17,13 +16,13 @@
         z-index: 2;
         transform: translate(-50%, -50%);
 
-        width: 35rem;
-        height: 20rem;
+        width: 30rem;
+        height: auto;
         padding: 1.5rem 2rem;
 
         background-color: #fff;
         border-radius: 10px;
-        box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.5);
 
         .modal-title {
             color: rgb(49, 49, 49);

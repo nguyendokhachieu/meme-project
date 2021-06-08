@@ -51,11 +51,18 @@ export default function Modal({
 
     return (
         <>
-            <NotificationCard 
-                content={ notifContent } 
-                showCloseButton={ true } 
-                show={ showNotif } 
-            />
+            {
+                showNotif
+                    ? (
+                        <NotificationCard 
+                            content={ notifContent } 
+                            showCloseButton={ true } 
+                            show={ showNotif } 
+                        />
+                    )
+                    : 
+                    null
+            }
             <div className={ hidden ? 'delete-modal-wrap hide' : 'delete-modal-wrap' }>
                 <div className="float-modal" ref={ modalRef }>
                     <h3 className="modal-title">
@@ -64,7 +71,7 @@ export default function Modal({
                                 ? <i class="fa fa-spinner fa-spin" style={{marginRight: '1rem'}}></i>
                                 : <i class="fad fa-trash-alt icon"></i>
                         }
-                        Xác nhận xóa bài viết
+                        Xóa bài viết này ?
                     </h3>
                     <div className="inner-modal">
                         <div className="icon-wrap"><i class="fad fa-exclamation-square icon"></i></div>

@@ -1,3 +1,4 @@
+import "./form-upload.scss";
 import { useEffect, useState } from "react";
 import TextArea from "../../shared/TextArea";
 
@@ -14,10 +15,10 @@ export default function FormUpload({
   }, [file, status]);
 
   return (
-    <form action className="form-group">
+    <form className="form-group">
       <div className="form-control-wrap">
         <label className="label-text" htmlFor="caption">
-          <i class="fal fa-plus-circle plus-icon"></i>
+          <i class="fal fa-plus-circle icon"></i>
           Bài viết mới
         </label>
         <TextArea
@@ -31,15 +32,15 @@ export default function FormUpload({
         />
       </div>
       <div className="form-control-wrap form-file-wrap">
-        <i class="fad fa-upload upload-icon"></i>
-        <label className="label-text label-text-file" htmlFor="file">
-          Chọn hình ảnh từ máy tính
+        <i class="fad fa-upload icon"></i>
+        <label className="label-text" htmlFor="file">
+          Thêm hình ảnh
         </label>
         <input 
           type="file" 
           name="file" 
           id="file" 
-          className="btn" 
+          hidden
           onChange={ e => { setFile(e.target.files[0]) } }/>
       </div>
       <div align="center" className="filename-preview">

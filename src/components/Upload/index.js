@@ -88,7 +88,6 @@ export default function Upload() {
                 <FormUpload 
                   onFile={ f => { setFile(f) } } 
                   onStatus={ s => { setStatus(s) } }
-                  
                 />
                 <ImagePreview />
               </div>

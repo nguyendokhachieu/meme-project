@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { PostService } from "../../services/posts";
+import { Link } from "react-router-dom";
 import NotificationCard from "../shared/NotificationCard";
 
 export default function PostItemHeader({
@@ -70,10 +71,10 @@ export default function PostItemHeader({
             <i className={ liked ? 'fas fa-heart post-footer-icon active' : 'fal fa-heart post-footer-icon'}></i>
             <span className={ liked ? 'count active' : 'count'}>{ totalLikes }</span>
           </a>
-          <a className="post-item-show">
+          <Link to={ `/post/${ post.id }` } className="post-item-show">
             <i className="fal fa-comment-dots post-footer-icon"></i>
             <span className="count">{ post.total_comments }</span>
-          </a>
+          </Link>
         </div>
       </>
     );
