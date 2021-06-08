@@ -8,23 +8,24 @@
         justify-content: space-between;
 
         .left-nav-bar {
-            width: 30%;
+            width: 302px;
             position: relative;
+            transition: all 0.15s ease;
         }
 
         .right-content {
-            width: 70%;
+            width: calc(100% - 302px);
+            transition: all 0.15s ease;
         }
 
-        @media screen and (max-width: 767px) {
-            .left-nav-bar {
-                width: 15%;
-            }
-    
-            .right-content {
-                width: 85%;
-            }
+        .left-nav-bar.hide {
+            width: 50px;
         }
+
+        .right-content.hide {
+            width: calc(100% - 50px);
+        }
+
     }
 }
 
