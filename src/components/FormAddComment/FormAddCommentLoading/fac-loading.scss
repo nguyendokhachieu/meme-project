@@ -1,0 +1,32 @@
+@import "../../../assets/css/variables.scss";
+
+.fac-loading {
+  padding: 2rem 0;
+  margin: 2rem 0;
+  border: 1px solid #ccc;
+  border-left: 0;
+  border-right: 0;
+
+  .add-comment {
+    box-shadow: 0 0 8px 0 rgb(219, 219, 219);
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 1rem;
+
+    .comment-form {
+      display: inline-block;
+      width: 100%;
+
+      .form-ctl-wrap {
+        display: flex;
+
+        .comment-input {
+          flex: 1;
+          border-radius: 5px;
+          background-color: $body-background-color;
+          min-height: 8rem;
+        }
+      }
+    }
+  }
+}

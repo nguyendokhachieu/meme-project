@@ -6,7 +6,9 @@ import CommentListHeader from "../CommentListHeader";
 import FormAddComment from "../FormAddComment";
 import PostItem from "../PostItem";
 import PostItemLoading from "../PostItem/PostItemLoading";
-import Loading from "./../shared/Loading";
+import FormAddCommentLoading from "../FormAddComment/FormAddCommentLoading";
+import CommentListHeaderLoading from "../CommentListHeader/CommentListHeaderLoading";
+import CommentListLoading from "../CommentList/CommentListLoading";
 import { actFetchDetailPostAsync } from "./../../store/posts/actions";
 import { useDispatch } from "react-redux";
 import NotFound from "../NotFound";
@@ -67,6 +69,9 @@ export default function DetailPost({
                   : (
                     <>
                       <PostItemLoading noOfItems={ 1 } />
+                      <FormAddCommentLoading />
+                      <CommentListHeaderLoading />
+                      <CommentListLoading />
                     </>
                   )
               }

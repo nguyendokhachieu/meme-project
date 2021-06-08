@@ -1,12 +1,12 @@
-@import "./../../assets/css/variables.scss";
+@import "../../../assets/css/variables.scss";
 
-.comment-item {
-    & > .comment-item {
+.comment-item-loading {
+    & > .comment-item-loading {
         margin-left: calc(3.75rem + 5px);
         margin-top: 2rem;
     }
 
-    & + .comment-item {
+    & + .comment-item-loading {
         margin-top: 2rem;
     }
 
@@ -22,12 +22,12 @@
             align-self: flex-start;
             flex-shrink: 0;
             
-            img {
+            .img {
                 width: 3.75rem;
                 height: 3.75rem;
                 border: 1px solid #ccc;
                 border-radius: 69px;
-                object-fit: cover;
+                background-color: #eee;
             }
         }
         
@@ -43,29 +43,25 @@
             .comment-author {
                 .comment-author-name {
                     font-size: 1.4rem;
-                    font-weight: 500; 
-                    color: rgb(59, 59, 59);
+                    color: transparent;
+                    border-radius: 5px;
+                    background-color: rgba(216, 216, 216, 0.5);
                 }
     
                 .comment-author-time-ago {
-                    padding: 0 1rem;
-                    font-weight: 400;
                     font-size: 1.1rem;
-                    color: $text-color-lighter;
-    
-                    &:hover {
-                        text-decoration: underline;
-                        cursor: pointer;
-                    }
+                    margin-left: 1rem;
+                    color: transparent;
+                    border-radius: 5px;
+                    background-color: rgba(216, 216, 216, 0.4);
                 }
             }
     
             .comment-text {
                 padding: 0.75rem 0;
-                color: $text-color;
+                color: transparent;
                 line-height: 1.25;
                 font-size: 1.5rem;
-                word-break: break-word;
             }
     
             .comment-footer {
@@ -73,43 +69,26 @@
                 justify-content: flex-start;
     
                 .comment-show {
-                    padding: 0.65rem 2.2rem;
-                    transition: all 0.15s ease;
+                    padding: 0.3rem 2.2rem;
                     border-radius: 5px;
-                    display: flex;
-                    align-items: center;
+                    color: transparent;
+                    border-radius: 5px;
+                    background-color: rgba(216, 216, 216, 0.4);
     
                     .icon {
-                        font-size: 1.4rem;
-                        color: #999;
+                        color: transparent;
                     }
-    
+        
                     .count {
-                        color: #999;
-                        font-size: 1.4rem;
-                        padding: 0 0.6rem;
-                        font-weight: 500;
+                        color: transparent;
                     }
     
-                    &:hover {
-                        background-color: rgba(238, 238, 238, 0.5);
-                    }
-    
-                    &:active {
-                        transform: scale(0.955);
-                        background-color: rgb(212, 212, 212);
-                    }
-                }
-    
-                .like.active {
-                    .icon {
-                        color: $error-color;
-                    }
-                    .count {
-                        color: $error-color;
+                    & + .comment-show {
+                        margin-left: 1rem;
                     }
                 }
             }
         }
     }
 }
+
