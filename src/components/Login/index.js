@@ -23,6 +23,10 @@ export default function Login() {
 
   const login = async (e) => {
     e.preventDefault();
+
+    if (loading) {
+      return;
+    }
     
     setHasErrors(false); 
     setLoading(true);
@@ -110,11 +114,19 @@ export default function Login() {
                 </p>
                 <Input
                   type="submit"
-                  className="btn btn-filled-bc"
+                  className={ loading ? 'btn btn-filled-bc login-btn disabled' : 'btn btn-filled-bc'}
                   value="Đăng nhập"
                 />
               </div>
             </form>
+            <div className="route">
+              <button 
+                className="go-back-btn" 
+                onClick={ e => { history.push('/') }}
+              >
+                  Quay về trang chủ
+              </button>
+            </div>
           </div>
         </div>
       </div>

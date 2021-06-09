@@ -174,12 +174,48 @@
             }
         }
 
+        .login-btn.disabled {
+            pointer-events: none;
+            background-color: #ccc;
+            border-color: #ccc;
+        }
+
         @media screen and (max-width: 992px) {
             flex-direction: column-reverse;
 
             .option-register {
                 align-items: center;
                 padding: 1rem 0 0 0;
+            }
+        }
+    }
+
+    .route {
+        padding: 2rem 0 0 0;
+        text-align: center;
+
+        .go-back-btn {
+            outline: none;
+            border: none;
+            font-size: 1.4rem;
+            background-color: transparent;
+            color: #999;
+            cursor: pointer;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 105%;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: #999;
+                transition: width 0.25s ease;
+            }
+            
+            &:hover::after {
+                width: 100%;
             }
         }
     }
