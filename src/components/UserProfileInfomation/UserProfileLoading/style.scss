@@ -14,17 +14,14 @@
         height: 22rem;
 
         .user-image-wrap-link {
-            display: inline-block;
-            width: 100%;
-            height: 100%;
 
             .user-image {
-                width: 100%;
-                height: 100%;
-                border: 1px solid #ccc;
+                width: 22rem;
+                height: 22rem;
+                border: 1px solid rgba(204, 204, 204, 0.35);
                 object-fit: cover;
                 border-radius: 6969px;
-                background-color: #ccc;
+                background-color: rgba(204, 204, 204, 0.35);
             }
         }
     }
@@ -34,7 +31,7 @@
 
         .user-info-username {
             h3 {
-                background-color: #ccc;
+                background-color: rgba(204, 204, 204, 0.5);
                 border-radius: 10px;
                 padding: 2rem 0;
             }
@@ -44,7 +41,7 @@
             padding: 1.4rem 0;
 
             a {
-                background-color: #999;
+                background-color: rgba(204, 204, 204, 0.4);
                 border: 0;
                 color: transparent;
             }
@@ -59,7 +56,7 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            background-color: rgb(199, 198, 198);
+            background-color: rgba(204, 204, 204, 0.35);
             padding: 4rem 0;
             border-radius: 10px;
         }
@@ -71,7 +68,7 @@
             word-break: break-word;
             text-align: justify;
             color: $text-color-lighter;
-            background-color: #ccc;
+            background-color: rgba(204, 204, 204, 0.5);
             margin-top: 2rem;
             border-radius: 10px;
         }
