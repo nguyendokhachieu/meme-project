@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuthorization } from "../../../../hooks/useAuthorization";
 import { useSelector } from "react-redux";
 import NotificationItem from "./NotificationItem";
+import NotificationItemLoading from "./NotificationItem/NotificationItemLoading";
 import { NotificationService } from "../../../../services/notifications";
 import { Link } from "react-router-dom";
 
@@ -73,7 +74,7 @@ export default function Notification() {
         <div className="content">
           {
             loading 
-              ? <div className="empty"><i class="fad fa-spinner icon"></i>Đang tải</div>
+              ? <NotificationItemLoading noOfItems={ 8 } />
               : list.length === 0 
                 ? <div className="empty"><i class="fad fa-empty-set icon"></i>Bạn chưa có thông báo nào</div>
                 : (

@@ -1,5 +1,6 @@
 import "./notification.scss";
 import NotificationItem from "../Header/HeaderBtn/Notification/NotificationItem";
+import NotificationItemLoading from "../Header/HeaderBtn/Notification/NotificationItem/NotificationItemLoading";
 import { useAuthorization } from "../../hooks/useAuthorization";
 import { NotificationService } from "../../services/notifications";
 import { useEffect, useState } from "react";
@@ -43,7 +44,7 @@ export default function Notification() {
                         <div className="items">
                             {
                                 loading
-                                    ? <div className="load">Đang tải</div>
+                                    ? <NotificationItemLoading noOfItems={ 8 } />
                                     : list.length === 0
                                         ? <div className="load">Bạn chưa có thông báo nào</div>
                                         : (
@@ -52,6 +53,12 @@ export default function Notification() {
                                             })
                                         )
                             }
+                        </div>
+                        <div className="end">
+                            <p className="text">
+                                <i class="fad fa-bell-slash icon"></i>
+                                Không còn thông báo nào!
+                            </p>
                         </div>
                     </div>
                 </section>

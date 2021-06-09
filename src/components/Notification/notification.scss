@@ -1,6 +1,5 @@
 .all-notifications {
-    margin-top: 7.4rem;
-    height: 20rem;
+    margin: 7.4rem 0 2rem 0;
 
     .inner-notif-content {
         max-width: 100%;
@@ -31,6 +30,24 @@
             padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 0 3px 0px #ccc;
+        }
+
+        .end {
+            margin-top: 1rem;
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 3px 0px #ccc;
+
+            .text {
+                font-size: 1.6rem;
+                color: #999;
+
+                .icon {
+                    margin: 0 1rem 0 0.5rem;
+                    font-size: 2rem;
+                }
+            }
         }
     }
 }
