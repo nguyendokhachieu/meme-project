@@ -153,32 +153,34 @@
             align-items: center;
         }
     }
-}
 
-// CSS for input type = file
+    .route {
+        padding: 1rem;
+        text-align: center;
 
-.form-file-wrap {
-    position: relative;
-}
+        .go-back-btn {
+            outline: none;
+            border: none;
+            font-size: 1.4rem;
+            background-color: transparent;
+            color: #999;
+            cursor: pointer;
+            position: relative;
 
-.label-text-file {
-    display: inline-block;
-    padding: 12px 0;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: $body-background-color;
-    font-size: 16px;
-    font-weight: bold;
-    color: $base-color;
-    text-align: center;
-    transition: all 0.15s ease;
-}
-
-input[type=file] {
-    position: absolute;
-    z-index: -1;
-    top: 10px;
-    left: 8px;
-    font-size: 17px;
-    color: #b8b8b8;
+            &::after {
+                content: '';
+                position: absolute;
+                top: 105%;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: #999;
+                transition: width 0.25s ease;
+            }
+            
+            &:hover::after {
+                width: 100%;
+            }
+        }
+    }
 }

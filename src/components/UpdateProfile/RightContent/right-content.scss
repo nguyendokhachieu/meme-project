@@ -7,6 +7,10 @@
 
     .tab-section {
         
+        & + .tab-section {
+            margin-top: 10rem;
+        }
+
         .tab-title {
             font-size: 2.2rem;
             padding-bottom: 1rem;
@@ -19,7 +23,6 @@
         .inner-container {
 
             .row {
-
                 & + .row {
                     margin-top: 1rem;
                 }

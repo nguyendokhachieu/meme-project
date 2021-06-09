@@ -44,8 +44,17 @@ export default function SideBar({
                 activeClassName="active"
                 className="nav-item-link"
               >
-                <i class="fad fa-list-alt nav-icon"></i>
+                <i class="fad fa-list-alt icon"></i>
                 <span className="text">Thông tin chung</span>
+              </NavHashLink>
+              <NavHashLink
+                smooth
+                to="/update#02-privacy"
+                activeClassName="active"
+                className="nav-item-link"
+              >
+                <i class="fad fa-user-shield icon"></i>
+                <span className="text">Quyền riêng tư</span>
               </NavHashLink>
             </li>
           </ul>

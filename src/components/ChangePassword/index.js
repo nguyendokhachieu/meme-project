@@ -123,6 +123,22 @@ export default function ChangePassword() {
                 />
               </div>
             </form>
+            {
+              history.action !== 'PUSH'
+                ? null 
+                : !history.location.state.history 
+                    ? null 
+                    : (
+                      <div className="route">
+                        <button 
+                          className="go-back-btn" 
+                          onClick={ e => { history.push('/update#02-privacy') }}
+                        >
+                            Quay về trang cập nhật
+                        </button>
+                      </div>
+                    )
+            }
           </section>
         </div>
       </div>
