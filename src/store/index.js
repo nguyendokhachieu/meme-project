@@ -4,6 +4,7 @@ import { postsReducer } from "./posts/reducer";
 import { commentsReducer } from "./comments/reducer";
 import { categoriesReducer } from "./categories/reducer";
 import { userReducer } from "./user/reducer";
+import { notificationsReducer } from "./notifications/reducer";
 
 const { combineReducers } = require("redux");
 const { createStore } = require("redux");
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
     comments: commentsReducer,
     categories: categoriesReducer,
     user: userReducer,
+    notifications: notificationsReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(middleware, logger));

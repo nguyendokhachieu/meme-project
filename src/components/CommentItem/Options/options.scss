@@ -1,0 +1,88 @@
+.comment-options {
+    margin-left: auto;
+    padding: 0 1rem;
+    position: relative;
+
+    .icon {
+        font-size: 1.6rem;
+        color: #999;
+        cursor: pointer;
+    }
+
+    .options-select {
+        position: absolute;
+        top: 0;
+        right: 3rem;
+        z-index: 11;
+        width: 229px;
+        height: 159px;
+        background-color: #fff;
+        box-shadow: 0 0 3px 1px #ccc;
+        padding: 1rem;
+        border-radius: 5px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transform: translateX(20px);
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.15s ease;
+
+        .title {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+            padding-bottom: 0.5rem;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+
+            li a {
+                display: inline-block;
+                width: 100%;
+                border-radius: 5px;
+                font-size: 1.5rem;
+                transition: all 0.15s ease;
+                padding: 0.75rem 0.5rem;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+
+                .icon {
+                    font-size: 1.5rem;
+                    color: rgb(99, 99, 99);
+                    margin-right: 1rem;
+                }
+            }
+
+            li a:hover {
+                background-color: rgba(204, 204, 204, 0.5);
+                cursor: pointer;
+            }
+        }
+    }
+
+    .options-select::-webkit-scrollbar {
+        width: 0.75rem;
+    }
+       
+    .options-select::-webkit-scrollbar-track {
+        border-radius: 5px;
+    }
+    
+    .options-select::-webkit-scrollbar-thumb {
+        background-color: rgba(204, 204, 204, 0.5);
+        outline: none;
+        border-radius: 5px;
+    }
+
+    .options-select.show {
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+    }
+}

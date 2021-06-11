@@ -1,17 +1,21 @@
 import "./style.scss";
 
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { actFetchDetailPostAsync } from "./../../store/posts/actions";
+
 import CommentList from "../CommentList";
 import CommentListHeader from "../CommentListHeader";
 import FormAddComment from "../FormAddComment";
 import PostItem from "../PostItem";
+
 import PostItemLoading from "../PostItem/PostItemLoading";
 import FormAddCommentLoading from "../FormAddComment/FormAddCommentLoading";
 import CommentListHeaderLoading from "../CommentListHeader/CommentListHeaderLoading";
 import CommentListLoading from "../CommentList/CommentListLoading";
-import { actFetchDetailPostAsync } from "./../../store/posts/actions";
-import { useDispatch } from "react-redux";
 import NotFound from "../NotFound";
+
 
 export default function DetailPost({
   postID
@@ -20,11 +24,6 @@ export default function DetailPost({
   const dispatch = useDispatch();
   const [post, setPost] = useState({} = false);
   const [hasErrors, setHasErrors] = useState(false);
-  const [totalComments, setTotalComments] = useState(0);
-
-  const countTotalComments = (totalComments) => {
-    setTotalComments(totalComments);
-  }
 
   useEffect(async () => {
     setHasErrors(false);
@@ -62,8 +61,8 @@ export default function DetailPost({
                     <>
                       <PostItem post={ post } />
                       <FormAddComment post_id={ postID } />
-                      <CommentListHeader totalComments={ totalComments } />
-                      <CommentList postID={ postID } commentCount={ countTotalComments } />
+                      <CommentListHeader />
+                      <CommentList postID={ postID } />
                     </>
                   )
                   : (
@@ -71,7 +70,7 @@ export default function DetailPost({
                       <PostItemLoading noOfItems={ 1 } />
                       <FormAddCommentLoading />
                       <CommentListHeaderLoading />
-                      <CommentListLoading />
+                      <CommentListLoading noOfItems={ 2 } />
                     </>
                   )
               }

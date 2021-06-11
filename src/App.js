@@ -13,10 +13,22 @@ import CategoriesPage from "./pages/CategoriesPage";
 import NotificationPage from "./pages/NotificationPage";
 import SearchPage from "./pages/SearchPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import NotificationCard from "./components/shared/NotificationCard";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { actHideNotificationCard } from "./store/notifications/actions";
 
 function App() {
+  const dispatch = useDispatch();
   const { pathname } = useLocation();
   const isShowHeader = !['/login', '/register'].includes(pathname);
+  const { show, content } = useSelector(state => state.notifications);
+
+  useEffect(() => {
+    show && setTimeout(() => {
+      dispatch(actHideNotificationCard());
+    }, 5000);
+  }, [show]);
 
   return (
       <div className="body-wrapper">
@@ -39,6 +51,10 @@ function App() {
           <Route path="/" exact><HomePage /></Route>
           <Route><NotFoundPage /></Route>
         </Switch>
+        <NotificationCard 
+          show={ show }
+          content={ content }
+        />
       </div>
   );
 }

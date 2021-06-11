@@ -1,11 +1,17 @@
-import { useEffect, useState } from "react";
 import "./notification-card.scss";
+
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { actHideNotificationCard } from "../../../store/notifications/actions";
 
 export default function NotificationCard({
   show = false,
   content = "",
   showCloseButton = true,
-}) {
+}) 
+{
+  const dispatch = useDispatch();
   const [hidden, setHidden] = useState(true);
 
   useEffect(() => {
@@ -31,6 +37,7 @@ export default function NotificationCard({
             className="close-button"
             onClick={(e) => {
               setHidden(true);
+              dispatch(actHideNotificationCard());
             }}
           >
             <i class="fas fa-times-circle close-icon"></i>

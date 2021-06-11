@@ -2,26 +2,24 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./comment-list-header.scss";
 
-export default function CommentListHeader({
-  totalComments,
-}) 
+export default function CommentListHeader() 
 {
-  const [total, setTotal] = useState(0);
+  const { totalComments } = useSelector(state => state.comments);
   const { newComment } = useSelector(state => state.comments);
 
   useEffect(() => {
     if (newComment.created_at) {
-      setTotal(prev => prev + 1);
+      // setTotal(prev => prev + 1);
     }
   }, [newComment.created_at]);
 
   useEffect(() => {
-    setTotal(Number(totalComments));
+    // setTotal(Number(totalComments));
   }, [totalComments]);
 
   return (
     <div className="comment-header">
-      <h3 className="total-comment-count">{ total } bình luận</h3>
+      <h3 className="total-comment-count">{ totalComments } bình luận</h3>
       <div className="comment-sort">
         <span className="comment-sort-title">Sắp xếp theo:</span>
         <a className="comment-sort-link" href>

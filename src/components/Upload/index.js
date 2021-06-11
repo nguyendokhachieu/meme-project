@@ -45,7 +45,7 @@ export default function Upload() {
           setStatusText(response.data.message);
         } else {
           setSuccess(true);
-          setStatusText(response.data.message + ", đang quay về trang chủ");
+          setStatusText(response.data.message);
           
           setTimeout(() => {
             history.push('/');

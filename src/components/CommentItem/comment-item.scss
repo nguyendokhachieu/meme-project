@@ -25,24 +25,27 @@
             img {
                 width: 3.75rem;
                 height: 3.75rem;
-                border: 1px solid #ccc;
+                border: 1px solid #999;
                 border-radius: 69px;
                 object-fit: cover;
             }
         }
         
         .comment-content {
-            box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
-            padding: 0 1rem;
+            box-shadow: 0 0 3px 0 #ccc;
+            padding: 1rem 1.2rem;
             background-color: #fff;
             border-radius: 5px;
             margin-left: 5px;
-            padding: 0.5rem 1rem;
             width: 100%;
     
             .comment-author {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
                 .comment-author-name {
-                    font-size: 1.4rem;
+                    font-size: 1.5rem;
                     font-weight: 500; 
                     color: rgb(59, 59, 59);
                 }
@@ -52,10 +55,32 @@
                     font-weight: 400;
                     font-size: 1.1rem;
                     color: $text-color-lighter;
+                    position: relative;
+                    
+                    .tooltip {
+                        position: absolute;
+                        top: 110%;
+                        left: 0;
+                        white-space: nowrap;
+                        color: #fff;
+                        padding: 0.5rem 1rem;
+                        border-radius: 5px;
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                        background-color: rgba(0, 0, 0, 0.7);
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: all 0.2s ease;
+                    }
     
                     &:hover {
                         text-decoration: underline;
                         cursor: pointer;
+
+                        .tooltip {
+                            opacity: 1;
+                            visibility: visible;
+                        }
                     }
                 }
             }
@@ -63,7 +88,7 @@
             .comment-text {
                 padding: 0.75rem 0;
                 color: $text-color;
-                line-height: 1.25;
+                line-height: 1.333;
                 font-size: 1.5rem;
                 word-break: break-word;
             }
