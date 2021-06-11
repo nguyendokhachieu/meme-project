@@ -4,6 +4,7 @@ import { CategoryService } from "../../../../services/categories";
 export default function ListCategoriesUpload({
   categoriesList = function() {},
   query,
+  reloadCategoriesList = false,
 }) 
 {
   const [categories, setCategories] = useState([]);
@@ -38,7 +39,7 @@ export default function ListCategoriesUpload({
     } catch (error) {
       
     }
-  }, []);
+  }, [reloadCategoriesList]);
 
   return (
     <div className="categories-list-section">

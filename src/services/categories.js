@@ -47,5 +47,19 @@ export const CategoryService = {
                 order_dir,
             }
         })
+    },
+
+    createNewCategory(content) {
+        const token = localStorage.getItem('tstring');
+
+        return api.call().post('/category/create', JSON.stringify({
+            name: content
+        }), {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json',
+            }
+        })
     }
 };

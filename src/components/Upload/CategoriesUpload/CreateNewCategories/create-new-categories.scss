@@ -1,0 +1,108 @@
+@import "../../../../assets/css/variables.scss";
+
+.create-new-categories-section {
+
+    .title {
+        color: $text-color;
+        line-height: 1.2;
+        font-size: 1.5rem;
+        padding: 1rem 0 0.1rem 0;
+        margin: 1rem 0 0.5rem 0;
+        border-top: 1px solid #ccc;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .inner {
+        .caption {
+            display: flex;
+            margin-bottom: 1rem;
+            
+            .icon {
+                font-size: 2.2rem;
+                color: #999;
+                margin-right: 1rem;
+            }
+
+            .text {
+                font-size: 1.4rem;
+                color: rgb(99, 99, 99);
+                line-height: 1.333;
+                font-weight: 400;
+                text-align: left;
+            }
+        }
+
+        .create {
+            .create-new-btn {
+                width: 100%;
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+                position: relative;
+
+                &:active {
+                    transform: scale(1);
+                }
+
+                &:focus {
+                    box-shadow: 0 0 0 3px rgba(52, 52, 255, 0.25);
+                }
+
+                .icon {
+                    font-size: 3rem;
+                }
+
+                .create-new-form {
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.15s ease;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    display: flex;
+
+                    .create-new-input {
+                        background-color: #fff;
+                        flex: 1;
+                        border-radius: 5px;
+                        border: none;
+                        outline: none;
+                        font-size: 1.5rem;
+                        padding: 0.5rem 1rem;
+                    }
+                }
+
+                .create-new-form.show {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+        }
+
+        .allow-no-of-characters {
+            display: flex;
+            justify-content: flex-end;
+            color: #999;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.3rem;
+            padding: 0.5rem;
+
+            .icon {
+                font-size: 1.6rem;
+                margin-right: 1rem;
+            }
+
+            .ok {
+                color: $green-ok-color;
+            }
+
+            .excess {
+                color: $error-color;
+            }
+        }
+    }
+}

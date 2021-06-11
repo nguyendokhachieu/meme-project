@@ -1,6 +1,8 @@
+import { useState } from "react";
+
+import CreateNewCategories from "./CreateNewCategories";
 import SearchCategoriesUpload from "./SearchCategoriesUpload";
 import ListCategoriesUpload from "./ListCategoriesUpload";
-import { useState } from "react";
 
 export default function CategoriesUpload({
   categoriesList = function() {},
@@ -8,6 +10,7 @@ export default function CategoriesUpload({
 {
   const [sQuery, setSQuery] = useState('');
   const [selectedCategoriesList, setSelectedCategoriesList] = useState([]);
+  const [reload, setReload] = useState(0);
 
   return (
     <div className="tags-list">
@@ -27,8 +30,10 @@ export default function CategoriesUpload({
           setSelectedCategoriesList(list); 
           } 
         }
+        reloadCategoriesList={ reload }
         query={ sQuery }
       />
+      <CreateNewCategories reloadCategoriesList={ val => { setReload(val)  } } />
     </div>
   );
 }
