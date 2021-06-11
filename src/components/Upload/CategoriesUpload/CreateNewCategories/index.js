@@ -24,11 +24,13 @@ export default function CreateNewCategories({
     }
 
     if (content.length > 50) {
+      setContent('');
       dispatch(actShowNotificationCard("Vui lòng nhập tối đa 50 ký tự"));
       return;
     }
 
     setContent('');
+    setShowForm(false);
     setCallingAPI(1);
 
     const response = await CategoryService.createNewCategory(content);

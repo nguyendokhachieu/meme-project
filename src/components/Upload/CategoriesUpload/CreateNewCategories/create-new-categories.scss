@@ -40,6 +40,13 @@
                 padding-top: 0.25rem;
                 padding-bottom: 0.25rem;
                 position: relative;
+                overflow: hidden;
+
+                &:hover {
+                    background-color: #fff;
+                    color: $base-color;
+                    border: 1px solid $base-color;
+                }
 
                 &:active {
                     transform: scale(1);
@@ -47,22 +54,29 @@
 
                 &:focus {
                     box-shadow: 0 0 0 3px rgba(52, 52, 255, 0.25);
+
+                    .icon {
+                        transform: translateX(-160px);
+                    }
                 }
 
                 .icon {
+                    transform: translateX(0);
+                    transition: all 0.2s ease;
                     font-size: 3rem;
                 }
 
                 .create-new-form {
-                    opacity: 0;
-                    visibility: hidden;
-                    transition: all 0.15s ease;
                     position: absolute;
                     top: 0;
                     left: 0;
                     right: 0;
                     bottom: 0;
                     display: flex;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.15s ease;
+                    transform: translateX(50px);
 
                     .create-new-input {
                         background-color: #fff;
@@ -78,6 +92,7 @@
                 .create-new-form.show {
                     visibility: visible;
                     opacity: 1;
+                    transform: translateX(0);
                 }
             }
         }
