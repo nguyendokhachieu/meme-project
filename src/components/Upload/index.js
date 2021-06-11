@@ -1,19 +1,20 @@
 import "./upload.scss";
 
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+
 import FormUpload from "./FormUpload";
 import ImagePreview from "./ImagePreview";
 import CategoriesUpload from "./CategoriesUpload";
-import { useEffect, useState } from "react";
+
 import { PostService } from "../../services/posts";
-import { useHistory } from "react-router";
-import NotificationCard from "../shared/NotificationCard";
+import { actShowNotificationCard } from "../../store/notifications/actions";
 
 export default function Upload() {
+  const dispatch = useDispatch();
   const history = useHistory();
-  const [hasErrors, setHasErrors] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [statusText, setStatusText] = useState('');
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [UploadButtonDisabled, setUploadButtonDisabled] = useState(true);
   const [categoriesList, setCategoriesList] = useState([]);
   const [file, setFile] = useState({name: ''});
   const [status, setStatus] = useState('');
@@ -35,51 +36,36 @@ export default function Upload() {
       frm.append('categories', JSON.stringify(categoriesList));
 
       try {
-        setSuccess(false);
-        setHasErrors(false);
-
         const response = await PostService.upload(frm);
 
         if (response.data.status === 404) {
-          setHasErrors(true);
-          setStatusText(response.data.message);
+          dispatch(actShowNotificationCard(response.data.message));
         } else {
-          setSuccess(true);
-          setStatusText(response.data.message);
+          dispatch(actShowNotificationCard(response.data.message));
           
-          setTimeout(() => {
-            history.push('/');
-          }, 1500);
+          history.push('/');
         }
         
       } catch (error) {
-        setHasErrors(true);
+        dispatch(actShowNotificationCard("Có lỗi xảy ra, xin vui lòng thử lại"));
       }      
     }
   }
 
-  useEffect(() => {
-    setHasErrors(false);
-    setSuccess(false);
-    
+  useEffect(() => {    
     if (status.length !== 0) {
-      setIsButtonDisabled(false);
+      setUploadButtonDisabled(false);
     } else {
-      setIsButtonDisabled(true);
+      setUploadButtonDisabled(true);
     }
 
     if (file.name.length !== 0) {
-      setIsButtonDisabled(false);
+      setUploadButtonDisabled(false);
     }
   }, [status, file]);
 
   return (
     <div className="main-content">
-      <NotificationCard 
-        show={ hasErrors || success }
-        content={ statusText }
-        showCloseButton={ true }
-      />
       <div className="container">
         <section className="upload-section">
           <div className="col-wrap">
@@ -96,9 +82,9 @@ export default function Upload() {
               <div className="upload-area">
                 <div className="btn-upload-wrap">
                   <button 
-                    className={ isButtonDisabled ? 'btn btn-filled-bc upload-btn-disabled' : 'btn btn-filled-bc' }
+                    className={ UploadButtonDisabled ? 'btn btn-filled-bc upload-btn-disabled' : 'btn btn-filled-bc' }
                     onClick={ upload } 
-                    disabled={ isButtonDisabled }
+                    disabled={ UploadButtonDisabled }
                   >
                     Đăng bài
                   </button>
