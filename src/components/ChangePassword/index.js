@@ -1,10 +1,16 @@
-import { useEffect, useRef, useState } from "react";
-import { useHistory } from "react-router";
-import { UserService } from "../../services/user";
 import "./style.scss";
 
+import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+
+import { actShowNotificationCard } from "../../store/notifications/actions";
+import { UserService } from "../../services/user";
+
 export default function ChangePassword() {
+  const dispatch = useDispatch();
   const history = useHistory();
+  
   const oldPassInputRef = useRef();
   const [showRoute, setShowRoute] = useState(false);
   
@@ -15,7 +21,6 @@ export default function ChangePassword() {
   const [loading, setLoading] = useState(false);
   const [hasErrors, setHasErrors] = useState(false);
   const [errorText, setErrorText] = useState('');
-  const [OK, setOK] = useState(false);
 
   const changePassword = async e => {
     e.preventDefault();
@@ -24,6 +29,7 @@ export default function ChangePassword() {
     const response = await UserService.changePassword(oldPass, newPass, renewPass);
 
     setLoading(false);
+
     if (response.data.status === 404) {
       setHasErrors(true);
       setOldPass('');
@@ -32,14 +38,12 @@ export default function ChangePassword() {
       setErrorText(response.data.message);
       oldPassInputRef.current && oldPassInputRef.current.focus();
     } else {
-      setHasErrors(false);
-      setOK(true);
-      
       localStorage.setItem('tstring', '');
 
-      setTimeout(() => {
-        history.push('/login');
-      }, 1500);
+      dispatch(actShowNotificationCard('Thay đổi mật khẩu thành công. Vui lòng đăng nhập lại!'));
+      setHasErrors(false);
+      
+      history.push('/login');
     }
   }
 
@@ -76,16 +80,6 @@ export default function ChangePassword() {
                     <div className="change-password-error active">
                       <p className="change-password-error-icon-wrap"><i class="fad fa-exclamation change-password-error-icon"></i></p>
                       <p className="change-password-error-text">{ errorText }</p>
-                    </div>
-                )
-                : null
-            }
-            {
-              OK  
-                ? (
-                    <div className="change-password active">
-                      <p className="change-password-icon-wrap"><i class="fal fa-check-circle change-password-icon"></i></p>
-                      <p className="change-password-text">Thay đổi mật khẩu thành công. Vui lòng đăng nhập lại</p>
                     </div>
                 )
                 : null
@@ -128,8 +122,7 @@ export default function ChangePassword() {
               <div className="change-password-btn-group">
                 <input
                   type="submit"
-                  className="btn btn-filled-bc"
-                  defaultValue="Thay đổi"
+                  className={ loading ? "btn btn-filled-bc ch-pass disabled" : "btn btn-filled-bc" }
                   value="Thay đổi"
                 />
               </div>
