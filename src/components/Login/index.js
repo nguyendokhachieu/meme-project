@@ -1,12 +1,13 @@
 import "./style.scss";
 
-import { Link, useHistory } from "react-router-dom";
-import Input from "./../shared/Input";
-import { useState } from "react";
-import { UserService } from "../../services/user";
-import { actLoginSuccessfully } from "./../../store/user/actions";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+
+import Input from "./../shared/Input";
+import { UserService } from "../../services/user";
+import { actShowNotificationCard } from "../../store/notifications/actions";
+import { actLoginSuccessfully } from "../../store/user/actions";
 import { useAuthorization } from "../../hooks/useAuthorization";
 
 export default function Login() {
@@ -33,6 +34,7 @@ export default function Login() {
     const response = await UserService.login(username, password);
 
     setLoading(false);
+    
     if (response.data.status === 200) {
       dispatch(actLoginSuccessfully(response.data.user));
 
@@ -52,6 +54,7 @@ export default function Login() {
   }, []);
 
   if (isLoggedIn || auth) {    
+    dispatch(actShowNotificationCard("Đăng nhập thành công!"));
     history.push('/');
   }
 
@@ -76,10 +79,6 @@ export default function Login() {
             <div className={ hasErrors ? "login-error active" : "login-error" }>
               <p className="login-error-icon-wrap"><i class="fad fa-exclamation login-error-icon"></i></p>
               <p className="login-error-text">Username hoặc password không hợp lệ. Vui lòng kiểm tra lại</p>
-            </div>
-            <div className={ (isLoggedIn || auth) ? "login active" : "login" }>
-              <p className="login-icon-wrap"><i class="fal fa-check-circle login-icon"></i></p>
-              <p className="login-text">Đăng nhập thành công</p>
             </div>
             <form action className="form-login" onSubmit={ login } >
               <div className="form-ctl-wrap">

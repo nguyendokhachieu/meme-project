@@ -1,11 +1,16 @@
 import "./register.scss";
+
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import { UserService } from "../../services/user";
 import { useAuthorization } from "../../hooks/useAuthorization"; 
+import { actShowNotificationCard } from "../../store/notifications/actions";
 import Input from "../shared/Input";
 
 export default function Register() {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [username, setUsername] = useState('');
   const [fullname, setFullname] = useState('');
@@ -46,14 +51,12 @@ export default function Register() {
   }
 
   useEffect(() => {
-    redirect && (
-      window.setTimeout(() => {
-        history.push('/login');
-      }, 1500)
-    )
+    redirect && dispatch(actShowNotificationCard('Đăng ký tài khoản thành công, vui lòng đăng nhập lại!'));
+    redirect && history.push('/login');
   }, [redirect]);
 
   useEffect(() => {
+    auth && dispatch(actShowNotificationCard('Bạn đã đăng nhập!'));
     auth && history.push('/');
   }, [auth]);
 
@@ -80,14 +83,6 @@ export default function Register() {
             <div className={ hasErrors === 'password_mismatch' ? "register-error active" : "register-error" }>
               <p className="register-error-icon-wrap"><i class="fad fa-exclamation register-error-icon"></i></p>
               <p className="register-error-text">Password không hợp lệ. Vui lòng kiểm tra lại</p>
-            </div>
-            <div className={ redirect ? "register active" : "register" }>
-              <p className="register-icon-wrap"><i class="fal fa-check-circle register-icon"></i></p>
-              <p className="register-text">Đăng ký tài khoản thành công, vui lòng đăng nhập lại.</p>
-            </div>
-            <div className={ auth ? "register active" : "register" }>
-              <p className="register-icon-wrap"><i class="fal fa-check-circle register-icon"></i></p>
-              <p className="register-text">Bạn đã đăng nhập, đang chuyển hướng đến trang chủ. Xin vui lòng chờ</p>
             </div>
             <form className="form-register" onSubmit={ register }>
               <div className="form-ctl-wrap">
@@ -152,11 +147,19 @@ export default function Register() {
                 </p>
                 <Input
                   type="submit"
-                  className="btn btn-filled-bc"
+                  className={ loading ? "btn btn-filled-bc register-btn disabled" : "btn btn-filled-bc"}
                   value="Đăng ký"
                 />
               </div>
             </form>
+            <div className="route">
+              <button 
+                className="go-back-btn" 
+                onClick={ e => { history.push('/') }}
+              >
+                  Quay về trang chủ
+              </button>
+            </div>
           </div>
         </div>
       </div>
