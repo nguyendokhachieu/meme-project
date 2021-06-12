@@ -276,16 +276,15 @@
       }
 
     .side-bar-wrap::-webkit-scrollbar {
-        width: 1rem;
+        width: 0.75rem;
     }
        
     .side-bar-wrap::-webkit-scrollbar-track {
         border-radius: 5px;
-        box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
     }
     
     .side-bar-wrap::-webkit-scrollbar-thumb {
-        background-color: rgba(204, 204, 204, 0.5);
+        background-color: rgba(204, 204, 204, 0.75);
         outline: none;
         border-radius: 5px;
     }

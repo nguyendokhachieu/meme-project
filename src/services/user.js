@@ -6,7 +6,8 @@ export const UserService = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Basic ' + window.btoa(username.concat('.').concat(password))
+                // 'Authorization': 'Basic ' + window.btoa(username.concat('.').concat(password)),
+                'Authorization': 'Basic ' + window.btoa(unescape(encodeURIComponent(username)).concat('.').concat(unescape(encodeURIComponent(password))))
             }
         })
     },
@@ -15,7 +16,7 @@ export const UserService = {
         return api.call().post("/user/auth", null, {
             method: 'POST',
             headers: {
-                'Authorization': "Bearer " + token,
+                'Authorization': "Bearer " + unescape(encodeURIComponent(token)),
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             }
@@ -32,7 +33,7 @@ export const UserService = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Basic ' + window.btoa(username.concat('.').concat(unescape(encodeURIComponent(fullname))).concat('.').concat(password).concat('.').concat(rePassword)),
+                'Authorization': 'Basic ' + window.btoa(unescape(encodeURIComponent(username)).concat('.').concat(unescape(encodeURIComponent(fullname))).concat('.').concat(unescape(encodeURIComponent(password))).concat('.').concat(unescape(encodeURIComponent(rePassword)))),
             }
         })
     },
@@ -67,8 +68,8 @@ export const UserService = {
         return api.call().post('/user/changepassword', null, {
             method: 'POST',
             headers: {
-                    'Authorization': 'Basic ' + window.btoa(oldPassword.concat('.').concat(newPassword).concat('.').concat(renewPassword)) + ', ' 
-                                    + 'Bearer ' + token,
+                    'Authorization': 'Basic ' + window.btoa(unescape(encodeURIComponent(oldPassword)).concat('.').concat(unescape(encodeURIComponent(newPassword))).concat('.').concat(unescape(encodeURIComponent(renewPassword)))) + ', ' 
+                                    + 'Bearer ' + unescape(encodeURIComponent(token)),
             },
         })
     },
@@ -94,7 +95,7 @@ export const UserService = {
         }), {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer ' + token,
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
             }
         })
     },
@@ -108,7 +109,7 @@ export const UserService = {
         }), {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer ' + token,
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
             }
         })
     },
@@ -118,7 +119,7 @@ export const UserService = {
 
         return api.call().post('/user/update', formDataObject, {
             headers: {
-                'Authorization': 'Bearer ' + token,
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
                 'Content-Type': 'multipart/form-data',
             }
         })

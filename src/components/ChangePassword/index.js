@@ -5,14 +5,17 @@ import "./style.scss";
 
 export default function ChangePassword() {
   const history = useHistory();
-  const [loading, setLoading] = useState(false);
+  const oldPassInputRef = useRef();
+  const [showRoute, setShowRoute] = useState(false);
+  
   const [oldPass, setOldPass] = useState('');
   const [newPass, setNewPass] = useState('');
   const [renewPass, setRenewPass] = useState('');
+  
+  const [loading, setLoading] = useState(false);
   const [hasErrors, setHasErrors] = useState(false);
   const [errorText, setErrorText] = useState('');
   const [OK, setOK] = useState(false);
-  const oldPassInputRef = useRef();
 
   const changePassword = async e => {
     e.preventDefault();
@@ -43,6 +46,14 @@ export default function ChangePassword() {
   useEffect(() => {
     oldPassInputRef.current && oldPassInputRef.current.focus();
   }, []);
+
+  useEffect(() => {
+    if (history && history.action === 'PUSH') {
+      if (history.location && history.location.state && history.location.state.history) {
+        setShowRoute(true);
+      }
+    }
+  }, [history]);
 
   return (
     <div className="main-content">
@@ -79,7 +90,7 @@ export default function ChangePassword() {
                 )
                 : null
             }
-            <form action className="form-change-password" onSubmit={ changePassword }>
+            <form className="form-change-password" onSubmit={ changePassword }>
               <div className="form-ctl-wrap">
                 <i class="fal fa-unlock-alt password-icon"></i>
                 <input
@@ -124,20 +135,16 @@ export default function ChangePassword() {
               </div>
             </form>
             {
-              history.action !== 'PUSH'
-                ? null 
-                : !history.location.state.history 
-                    ? null 
-                    : (
-                      <div className="route">
-                        <button 
-                          className="go-back-btn" 
-                          onClick={ e => { history.push('/update#02-privacy') }}
-                        >
-                            Quay về trang cập nhật
-                        </button>
-                      </div>
-                    )
+              showRoute && (
+                <div className="route">
+                  <button 
+                    className="go-back-btn" 
+                    onClick={ e => { history.push('/update#02-privacy') }}
+                  >
+                      Quay về trang cập nhật
+                  </button>
+                </div>
+              )
             }
           </section>
         </div>

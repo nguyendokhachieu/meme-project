@@ -1,11 +1,17 @@
 import "./search.scss";
-import Sidebar from "./Sidebar";
-import Results from "./Results";
-import { useWindowSize } from "../../hooks/useWindowSize";
-import { SearchService } from "../../services/search";
+
 import { useEffect, useState } from "react";
 
-export default function Search({ q = null }) {
+import Sidebar from "./Sidebar";
+import Results from "./Results";
+
+import { useWindowSize } from "../../hooks/useWindowSize";
+import { SearchService } from "../../services/search";
+
+export default function Search({ 
+    q = null 
+}) 
+{
     const [loading, setLoading] = useState(false);
     const [buttonLoading, setButtonLoading] = useState(false);
     const [page, setPage] = useState(1);
@@ -48,7 +54,7 @@ export default function Search({ q = null }) {
             order_dir: orderDir,
         });
 
-        response.data.data.length === 0 && setHasMore(false);
+        response.data.data && response.data.data.length === 0 && setHasMore(false);
         setLoading(false);
         setResults(response.data.data || []);
     }, [q, orderBy, orderDir]);

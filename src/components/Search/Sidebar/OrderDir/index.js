@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 export default function OrderDir({
-  onOrderDirChange = function() {}
+  onOrderDirChange = function() {},
+  orderBy = 'created_at',
 }) {
   const [orderDir, setOrderDir] = useState('DESC');
 
@@ -28,7 +29,11 @@ export default function OrderDir({
             onChange={ e => { e.target.checked && setOrderDir(e.target.value) } }
           />
           <label htmlFor="ASC" className="order-label">
-            Tăng dần
+            {
+              orderBy === 'created_at'
+                ? 'Cũ hơn'
+                : 'Tăng dần'
+            }
           </label>
         </div>
         <div className="input-wrap">
@@ -42,7 +47,11 @@ export default function OrderDir({
             onChange={ e => { e.target.checked && setOrderDir(e.target.value) } }
           />
           <label htmlFor="DESC" className="order-label">
-            Giảm dần
+            {
+              orderBy === 'created_at'
+                ? 'Gần đây nhất'
+                : 'Giảm dần'
+            }
           </label>
         </div>
       </form>

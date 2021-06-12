@@ -1,6 +1,9 @@
 import "./sidebar.scss";
+
 import OrderBy from "./OrderBy";
 import OrderDir from "./OrderDir";
+import SearchBy from "./SearchBy";
+
 import { useEffect, useState } from "react";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 
@@ -10,6 +13,7 @@ export default function Sidebar({
 }) 
 {
   const [showFilter, setShowFilter] = useState(true);
+  const [orderBy, setOrderBy]  = useState('created_at');
   const { width } = useWindowSize();
 
   useEffect(() => {
@@ -31,8 +35,14 @@ export default function Sidebar({
         showFilter
           ? (
             <div className="search-filter">
-              <OrderDir onOrderDirChange={ value => { onOrderDirChange(value) } } />
-              <OrderBy onOrderByChange={ value => { onOrderByChange(value) } } />
+              <OrderDir 
+                onOrderDirChange={ value => { onOrderDirChange(value) } } 
+                orderBy={ orderBy }
+              />
+              <OrderBy 
+                onOrderByChange={ value => { onOrderByChange(value); setOrderBy(value); } } 
+              />
+              <SearchBy />
             </div>
           )
           : null
