@@ -72,7 +72,11 @@ export default function CreateNewCategories({
             className="btn create-new-btn" 
             onClick={ e => { setShowForm(true) } }
           >
-            <i class="fal fa-plus icon"></i>
+            {
+              callingAPI === 1
+                ? <i class="fa fa-spinner fa-spin icon"></i>
+                : <i class="fal fa-plus icon"></i>
+            }
             <form 
               className={ showForm ? "create-new-form show" : "create-new-form" }
               onSubmit={ createNewCategory }

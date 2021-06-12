@@ -95,6 +95,11 @@
 
         .post-item-image-wrap {
             padding: 1rem 0 1rem 0;
+
+            .post-item-image {
+                overflow: hidden;
+                border-radius: 5px;
+            }
         }
     }
 

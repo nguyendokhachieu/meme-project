@@ -16,6 +16,7 @@ export default function UploadButton({
   const dispatch = useDispatch();
   const history = useHistory();
   const [UploadButtonDisabled, setUploadButtonDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const upload = async () => {
     let errorsCount = 0;
@@ -34,7 +35,10 @@ export default function UploadButton({
       frm.append('categories', JSON.stringify(categoriesList));
 
       try {
+        setLoading(true);
         const response = await PostService.upload(frm);
+
+        setLoading(false);
 
         if (response.data.status === 404) {
           dispatch(actShowNotificationCard(response.data.message));
@@ -65,11 +69,15 @@ export default function UploadButton({
   return (
     <div className="btn-upload-wrap">
       <button 
-        className={ UploadButtonDisabled ? 'btn btn-filled-bc upload-btn-disabled' : 'btn btn-filled-bc' }
+        className={ UploadButtonDisabled || loading ? 'btn btn-filled-bc upload-btn-disabled' : 'btn btn-filled-bc' }
         onClick={ upload } 
         disabled={ UploadButtonDisabled }
       >
-        Đăng bài
+        {
+          loading
+            ? <i class="fa fa-spinner fa-spin icon"></i>
+            : "Đăng bài"
+        }
       </button>
     </div>
   );
