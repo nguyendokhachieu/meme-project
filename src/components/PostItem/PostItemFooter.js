@@ -48,7 +48,7 @@ export default function PostItemHeader({
   }
 
   useEffect(async () => {
-    if (user.id) {
+    if (user.id && post.id) {
       const response = await PostService.checkLiked(user.id, post.id);
 
       setLiked(response.data.liked);

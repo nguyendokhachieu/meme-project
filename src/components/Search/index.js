@@ -17,6 +17,7 @@ export default function Search({
     const [page, setPage] = useState(1);
     const [orderBy, setOrderBy] = useState('created_at');
     const [orderDir, setOrderDir] = useState('DESC');
+    const [searchBy, setSearchBy] = useState('posts');
     const [hasMore, setHasMore] = useState(true);
     const [results, setResults] = useState([]);
     const { width } = useWindowSize();
@@ -24,13 +25,23 @@ export default function Search({
     const handleLoadMore = async () => {
         setButtonLoading(true);
         
-        const response = await SearchService.get({
-            q,
-            page: page + 1,
-            per_page: 8,
-            order_by: orderBy,
-            order_dir: orderDir,
-        });
+        let response = null;
+
+        if (searchBy === 'posts') {
+            response = await SearchService.getPosts({
+                q,
+                page: page + 1,
+                per_page: 5,
+                order_by: orderBy,
+                order_dir: orderDir,
+            });
+        } else {
+            response = await SearchService.getUsers({
+                q,
+                page: page + 1,
+                per_page: 5,
+            });
+        }
 
         setButtonLoading(false);
         setPage(prev => prev + 1);
@@ -45,19 +56,31 @@ export default function Search({
         setPage(prev => 1);
         setResults([]);
         setLoading(true);
-        
-        const response = await SearchService.get({
-            q,
-            page: 1,
-            per_page: 8,
-            order_by: orderBy,
-            order_dir: orderDir,
-        });
+        setHasMore(true);
+
+        let response = null;
+
+        if (searchBy === 'posts') {
+            response = await SearchService.getPosts({
+                q,
+                page: 1,
+                per_page: 5,
+                order_by: orderBy,
+                order_dir: orderDir,
+            });
+        } else {
+            response = await SearchService.getUsers({
+                q,
+                page: 1,
+                per_page: 5,
+            });
+        }
 
         response.data.data && response.data.data.length === 0 && setHasMore(false);
         setLoading(false);
         setResults(response.data.data || []);
-    }, [q, orderBy, orderDir]);
+        
+    }, [q, orderBy, orderDir, searchBy]);
 
     return (
         <div className="main-content">
@@ -70,6 +93,7 @@ export default function Search({
                                     <Sidebar 
                                         onOrderByChange={ value => { setOrderBy(value) } }
                                         onOrderDirChange={ value => { setOrderDir(value) } }
+                                        onSearchByChange={ value => { setSearchBy(value) } }
                                     />
                                 )
                                 : null
@@ -80,6 +104,7 @@ export default function Search({
                             <Sidebar 
                                 onOrderByChange={ value => { setOrderBy(value) } }
                                 onOrderDirChange={ value => { setOrderDir(value) } }
+                                onSearchByChange={ value => { setSearchBy(value) } }
                             />
                         </div>
                         <div className="search-results-wrap">
@@ -90,6 +115,7 @@ export default function Search({
                                 buttonLoading={ buttonLoading }
                                 loadMore={ val => { handleLoadMore() } }
                                 hasMore={ hasMore }
+                                searchBy={ searchBy }
                             />
                         </div>
                     </div>

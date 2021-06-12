@@ -1,38 +1,49 @@
+import { useEffect, useState } from "react";
 
-export default function SearchBy() {
+export default function SearchBy({
+  onSearchByChange = function() {},
+}) 
+{
+  const [searchBy, setSearchBy] = useState('posts');
+  
+  useEffect(() => {
+    onSearchByChange(searchBy);
+  }, [searchBy]);
 
   return (
     <div className="order">
       <h5 className="cri-title">
         Tìm kiếm:
-        <i class="fal fa-users icon"></i>
-        <i class="fal fa-newspaper icon"></i>
+        <i className="fal fa-users icon"></i>
+        <i className="fal fa-newspaper icon"></i>
       </h5>
       <form className="form-group">
         <div className="input-wrap">
           <input
             type="radio"
-            name="orderDir"
-            id="ASC"
+            name="searchBy"
+            id="posts"
             className="order-input"
-            value="ASC"
-            defaultChecked={ false }
+            value="posts"
+            defaultChecked={ true }
+            onChange={ e => { e.target.checked && setSearchBy(e.target.value) } }
           />
-          <label htmlFor="ASC" className="order-label">
-            Người dùng
+          <label htmlFor="posts" className="order-label">
+            Nội dung bài viết
           </label>
         </div>
         <div className="input-wrap">
           <input
             type="radio"
-            name="orderDir"
-            id="DESC"
+            name="searchBy"
+            id="users"
             className="order-input"
-            value="DESC"
-            defaultChecked={ true }
+            value="users"
+            defaultChecked={ false }
+            onChange={ e => { e.target.checked && setSearchBy(e.target.value) } }
           />
-          <label htmlFor="DESC" className="order-label">
-            Nội dung bài viết
+          <label htmlFor="users" className="order-label">
+            Người dùng
           </label>
         </div>
       </form>

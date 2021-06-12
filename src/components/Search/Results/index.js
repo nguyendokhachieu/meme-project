@@ -1,4 +1,6 @@
 import "./results.scss";
+
+import ModalUserItem from "../../shared/ModalUserItem";
 import PostItem from "../../PostItem";
 import PostItemLoading from "../../PostItem/PostItemLoading";
 
@@ -9,6 +11,7 @@ export default function Results({
     buttonLoading,
     loadMore = function() {},
     hasMore,
+    searchBy,
 }) 
 {
   return (
@@ -24,10 +27,16 @@ export default function Results({
         {
             loading 
                 ? <PostItemLoading noOfItems={ 2 } />
-                : results.length === 0
+                : searchBy === 'posts'
+                  ? results.length === 0
                     ? null
                     : results.map(post => {
-                        return <PostItem post={ post } />
+                        return <PostItem post={ post } showFooter={ false } />
+                    })
+                  : results.length === 0
+                    ? null
+                    : results.map(user => {
+                        return <ModalUserItem user={ user } />
                     })
         }
       </div>
@@ -37,12 +46,12 @@ export default function Results({
                 <div className="load-more">
                     <button className="load-more-btn" onClick={ e => { loadMore(true) } }>
                       {
-                        buttonLoading ? "Đang tải" : "Tải thêm bài viết"
+                        buttonLoading ? "Đang tải" : "Tải thêm"
                       }
                     </button>
                 </div>
             )
-            : <div className="load-more"><span className="load-more-btn">Bạn đã xem hết bài viết</span></div>
+            : <div className="load-more"><span className="load-more-btn">Bạn đã xem hết</span></div>
       }
     </div>
   );

@@ -10,6 +10,7 @@ import { useWindowSize } from "../../../hooks/useWindowSize";
 export default function Sidebar({
     onOrderDirChange = function() {},
     onOrderByChange = function() {},
+    onSearchByChange = function() {},
 }) 
 {
   const [showFilter, setShowFilter] = useState(true);
@@ -42,7 +43,9 @@ export default function Sidebar({
               <OrderBy 
                 onOrderByChange={ value => { onOrderByChange(value); setOrderBy(value); } } 
               />
-              <SearchBy />
+              <SearchBy 
+                onSearchByChange={ value => { onSearchByChange(value); } }
+              />
             </div>
           )
           : null

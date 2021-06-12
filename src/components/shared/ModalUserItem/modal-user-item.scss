@@ -2,8 +2,10 @@
     display: flex;
     justify-content: flex-start;
     border-radius: 7px;
-    padding: 0.5rem 0.25rem;
-    margin-bottom: 1rem;                
+    padding: 1rem;
+    margin-bottom: 1rem;       
+    background-color: #fff;    
+    box-shadow: 0 0 3px 0 #ccc;     
     transition: all 0.15s ease;
 
     .avatar-link-wrap {

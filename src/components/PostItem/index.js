@@ -4,7 +4,8 @@ import PostItemContent from "./PostItemContent";
 import PostItemFooter from "./PostItemFooter";
 
 export default function PostItem({
-  post
+  post,
+  showFooter = true,
 }) 
 {
   if (!post) {
@@ -15,7 +16,11 @@ export default function PostItem({
     <div className="post-item">
       <PostItemHeader post={ post } />
       <PostItemContent post={ post } />
-      <PostItemFooter post={ post } />
+      {
+        showFooter
+          ? <PostItemFooter post={ post } />
+          : null
+      }
     </div>
   );
 }
