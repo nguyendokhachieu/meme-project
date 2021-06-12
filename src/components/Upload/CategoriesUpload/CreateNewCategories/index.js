@@ -1,6 +1,6 @@
 import "./create-new-categories.scss";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { CategoryService } from "../../../../services/categories";
@@ -11,6 +11,7 @@ export default function CreateNewCategories({
 }) 
 {
   const dispatch = useDispatch();
+  const inputRef = useRef();
   const [showForm, setShowForm] = useState(false);
   const [content, setContent] = useState('');
   const [callingAPI, setCallingAPI] = useState(0);
@@ -48,6 +49,12 @@ export default function CreateNewCategories({
     callingAPI === 2 && reloadCategoriesList(Math.random());
   }, [callingAPI]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      inputRef.current && inputRef.current.focus();
+    }, 400);
+  }, [showForm]);
+
   return (
     <section className="create-new-categories-section">
       <h4 
@@ -69,11 +76,12 @@ export default function CreateNewCategories({
             <form 
               className={ showForm ? "create-new-form show" : "create-new-form" }
               onSubmit={ createNewCategory }
-            >
+              >
               <input 
                 type="text" 
                 className="create-new-input" 
                 placeholder="Số ký tự tối đa là 50" 
+                ref={ inputRef }
                 value={ content }
                 onChange={ e => { setContent(e.target.value) } }
               />
