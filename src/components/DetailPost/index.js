@@ -1,6 +1,6 @@
 import "./style.scss";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { actFetchDetailPostAsync } from "./../../store/posts/actions";
@@ -45,6 +45,19 @@ export default function DetailPost({
     }
   }, [postID]);
 
+  const scrollToTop = useCallback(() => {
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+    if (c > 0) {
+      window.requestAnimationFrame(scrollToTop);
+      window.scrollTo(0, c - c / 12);
+    }
+  }
+  );
+  
+  useEffect(() => {
+    scrollToTop();
+  }, []);
+  
   if (hasErrors) {
     return <NotFound />;
   }

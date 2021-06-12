@@ -6,10 +6,6 @@ body {
     width: 100%;
 }
 
-.main-content {
-    margin-top: 7.4rem;
-}
-
 .container {
     margin: 0 auto;
     width: calc(1024px + 3rem);
@@ -33,6 +29,8 @@ body {
 
 .form-control:focus {
     border-color: #3482e2;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(156, 201, 255, 0.5)
 }
 
 .btn {

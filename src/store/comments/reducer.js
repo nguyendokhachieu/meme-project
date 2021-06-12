@@ -65,7 +65,8 @@ export const commentsReducer = (state = initState, action) => {
         case ACT_DELETE_COMMENT:
             const deletedID = action.payload.id;
 
-            const newListComment = state.listComment.filter(cmt => {
+            const copied = [...state.listComment];
+            const newListComment = copied.filter(cmt => {
                 if (Number(cmt.id) !== Number(deletedID)) {
                     return cmt;
                 } 

@@ -22,7 +22,8 @@
 
       .header-logo {
         font-size: 2.5rem;
-        align-self: center;
+        align-self: stretch;
+        line-height: 5rem;
 
         &-link {
           color: $base-color;
