@@ -57,7 +57,7 @@ export const CategoryService = {
         }), {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer ' + token,
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
                 'Content-Type': 'application/json',
             }
         })

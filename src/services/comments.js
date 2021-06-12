@@ -21,7 +21,7 @@ export const CommentService = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token,
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
             }
         })
     },
@@ -35,7 +35,7 @@ export const CommentService = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token,
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
             }
         })
     }

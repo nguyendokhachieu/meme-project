@@ -63,7 +63,7 @@ export const PostService = {
         return api.call().post('/post/upload', formDataObject, {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer ' + token,
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
                 'Content-Type': 'multipart/form-data',
             }
         });
@@ -140,7 +140,7 @@ export const PostService = {
         return api.call().post('/post/delete', JSON.stringify({id}), {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer ' + token,
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
                 'Content-Type': 'application/json',
             }
         })
