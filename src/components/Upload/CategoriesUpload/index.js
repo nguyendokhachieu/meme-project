@@ -1,8 +1,9 @@
 import { useState } from "react";
 
-import CreateNewCategories from "./CreateNewCategories";
+import Seleted from "./Seleted";
 import SearchCategoriesUpload from "./SearchCategoriesUpload";
 import ListCategoriesUpload from "./ListCategoriesUpload";
+import CreateNewCategories from "./CreateNewCategories";
 
 export default function CategoriesUpload({
   categoriesList = function() {},
@@ -14,9 +15,7 @@ export default function CategoriesUpload({
 
   return (
     <div className="tags-list">
-      <div className="selected">
-        <h5 className="title">Đã chọn { selectedCategoriesList.length } danh mục</h5>
-      </div>
+      <Seleted noOfCategoriesSeleted={ selectedCategoriesList.length } />
       <h4 
         className="tags-list-title" 
         title="Chọn danh mục có liên quan đến bài viết"

@@ -1,3 +1,5 @@
+import "./search-categories.scss";
+
 export default function SearchCategoriesUpload({
   query = function() {},
 }) 

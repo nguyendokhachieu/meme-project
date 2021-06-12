@@ -1,0 +1,16 @@
+.btn-upload-wrap {
+    display: flex;
+    margin-bottom: 1rem;
+
+    & > * {
+        flex: 1;
+    }
+
+    .upload-btn-disabled {
+        background-color: #ccc;
+        color: rgba(255, 255, 255, 0.9);
+        border-color: transparent;
+        cursor: default;
+    }
+}
+

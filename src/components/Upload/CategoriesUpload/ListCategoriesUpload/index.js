@@ -1,3 +1,5 @@
+import "./list-categories.scss";
+
 import { useEffect, useState } from "react";
 import { CategoryService } from "../../../../services/categories";
 
@@ -46,7 +48,7 @@ export default function ListCategoriesUpload({
       <div className="inner-list">
       {
           isLoading
-            ? <div align="center"><i class="fa fa-spinner fa-spin icon-fz-16 icon-color-light"></i></div>
+            ? <div align="center"><i class="fa fa-spinner fa-spin icon"></i></div>
             : categories.length !== 0
               ? categories.filter(c => {
                   if (query === '') {
