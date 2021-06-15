@@ -38,16 +38,26 @@
         padding: 1.5rem 1.7rem;
         margin: 0 0 1rem 0;
     
-        .tags-list-title {
-            color: $text-color;
-            line-height: 1.2;
-            font-size: 1.5rem;
-            padding: 1rem 0 0.1rem 0;
-            margin: 1rem 0 0 0;
-            border-top: 1px solid #ccc;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
+        .categories-list {
+            .title {
+                color: $text-color;
+                line-height: 1.2;
+                font-size: 1.5rem;
+                padding: 1rem 0 0.1rem 0;
+                margin: 1rem 0 0 0;
+                border-top: 1px solid #ccc;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                line-height: 1.333;
+            }
+
+            .caption {
+                font-size: 1.4rem;
+                color: rgb(99, 99, 99);
+                line-height: 1.333;
+                font-weight: 400;
+                text-align: left;
+            }
         }
     }
 }

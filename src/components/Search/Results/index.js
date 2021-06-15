@@ -31,7 +31,7 @@ export default function Results({
                   ? results.length === 0
                     ? null
                     : results.map(post => {
-                        return <PostItem post={ post } showFooter={ false } />
+                        return <PostItem key={ post.id } post={ post } />
                     })
                   : results.length === 0
                     ? null

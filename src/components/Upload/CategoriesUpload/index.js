@@ -14,14 +14,15 @@ export default function CategoriesUpload({
   const [reload, setReload] = useState(0);
 
   return (
-    <div className="tags-list">
+    <div className="categories-list">
       <Seleted noOfCategoriesSeleted={ selectedCategoriesList.length } />
       <h4 
-        className="tags-list-title" 
+        className="title" 
         title="Chọn danh mục có liên quan đến bài viết"
       >
         Chọn danh mục có liên quan đến bài viết
       </h4>
+      <span className="caption">Tick để chọn danh mục</span>
       <SearchCategoriesUpload query={ q => { setSQuery(q) } } />
       <ListCategoriesUpload 
         categoriesList={ list => { 
