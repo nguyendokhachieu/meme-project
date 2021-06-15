@@ -1,0 +1,50 @@
+.collapse {
+    display: inline-block;
+    position: relative;
+
+    .selected {
+        font-size: 1.5rem;
+        background-color: #fff;
+        padding: 0.5rem 1rem;
+        box-shadow: 0 0 3px 0 #ccc;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        .icon {
+            margin-left: 1rem;
+            color: rgb(100, 100, 100);
+        }
+
+        &:active {
+            background-color: #eee;
+        }
+    }
+
+    .options {
+        position: absolute;
+        z-index: 13;
+        top: -9rem;
+        left: -5.7rem;
+        min-width: 14rem;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 3px 0 #ccc;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.15s ease;
+
+        .item {
+            width: 100%;
+            margin: 0;
+            display: inline-block;
+            font-size: 1.5rem;
+            padding: 1rem 1.5rem;
+        }
+    }
+
+    .options.show {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

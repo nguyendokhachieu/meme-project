@@ -4,6 +4,16 @@ import { actShowNotificationCard } from "../notifications/actions";
 export const ACT_CREATE_A_NEW_COMMENT = 'ACT_CREATE_A_NEW_COMMENT';
 export const ACT_FETCH_ALL_COMMENTS_BY_POST_ID = 'ACT_FETCH_ALL_COMMENTS_BY_POST_ID';
 export const ACT_DELETE_COMMENT = 'ACT_DELETE_COMMENT';
+export const ACT_SORT_COMMENT = 'ACT_SORT_COMMENT';
+
+export const actSortComment = (direction = 'desc') => {
+    return {
+        type: ACT_SORT_COMMENT,
+        payload: {
+            direction,
+        }
+    }
+}
 
 export const actDeleteComment = (id) => {
     return {

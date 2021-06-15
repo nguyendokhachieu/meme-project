@@ -2,6 +2,7 @@ import {
     ACT_CREATE_A_NEW_COMMENT, 
     ACT_FETCH_ALL_COMMENTS_BY_POST_ID,
     ACT_DELETE_COMMENT,
+    ACT_SORT_COMMENT,
 } from "./actions";
 
 const initState = {
@@ -21,6 +22,20 @@ const initState = {
 
 export const commentsReducer = (state = initState, action) => {
     switch (action.type) {
+        case ACT_SORT_COMMENT:
+            const dir = action.payload.direction;
+
+            const newArray = state.listComment.sort((a, b) => {
+                let number = a.created_at < b.created_at ? -1 : 1;
+                return dir === 'desc' ? (-1) * number : number;
+            })
+
+            return {
+                ...state,
+                listComment: [
+                    ...newArray,
+                ],
+            }
         case ACT_CREATE_A_NEW_COMMENT:
             const newCommentItem = {
                 id: action.payload.id,
