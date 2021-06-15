@@ -46,7 +46,9 @@ export const postsReducer = (state = initState, action) => {
                 per_page: action.payload.per_page,
                 total_posts: action.payload.total_posts,
                 hasMore: action.payload.hasMore,
-                posts: [    ...state.posts,
+                posts: action.payload.page === 1
+                        ? action.payload.posts
+                        : [    ...state.posts,
                             ...action.payload.posts,
                         ],
             }
