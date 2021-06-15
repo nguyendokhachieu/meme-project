@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { PostService } from "../../../../services/posts";
 import { actShowNotificationCard } from "../../../../store/notifications/actions";
+import { actDeletePost } from "../../../../store/posts/actions";
 
 export default function Delete({
   id
@@ -13,16 +14,14 @@ export default function Delete({
 
   const deleteThisPost = async () => {
     setCallingAPI(true);
+    
     const response = await PostService.delete(id);
 
     setCallingAPI(false);
 
     if (response.data.deleted) {
+      dispatch(actDeletePost(id));
       dispatch(actShowNotificationCard("Xóa bài viết thành công"));
-
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
 
       return;
     }

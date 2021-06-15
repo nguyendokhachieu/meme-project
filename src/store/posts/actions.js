@@ -2,6 +2,16 @@ import { PostService } from "./../../services/posts";
 
 export const ACT_FETCH_POSTS_PAGINATION = 'ACT_FETCH_POSTS_PAGINATION';
 export const ACT_FETCH_POSTS_BY_USER_ID_PAGINATION = 'ACT_FETCH_POSTS_BY_USER_ID_PAGINATION';
+export const ACT_DELETE_POST = 'ACT_DELETE_POST';
+
+export const actDeletePost = id => {
+    return {
+        type: ACT_DELETE_POST,
+        payload: {
+            id,
+        }
+    }
+}
 
 export const actFetchPostsByUserIdPaginationAsync = ({
     user_id, 
@@ -72,19 +82,22 @@ export const actFetchPostsPaginationAsync = ({
 {
     return async (dispatch) => {
         try {
+            
             const response = await PostService.getPostsPagination({
                 page,
                 per_page,
                 order_by,
                 order_dir,
             });
-    
-            dispatch(actFetchPostsPagination({
+
+            await dispatch(actFetchPostsPagination({
                 page,
                 per_page,
                 total_posts: response.data.total_posts,
                 posts: response.data.data,
+                hasMore: response.data.data.length === 0 ? false : true,
             }));
+
         } catch (error) {
             console.log(error);
         }
@@ -96,6 +109,7 @@ const actFetchPostsPagination = ({
     per_page = 2,
     total_posts = 0,
     posts = [],
+    hasMore = true,
 }) => {
     return {
         type: ACT_FETCH_POSTS_PAGINATION, 
@@ -104,6 +118,7 @@ const actFetchPostsPagination = ({
             per_page,
             total_posts,
             posts,
+            hasMore,
         }
     }
 }

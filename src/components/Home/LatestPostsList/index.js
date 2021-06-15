@@ -16,8 +16,8 @@ export default function LatestPostsList() {
         {
           posts.length !== 0 
             ? (
-              posts.map((post, index) => {
-                return <PostItem key={index} post={post} />;
+              posts.map(post => {
+                return <PostItem key={ post.id } post={post} />;
               })
             ) 
             : <PostItemLoading />

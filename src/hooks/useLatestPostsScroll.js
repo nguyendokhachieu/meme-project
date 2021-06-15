@@ -1,16 +1,17 @@
-import { useScrolledPercentage } from "../hooks/useScrolledPercentage";
 import { useEffect, useState } from "react";
-import { PostService } from "../services/posts";
+import { useDispatch, useSelector } from "react-redux";
+import { useScrolledPercentage } from "../hooks/useScrolledPercentage";
+import { actFetchPostsPaginationAsync } from "../store/posts/actions";
 
 export function useLatestPostsScroll() {
+  const dispatch = useDispatch();
   const { scrolledPercentY } = useScrolledPercentage();
   const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  const { posts, page, hasMore } = useSelector(state => state.posts);
 
   useEffect(async () => {
-    if (scrolledPercentY > 88) {
+
+    if (scrolledPercentY > 35) {
       if (loading) {
         return;
       }
@@ -18,35 +19,25 @@ export function useLatestPostsScroll() {
       if (!hasMore) {
         return;
       }
+
       setLoading(true);
 
-      const response = await PostService.getPostsPagination({
-        page: page + 1, 
+      dispatch(actFetchPostsPaginationAsync({
+        page: page + 1,
         per_page: 3,
-      });
-
-      setLoading(false);
-      setPage(p => p + 1);
-
-      if (response.data.data.length <= 0) {
-        setHasMore(false);
-      }
-
-      setPosts(prevPosts => {
-        return [...prevPosts, ...response.data.data];
+      })).finally(() => {
+        setLoading(false);
       });
     }
   }, [scrolledPercentY]);
 
   useEffect(async () => {
-    const response = await PostService.getPostsPagination({
+
+    dispatch(actFetchPostsPaginationAsync({
       page: 1,
       per_page: 3,
-    });
+    }));
 
-    if (response.data.data.length) {
-      setPosts(response.data.data);
-    }
   }, []);
   
   return {
