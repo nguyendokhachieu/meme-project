@@ -14,6 +14,8 @@ import NotificationPage from "./pages/NotificationPage";
 import SearchPage from "./pages/SearchPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import NotificationCard from "./components/shared/NotificationCard";
+import LoadingGlobal from "./components/shared/LoadingGlobal";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { actHideNotificationCard } from "./store/notifications/actions";
@@ -55,6 +57,7 @@ function App() {
           show={ show }
           content={ content }
         />
+        <LoadingGlobal />
       </div>
   );
 }

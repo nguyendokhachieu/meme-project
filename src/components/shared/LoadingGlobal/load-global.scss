@@ -1,0 +1,28 @@
+.loading-global {
+    
+    .inner-load {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        width: 5rem;
+        height: 5rem;
+        transform: translateX(-50%);
+        background-color: #fff;
+        box-shadow: 0 0 14px 2px #999;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s ease;
+        transform: translateY(-50px);
+
+        .icon {
+            font-size: 3.5rem;
+            color: rgb(70, 70, 70);
+        }
+    }
+
+    .inner-load.show {
+        transform: translateY(90px);
+    }
+}
