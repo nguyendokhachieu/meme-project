@@ -33,7 +33,7 @@ export default function Options({
     <div className="post-item-options" ref={ optionsRef }>
         <i class="fal fa-ellipsis-v options-icon" onClick={ e => { setShowOptions(prev => !prev) } }></i>
         <div className={ showOptions ? 'options show' : 'options' }>
-          <div className="list-items">
+          <ul className="list-items">
             {
               !isThisPerson 
                 ? <NoOptionsFound />
@@ -44,7 +44,7 @@ export default function Options({
                   </>
                 )
             }
-          </div>
+          </ul>
         </div>
       </div>
   );

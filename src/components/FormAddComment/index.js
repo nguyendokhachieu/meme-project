@@ -69,7 +69,8 @@ export default function FormAddComment({
               cols={ 1 }
               onChange={ e => { setContent(e.target.value); autoSize(e.target) } }
               ref={ textAreaRef }
-              onKeyUp={ comment }
+              onKeyDown={ comment }
+              onKeyUp={ e => { e.key === 'Enter' && setContent('') } }
             ></textarea>
           </div>
         </form>
