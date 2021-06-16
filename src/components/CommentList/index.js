@@ -1,19 +1,15 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import "./comments-list.scss";
+
 import CommentItem from "./../CommentItem";
-import { useSelector } from "react-redux";
-import { actFetchAllCommentsByPostIdAsync } from "./../../store/comments/actions";
+import { useCommentsList } from "../../hooks/useCommentsList";
 
 export default function CommentList({
     postID,
 }) 
 {
-    const dispatch = useDispatch();
-    const { listComment } = useSelector(state => state.comments);
-
-    useEffect(() => {
-        dispatch(actFetchAllCommentsByPostIdAsync(postID));
-    }, [postID]);
+    const { listComment,
+            buttonLoadMore
+    } = useCommentsList(postID);
 
     return (
         <div className="comments-list">
@@ -24,6 +20,9 @@ export default function CommentList({
                             }
                         )
                     :   null
+            }
+            {
+                buttonLoadMore
             }
         </div>
     );

@@ -1,0 +1,43 @@
+@import "../../assets/css/variables.scss";
+
+.comments-list {
+
+    .load-more-comments {
+        text-align: center;
+        padding: 3rem;
+
+        .load-more-cmts-btn {
+            color: rgb(99, 99, 99);
+            background-color: transparent;
+            border: 0;
+            position: relative;
+            z-index: 19;
+
+            .icon {
+                margin-left: 1rem;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 80%;
+                transform: translateY(-50%);
+                left: 2rem;
+                z-index: 1;
+                width: 0;
+                height: 2px;
+                background-color: rgb(99, 99, 99);
+                transition: all 0.15s ease;
+            }
+
+            &:hover::after {
+                width: calc(100% - 4rem);
+            }
+        }
+
+        .load-more-cmts-btn.disabled {
+            pointer-events: none;
+            color: rgba(153, 153, 153, 0.8);
+        }
+    }
+}

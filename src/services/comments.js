@@ -1,10 +1,12 @@
 import { api } from "./api";
 
 export const CommentService = {
-    getAllCommentsByPostId(id) {
+    getAllCommentsByPostId(id, page = 1, per_page = 5) {
         return api.call().get("/comment/get", {
             params: {
-                id
+                id,
+                page,
+                per_page,
             }
         })
     },

@@ -16,6 +16,7 @@ import CommentListHeaderLoading from "../CommentListHeader/CommentListHeaderLoad
 import CommentListLoading from "../CommentList/CommentListLoading";
 import NotFound from "../NotFound";
 
+import { actResetCountTotalComments } from "../../store/comments/actions";
 
 export default function DetailPost({
   postID
@@ -33,6 +34,7 @@ export default function DetailPost({
         const p = await dispatch(actFetchDetailPostAsync(postID));
 
         if (p) {
+          dispatch(actResetCountTotalComments());
           setPost(p);
         } else {
           setHasErrors(true);

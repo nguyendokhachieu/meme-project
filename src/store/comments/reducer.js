@@ -3,9 +3,13 @@ import {
     ACT_FETCH_ALL_COMMENTS_BY_POST_ID,
     ACT_DELETE_COMMENT,
     ACT_SORT_COMMENT,
+    ACT_RESET_COUNT_TOTAL_COMMENTS,
 } from "./actions";
 
 const initState = {
+    page: 1,
+    per_page: 5,
+    hasMore: true,
     listComment: [],
     totalComments: 0,
     newComment: {
@@ -22,6 +26,12 @@ const initState = {
 
 export const commentsReducer = (state = initState, action) => {
     switch (action.type) {
+        case ACT_RESET_COUNT_TOTAL_COMMENTS:
+            return {
+                ...state,
+                totalComments: 0,
+            }
+
         case ACT_SORT_COMMENT:
             const dir = action.payload.direction;
 
@@ -36,6 +46,7 @@ export const commentsReducer = (state = initState, action) => {
                     ...newArray,
                 ],
             }
+            
         case ACT_CREATE_A_NEW_COMMENT:
             const newCommentItem = {
                 id: action.payload.id,
@@ -70,11 +81,16 @@ export const commentsReducer = (state = initState, action) => {
         case ACT_FETCH_ALL_COMMENTS_BY_POST_ID: 
             return {
                 ...state,
-                totalComments: action.payload.list.length || 0,
-                listComment: [
-                    ...state.listComment,
-                    ...action.payload.list,
-                ]
+                page: action.payload.page,
+                per_page: action.payload.per_page,
+                hasMore: action.payload.list.length === 0 ? false : true,
+                totalComments: state.totalComments + action.payload.list.length || 0,
+                listComment: action.payload.page === 1 
+                                ? action.payload.list
+                                : [
+                                    ...state.listComment,
+                                    ...action.payload.list,
+                                ]
             }
 
         case ACT_DELETE_COMMENT:
