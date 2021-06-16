@@ -24,10 +24,12 @@
     border-radius: 5px;
     padding: 1rem;
     box-shadow: 0 1px 2px 1px #ccc;
-    transform: scale(1);
-    transition: all 0.15s ease;
     max-height: 55rem;
     overflow: auto;
+    transition: all 0.15s ease;
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
 
     @media screen and (max-width: 767px) {
       width: 30rem;
@@ -86,7 +88,8 @@
   }
 
   .notification-box.hidden {
-    // display: none;
-    transform: scale(0);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
   }
 }
