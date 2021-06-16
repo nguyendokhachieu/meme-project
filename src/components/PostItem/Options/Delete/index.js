@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import { PostService } from "../../../../services/posts";
 import { actShowNotificationCard } from "../../../../store/notifications/actions";
 import { actDeletePost } from "../../../../store/posts/actions";
@@ -8,6 +9,7 @@ export default function Delete({
   id
 }) 
 {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [callingAPI, setCallingAPI] = useState(false);
@@ -22,6 +24,8 @@ export default function Delete({
     if (response.data.deleted) {
       dispatch(actDeletePost(id));
       dispatch(actShowNotificationCard("Xóa bài viết thành công"));
+      history.location.pathname.includes('post') && history.push('/');
+      history.location.pathname.includes('profile') && window.location.reload();
 
       return;
     }

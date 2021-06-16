@@ -30,12 +30,14 @@ export default function PostItemHeader({ post }) {
           </Link>
           <span className="tooltip">
             { 
-              dayjs(post.created_at).format('DD ++ MM, YYYY, lúc hh - mm -- A')
-              .replace('++', 'tháng')
-              .replace('-', 'giờ')
-              .replace('--', 'phút') 
-              .replace('AM', 'sáng') 
-              .replace('PM', 'chiều') 
+              'Thứ '.concat((dayjs(post.created_at).day() + 1).toString().concat(', ').concat(
+                dayjs(post.created_at).format('DD ++ MM, YYYY, lúc hh - mm A')
+                .replace('++', 'thg')
+                .replace('-', 'giờ')
+                .replace('AM', 'sáng') 
+                .replace('PM', 'chiều') )
+              ).replace('Thứ 8', 'Chủ nhật')
+              
             }
           </span>
         </span>

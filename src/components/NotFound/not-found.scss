@@ -1,7 +1,7 @@
 @import "../../assets/css/variables.scss";
 
 .not-found-section {
-  margin-top: 7.4rem;
+  margin-top: 14.4rem;
   
   .inner-wrapper {
     max-width: 96rem;
@@ -15,6 +15,7 @@
     max-width: 96rem;
     height: 47.5rem;
     margin: 0;
+    padding: 2rem;
     box-shadow: 0px 0px 8px 1px #ccc;
     background: #fafafa;
     border-radius: 8px;
@@ -80,6 +81,15 @@
   @media screen and (max-width: 992px) {
     .not-found-title {
       font-size: 2.2rem;
+    }
+
+    .inner-wrapper {
+      width: 100%;
+      padding: 0;
+
+      .not-found-landing-page {
+        width: 100%;
+      }
     }
   }
 }
