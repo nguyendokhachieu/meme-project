@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { PostService } from "../../../../services/posts";
@@ -6,7 +6,8 @@ import { actShowNotificationCard } from "../../../../store/notifications/actions
 import { actDeletePost } from "../../../../store/posts/actions";
 
 export default function Delete({
-  id
+  id,
+  showOptions,
 }) 
 {
   const history = useHistory();
@@ -32,6 +33,10 @@ export default function Delete({
 
     dispatch(actShowNotificationCard("Có lỗi xảy ra, vui lòng thử lại"));
   };
+
+  useEffect(() => {
+    !showOptions && setShow(false);
+  }, [showOptions]);
 
   return (
     <li className="option-item">

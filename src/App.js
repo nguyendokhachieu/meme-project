@@ -15,6 +15,7 @@ import SearchPage from "./pages/SearchPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import NotificationCard from "./components/shared/NotificationCard";
 import LoadingGlobal from "./components/shared/LoadingGlobal";
+import Modal from "./components/PostItem/Options/Edit/Modal";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -58,6 +59,7 @@ function App() {
           content={ content }
         />
         <LoadingGlobal />
+        <Modal />
       </div>
   );
 }
