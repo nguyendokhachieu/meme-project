@@ -11,7 +11,7 @@ export function useLatestPostsScroll() {
 
   useEffect(async () => {
 
-    if (scrolledPercentY > 35) {
+    if (scrolledPercentY > 15) {
       if (loading) {
         return;
       }
