@@ -1,0 +1,32 @@
+@import "../../../../../../assets/css/variables.scss";
+
+.submit {
+    text-align: right;
+    padding: 1rem 0 0 0;
+
+    .save-change {
+        margin-right: 1rem;
+
+        &:hover {
+            border-color: $base-color;
+            background-color: transparent;
+            color: $base-color;
+        }
+    }
+
+    .cancel {
+        border: 0;
+        color: rgb(85, 85, 85);
+
+        &:hover {
+            background-color: transparent;
+            color: currentColor;
+        }
+    }
+
+    .btn.disabled {
+        color: #ccc;
+        border-color: #ccc;
+        pointer-events: none;
+    }
+}

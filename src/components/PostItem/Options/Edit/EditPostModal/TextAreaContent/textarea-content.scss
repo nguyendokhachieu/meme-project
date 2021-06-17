@@ -1,0 +1,32 @@
+@import "../../../../../../assets/css/variables.scss";
+
+.form-group {
+    padding: 1rem;
+
+    .f-c-wrap {
+        display: flex;
+
+        .f-c {
+            flex: 1;
+            overflow: hidden;
+            resize: none;
+            padding: 1rem;
+            outline: none;
+            border: 1px solid #999;
+            border-radius: 5px;
+            transition: all 0.15s ease;
+
+            &:focus {
+                box-shadow: 0 0 0 3px rgba(204, 204, 204, 0.5);
+            }
+        }
+
+        .text-area-fetching {
+            display: inline-block;
+            background-color: rgba(204, 204, 204, 0.5);
+            height: 4rem;
+            width: 100%;
+            border-radius: 5px;
+        }
+    }
+}
