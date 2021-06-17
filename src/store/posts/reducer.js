@@ -1,7 +1,8 @@
 import { 
     ACT_FETCH_POSTS_PAGINATION, 
     ACT_FETCH_POSTS_BY_USER_ID_PAGINATION,
-    ACT_DELETE_POST, 
+    ACT_DELETE_POST,
+    ACT_EDIT_POST, 
 } from "./actions";
 
 const initState = {
@@ -20,6 +21,29 @@ const initState = {
 
 export const postsReducer = (state = initState, action) => {
     switch (action.type) {
+        case ACT_EDIT_POST: 
+            const editID = action.payload.id;
+
+            return {
+                ...state,
+                posts: state.posts.map(post => {
+                        if (Number(post.id) === Number(editID)) {
+                            return {
+                                ...post,
+                                img_url: action.payload.newImgUrl 
+                                            ? action.payload.newImgUrl 
+                                            : action.payload.deleteCurrentImage 
+                                                ? null 
+                                                : post.img_url,
+                                content: action.payload.newContent,
+                            }
+                        } 
+
+                        return post;
+                    }
+                )
+            }
+
         case ACT_DELETE_POST:
             const deletedID = action.payload.id;
 

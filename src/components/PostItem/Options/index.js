@@ -40,7 +40,7 @@ export default function Options({
                 : (
                   <>
                     <Delete id={ post.id } showOptions={ showOptions } />
-                    <Edit />
+                    <Edit id={ post.id } />
                   </>
                 )
             }

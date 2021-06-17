@@ -5,6 +5,7 @@ import {
 
 const initState = {
     showEditModal: false,
+    postID: null,
 }
 
 export const modalsReducer = (state = initState, action) => {
@@ -13,12 +14,14 @@ export const modalsReducer = (state = initState, action) => {
             return {
                 ...state,
                 showEditModal: true,
+                postID: action.payload.postID
             }
 
         case ACT_HIDE_EDIT_MODAL:
             return {
                 ...state,
                 showEditModal: false,
+                postID: null,
             }
 
         default:

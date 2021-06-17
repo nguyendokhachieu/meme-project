@@ -3,6 +3,19 @@ import { PostService } from "./../../services/posts";
 export const ACT_FETCH_POSTS_PAGINATION = 'ACT_FETCH_POSTS_PAGINATION';
 export const ACT_FETCH_POSTS_BY_USER_ID_PAGINATION = 'ACT_FETCH_POSTS_BY_USER_ID_PAGINATION';
 export const ACT_DELETE_POST = 'ACT_DELETE_POST';
+export const ACT_EDIT_POST = 'ACT_EDIT_POST';
+
+export const actEditPost = (id, newImgUrl, newContent, deleteCurrentImage) => {
+    return {
+        type: ACT_EDIT_POST,
+        payload: {
+            id, 
+            newContent,
+            newImgUrl,
+            deleteCurrentImage,
+        }
+    }
+}
 
 export const actDeletePost = id => {
     return {

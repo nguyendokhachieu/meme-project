@@ -144,5 +144,17 @@ export const PostService = {
                 'Content-Type': 'application/json',
             }
         })
+    },
+
+    edit(formData) {
+        const token = localStorage.getItem('tstring');
+
+        return api.call().post('/post/edit', formData, {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
+                'Content-Type': 'application/json',
+            }
+        })
     }
 }
