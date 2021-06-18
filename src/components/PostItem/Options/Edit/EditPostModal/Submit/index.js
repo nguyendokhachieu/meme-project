@@ -23,6 +23,10 @@ export default function Submit({
   const [loading, setLoading] = useState(false);
 
   const edit = async () => {
+    if (loading || fetchingFirst) {
+      return;
+    }
+
     if (content.trim() === '' && deleteCurrentImage) {
       dispatch(actShowNotificationCard('Nội dung rỗng!'));
       return;
