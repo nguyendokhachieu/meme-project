@@ -3,18 +3,12 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { actFetchPostsPaginationAsync } from "../../../store/posts/actions";
 import { actHideLoading, actShowLoading } from "../../../store/loading/actions";
+import { useScrollToTop } from "../../../hooks/useScrollToTop";
 
 export default function HeaderLogo() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-
-  const scrollToTop = () => {
-    const c = document.documentElement.scrollTop || document.body.scrollTop;
-    if (c > 0) {
-      window.requestAnimationFrame(scrollToTop);
-      window.scrollTo(0, c - c / 12);
-    }
-  }
+  const { scrollToTop } = useScrollToTop();
 
   const fetchNew = () => {
     if (loading) {
@@ -25,7 +19,7 @@ export default function HeaderLogo() {
 
     dispatch(actFetchPostsPaginationAsync({
       page: 1,
-      per_page: 3,
+      per_page: 8,
     })).finally(() => {
       setLoading(false);
       dispatch(actHideLoading());

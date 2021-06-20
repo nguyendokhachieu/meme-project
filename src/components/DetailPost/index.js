@@ -26,11 +26,11 @@ export default function DetailPost({
   const dispatch = useDispatch();
   const { detailPost: post } = useSelector(state => state.posts);
   const [hasErrors, setHasErrors] = useState(false);
-
-  useScrollToTop();
+  const { scrollToTop } = useScrollToTop();
 
   useEffect(async () => {
     setHasErrors(false);
+    scrollToTop();
     
     if (!isNaN(postID)) {
       await dispatch(actFetchDetailPostAsync(postID));
