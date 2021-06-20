@@ -3,6 +3,8 @@ import {
     ACT_FETCH_POSTS_BY_USER_ID_PAGINATION,
     ACT_DELETE_POST,
     ACT_EDIT_POST, 
+    ACT_FETCH_DETAIL_POST,
+    ACT_CLEAR_DETAIL_POST,
 } from "./actions";
 
 const initState = {
@@ -17,12 +19,65 @@ const initState = {
         total_user_posts: 0,
         posts: [],
     },
+    detailPost: {
+        content: null,
+        created_at: null,
+        id: null,
+        img_url: null,
+        liked_count: 0,
+        liked_count_1: 0,
+        status: 1,
+        total_comments: 0,
+        total_comments_1: 0,
+        user_id: null,
+        user_img_url: null,
+        user_name: null,
+    }
 };
 
 export const postsReducer = (state = initState, action) => {
     switch (action.type) {
+        case ACT_CLEAR_DETAIL_POST:
+            return {
+                ...state,
+                detailPost: {
+                    content: null,
+                    created_at: null,
+                    id: null,
+                    img_url: null,
+                    liked_count: 0,
+                    liked_count_1: 0,
+                    status: 1,
+                    total_comments: 0,
+                    total_comments_1: 0,
+                    user_id: null,
+                    user_img_url: null,
+                    user_name: null,
+                }
+            }
+
+        case ACT_FETCH_DETAIL_POST:
+            return {
+                ...state,
+                detailPost: {
+                    content: action.payload.post.content,
+                    created_at: action.payload.post.created_at,
+                    id: action.payload.post.id,
+                    img_url: action.payload.post.img_url,
+                    liked_count: action.payload.post.liked_count,
+                    liked_count_1: 0,
+                    status: action.payload.post.status,
+                    total_comments: action.payload.post.total_comments,
+                    total_comments_1: 0,
+                    user_id: action.payload.post.user_id,
+                    user_img_url: action.payload.post.user_img_url,
+                    user_name: action.payload.post.user_name,
+                }
+            }
+
         case ACT_EDIT_POST: 
             const editID = action.payload.id;
+            const isDetailPostPage = action.payload.isDetailPostPage;
 
             return {
                 ...state,
@@ -41,7 +96,16 @@ export const postsReducer = (state = initState, action) => {
 
                         return post;
                     }
-                )
+                ),
+                detailPost: isDetailPostPage && {
+                    ...state.detailPost,
+                    img_url: action.payload.newImgUrl 
+                                ? action.payload.newImgUrl 
+                                : action.payload.deleteCurrentImage 
+                                    ? null 
+                                    : state.detailPost.img_url,
+                    content: action.payload.newContent,
+                } 
             }
 
         case ACT_DELETE_POST:

@@ -1,9 +1,9 @@
 import "./style.scss";
 
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { actFetchDetailPostAsync } from "./../../store/posts/actions";
+import { actClearDetailPost, actFetchDetailPostAsync } from "./../../store/posts/actions";
 
 import CommentList from "../CommentList";
 import CommentListHeader from "../CommentListHeader";
@@ -17,49 +17,40 @@ import CommentListLoading from "../CommentList/CommentListLoading";
 import NotFound from "../NotFound";
 
 import { actResetCountTotalComments } from "../../store/comments/actions";
+import { useScrollToTop } from "../../hooks/useScrollToTop";
 
 export default function DetailPost({
   postID
 }) 
 {
   const dispatch = useDispatch();
-  const [post, setPost] = useState({} = false);
+  const { detailPost: post } = useSelector(state => state.posts);
   const [hasErrors, setHasErrors] = useState(false);
+
+  useScrollToTop();
 
   useEffect(async () => {
     setHasErrors(false);
-
+    
     if (!isNaN(postID)) {
-      try {
-        const p = await dispatch(actFetchDetailPostAsync(postID));
+      await dispatch(actFetchDetailPostAsync(postID));
 
-        if (p) {
-          dispatch(actResetCountTotalComments());
-          setPost(p);
-        } else {
-          setHasErrors(true);
-        }
-      } catch (error) {
+      if (!post.id) {
         setHasErrors(true);
       }
+
     } else {
       setHasErrors(true);
     }
-  }, [postID]);
-
-  const scrollToTop = useCallback(() => {
-    const c = document.documentElement.scrollTop || document.body.scrollTop;
-    if (c > 0) {
-      window.requestAnimationFrame(scrollToTop);
-      window.scrollTo(0, c - c / 12);
-    }
-  }
-  );
+  }, [post.id, dispatch]);
   
   useEffect(() => {
-    scrollToTop();
+    return () => {
+      dispatch(actClearDetailPost());
+      dispatch(actResetCountTotalComments());
+    }
   }, []);
-  
+
   if (hasErrors) {
     return <NotFound />;
   }
@@ -71,7 +62,7 @@ export default function DetailPost({
           <div className="col-wrap">
             <div className="main-col-8">
               {
-                post 
+                post.id 
                   ? (
                     <>
                       <PostItem post={ post } />

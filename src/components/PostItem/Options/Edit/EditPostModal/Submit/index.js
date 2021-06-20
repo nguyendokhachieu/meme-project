@@ -8,6 +8,7 @@ import { actShowNotificationCard } from "../../../../../../store/notifications/a
 import { actEditPost } from "../../../../../../store/posts/actions";
 
 import { PostService } from "../../../../../../services/posts";
+import { useLocation } from "react-router";
 
 export default function Submit({
   fetchingFirst,
@@ -20,8 +21,11 @@ export default function Submit({
 }) 
 {
   const dispatch = useDispatch();
+  const location = useLocation();
   const [loading, setLoading] = useState(false);
-
+  
+  const isDetailPostPage = location.pathname.includes('post');
+  
   const edit = async () => {
     if (loading || fetchingFirst) {
       return;
@@ -50,7 +54,7 @@ export default function Submit({
     setLoading(false);
 
     if (response.data.status === 200) {
-      dispatch(actEditPost(postID, response.data.new_img_url, content, deleteCurrentImage));
+      dispatch(actEditPost(postID, response.data.new_img_url, content, deleteCurrentImage, isDetailPostPage));
       dispatch(actHideEditModal());
       dispatch(actShowNotificationCard(response.data.message));
     } else {

@@ -4,8 +4,10 @@ export const ACT_FETCH_POSTS_PAGINATION = 'ACT_FETCH_POSTS_PAGINATION';
 export const ACT_FETCH_POSTS_BY_USER_ID_PAGINATION = 'ACT_FETCH_POSTS_BY_USER_ID_PAGINATION';
 export const ACT_DELETE_POST = 'ACT_DELETE_POST';
 export const ACT_EDIT_POST = 'ACT_EDIT_POST';
+export const ACT_FETCH_DETAIL_POST = 'ACT_FETCH_DETAIL_POST';
+export const ACT_CLEAR_DETAIL_POST = 'ACT_CLEAR_DETAIL_POST';
 
-export const actEditPost = (id, newImgUrl, newContent, deleteCurrentImage) => {
+export const actEditPost = (id, newImgUrl, newContent, deleteCurrentImage, isDetailPostPage) => {
     return {
         type: ACT_EDIT_POST,
         payload: {
@@ -13,6 +15,7 @@ export const actEditPost = (id, newImgUrl, newContent, deleteCurrentImage) => {
             newContent,
             newImgUrl,
             deleteCurrentImage,
+            isDetailPostPage
         }
     }
 }
@@ -75,14 +78,33 @@ const actFetchPostsByUserIdPagination = ({
 }
 
 export const actFetchDetailPostAsync = (id) => {
-    return async () => {
+    return async (dispatch) => {
         try {
             const response = await PostService.getDetailPostById(id);
+
+            if (response.data.data.length !== 0) {
+                dispatch(actFetchDetailPost(response.data.data[0]));
+            }
 
             return response.data.data[0];
         } catch (error) {
             console.log(error);
         }
+    }
+}
+
+const actFetchDetailPost = (post) => {
+    return {
+        type: ACT_FETCH_DETAIL_POST,
+        payload: {
+            post
+        }
+    }
+}
+
+export const actClearDetailPost = () => {
+    return {
+        type: ACT_CLEAR_DETAIL_POST,
     }
 }
 
