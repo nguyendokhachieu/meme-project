@@ -86,7 +86,7 @@ export default function Profile({
                       {
                         posts.length !== 0
                           ? posts.map(post => {
-                            return <PostItem post={ post } />
+                            return <PostItem post={ post } key={ post.id } />
                           })
                           : null
                       }

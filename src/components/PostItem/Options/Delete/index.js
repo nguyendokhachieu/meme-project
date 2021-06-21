@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { PostService } from "../../../../services/posts";
 import { actShowNotificationCard } from "../../../../store/notifications/actions";
 import { actDeletePost } from "../../../../store/posts/actions";
@@ -11,9 +11,12 @@ export default function Delete({
 }) 
 {
   const history = useHistory();
+  const location = useLocation();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [callingAPI, setCallingAPI] = useState(false);
+
+  const isProfilePage = location.pathname.includes('profile');
 
   const deleteThisPost = async () => {
     setCallingAPI(true);
@@ -21,12 +24,12 @@ export default function Delete({
     const response = await PostService.delete(id);
 
     setCallingAPI(false);
+    setShow(prev => false);
 
     if (response.data.deleted) {
-      dispatch(actDeletePost(id));
+      dispatch(actDeletePost(id, isProfilePage));
       dispatch(actShowNotificationCard("Xóa bài viết thành công"));
       history.location.pathname.includes('post') && history.push('/');
-      history.location.pathname.includes('profile') && window.location.reload();
 
       return;
     }

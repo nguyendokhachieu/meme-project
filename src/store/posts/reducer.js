@@ -105,13 +105,31 @@ export const postsReducer = (state = initState, action) => {
                                     ? null 
                                     : state.detailPost.img_url,
                     content: action.payload.newContent,
-                } 
+                },
+                user: {
+                    posts: action.payload.isProfilePage && state.user.posts.map(post => {
+                        if (Number(post.id) === Number(editID)) {
+                            return {
+                                ...post,
+                                img_url: action.payload.newImgUrl 
+                                            ? action.payload.newImgUrl 
+                                            : action.payload.deleteCurrentImage 
+                                                ? null 
+                                                : post.img_url,
+                                content: action.payload.newContent,
+                            }
+                        } 
+
+                        return post;
+                    }
+                )
+                }
             }
 
         case ACT_DELETE_POST:
             const deletedID = action.payload.id;
 
-            const copied = [...state.posts];
+            const copied = action.payload.isProfilePage ? [...state.user.posts] : [...state.posts];
             const newList = copied.filter(post => {
                 if (Number(post.id) !== Number(deletedID)) {
                     return post;
@@ -123,7 +141,13 @@ export const postsReducer = (state = initState, action) => {
                 total_posts: state.total_posts - 1,
                 posts: [
                     ...newList,
-                ]
+                ],
+                user: {
+                    total_user_posts: state.user.total_user_posts - 1,
+                    posts: [
+                        ...newList,
+                    ]
+                }
             }
 
         case ACT_FETCH_POSTS_PAGINATION:

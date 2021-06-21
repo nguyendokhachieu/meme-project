@@ -23,8 +23,9 @@ export default function Submit({
   const dispatch = useDispatch();
   const location = useLocation();
   const [loading, setLoading] = useState(false);
-  
+
   const isDetailPostPage = location.pathname.includes('post');
+  const isProfilePage = location.pathname.includes('profile');
   
   const edit = async () => {
     if (loading || fetchingFirst) {
@@ -54,7 +55,7 @@ export default function Submit({
     setLoading(false);
 
     if (response.data.status === 200) {
-      dispatch(actEditPost(postID, response.data.new_img_url, content, deleteCurrentImage, isDetailPostPage));
+      dispatch(actEditPost(postID, response.data.new_img_url, content, deleteCurrentImage, isDetailPostPage, isProfilePage));
       dispatch(actHideEditModal());
       dispatch(actShowNotificationCard(response.data.message));
     } else {

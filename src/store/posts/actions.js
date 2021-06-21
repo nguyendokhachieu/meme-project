@@ -7,7 +7,7 @@ export const ACT_EDIT_POST = 'ACT_EDIT_POST';
 export const ACT_FETCH_DETAIL_POST = 'ACT_FETCH_DETAIL_POST';
 export const ACT_CLEAR_DETAIL_POST = 'ACT_CLEAR_DETAIL_POST';
 
-export const actEditPost = (id, newImgUrl, newContent, deleteCurrentImage, isDetailPostPage) => {
+export const actEditPost = (id, newImgUrl, newContent, deleteCurrentImage, isDetailPostPage, isProfilePage) => {
     return {
         type: ACT_EDIT_POST,
         payload: {
@@ -15,16 +15,18 @@ export const actEditPost = (id, newImgUrl, newContent, deleteCurrentImage, isDet
             newContent,
             newImgUrl,
             deleteCurrentImage,
-            isDetailPostPage
+            isDetailPostPage,
+            isProfilePage,
         }
     }
 }
 
-export const actDeletePost = id => {
+export const actDeletePost = (id, isProfilePage) => {
     return {
         type: ACT_DELETE_POST,
         payload: {
             id,
+            isProfilePage,
         }
     }
 }

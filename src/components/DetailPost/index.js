@@ -42,14 +42,14 @@ export default function DetailPost({
     } else {
       setHasErrors(true);
     }
-  }, [post.id, dispatch]);
+  }, [post.id, dispatch, postID]);
   
   useEffect(() => {
     return () => {
       dispatch(actClearDetailPost());
       dispatch(actResetCountTotalComments());
     }
-  }, []);
+  }, [postID]);
 
   if (hasErrors) {
     return <NotFound />;
