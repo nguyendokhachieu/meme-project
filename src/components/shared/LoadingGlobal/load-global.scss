@@ -1,3 +1,5 @@
+@import "../../../assets/css/variables.scss";
+
 .loading-global {
     
     .inner-load {
@@ -16,9 +18,13 @@
         transition: all 0.25s ease;
         transform: translateY(-90px);
 
-        .icon {
-            font-size: 3.5rem;
-            color: rgb(70, 70, 70);
+        span {
+            display: inline-block;
+            
+            .icon {
+                font-size: 3.5rem;
+                color: $base-color;
+            }
         }
     }
 

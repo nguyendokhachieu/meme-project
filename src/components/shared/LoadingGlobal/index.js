@@ -7,7 +7,7 @@ export default function LoadingGlobal() {
     return (
         <div className="loading-global">
             <div className={ show ? 'inner-load show' : 'inner-load' }>
-                <i className="fa fa-spinner fa-spin icon"></i>
+                <span><i className="fa fa-spinner fa-spin icon"></i></span>
             </div>
         </div>
     );

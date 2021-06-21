@@ -16,6 +16,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import NotificationCard from "./components/shared/NotificationCard";
 import LoadingGlobal from "./components/shared/LoadingGlobal";
 import EditPostModal from "./components/PostItem/Options/Edit/EditPostModal";
+import DeletePostModal from "./components/PostItem/Options/Delete/DeletePostModal";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -60,6 +61,7 @@ function App() {
         />
         <LoadingGlobal />
         <EditPostModal />
+        <DeletePostModal />
       </div>
   );
 }
