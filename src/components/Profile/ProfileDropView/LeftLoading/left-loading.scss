@@ -1,0 +1,31 @@
+.left-loading {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .avatar-wrap {
+        display: inline-block;
+        height: 3.5rem;
+        
+        .img {
+            display: inline-block;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 69px;
+            background-color: #eee;
+        }
+    }
+
+    .fullname {
+        font-size: 1.8rem;
+        display: inline-block;
+        min-width: 20rem;
+        padding: 0 1.5rem;
+        background-color: #eee;
+        color: transparent;
+        border-radius: 5px;
+        margin-left: 1rem;
+    }
+}

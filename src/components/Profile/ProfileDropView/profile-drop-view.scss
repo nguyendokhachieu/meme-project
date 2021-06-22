@@ -1,0 +1,54 @@
+.profile-drop-view {
+    position: fixed;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    z-index: 12;
+    background-color: #fff;
+    box-shadow: 0 0 1px 0 #ccc;
+    transform: translateY(-15.5rem);
+    transition: all 0.25s ease;
+
+    .container {
+        height: 100%;
+
+        .left {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .avatar-wrap {
+                display: inline-block;
+                height: 3.5rem;
+                
+                .img {
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    border-radius: 69px;
+                    border: 1px solid #ccc;
+                }
+            }
+
+            .fullname {
+                font-size: 1.8rem;
+                padding: 0 1.5rem;
+                font-weight: 500;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        .right {
+            width: 50%;
+            height: 100%;
+        }
+    }
+}
+
+.profile-drop-view.show {
+    transform: translateY(0);
+}
