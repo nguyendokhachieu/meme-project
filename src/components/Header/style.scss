@@ -70,11 +70,6 @@
           }
         }
 
-        .header-search {
-          margin: 0 0.75rem;
-          align-self: center;
-        }
-
         .header-btn-group {
           display: flex;
           align-items: center;
@@ -100,9 +95,9 @@
             display: none;
           }
 
-          .header-search {
-            display: none;
-          }
+          // .header-search {
+          //   display: none;
+          // }
         }
       }
     }

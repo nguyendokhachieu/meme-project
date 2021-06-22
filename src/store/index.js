@@ -7,6 +7,7 @@ import { userReducer } from "./user/reducer";
 import { notificationsReducer } from "./notifications/reducer";
 import { loadingReducer } from "./loading/reducer";
 import { modalsReducer } from "./modals/reducer";
+import { headerReducer } from "./header/reducer";
 
 const { combineReducers } = require("redux");
 const { createStore } = require("redux");
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
     notifications: notificationsReducer,
     loading: loadingReducer,
     modals: modalsReducer,
+    header: headerReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(middleware, logger));

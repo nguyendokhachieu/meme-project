@@ -1,0 +1,23 @@
+.header-search-btn {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid transparent;
+  display: none;
+
+  .icon {
+    align-self: stretch;
+    line-height: 5rem;
+    cursor: pointer;
+    padding: 0 1rem 0 1rem;
+    font-size: 2.25rem;
+    color: #999;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .header-search-btn {
+    display: flex;
+  }
+}
