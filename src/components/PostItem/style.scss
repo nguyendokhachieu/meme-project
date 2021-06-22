@@ -82,6 +82,8 @@
     }
 
     &-content {
+        margin-bottom: 1rem;
+        
         .post-item-text:first-child {
             margin-top: 1rem;
         }
@@ -91,6 +93,31 @@
             line-height: 1.2;
             padding: 0.25rem 0;
             color: $text-color;
+
+            display: flex;
+
+            .content {
+                word-break: break-word;
+                align-self: flex-start;
+                flex: 1;
+
+                .view-more {
+                    margin: 0 0.5rem;
+                    color: $text-color;
+                    font-weight: 500;
+                }
+            }
+
+            .image-link-right-side {
+                margin-left: 1rem;
+                align-self: center;
+                flex: 0.2;
+
+                .img {
+                    border-radius: 5px;
+                    overflow: hidden;
+                }
+            }
         }
 
         .post-item-image-wrap {

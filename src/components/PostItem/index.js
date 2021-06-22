@@ -6,6 +6,7 @@ import PostItemFooter from "./PostItemFooter";
 export default function PostItem({
   post,
   showFooter = true,
+  showRightSideImage = false,
 }) 
 {
   if (!post) {
@@ -15,7 +16,7 @@ export default function PostItem({
   return (
     <div className="post-item">
       <PostItemHeader post={ post } />
-      <PostItemContent post={ post } />
+      <PostItemContent post={ post } showRightSideImage={ showRightSideImage } />
       {
         showFooter
           ? <PostItemFooter post={ post } />

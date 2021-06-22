@@ -31,12 +31,12 @@ export default function Results({
                   ? results.length === 0
                     ? null
                     : results.map(post => {
-                        return <PostItem key={ post.id } post={ post } />
+                        return <PostItem key={ post.id } post={ post } showRightSideImage={ true } />
                     })
                   : results.length === 0
                     ? null
                     : results.map(user => {
-                        return <ModalUserItem user={ user } />
+                        return <ModalUserItem key={ user.user_id } user={ user } />
                     })
         }
       </div>
