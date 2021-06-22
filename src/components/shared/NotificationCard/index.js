@@ -1,5 +1,6 @@
 import "./notification-card.scss";
 
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -9,6 +10,9 @@ export default function NotificationCard({
   show = false,
   content = "",
   showCloseButton = true,
+  showLink = false,
+  href = '/',
+  linkContent = '',
 }) 
 {
   const dispatch = useDispatch();
@@ -31,18 +35,29 @@ export default function NotificationCard({
       className={hidden ? `notification-card hidden` : `notification-card`}
     >
       <div className="inner-card">
-        <div className="content">{content}</div>
-        {showCloseButton ? (
-          <div
-            className="close-button"
-            onClick={(e) => {
-              setHidden(true);
-              dispatch(actHideNotificationCard());
-            }}
-          >
-            <i class="fas fa-times-circle close-icon"></i>
-          </div>
-        ) : null}
+        <div className="content">
+          <p>{ content }</p>
+          {
+            showLink
+              ? <p><Link className="link" to={ href }>{ linkContent }</Link></p>
+              : null
+          }
+        </div>
+        {
+          showCloseButton 
+            ? (
+              <div
+                className="close-button"
+                onClick={(e) => {
+                  setHidden(true);
+                  dispatch(actHideNotificationCard());
+                }}
+              >
+                <i class="fas fa-times-circle close-icon"></i>
+              </div>
+            ) 
+            : null
+        }
       </div>
     </section>
   );

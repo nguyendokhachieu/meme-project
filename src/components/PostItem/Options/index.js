@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import Delete from "./Delete";
 import Edit from "./Edit";
-import NoOptionsFound from "./NoOptionsFound";
+import Save from "./Save";
 
 export default function Options({
   post
@@ -34,9 +34,12 @@ export default function Options({
         <i class="fal fa-ellipsis-v-alt options-icon" onClick={ e => { setShowOptions(prev => !prev) } }></i>
         <div className={ showOptions ? 'options show' : 'options' }>
           <ul className="list-items">
+            <li className="option-item public">
+              <Save id={ post.id } setShowOptions={ val => { setShowOptions(val) } } />
+            </li>
             {
               !isThisPerson 
-                ? <NoOptionsFound />
+                ? null
                 : (
                   <>
                     <Delete id={ post.id } showOptions={ showOptions } />

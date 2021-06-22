@@ -18,7 +18,7 @@ export default function PostItemHeader({
                   ? post.content 
                   : (
                     <>
-                    { post.content.substring(0, 250) }
+                    { post.content.substring(0, 250).concat('...') }
                     { link }
                     </>
                   )

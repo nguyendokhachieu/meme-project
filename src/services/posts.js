@@ -156,5 +156,64 @@ export const PostService = {
                 'Content-Type': 'application/json',
             }
         })
+    },
+
+    save(post_id) {
+        const token = localStorage.getItem('tstring');
+
+        return api.call().post('/post/save/save', JSON.stringify({ post_id }), {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
+                'Content-Type': 'application/json',
+            }
+        })
+    },
+
+    unsave(post_id) {
+        const token = localStorage.getItem('tstring');
+
+        return api.call().post('/post/save/unsave', JSON.stringify({ post_id }), {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
+                'Content-Type': 'application/json',
+            }
+        })
+    },
+
+    checkSaved(post_id) {
+        const token = localStorage.getItem('tstring');
+
+        return api.call().post('/post/save/is', JSON.stringify({ post_id }), {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
+                'Content-Type': 'application/json',
+            }
+        })
+    },
+
+    getListSavedPosts({
+        page = 1,
+        per_page = 5,
+        order_by = 'latest_saved',
+        order_dir = 'desc',
+    }) 
+    {
+        const token = localStorage.getItem('tstring');
+        
+        return api.call().get('/post/save/get', {
+            params: {
+                page,
+                per_page,
+                order_by,
+                order_dir,
+            },
+
+            headers: {
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
+            }
+        })
     }
 }

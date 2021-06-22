@@ -23,6 +23,14 @@
             font-size: 1.6rem;
             overflow: auto;
             word-break: break-word;
+
+            p {
+                
+                .link {
+                    color: white;
+                    font-weight: 500;
+                }
+            }
         }
 
         .close-button {

@@ -26,7 +26,7 @@ function App() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const isShowHeader = !['/login', '/register'].includes(pathname);
-  const { show, content } = useSelector(state => state.notifications);
+  const { show, content, showLink, href, linkContent } = useSelector(state => state.notifications);
 
   useEffect(() => {
     show && setTimeout(() => {
@@ -58,6 +58,9 @@ function App() {
         <NotificationCard 
           show={ show }
           content={ content }
+          showLink={ showLink }
+          href={ href }
+          linkContent={ linkContent }
         />
         <LoadingGlobal />
         <EditPostModal />

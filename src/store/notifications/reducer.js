@@ -3,6 +3,9 @@ import { ACT_SHOW_NOTIFICATION_CARD, ACT_HIDE_NOTIFICATION_CARD } from "./action
 const initState = {
     show: false,
     content: '',
+    showLink: false,
+    href: '',
+    linkContent: '',
 };
 
 export const notificationsReducer = (state = initState, action) => {
@@ -12,6 +15,9 @@ export const notificationsReducer = (state = initState, action) => {
                 ...state,
                 show: action.payload.show,
                 content: action.payload.content,
+                showLink: action.payload.showLink,
+                href: action.payload.href,
+                linkContent: action.payload.linkContent,
             }
     
         case ACT_HIDE_NOTIFICATION_CARD:
@@ -19,6 +25,9 @@ export const notificationsReducer = (state = initState, action) => {
                 ...state,
                 show: action.payload.show,
                 content: '',
+                showLink: false,
+                href: '',
+                linkContent: '',
             }
     
         default:

@@ -13,12 +13,14 @@ const initState = {
     total_posts: 0,
     posts: [],
     hasMore: true,
+
     user: {
         page: 1,
         per_page: 5,
         total_user_posts: 0,
         posts: [],
     },
+
     detailPost: {
         content: null,
         created_at: null,
@@ -32,6 +34,13 @@ const initState = {
         user_id: null,
         user_img_url: null,
         user_name: null,
+    },
+
+    save: {
+        page: 1,
+        per_page: 5,
+        hasMore: true,
+        list: [],
     }
 };
 
