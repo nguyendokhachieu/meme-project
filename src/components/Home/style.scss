@@ -53,11 +53,70 @@
                 }
             }
             
-            .featured-posts-header {
-                font-size: 1.9rem;
-                color: $text-color;
-                padding: 0 0 1rem 0;
-                letter-spacing: 0.08rem;
+            .home-tabs {
+                display: flex;
+                justify-content: space-between;
+                align-items: stretch;
+                margin-bottom: 1rem;
+
+                .tab {
+                    width: calc(50% - 0.5rem);
+                    padding: 1rem;
+                    font-size: 1.6rem;
+                    text-align: center;
+                    border-radius: 5px;
+                    background: linear-gradient(transparent, #fff);
+                    color: #999;
+                    cursor: pointer;
+                    position: relative;
+                    overflow: hidden;
+                    transition: all 0.25s ease;
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        top: calc(100% - 2px);
+                        left: 0;
+                        width: 100%;
+                        height: 2px;
+                        background-color: #ccc;
+                        border-radius: 5px;
+                        transition: all 0.95s ease;
+                        transform: translateX(-100%);
+                    }
+
+                    &:hover::after {
+                        transform: translateX(100%);
+                    }
+
+                    &:hover {
+                        color: rgb(55, 55, 255);
+                    }
+
+                    &:active {
+                        background-color: #eee;
+                    }
+                }
+                
+                .tab.active {
+                    font-weight: 500;
+                    color: rgb(55, 55, 255);
+                    cursor: default;
+
+                    &:hover::after {
+                        transform: translateX(-100%);
+                    }
+
+                    &:active {
+                        background-color: #fff;
+                    }
+                }
+
+                .latest {
+                }
+
+                .following {
+                }
             }
             
             .notification {

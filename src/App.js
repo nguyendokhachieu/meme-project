@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, useLocation } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -19,21 +21,27 @@ import LoadingGlobal from "./components/shared/LoadingGlobal";
 import EditPostModal from "./components/PostItem/Options/Edit/EditPostModal";
 import DeletePostModal from "./components/PostItem/Options/Delete/DeletePostModal";
 
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { actHideNotificationCard } from "./store/notifications/actions";
+import { actSetHomePageTabs } from "./store/posts/actions";
 
 function App() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  const isShowHeader = !['/login', '/register'].includes(pathname);
   const { show, content, showLink, href, linkContent } = useSelector(state => state.notifications);
+  
+  const isShowHeader = !['/login', '/register'].includes(pathname);
 
   useEffect(() => {
     show && setTimeout(() => {
       dispatch(actHideNotificationCard());
     }, 5000);
   }, [show]);
+
+  useEffect(() => {
+    localStorage.getItem('home-tab') 
+      ? dispatch(actSetHomePageTabs(localStorage.getItem('home-tab')))
+      : localStorage.setItem('home-tab', 'latest');
+  }, []);
 
   return (
       <div className="body-wrapper">

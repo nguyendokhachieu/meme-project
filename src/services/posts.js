@@ -18,6 +18,27 @@ export const PostService = {
         })
     },
 
+    getPostsByFollowingsPagination({
+        user_id,
+        page = 1,
+        per_page = 2,
+        order_by = 'created_at',
+        order_dir = 'DESC',
+    } = {}) 
+    {
+        return api.call().get("/post/get/following", {
+            params: {
+                user_id,
+                page,
+                per_page,
+                order_by,
+                order_dir,
+            }
+        })
+    },
+
+    
+
     getDetailPostById(id) {
         return api.call().get("/post/get/detail", {
             params: {

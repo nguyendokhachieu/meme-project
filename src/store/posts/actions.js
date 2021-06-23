@@ -8,6 +8,73 @@ export const ACT_FETCH_DETAIL_POST = 'ACT_FETCH_DETAIL_POST';
 export const ACT_CLEAR_DETAIL_POST = 'ACT_CLEAR_DETAIL_POST';
 export const ACT_FETCH_SAVED_POSTS = 'ACT_FETCH_SAVED_POSTS';
 export const ACT_DELETE_SAVED_POSTS = 'ACT_DELETE_SAVED_POSTS';
+export const ACT_FETCH_POSTS_BY_FOLLOWING_USERS = 'ACT_FETCH_POSTS_BY_FOLLOWING_USERS';
+export const ACT_SET_HOMEPAGE_TABS = 'ACT_SET_HOMEPAGE_TABS';
+
+export const actSetHomePageTabs = (tabName) => {    
+    return {
+        type: ACT_SET_HOMEPAGE_TABS,
+        payload: {
+            tabName,
+        }
+    }
+}
+
+export const actFetchPostsByFollowingUsersAsync = ({
+    user_id = null,
+    page = 1,
+    per_page = 5,
+    order_by = 'created_at',
+    order_dir = 'DESC',
+} = {}) =>  
+{
+    return async (dispatch) => {
+        try {
+            if (!user_id) return;
+            
+            const response = await PostService.getPostsByFollowingsPagination({
+                user_id,
+                page,
+                per_page,
+                order_by,
+                order_dir,
+            });
+
+            await dispatch(actFetchPostsByFollowingUsers({
+                user_id,
+                page,
+                per_page,
+                total_posts: response.data.total_posts,
+                list: response.data.data,
+                hasMore: response.data.data.length === 0 ? false : true,
+            }));
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+const actFetchPostsByFollowingUsers = ({
+    user_id,
+    page = 1,
+    per_page = 5,
+    total_posts = 0,
+    list = [],
+    hasMore = true,
+}) => {
+    return {
+        type: ACT_FETCH_POSTS_BY_FOLLOWING_USERS, 
+        payload: {
+            user_id,
+            page,
+            per_page,
+            total_posts,
+            list,
+            hasMore,
+        }
+    }
+}
 
 export const actFetchSavedPostsAsync = ({
     page = 1,

@@ -1,14 +1,16 @@
+import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 export default function HeaderNav() {
   const { pathname } = useLocation();
+  const { homepageTab: tab } = useSelector(state => state.posts);
 
   return (
     <ul className="header-nav">
       <li className={ pathname === '/' ? 'header-nav-item active' : 'header-nav-item' } >
         <Link className='header-nav-item-link' to="/" >
           <i class="fad fa-home nav-icon"></i>
-          Mới nhất
+          { tab === 'latest' ? 'Mới nhất' : 'Đang theo dõi' }
         </Link>
       </li>
       <li className={ pathname === '/categories' ? 'header-nav-item active' : 'header-nav-item' } >

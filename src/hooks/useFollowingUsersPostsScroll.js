@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useScrolledPercentage } from "../hooks/useScrolledPercentage";
-import { actFetchPostsPaginationAsync } from "../store/posts/actions";
+import { useScrolledPercentage } from "./useScrolledPercentage";
+import { actFetchPostsByFollowingUsersAsync } from "../store/posts/actions";
 
-export function useLatestPostsScroll({
+export function useFollowingUsersPostsScroll({
   fetch = true,
 } = {}) 
 {
   const dispatch = useDispatch();
   const { scrolledPercentY } = useScrolledPercentage();
   const [loading, setLoading] = useState(false);
-  const { posts, page, hasMore } = useSelector(state => state.posts);
+  const { list, page, hasMore } = useSelector(state => state.posts.followings);
+  const { id } = useSelector(state => state.user);
 
   useEffect(async () => {
     if (!fetch) return;
+
+    if (!id) return;
 
     if (scrolledPercentY > 15) {
       if (loading) {
@@ -26,9 +29,10 @@ export function useLatestPostsScroll({
 
       setLoading(true);
 
-      dispatch(actFetchPostsPaginationAsync({
+      dispatch(actFetchPostsByFollowingUsersAsync({
+        user_id: id,
         page: page + 1,
-        per_page: 3,
+        per_page: 5,
       })).finally(() => {
         setLoading(false);
       });
@@ -38,21 +42,22 @@ export function useLatestPostsScroll({
   useEffect(async () => {
     if (!fetch) return;
 
-    if (loading) return;
-
+    if (!id) return;
+    
     setLoading(true);
 
-    dispatch(actFetchPostsPaginationAsync({
+    dispatch(actFetchPostsByFollowingUsersAsync({
+      user_id: id,
       page: 1,
-      per_page: 3,
+      per_page: 5,
     })).finally(() => {
       setLoading(false);
     });
 
-  }, [fetch]);
+  }, [id, fetch]);
   
   return {
-    posts,
+    list,
     loading,
     hasMore,
   }

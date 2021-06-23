@@ -1,17 +1,21 @@
+import { useState } from "react";
+
 import PostItem from "../../PostItem";
 import PostItemLoading from "../../PostItem/PostItemLoading";
-import { useLatestPostsScroll } from "../../../hooks/useLatestPostsScroll";
+import Tabs from "./Tabs";
 
 export default function LatestPostsList() {
-  const {
-    posts,
-    loading,
-    hasMore,
-  } = useLatestPostsScroll();
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
   
   return (
     <div className="main-col-8">
-      <h3 className="featured-posts-header">Bài viết mới nhất</h3>
+      <Tabs 
+        posts={ p => setPosts(p) }
+        loading={ l => setLoading(l) }
+        hasMore={ hm => setHasMore(hm) }
+      />
       <div className="posts-list">
         {
           posts.length !== 0 

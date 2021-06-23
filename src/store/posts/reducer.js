@@ -7,6 +7,8 @@ import {
     ACT_CLEAR_DETAIL_POST,
     ACT_FETCH_SAVED_POSTS,
     ACT_DELETE_SAVED_POSTS,
+    ACT_FETCH_POSTS_BY_FOLLOWING_USERS,
+    ACT_SET_HOMEPAGE_TABS,
 } from "./actions";
 
 const initState = {
@@ -15,6 +17,16 @@ const initState = {
     total_posts: 0,
     posts: [],
     hasMore: true,
+
+    homepageTab: 'latest',
+
+    followings: {
+        user_id: null,
+        page: 1,
+        per_page: 5,
+        list: [],
+        hasMore: true,
+    },
 
     user: {
         page: 1,
@@ -48,6 +60,30 @@ const initState = {
 
 export const postsReducer = (state = initState, action) => {
     switch (action.type) {
+        case ACT_SET_HOMEPAGE_TABS:
+            localStorage.setItem('home-tab', action.payload.tabName);
+
+            return {
+                ...state,
+                homepageTab: action.payload.tabName,
+            }
+
+        case ACT_FETCH_POSTS_BY_FOLLOWING_USERS:
+            return {
+                ...state,
+                followings: {
+                    user_id: action.payload.user_id,
+                    page: action.payload.page,
+                    per_page: action.payload.per_page,
+                    hasMore: action.payload.hasMore,
+                    list: action.payload.page === 1
+                            ? action.payload.list
+                            : [    ...state.followings.list,
+                                ...action.payload.list,
+                            ],
+                }
+            }
+
         case ACT_DELETE_SAVED_POSTS:
             const deletedSavedID = action.payload.post_id;
 
