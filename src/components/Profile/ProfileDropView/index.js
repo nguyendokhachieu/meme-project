@@ -3,6 +3,7 @@ import "./profile-drop-view.scss";
 import { useEffect, useState } from "react";
 import { useScrolledPercentage } from "../../../hooks/useScrolledPercentage";
 import LeftLoading from "./LeftLoading";
+import Options from "../../UserProfileInfomation/UserName/Options";
 import { useAvatarLinkSrc } from "../../../hooks/useAvatarLinkSrc";
 
 export default function ProfileDropView({
@@ -35,7 +36,7 @@ export default function ProfileDropView({
                     )
             }
             <div className="right">
-
+                <Options />
             </div>
         </div>
     </section>

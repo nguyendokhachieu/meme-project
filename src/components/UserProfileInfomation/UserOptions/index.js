@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { UserService } from "../../../services/user";
 import { actShowNotificationCard } from "../../../store/notifications/actions";
 
@@ -79,7 +78,7 @@ export default function UserOptions({
             ? (
               <a 
                 className={ isFollowing ? 'follow-btn btn following' : 'follow-btn btn not-following gray-color'}
-                onClick={ e => { followOrUnfollow('+'); isFollowing && setShowDropdown(true); } } ref={ dropdownRef }
+                onClick={ e => { followOrUnfollow('+'); isFollowing && setShowDropdown(prev => !prev); } } ref={ dropdownRef }
               >
                 {
                   isFollowing
@@ -101,15 +100,6 @@ export default function UserOptions({
               </a>
             )
             : null
-          : null
-      }
-      {
-        isThisPerson
-          ? (
-            <Link to="/update" className="btn btn-transparent-bc gray-color">
-              Quản lý tài khoản của bạn
-            </Link>
-          )
           : null
       }
     </div>
