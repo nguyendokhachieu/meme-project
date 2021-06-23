@@ -90,7 +90,7 @@ export default function Saved() {
                                                     ? (
                                                         <div className="end">
                                                             <p className="text">
-                                                                <i class="fad fa-empty-set icon"></i>
+                                                                <i className="fad fa-empty-set icon"></i>
                                                                 Bạn chưa lưu bài viết nào!
                                                             </p>
                                                         </div>
@@ -98,7 +98,7 @@ export default function Saved() {
                                                     : (
                                                         <div className="end">
                                                             <p className="text">
-                                                                <i class="fad fa-bell-slash icon"></i>
+                                                                <i className="fad fa-bell-slash icon"></i>
                                                                 Đã xem hết tất cả bài viết đã lưu!
                                                             </p>
                                                         </div>
@@ -109,7 +109,7 @@ export default function Saved() {
                                         <div className="end">
                                             <p className="text loading">
                                                 <span className="icon-wrap">
-                                                    <i class="fad fa-spinner-third fa-spin icon"></i>
+                                                    <i className="fad fa-spinner-third fa-spin icon"></i>
                                                 </span>
                                             </p>
                                         </div>

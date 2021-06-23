@@ -14,7 +14,7 @@ export default function Control() {
   return (
     <>
       <label htmlFor="menu-input" className="menu-input-label">
-        <i class="fad fa-bars menu-input-icon"></i>
+        <i className="fad fa-bars menu-input-icon"></i>
       </label>
       <input type="checkbox" hidden className="menu-input" id="menu-input" />
       <div className="header-overlay"></div>

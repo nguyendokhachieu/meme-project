@@ -57,7 +57,7 @@ export default function Modal({
         <div className={ innerHide ? 'float-modal-wrap hide' : 'float-modal-wrap' }>
             <div className="float-modal">
                 <h3 className="modal-title" title={ title }>
-                    <i class="fal fa-list"></i>
+                    <i className="fal fa-list"></i>
                     {
                         loading
                             ? <span className="title-loading"></span>
@@ -76,7 +76,7 @@ export default function Modal({
                                 //             />;
                                 // })
                                 : "Không có ai để hiển thị"
-                            : <div align="center"><i class="fad fa-spinner fa-spin spinner-loading-icon"></i></div>
+                            : <div align="center"><i className="fad fa-spinner fa-spin spinner-loading-icon"></i></div>
                     }
                     {
                         hasErrors

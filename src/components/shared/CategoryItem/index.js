@@ -53,10 +53,10 @@ export default function CategoryItem({
       }
       <Link 
       to={ `/categories` } 
-      class={ small ? 'tags-item size-small' : 'tags-item' }
+      className={ small ? 'tags-item size-small' : 'tags-item' }
       onClick={ () => { handleClick(category.id) } }
       >
-        <span class="tags-text">{ category.name }</span>
+        <span className="tags-text">{ category.name }</span>
       </Link>
     </>
   );

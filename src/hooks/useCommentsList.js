@@ -42,7 +42,7 @@ export function useCommentsList(postID)
                         hasMore ? 'Xem thêm bình luận' : 'Bạn đã xem hết bình luận'
                     }
                     {
-                        loading ? <i class="fad fa-spinner-third fa-spin icon"></i> : null
+                        loading ? <i className="fad fa-spinner-third fa-spin icon"></i> : null
                     }
                 </button>
             </div>

@@ -10,7 +10,7 @@ export default function Delete({
   return (
     <li className="option-item">
       <a className="item-link" onClick={ e => { dispatch(actShowDeleteModal(id)) } }>
-        <i class="fad fa-trash-alt item-icon"></i>
+        <i className="fad fa-trash-alt item-icon"></i>
         Xóa bài viết
       </a>
     </li>

@@ -96,7 +96,7 @@ export default function Profile({
                         hasMorePosts && (
                           <div align="center" style={{margin: "2rem 0"}}>
                             <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
-                              { loadingPosts ? <i class="fa fa-spinner fa-spin"></i> : "Tải thêm" }
+                              { loadingPosts ? <i className="fa fa-spinner fa-spin"></i> : "Tải thêm" }
                             </button>
                           </div>
                         )

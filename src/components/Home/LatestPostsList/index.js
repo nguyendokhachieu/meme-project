@@ -35,7 +35,7 @@ export default function LatestPostsList() {
             !hasMore 
               ? (
                 <div className="end-of-list">
-                  <i class="fad fa-times-circle end-icon"></i>
+                  <i className="fad fa-times-circle end-icon"></i>
                   Không còn bài viết để hiển thị
                 </div>
               )

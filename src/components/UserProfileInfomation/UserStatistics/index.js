@@ -67,30 +67,30 @@ export default function UserStatistics({
           : null
       }
       <p className="statistic-item">
-        <i class="fad fa-newspaper left-statistic-icon"></i>
+        <i className="fad fa-newspaper left-statistic-icon"></i>
         <span className="statistic-item-text">Bài viết: </span>
         <span className="statistic-item-count">{ userInfo.count_posts }</span>
       </p>
       <p className="statistic-item">
-        <i class="fal fa-user-friends left-statistic-icon"></i>
+        <i className="fal fa-user-friends left-statistic-icon"></i>
         <span className="statistic-item-text">Được theo dõi: </span>
         <span className="statistic-item-count">{ follower }</span>
         <button
           className="btn-show-more-statistic"
           onClick={ () => { showModalPeople('follow-you') } }
         >
-          <i class="fad fa-eye show-more-statistic"></i>
+          <i className="fad fa-eye show-more-statistic"></i>
         </button>
       </p>
       <p className="statistic-item">
-        <i class="fal fa-user-plus left-statistic-icon"></i>
+        <i className="fal fa-user-plus left-statistic-icon"></i>
         <span className="statistic-item-text">Đang theo dõi: </span>
         <span className="statistic-item-count">{ following }</span>
         <button
           className="btn-show-more-statistic"
           onClick={ () => { showModalPeople('you-follow') } }
         >
-          <i class="fad fa-eye show-more-statistic"></i>
+          <i className="fad fa-eye show-more-statistic"></i>
         </button>
       </p>
     </div>

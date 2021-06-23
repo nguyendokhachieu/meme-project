@@ -59,20 +59,20 @@ export default function Delete({
             callingAPI
               ? (
                 <>
-                  <i class="fa fa-spinner fa-spin icon"></i>
+                  <i className="fa fa-spinner fa-spin icon"></i>
                   <span className="text">Đang xóa</span>
                 </>
               )
               : (
                 <>
-                  <i class="fal fa-trash-alt icon"></i>
+                  <i className="fal fa-trash-alt icon"></i>
                   <span className="text">Xác nhận xóa?</span>
                 </>
               )
           }
           
         </h6>
-        <p className="alert"><i class="fad fa-exclamation-triangle icon"></i></p>
+        <p className="alert"><i className="fad fa-exclamation-triangle icon"></i></p>
         <p className="caption">Bình luận sẽ bị xóa vĩnh viễn</p>
         <div className="btns">
           <button className="btn delete" onClick={ deleteThisComment }>Xóa</button>

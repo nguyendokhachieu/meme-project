@@ -8,8 +8,8 @@ export default function NotFound({
     <div className="main-content">
       <div className="container">
         <section className="not-found-section">
-          <div class="inner-wrapper">
-            <div class="not-found-landing-page">
+          <div className="inner-wrapper">
+            <div className="not-found-landing-page">
               <h1 className="not-found-title">
                 {
                   uploadDisabled 

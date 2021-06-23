@@ -53,7 +53,7 @@ export default function NotificationCard({
                   dispatch(actHideNotificationCard());
                 }}
               >
-                <i class="fas fa-times-circle close-icon"></i>
+                <i className="fas fa-times-circle close-icon"></i>
               </div>
             ) 
             : null

@@ -9,7 +9,7 @@ export default function AccountCreatedAt({
         <span className="rendered">{ rendered }</span>
       </span>
       <a className="edit col disabled">
-        <i class="fad fa-pencil-alt icon"></i>
+        <i className="fad fa-pencil-alt icon"></i>
         <span className="text">Chỉnh sửa</span>
       </a>
     </div>

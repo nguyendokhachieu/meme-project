@@ -28,7 +28,7 @@ export default function ButtonGroup() {
         auth 
           ? (
             <Link to="/upload" className="btn btn-item">
-              <i class="fad fa-upload nav-icon"></i>
+              <i className="fad fa-upload nav-icon"></i>
               Bài viết mới
             </Link>
           )
@@ -38,7 +38,7 @@ export default function ButtonGroup() {
         !auth
           ? (
             <Link to="/login" className="btn btn-item">
-              <i class="fad fa-sign-in nav-icon"></i>
+              <i className="fad fa-sign-in nav-icon"></i>
               Đăng nhập / Đăng ký
             </Link>
           )
@@ -48,7 +48,7 @@ export default function ButtonGroup() {
         auth  
           ? (
             <a className="btn btn-item" onClick={ handleLogout }>
-              <i class="fal fa-sign-out nav-icon"></i>
+              <i className="fal fa-sign-out nav-icon"></i>
               Đăng xuất
             </a>
           )

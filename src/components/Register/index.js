@@ -71,22 +71,22 @@ export default function Register() {
             <h2 className="register-title">
               {
                 loading 
-                ? <i class="fa fa-spinner fa-spin icon"></i>
-                : <i class="fad fa-user-plus icon"></i>
+                ? <i className="fa fa-spinner fa-spin icon"></i>
+                : <i className="fad fa-user-plus icon"></i>
               }
               <span className="register-title-text">Đăng ký một tài khoản</span>
             </h2>
             <div className={ hasErrors === 'has' ? "register-error active" : "register-error" }>
-              <p className="register-error-icon-wrap"><i class="fad fa-exclamation register-error-icon"></i></p>
+              <p className="register-error-icon-wrap"><i className="fad fa-exclamation register-error-icon"></i></p>
               <p className="register-error-text">{ message }. Vui lòng kiểm tra lại</p>
             </div>
             <div className={ hasErrors === 'password_mismatch' ? "register-error active" : "register-error" }>
-              <p className="register-error-icon-wrap"><i class="fad fa-exclamation register-error-icon"></i></p>
+              <p className="register-error-icon-wrap"><i className="fad fa-exclamation register-error-icon"></i></p>
               <p className="register-error-text">Password không hợp lệ. Vui lòng kiểm tra lại</p>
             </div>
             <form className="form-register" onSubmit={ register }>
               <div className="form-ctl-wrap">
-                <i class="fad fa-user icon"></i>
+                <i className="fad fa-user icon"></i>
                 <input
                   type="text"
                   className="form-control username-input"
@@ -100,7 +100,7 @@ export default function Register() {
                 </div>
               </div>
               <div className="form-ctl-wrap">
-                <i class="fad fa-portrait icon"></i>
+                <i className="fad fa-portrait icon"></i>
                 <input
                   type="text"
                   className="form-control fullname-input"
@@ -114,7 +114,7 @@ export default function Register() {
                 </div>
               </div>
               <div className="form-ctl-wrap">
-                <i class="fal fa-lock-alt icon"></i>
+                <i className="fal fa-lock-alt icon"></i>
                 <input
                   type="password"
                   className="form-control password-input"
@@ -128,7 +128,7 @@ export default function Register() {
                 </div>
               </div>
               <div className="form-ctl-wrap">
-                <i class="fal fa-lock-alt icon"></i>
+                <i className="fal fa-lock-alt icon"></i>
                 <input
                   type="password"
                   className="form-control"

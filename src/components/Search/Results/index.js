@@ -17,7 +17,7 @@ export default function Results({
   return (
     <div className="search-results">
       <h2 className="title">
-        <i class="fad fa-poll-people icon"></i>
+        <i className="fad fa-poll-people icon"></i>
         Kết quả tìm kiếm
         {
             q ? <span className="keyword">Từ khóa: { q }</span> : null 

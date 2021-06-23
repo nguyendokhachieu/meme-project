@@ -62,7 +62,7 @@ export default function Notification() {
 
   return (
     <a className="header-notification" onClick={handleBellClick}>
-      <i class="fad fa-bell icon-bell"></i>
+      <i className="fad fa-bell icon-bell"></i>
       <section
         className={hidden ? `notification-box hidden` : `notification-box`}
         onClick={handleContentClick}
@@ -76,7 +76,7 @@ export default function Notification() {
             loading 
               ? <NotificationItemLoading noOfItems={ 8 } />
               : list.length === 0 
-                ? <div className="empty"><i class="fad fa-empty-set icon"></i>Bạn chưa có thông báo nào</div>
+                ? <div className="empty"><i className="fad fa-empty-set icon"></i>Bạn chưa có thông báo nào</div>
                 : (
                   list.map(item => {
                     return <NotificationItem notification={ item } key={ item } />

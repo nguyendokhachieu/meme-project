@@ -11,7 +11,7 @@ export default function HeaderMobile() {
       <div className="side-bar">
         <div className="side-bar-wrap">
           <span id="close-side-bar" className="close-side-bar">
-            <i class="fad fa-arrow-alt-circle-left close-icon"></i>
+            <i className="fad fa-arrow-alt-circle-left close-icon"></i>
             <span className="tooltip">Đóng lại</span>
           </span>
           <Logo />

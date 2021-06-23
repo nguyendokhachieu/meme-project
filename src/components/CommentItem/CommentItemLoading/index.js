@@ -17,11 +17,11 @@ export default function CommentItemLoading() {
           <p className="comment-text">Đang tải</p>
           <div className="comment-footer">
             <a className="comment-show">
-              <i class="fal fa-heart icon"></i>
+              <i className="fal fa-heart icon"></i>
               <span className="count">69</span>
             </a>
             <a href="#" className="comment-show">
-              <i class="fal fa-comment-dots icon"></i>
+              <i className="fal fa-comment-dots icon"></i>
               <span className="count">69</span>
             </a>
           </div>

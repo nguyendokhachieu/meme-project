@@ -40,7 +40,7 @@ export default function TabItem({
         className={ showEditButton ? `edit col` : `edit col disabled` }
         onClick={ e => { setHideForm(!hideForm) } }
       >
-        <i class="fad fa-pencil-alt icon"></i>
+        <i className="fad fa-pencil-alt icon"></i>
         <span className="text">Chỉnh sửa</span>
       </a>
       

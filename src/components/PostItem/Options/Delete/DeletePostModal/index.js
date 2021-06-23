@@ -67,7 +67,7 @@ export default function DeletePostModal() {
       <div className="inner-modal" ref={ modalRef }>
         <Title loading={ callingAPI } />
         <div className="content">
-          <p className="alert"><i class="fad fa-exclamation-triangle icon"></i></p>
+          <p className="alert"><i className="fad fa-exclamation-triangle icon"></i></p>
           <p className="caption">Bài viết sẽ bị xóa vĩnh viễn</p>
           <div className="submit">
             <button 

@@ -74,8 +74,8 @@ export default function CreateNewCategories({
           >
             {
               callingAPI === 1
-                ? <i class="fa fa-spinner fa-spin icon"></i>
-                : <i class="fal fa-plus icon"></i>
+                ? <i className="fa fa-spinner fa-spin icon"></i>
+                : <i className="fal fa-plus icon"></i>
             }
             <form 
               className={ showForm ? "create-new-form show" : "create-new-form" }

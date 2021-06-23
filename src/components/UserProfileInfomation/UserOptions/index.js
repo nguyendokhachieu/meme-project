@@ -82,8 +82,8 @@ export default function UserOptions({
               >
                 {
                   isFollowing
-                    ? <span ><i class="fal fa-check tick-icon"></i>Đang theo dõi</span>
-                    : <span ><i class="fad fa-user-plus tick-icon"></i>Theo dõi</span>
+                    ? <span ><i className="fal fa-check tick-icon"></i>Đang theo dõi</span>
+                    : <span ><i className="fad fa-user-plus tick-icon"></i>Theo dõi</span>
                 }
                 {
                   !isFollowing
@@ -91,7 +91,7 @@ export default function UserOptions({
                     : (
                       <section className={ showDropdown ? "dropdown show" : "dropdown" } >
                         <a className="btn dropdown-btn" onClick={ e => { e.stopPropagation(); followOrUnfollow('-') } }>
-                          <i class="fad fa-user-minus icon"></i>
+                          <i className="fad fa-user-minus icon"></i>
                           Hủy theo dõi
                         </a>
                       </section>

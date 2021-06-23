@@ -20,13 +20,13 @@ export default function Nav() {
     <ul className="nav">
       <li className="nav-item">
         <Link to="/" className={ pathname === '/' ? 'nav-item-link active' : 'nav-item-link' }>
-          <i class="fad fa-home nav-icon"></i>
+          <i className="fad fa-home nav-icon"></i>
           Mới nhất
         </Link>
       </li>
       <li className="nav-item">
         <Link to="/categories" className={ pathname === '/categories' ? 'nav-item-link active' : 'nav-item-link' }>
-          <i class="fad fa-list-alt nav-icon"></i>
+          <i className="fad fa-list-alt nav-icon"></i>
           Danh mục
         </Link>
       </li>
@@ -35,7 +35,7 @@ export default function Nav() {
           ? (
             <li className="nav-item">
               <Link to={ `/profile?id=${ id }` } className={ pathname === '/profile' ? 'nav-item-link active' : 'nav-item-link' }>
-                <i class="fad fa-user-alt nav-icon"></i>
+                <i className="fad fa-user-alt nav-icon"></i>
                 Profile
               </Link>
             </li>

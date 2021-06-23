@@ -67,8 +67,8 @@ export default function ChangePassword() {
             <h2 className="change-password-title">
               {
                 loading 
-                  ? <i class="fa fa-spinner fa-spin icon"></i>
-                  : <i class="far fa-exchange-alt icon"></i>
+                  ? <i className="fa fa-spinner fa-spin icon"></i>
+                  : <i className="far fa-exchange-alt icon"></i>
               }
               <span className="change-password-title-text">
                 Thay đổi mật khẩu
@@ -78,7 +78,7 @@ export default function ChangePassword() {
               hasErrors 
                 ? (
                     <div className="change-password-error active">
-                      <p className="change-password-error-icon-wrap"><i class="fad fa-exclamation change-password-error-icon"></i></p>
+                      <p className="change-password-error-icon-wrap"><i className="fad fa-exclamation change-password-error-icon"></i></p>
                       <p className="change-password-error-text">{ errorText }</p>
                     </div>
                 )
@@ -86,7 +86,7 @@ export default function ChangePassword() {
             }
             <form className="form-change-password" onSubmit={ changePassword }>
               <div className="form-ctl-wrap">
-                <i class="fal fa-unlock-alt password-icon"></i>
+                <i className="fal fa-unlock-alt password-icon"></i>
                 <input
                   type="password"
                   className="form-control"
@@ -98,7 +98,7 @@ export default function ChangePassword() {
                 />
               </div>
               <div className="form-ctl-wrap">
-                <i class="fal fa-lock-alt password-icon"></i>
+                <i className="fal fa-lock-alt password-icon"></i>
                 <input
                   type="password"
                   className="form-control"
@@ -109,7 +109,7 @@ export default function ChangePassword() {
                 />
               </div>
               <div className="form-ctl-wrap">
-                <i class="fal fa-lock-alt password-icon"></i>
+                <i className="fal fa-lock-alt password-icon"></i>
                 <input
                   type="password"
                   className="form-control"

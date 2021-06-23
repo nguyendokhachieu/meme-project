@@ -18,7 +18,7 @@ export default function Username({
         <span className="rendered">{ innerRendered }</span>
       </span>
       <a className={ showEditButton ? `edit col` : `edit col disabled` } >
-        <i class="fad fa-pencil-alt icon"></i>
+        <i className="fad fa-pencil-alt icon"></i>
         <span className="text">Chỉnh sửa</span>
       </a>
     </div>

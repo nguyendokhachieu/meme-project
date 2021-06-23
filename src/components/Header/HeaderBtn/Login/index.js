@@ -16,7 +16,7 @@ export default function Notification() {
       !hide  
         ? (
           <Link to="/login" className="btn header-login-btn">
-            <i class="fad fa-sign-in header-btn-icon"></i>
+            <i className="fad fa-sign-in header-btn-icon"></i>
             Tài khoản
           </Link>
         )

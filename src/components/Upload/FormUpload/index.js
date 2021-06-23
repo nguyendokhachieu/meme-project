@@ -18,7 +18,7 @@ export default function FormUpload({
     <form className="form-group">
       <div className="form-control-wrap">
         <label className="label-text" htmlFor="caption">
-          <i class="fal fa-plus-circle icon"></i>
+          <i className="fal fa-plus-circle icon"></i>
           Bài viết mới
         </label>
         <TextArea
@@ -32,7 +32,7 @@ export default function FormUpload({
         />
       </div>
       <div className="form-control-wrap form-file-wrap">
-        <i class="fad fa-upload icon"></i>
+        <i className="fad fa-upload icon"></i>
         <label className="label-text" htmlFor="file">
           Thêm hình ảnh
         </label>

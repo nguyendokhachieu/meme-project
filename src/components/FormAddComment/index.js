@@ -60,7 +60,7 @@ export default function FormAddComment({
       <div className="add-comment">
         <form className="comment-form">
           <div className="form-ctl-wrap">
-            <i class="fas fa-pencil icon"></i>
+            <i className="fas fa-pencil icon"></i>
             <textarea
               className="comment-input"
               placeholder="Bình luận công khai"

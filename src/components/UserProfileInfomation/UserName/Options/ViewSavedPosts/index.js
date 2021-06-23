@@ -17,7 +17,7 @@ export default function ViewSavedPosts({
   return (
     <li className="option-item">
       <Link to="/saved" className="item-link" onClick={ () => { setShowOptions(false) } }>
-        <i class="fad fa-list-alt item-icon"></i>
+        <i className="fad fa-list-alt item-icon"></i>
         Xem các bài viết đã lưu
       </Link>
     </li>

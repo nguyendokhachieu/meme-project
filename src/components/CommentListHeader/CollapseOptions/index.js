@@ -26,7 +26,7 @@ export default function CollapseOptions()
     <div className="collapse">
       <span className="selected" onClick={ e => { setShowCollapse(prev => !prev) } } ref={ optionsRef }>
         { selected }
-        <i class="fal fa-angle-down icon"></i>
+        <i className="fal fa-angle-down icon"></i>
       </span>
       <ul className={ showCollapse ? 'options show' : 'options' } >
         <li className="item" onClick={ e => { dispatch(actSortComment('desc')); setSelected('Mới nhất') } }>Mới nhất</li>

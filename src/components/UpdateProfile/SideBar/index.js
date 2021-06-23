@@ -33,7 +33,7 @@ export default function SideBar({
               className="userInfo-toggle" 
               onClick={ e => { toggleSideBar(!toggleSidebar); setToggleSideBar(prev => !prev); } }
             >
-              <i class="far fa-bars icon"></i>
+              <i className="far fa-bars icon"></i>
             </label>
           </h3>
           <ul className="nav">
@@ -44,7 +44,7 @@ export default function SideBar({
                 activeClassName="active"
                 className="nav-item-link"
               >
-                <i class="fad fa-list-alt icon"></i>
+                <i className="fad fa-list-alt icon"></i>
                 <span className="text">Thông tin chung</span>
               </NavHashLink>
               <NavHashLink
@@ -53,7 +53,7 @@ export default function SideBar({
                 activeClassName="active"
                 className="nav-item-link"
               >
-                <i class="fad fa-user-shield icon"></i>
+                <i className="fad fa-user-shield icon"></i>
                 <span className="text">Quyền riêng tư</span>
               </NavHashLink>
             </li>

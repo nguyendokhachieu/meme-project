@@ -88,7 +88,7 @@ export default function Image({
                           
                           {
                             !innerFile
-                              ? <><i class="fad fa-plus-circle icon add-icon"></i>Thêm hình ảnh mới</>
+                              ? <><i className="fad fa-plus-circle icon add-icon"></i>Thêm hình ảnh mới</>
                               : null 
                           }
                           {
@@ -106,7 +106,7 @@ export default function Image({
                           innerFile 
                             ? (
                               <span className="added" onClick={ e => { setInnerFile(null); e.stopPropagation() } }>
-                                <i class="fal fa-times-circle dismiss-icon"></i>
+                                <i className="fal fa-times-circle dismiss-icon"></i>
                                 Bỏ chọn
                               </span>
                             )

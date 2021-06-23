@@ -77,7 +77,7 @@ export default function UserPostsList() {
                   auth 
                     ? (
                       <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
-                        { isLoading ? <i class="fa fa-spinner fa-spin"></i> : "Tải thêm" }
+                        { isLoading ? <i className="fa fa-spinner fa-spin"></i> : "Tải thêm" }
                       </button>
                     ) 
                     : null

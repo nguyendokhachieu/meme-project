@@ -9,16 +9,16 @@ export default function Password()
       <span className="name col">Password</span>
       <span className="content col">
         <span className="rendered">
-          <i class="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
-          <i class="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
-          <i class="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
-          <i class="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
-          <i class="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
-          <i class="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
-          <i class="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
-          <i class="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
-          <i class="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
-          <i class="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
+          <i className="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
+          <i className="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
+          <i className="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
+          <i className="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
+          <i className="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
+          <i className="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
+          <i className="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
+          <i className="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
+          <i className="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
+          <i className="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
         </span>
       </span>
       <a
@@ -30,7 +30,7 @@ export default function Password()
           },
         }) } }
       >
-        <i class="fad fa-pencil-alt icon"></i>
+        <i className="fad fa-pencil-alt icon"></i>
         <span className="text">Chỉnh sửa</span>
       </a>
     </div>

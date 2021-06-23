@@ -26,7 +26,7 @@ export default function Notification() {
       className={ pathname === '/upload' ? 'header-new-post active' : 'header-new-post' } 
       onClick={ e => { history.push('/upload') } }
     >
-      <i class="fad fa-plus-circle icon"></i>
+      <i className="fad fa-plus-circle icon"></i>
     </a>
   );
 }

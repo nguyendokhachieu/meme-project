@@ -31,7 +31,7 @@ export default function Options({
 
   return (
     <div className="post-item-options" ref={ optionsRef }>
-        <i class="fal fa-ellipsis-v-alt options-icon" onClick={ e => { setShowOptions(prev => !prev) } }></i>
+        <i className="fal fa-ellipsis-v-alt options-icon" onClick={ e => { setShowOptions(prev => !prev) } }></i>
         <div className={ showOptions ? 'options show' : 'options' }>
           <ul className="list-items">
             <li className="option-item public">

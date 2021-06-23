@@ -24,7 +24,7 @@ export default function Sidebar({
   return (
     <div className="search-sidebar">
       <h2 className="title" onClick={ e => { setShowFilter(prev => !prev) } }>
-        <i class="fad fa-filter icon"></i>
+        <i className="fad fa-filter icon"></i>
         <span className="text">Bộ lọc tìm kiếm</span>
         <a className="indicator">
           {

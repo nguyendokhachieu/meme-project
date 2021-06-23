@@ -36,11 +36,11 @@ export default function CommentItemContent({
       <p className="comment-text">{comment.content}</p>
       <div className="comment-footer">
         <a href="#" className="comment-show like active">
-          <i class="fal fa-heart icon"></i>
+          <i className="fal fa-heart icon"></i>
           <span className="count">{comment.liked_count}</span>
         </a>
         <a href="#" className="comment-show">
-          <i class="fal fa-comment-dots icon"></i>
+          <i className="fal fa-comment-dots icon"></i>
           <span className="count">123</span>
         </a>
       </div>

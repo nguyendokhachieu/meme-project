@@ -14,9 +14,9 @@ export default function OrderBy({
     <div className="order">
       <h5 className="cri-title">
         Sắp xếp bởi:
-        <i class="fad fa-clock icon"></i>
-        <i class="fal fa-heart icon"></i>
-        <i class="fal fa-comment icon"></i>
+        <i className="fad fa-clock icon"></i>
+        <i className="fal fa-heart icon"></i>
+        <i className="fal fa-comment icon"></i>
       </h5>
       <form className="form-group">
         <div className="input-wrap">

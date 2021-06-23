@@ -48,7 +48,7 @@ export default function ListCategoriesUpload({
       <div className="inner-list">
       {
           isLoading
-            ? <div align="center"><i class="fa fa-spinner fa-spin icon"></i></div>
+            ? <div align="center"><i className="fa fa-spinner fa-spin icon"></i></div>
             : categories.length !== 0
               ? categories.filter(c => {
                   if (query === '') {

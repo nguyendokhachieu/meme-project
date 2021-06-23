@@ -56,7 +56,7 @@ export default function Notification() {
                         </div>
                         <div className="end">
                             <p className="text">
-                                <i class="fad fa-bell-slash icon"></i>
+                                <i className="fad fa-bell-slash icon"></i>
                                 Không còn thông báo nào!
                             </p>
                         </div>

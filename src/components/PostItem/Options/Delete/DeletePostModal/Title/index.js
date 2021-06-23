@@ -11,14 +11,14 @@ export default function Title({
 
   return (
     <h4 className="title">
-      <i class="fad fa-trash-alt icon"></i>
+      <i className="fad fa-trash-alt icon"></i>
       Xóa bài viết
       {
         !loading
           ? null 
-          : <span className="loading"><i class="fad fa-circle-notch fa-spin icon loading-icon"></i></span>
+          : <span className="loading"><i className="fad fa-circle-notch fa-spin icon loading-icon"></i></span>
       }
-      <i class="fal fa-times icon close-icon" onClick={ e => { dispatch(actHideDeleteModal()) } }></i>
+      <i className="fal fa-times icon close-icon" onClick={ e => { dispatch(actHideDeleteModal()) } }></i>
     </h4>
   );
 }

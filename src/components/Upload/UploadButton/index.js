@@ -75,7 +75,7 @@ export default function UploadButton({
       >
         {
           loading
-            ? <i class="fa fa-spinner fa-spin icon"></i>
+            ? <i className="fa fa-spinner fa-spin icon"></i>
             : "Đăng bài"
         }
       </button>

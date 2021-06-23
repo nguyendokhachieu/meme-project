@@ -78,12 +78,12 @@ export default function ProfileImage() {
           </div>
           <div className="profile-link">
             <Link to="/upload" className="upload-link">
-              <i class="fad fa-plus-circle icon"></i>
+              <i className="fad fa-plus-circle icon"></i>
               <a className="text">Bài viết mới</a>
             </Link>
           </div>
           <a className="logout-link" onClick={ handleLogout }>
-            <i class="fad fa-sign-out icon"></i>
+            <i className="fad fa-sign-out icon"></i>
             <a className="text">Đăng xuất</a>
           </a>
         </div>

@@ -9,13 +9,13 @@ export default function HeaderNav() {
     <ul className="header-nav">
       <li className={ pathname === '/' ? 'header-nav-item active' : 'header-nav-item' } >
         <Link className='header-nav-item-link' to="/" >
-          <i class="fad fa-home nav-icon"></i>
+          <i className="fad fa-home nav-icon"></i>
           { tab === 'latest' ? 'Mới nhất' : 'Đang theo dõi' }
         </Link>
       </li>
       <li className={ pathname === '/categories' ? 'header-nav-item active' : 'header-nav-item' } >
         <Link className='header-nav-item-link' to="/categories" >
-          <i class="fad fa-list-alt nav-icon"></i>
+          <i className="fad fa-list-alt nav-icon"></i>
           Danh mục
         </Link>
       </li>

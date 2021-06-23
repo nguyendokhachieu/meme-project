@@ -23,7 +23,7 @@ export default function Options({
 
   return (
     <a className="comment-options" ref={ optionRef } >
-      <i class="fal fa-ellipsis-h-alt icon" onClick={ e => { setShow(prev => !prev) } }></i>
+      <i className="fal fa-ellipsis-h-alt icon" onClick={ e => { setShow(prev => !prev) } }></i>
       <section className={ show ? 'options-select show' : 'options-select' }>
         <h6 className="title">Tùy chọn bình luận</h6>
         <ul className="options">

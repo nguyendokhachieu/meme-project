@@ -14,8 +14,8 @@ export default function OrderDir({
     <div className="order">
       <h5 className="cri-title">
         Sắp xếp theo:
-        <i class="fal fa-sort-size-up icon"></i>
-        <i class="fal fa-sort-size-down icon"></i>
+        <i className="fal fa-sort-size-up icon"></i>
+        <i className="fal fa-sort-size-down icon"></i>
       </h5>
       <form className="form-group">
         <div className="input-wrap">

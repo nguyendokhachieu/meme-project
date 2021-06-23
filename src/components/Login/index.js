@@ -71,18 +71,18 @@ export default function Login() {
             <h2 className="login-title">
               {
                 loading 
-                  ? <i class="fa fa-spinner fa-spin icon"></i>
-                  : <i class="fad fa-sign-in icon"></i>
+                  ? <i className="fa fa-spinner fa-spin icon"></i>
+                  : <i className="fad fa-sign-in icon"></i>
               }
               <span className="login-title-text">Đăng nhập</span>
             </h2>
             <div className={ hasErrors ? "login-error active" : "login-error" }>
-              <p className="login-error-icon-wrap"><i class="fad fa-exclamation login-error-icon"></i></p>
+              <p className="login-error-icon-wrap"><i className="fad fa-exclamation login-error-icon"></i></p>
               <p className="login-error-text">Username hoặc password không hợp lệ. Vui lòng kiểm tra lại</p>
             </div>
             <form action className="form-login" onSubmit={ login } >
               <div className="form-ctl-wrap">
-                <i class="fad fa-user icon"></i>
+                <i className="fad fa-user icon"></i>
                 <Input 
                   type="text"
                   placeholder="Username"
@@ -93,7 +93,7 @@ export default function Login() {
                 />
               </div>
               <div className="form-ctl-wrap">
-                <i class="fal fa-lock-alt icon"></i>
+                <i className="fal fa-lock-alt icon"></i>
                 <Input
                   type="password"
                   placeholder="Password"

@@ -64,13 +64,13 @@ export default function Save({
           !isSaved 
             ? (
               <>
-                <i class="fad fa-file-plus item-icon"></i>
+                <i className="fad fa-file-plus item-icon"></i>
                 Lưu bài viết này
               </>
             )
             : (
               <>
-                <i class="fad fa-file-minus item-icon"></i>
+                <i className="fad fa-file-minus item-icon"></i>
                 Bỏ lưu bài viết
               </>
             )
