@@ -112,10 +112,34 @@
                     }
                 }
 
-                .latest {
-                }
+                .tab.disabled {
+                    background: linear-gradient(transparent, rgba(255, 255, 255, 0.5));
+                    color: #ddd;
+                    font-weight: normal;
+                    position: relative;
 
-                .following {
+                    &::before {
+                        content: 'Hãy đăng nhập!';
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        border-radius: 5px;
+                        background-color: #fff;
+                        padding: 0.5rem;
+                        font-size: 1.4rem;
+                        color: #999;
+                        transform: translate(-50%, 100%);
+                        transition: all 0.25s ease;
+                    }
+
+                    &:hover::before {
+                        transform: translate(-50%, -50%);
+                    }
+
+                    &:hover::after {
+                        transform: translateX(-100%);
+                    }
                 }
             }
             

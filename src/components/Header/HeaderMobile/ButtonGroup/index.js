@@ -7,7 +7,8 @@ export default function ButtonGroup() {
 
   const handleLogout = () => {
     localStorage.setItem('tstring', '');
-
+    localStorage.setItem('home-tab', 'latest');
+    
     window.location.reload();
   }
 

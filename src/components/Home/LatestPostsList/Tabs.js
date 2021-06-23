@@ -13,6 +13,7 @@ export default function Tabs({
 {
   const dispatch = useDispatch();
   const { homepageTab: tab } = useSelector(state => state.posts);
+  const { id: user_id } = useSelector(state => state.user);
 
   const {
     posts: postsForLatest,
@@ -55,8 +56,8 @@ export default function Tabs({
             Bài viết mới nhất
         </div>
         <div 
-            className={ tab === 'following' ? 'tab active' : 'tab' }
-            onClick={ () => { dispatch(actSetHomePageTabs('following')) } }
+            className={ !user_id ? 'tab disabled' : tab === 'following' ? 'tab active' : 'tab'  }
+            onClick={ () => { user_id && dispatch(actSetHomePageTabs('following')) } }
         >
             Đang theo dõi
         </div>

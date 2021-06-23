@@ -14,6 +14,7 @@ export default function ProfileImage() {
 
   const handleLogout = () => {
     localStorage.setItem('tstring', '');
+    localStorage.setItem('home-tab', 'latest');
 
     window.location.reload();
   }
