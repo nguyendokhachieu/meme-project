@@ -1,19 +1,6 @@
 import { api } from "./api";
 
 export const PostService = {
-    getAllPosts({
-        order_by = 'created_at',
-        order_dir = 'DESC',
-    } = {}) 
-    {
-        return api.call().get("/post/getAllPosts", {
-            params: {
-                order_by,
-                order_dir,
-            }
-        })
-    },
-
     getPostsPagination({
         page = 1,
         per_page = 2,
@@ -21,7 +8,7 @@ export const PostService = {
         order_dir = 'DESC',
     } = {}) 
     {
-        return api.call().get("/post/getPostsPagination", {
+        return api.call().get("/post/get/get", {
             params: {
                 page,
                 per_page,
@@ -32,7 +19,7 @@ export const PostService = {
     },
 
     getDetailPostById(id) {
-        return api.call().get("/post/getDetailPostById", {
+        return api.call().get("/post/get/detail", {
             params: {
                 id
             }
@@ -46,7 +33,7 @@ export const PostService = {
         order_by = 'created_at', 
         order_dir ='DESC',
     }) {
-        return api.call().get("/post/getPostsByUserIdPagination", {
+        return api.call().get("/post/get/user", {
             params: {
                 user_id, 
                 page, 
@@ -123,7 +110,7 @@ export const PostService = {
         order_by = 'created_at', 
         order_dir = 'DESC'
     }) {
-        return api.call().get('/post/getPostsByCategoryId', {
+        return api.call().get('/post/get/category', {
             params: {
                 category_id,
                 page,
