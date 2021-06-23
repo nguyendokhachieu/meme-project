@@ -12,6 +12,7 @@ import UploadPage from "./pages/UploadPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import NotificationPage from "./pages/NotificationPage";
 import SearchPage from "./pages/SearchPage";
+import SavedPostsPage from "./pages/SavedPostsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import NotificationCard from "./components/shared/NotificationCard";
 import LoadingGlobal from "./components/shared/LoadingGlobal";
@@ -43,6 +44,7 @@ function App() {
         }
         <Switch>
           <Route path="/notifications"><NotificationPage /></Route>
+          <Route path="/saved"><SavedPostsPage /></Route>
           <Route path="/search"><SearchPage /></Route>
           <Route path="/categories"><CategoriesPage /></Route>
           <Route path="/upload"><UploadPage /></Route>

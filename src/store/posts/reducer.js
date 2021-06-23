@@ -5,6 +5,8 @@ import {
     ACT_EDIT_POST, 
     ACT_FETCH_DETAIL_POST,
     ACT_CLEAR_DETAIL_POST,
+    ACT_FETCH_SAVED_POSTS,
+    ACT_DELETE_SAVED_POSTS,
 } from "./actions";
 
 const initState = {
@@ -46,6 +48,30 @@ const initState = {
 
 export const postsReducer = (state = initState, action) => {
     switch (action.type) {
+        case ACT_DELETE_SAVED_POSTS:
+            const deletedSavedID = action.payload.post_id;
+
+            return {
+                ...state,
+                save: {
+                    list: state.save.list.filter(post => {
+                        return post.id !== deletedSavedID && post;
+                    })
+                }
+            }
+
+        case ACT_FETCH_SAVED_POSTS:
+            return {
+                ...state,
+                save: {
+                    page: action.payload.page, 
+                    per_page: action.payload.per_page,
+                    hasMore: action.payload.list.length > 0 ? true : false,
+                    list: action.payload.list,
+
+                }
+            }
+
         case ACT_CLEAR_DETAIL_POST:
             return {
                 ...state,

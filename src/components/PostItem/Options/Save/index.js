@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { PostService } from "../../../../services/posts";
 
 import { actShowNotificationCard } from "../../../../store/notifications/actions";
+import { actDeleteSavedPost } from "../../../../store/posts/actions";
 
 export default function Save({
   id,
@@ -36,6 +37,7 @@ export default function Save({
       setIsSaved(false);
       setLoading(false);
 
+      dispatch(actDeleteSavedPost(id));
       dispatch(actShowNotificationCard(response.data.message));
 
       return;

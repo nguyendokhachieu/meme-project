@@ -6,6 +6,50 @@ export const ACT_DELETE_POST = 'ACT_DELETE_POST';
 export const ACT_EDIT_POST = 'ACT_EDIT_POST';
 export const ACT_FETCH_DETAIL_POST = 'ACT_FETCH_DETAIL_POST';
 export const ACT_CLEAR_DETAIL_POST = 'ACT_CLEAR_DETAIL_POST';
+export const ACT_FETCH_SAVED_POSTS = 'ACT_FETCH_SAVED_POSTS';
+export const ACT_DELETE_SAVED_POSTS = 'ACT_DELETE_SAVED_POSTS';
+
+export const actFetchSavedPostsAsync = ({
+    page = 1,
+    per_page = 5,
+    order_by = 'latest_saved',
+    order_dir = 'desc',
+}) => {
+    return async dispatch => {
+        try {
+            const response = await PostService.getListSavedPosts({
+                page,
+                per_page,
+                order_by,
+                order_dir,
+            })
+
+            dispatch(actFetchSavedPosts(page, per_page, response?.data.data || []));
+        } catch (error) {
+            
+        }
+    }
+}
+
+const actFetchSavedPosts = (page, per_page, list) => {
+    return {
+        type: ACT_FETCH_SAVED_POSTS,
+        payload: {
+            page,
+            per_page,
+            list,
+        }
+    }
+}
+
+export const actDeleteSavedPost = post_id => {
+    return {
+        type: ACT_DELETE_SAVED_POSTS,
+        payload: {
+            post_id,
+        }
+    }
+}
 
 export const actEditPost = (id, newImgUrl, newContent, deleteCurrentImage, isDetailPostPage, isProfilePage) => {
     return {
