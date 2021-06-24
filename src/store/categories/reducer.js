@@ -1,7 +1,9 @@
 import { 
     ACT_FETCH_ALL_CATEGORIES, 
     ACT_FETCH_CATEGORIES, 
-    ACT_FETCH_USER_CATEGORIES } from "./actions";
+    ACT_FETCH_USER_CATEGORIES,
+    ACT_FETCH_POSTS_BY_CATEGORIES,
+} from "./actions";
 
 const initState = {
     page: 1,
@@ -9,16 +11,42 @@ const initState = {
     total_categories: 0,
     categoriesPaging: [],
     categories: [],
+
     user: {
         page: 1,
         per_page: 5,
-        total_user_categories: 0,
-        categories: [],
+        total: 0,
+        list: [],
+        hasMore: true,
+    },
+
+    postsByCategoryId: {
+        page: 1,
+        per_page: 5, 
+        hasMore: true,
+        list: [],
+        category_id: null,
     }
 }
 
 export const categoriesReducer = (state = initState, action) => {
     switch (action.type) {
+        case ACT_FETCH_POSTS_BY_CATEGORIES:
+            return {
+                ...state,
+                postsByCategoryId: {
+                    page: action.payload.page,
+                    per_page: action.payload.per_page,
+                    hasMore: action.payload.hasMore,
+                    list: action.payload.page === 1
+                            ? action.payload.list
+                            : [
+                                ...state.postsByCategoryId.list,
+                                ...action.payload.list,
+                            ],
+                    category_id: action.payload.category_id,
+                }
+            }
         case ACT_FETCH_CATEGORIES:
             return {
                 ...state,
@@ -45,13 +73,14 @@ export const categoriesReducer = (state = initState, action) => {
                 user: {
                     page: action.payload.page,
                     per_page: action.payload.per_page,
-                    total_user_categories: action.payload.total_user_categories,
-                    categories: action.payload.page === 1
+                    total: action.payload.total_user_categories,
+                    list: action.payload.page === 1
                                     ? action.payload.categories
                                     : [
-                                        ...state.user.categories,
+                                        ...state.user.list,
                                         ...action.payload.categories,
-                                    ]
+                                    ],
+                    hasMore: action.payload.hasMore,
                 }
             }
 

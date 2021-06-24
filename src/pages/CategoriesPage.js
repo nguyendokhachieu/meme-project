@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
 import { actFetchAllCategories } from "../store/categories/actions";
 import { CategoryService } from "../services/categories";
+
 import Categories from "../components/Categories";
-import { useDispatch } from "react-redux";
 
 let isDispatched = false;
 

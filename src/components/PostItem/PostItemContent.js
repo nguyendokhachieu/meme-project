@@ -10,7 +10,7 @@ export default function PostItemHeader({
 
     return (
         <div className="post-item-content">
-        <p className="post-item-text">
+        <p className="post-item-text" >
           <span className="content">
             { 
               post.content && post.content.length > 250 

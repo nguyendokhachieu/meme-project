@@ -1,6 +1,9 @@
 import "./style.scss";
-import { useWindowSize } from "../../hooks/useWindowSize";
+
 import { useEffect, useState } from "react";
+
+import { useWindowSize } from "../../hooks/useWindowSize";
+
 import CategoriesList from "../CategoriesList";
 import CategoriesListByUser from "../CategoriesListByUser";
 
@@ -12,9 +15,7 @@ export default function Categories({
   const [tab, setTab] = useState('general');
   const [hidden, setHidden] = useState(false);
 
-  const handleTabClick = (which) => {
-    setTab(which);
-  }
+  const handleTabClick = which => setTab(which);
 
   useEffect(() => {
     if (width <= 992) {

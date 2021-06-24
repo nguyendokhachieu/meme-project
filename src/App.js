@@ -21,6 +21,7 @@ import LoadingGlobal from "./components/shared/LoadingGlobal";
 import EditPostModal from "./components/PostItem/Options/Edit/EditPostModal";
 import DeletePostModal from "./components/PostItem/Options/Delete/DeletePostModal";
 import DeleteCommentModal from "./components/CommentItem/Options/Delete/DeleteCommentModal";
+import ModalCategoryPost from "./components/shared/CategoryItem/ModalCategoryPost";
 
 import { actHideNotificationCard } from "./store/notifications/actions";
 import { actSetHomePageTabs } from "./store/posts/actions";
@@ -82,6 +83,7 @@ function App() {
         <EditPostModal />
         <DeletePostModal />
         <DeleteCommentModal />
+        <ModalCategoryPost />
       </div>
   );
 }

@@ -69,13 +69,7 @@ export default function Modal({
                         !loading 
                             ? list.length !== 0 
                                 ? renderList(list)
-                                // list.map(user => {
-                                //     return <ModalUserItem 
-                                //                 user={ user } 
-                                //                 closeModal={ val => { setInnerHide(true) } } 
-                                //             />;
-                                // })
-                                : "Không có ai để hiển thị"
+                                : "Không có nội dung"
                             : <div align="center"><i className="fad fa-spinner fa-spin spinner-loading-icon"></i></div>
                     }
                     {

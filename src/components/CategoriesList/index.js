@@ -1,9 +1,11 @@
 import "./category-list.scss";
+
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
 import CategoryItem from "../shared/CategoryItem";
 import CategoryItemLoading from "../shared/CategoryItem/CategoryItemLoading";
 import CategoriesControl from "./CategoriesControl";
-import { useSelector } from "react-redux";
-import { useState } from "react";
 
 export default function CategoriesList({
     loading,
@@ -36,7 +38,6 @@ export default function CategoriesList({
                                     return cate;
                                 }
 
-                                return true; 
                             }).map(cate => {
                                     return <CategoryItem key={ cate.id } category={ cate } />;
                                 }

@@ -1,0 +1,38 @@
+.notification-auth {
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #ccc;
+    color: #999;
+}
+
+.my-categories-count {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: #313131;
+    margin: 1rem 0 1.5rem 0;
+}
+
+.user-list {
+
+    .load-more {
+        padding: 1rem;
+
+        .load-btn {
+            border: 0;
+            color: #999;
+            background-color: transparent;
+
+            &:hover {
+                color: #999;
+                text-decoration: underline;
+                border: 0;
+                background-color: transparent;
+            }
+        }
+
+        .load-btn.disabled {
+            color: #999;
+            background-color: transparent;
+            pointer-events: none;
+        }
+    }
+}

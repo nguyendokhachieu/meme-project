@@ -95,11 +95,12 @@
             color: $text-color;
 
             display: flex;
+            align-items: center;
 
             .content {
                 word-break: break-word;
                 align-self: flex-start;
-                flex: 1;
+                flex: 0.8;
 
                 .view-more {
                     margin: 0 0.5rem;
@@ -110,7 +111,6 @@
 
             .image-link-right-side {
                 margin-left: 1rem;
-                align-self: center;
                 flex: 0.2;
 
                 .img {

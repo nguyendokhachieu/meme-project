@@ -1,63 +1,28 @@
-import { Link } from "react-router-dom";
-import Modal from "../Modal";
-import { PostService } from "../../../services/posts";
 import "./style.scss";
-import { useState } from "react";
+
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { actShowCategoryPostModal } from "../../../store/modals/actions";
 
 export default function CategoryItem({
   category,
   small = false,
 }) 
 {
-  const [loading, setLoading] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [posts, setPosts] = useState([]);
-  const [modalTitle, setModalTitle] = useState('');
-
+  const dispatch = useDispatch();
+  
   if (!category) {
     return null;
   }
 
-  const handleClick = async (id) => {
-    setShowModal(!showModal);
-
-    if (loading) {
-      return;
-    }
-
-    setLoading(true);
-
-    const response = await PostService.getPostsByCategoryId({
-      category_id: id,
-      page: 1,
-      per_page: 5,
-    });
-
-    setModalTitle('Danh sách các bài viết thuộc danh mục');
-    setPosts(response.data.data);
-    setLoading(false);
-  }
-
   return (
-    <>
-      {
-        showModal
-          ? <Modal 
-              loading={ loading }
-              setOuterShowState={ val => { setShowModal(false) } }
-              list={ posts }
-              title={ modalTitle }
-              type="postItem"
-            />
-          : null
-      }
-      <Link 
-      to={ `/categories` } 
-      className={ small ? 'tags-item size-small' : 'tags-item' }
-      onClick={ () => { handleClick(category.id) } }
-      >
+    <Link 
+        to={ `/categories` } 
+        className={ small ? 'tags-item size-small' : 'tags-item' }
+        onClick={ () => { dispatch(actShowCategoryPostModal(category.id)) } }
+    >
         <span className="tags-text">{ category.name }</span>
-      </Link>
-    </>
+    </Link>
   );
 }

@@ -10,7 +10,7 @@ export default function CategoriesControl({
         <input
           className="form-control categories-search-input"
           placeholder="Tìm kiếm danh mục ..."
-          onChange={ e => { onSearchString(e.target.value) } }
+          onChange={ e => { onSearchString(e.target.value); } }
         />
       </form>
     </div>

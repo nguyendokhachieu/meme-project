@@ -6,7 +6,7 @@ export const CategoryService = {
         order_dir = 'ASC',
     }) 
     {
-        return api.call().get("/category/getAllCategories", {
+        return api.call().get("/category/get/all", {
             params: {
                 order_by,
                 order_dir,
@@ -21,7 +21,7 @@ export const CategoryService = {
         order_dir = 'ASC',
     }) 
     {
-        return api.call().get("/category/getCategoriesPagination", {
+        return api.call().get("/category/get/get", {
             params: {
                 page,
                 per_page,
@@ -38,7 +38,7 @@ export const CategoryService = {
         order_by = 'name',
         order_dir = 'ASC',
     }) {
-        return api.call().get('/category/getUserCategoriesByUserIdPagination', {
+        return api.call().get('/category/get/user', {
             params: {
                 user_id,
                 page,
