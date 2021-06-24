@@ -1,55 +1,32 @@
 import "./style.scss";
 
 import { useEffect, useState } from "react";
-import PostItem from "../PostItem";
+
 import UserProfileLoading from "../UserProfileInfomation/UserProfileLoading";
 import UserProfileInfomation from "../UserProfileInfomation";
-import { UserService } from "../../services/user";
-import { actFetchPostsByUserIdPaginationAsync } from "../../store/posts/actions";
-import { useDispatch, useSelector } from "react-redux";
 import ProfileDropView from "./ProfileDropView";
 import UserPostsList from "./UserPostsList";
+
+import { UserService } from "../../services/user";
+
+import { useScrollToTop } from "../../hooks/useScrollToTop";
 
 export default function Profile({ 
   id,
   history
 }) 
 {
-  const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({});
-  const [loadingUser, setLoadingUser] = useState(false);
-  const [loadingPosts, setLoadingPosts] = useState(true);
-  const [hasMorePosts, setHasMorePosts] = useState(true);
-
-  const { posts, total_user_posts, page } = useSelector(state => state.posts.user);
-
-  const handleLoadMore = () => {
-    if (loadingPosts) {
-      return;
-    }
-
-    if (posts.length >= total_user_posts) {
-      setHasMorePosts(false);
-    }
-
-    dispatch(actFetchPostsByUserIdPaginationAsync({
-      user_id: id,
-      page: page + 1,
-      per_page: 3,
-    })).then(() => {
-      setLoadingPosts(false);
-    }).catch(() => {
-      setLoadingPosts(false);
-    });
-  }
+  const [loading, setLoading] = useState(false);
+  const { scrollToTop } = useScrollToTop();
 
   useEffect(() => {
     async function get() {
-      setLoadingUser(true);
+      setLoading(true);
   
       const response = await UserService.getUserInfoByUserId(id);
   
-      if (response) setLoadingUser(false);
+      if (response) setLoading(false);
   
       if (response.data.status === 200) {
         setUserInfo(response.data.data);
@@ -62,60 +39,21 @@ export default function Profile({
   }, [id, history]);
 
   useEffect(() => {
-    async function fetchPosts() {
-      setLoadingPosts(true);
-  
-      dispatch(actFetchPostsByUserIdPaginationAsync({
-        user_id: id,
-        page: 1,
-        per_page: 3,
-      })).then(() => {
-        setLoadingPosts(false);
-      }).catch(() => {
-        setLoadingPosts(false);
-      });
-    } 
-
-    fetchPosts();
-  }, [id, dispatch]);
+    scrollToTop();
+  }, [])
 
   return (
     <div className="main-content">
-      <ProfileDropView loading={ loadingUser } userInfo={ userInfo } />
+      <ProfileDropView loading={ loading } userInfo={ userInfo } />
       <div className="container">
         <section className="profile-section">
           {
-            loadingUser
+            loading
               ? <UserProfileLoading />
               : <UserProfileInfomation userInfo={ userInfo } />
           }
           <h3 className="user-posts-list-title">Danh sách bài viết</h3>
             <UserPostsList />
-            {/* <div className="user-posts-list">
-              <div className="container">
-                <div className="col-wrap">
-                  <div className="main-col-8">
-                      {
-                        posts.length !== 0
-                          ? posts.map(post => {
-                            return <PostItem post={ post } key={ post.id } />
-                          })
-                          : null
-                      }
-                      {
-                        hasMorePosts && (
-                          <div align="center" style={{margin: "2rem 0"}}>
-                            <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
-                              { loadingPosts ? <i className="fa fa-spinner fa-spin"></i> : "Tải thêm" }
-                            </button>
-                          </div>
-                        )
-                      }
-                  </div>
-                  <div className="main-col-4"></div>
-                </div>
-              </div>
-          </div> */}
         </section>
       </div>
     </div>

@@ -8,10 +8,13 @@ import NotificationItemLoading from "../Header/HeaderBtn/Notification/Notificati
 
 import { NotificationService } from "../../services/notifications";
 
+import { useScrollToTop } from "../../hooks/useScrollToTop";
+
 export default function Notification() {
     const { id } = useSelector(state => state.user);
     const [list, setList] = useState([]);
     const [loading, setLoading] = useState(false);
+    const { scrollToTop } = useScrollToTop();
 
     useEffect(() => {
         async function getAll() {
@@ -24,6 +27,10 @@ export default function Notification() {
 
         getAll();
     }, [id]);
+
+    useEffect(() => {
+        scrollToTop();
+    }, []);
 
     return (
         <div className="main-content">

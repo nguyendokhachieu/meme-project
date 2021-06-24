@@ -7,6 +7,8 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 import CategoriesList from "../CategoriesList";
 import CategoriesListByUser from "../CategoriesListByUser";
 
+import { useScrollToTop } from "../../hooks/useScrollToTop";
+
 export default function Categories({
   loading
 }) 
@@ -14,6 +16,7 @@ export default function Categories({
   const { width } = useWindowSize();
   const [tab, setTab] = useState('general');
   const [hidden, setHidden] = useState(false);
+  const { scrollToTop } = useScrollToTop();
 
   const handleTabClick = which => setTab(which);
 
@@ -24,6 +27,10 @@ export default function Categories({
       setHidden(false);
     }
   }, [width]);
+
+  useEffect(() => {
+    scrollToTop();
+  });
 
   return (
     <div className="main-content">

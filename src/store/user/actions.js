@@ -1,18 +1,21 @@
 import { UserService } from "../../services/user";
 
 export const ACT_LOGIN = 'ACT_LOGIN';
-export const ACT_AUTHORIZATION = 'ACT_AUTHORIZATION';
 
 export const actFetchMeAsync = () => {
     return async dispatch => {
         const token = localStorage.getItem('tstring');
 
-        if (token) {
+        if (!token) return;
+
+        try {
             const response = await UserService.auth(token);
 
             if (response.data.user && response.data.user.token) {
                 dispatch(actLogin(response.data.user));
             } 
+        } catch (error) {
+            
         }
     }
 }
@@ -43,15 +46,6 @@ export const actLoginAsync = (username, password) => {
 export const actLogin = (userData) => {
     return {
         type: ACT_LOGIN,
-        payload: {
-            userData,
-        }
-    }
-}
-
-export const actAuthorization = (userData) => {
-    return {
-        type: ACT_AUTHORIZATION,
         payload: {
             userData,
         }

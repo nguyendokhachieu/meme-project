@@ -1,16 +1,23 @@
 import "./upload.scss";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import FormUpload from "./FormUpload";
 import ImagePreview from "./ImagePreview";
 import CategoriesUpload from "./CategoriesUpload";
 import UploadButton from "./UploadButton";
 
+import { useScrollToTop } from "../../hooks/useScrollToTop";
+
 export default function Upload() {
   const [categoriesList, setCategoriesList] = useState([]);
   const [file, setFile] = useState({name: ''});
   const [status, setStatus] = useState('');
+  const { scrollToTop } = useScrollToTop();
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   return (
     <div className="main-content">

@@ -8,6 +8,8 @@ import Results from "./Results";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { SearchService } from "../../services/search";
 
+import { useScrollToTop } from "../../hooks/useScrollToTop";
+
 export default function Search({ 
     q = null 
 }) 
@@ -21,6 +23,7 @@ export default function Search({
     const [hasMore, setHasMore] = useState(true);
     const [results, setResults] = useState([]);
     const { width } = useWindowSize();
+    const { scrollToTop } = useScrollToTop();
 
     const handleLoadMore = async () => {
         setButtonLoading(true);
@@ -85,6 +88,10 @@ export default function Search({
 
         getSearch();
     }, [q, orderBy, orderDir, searchBy]);
+
+    useEffect(() => {
+        scrollToTop();
+    });
 
     return (
         <div className="main-content">
