@@ -34,13 +34,14 @@
                 background-color: rgba(204, 204, 204, 0.5);
                 border-radius: 10px;
                 padding: 2rem 0;
+                color: transparent;
             }
         }
 
         .user-info-options {
             padding: 1.4rem 0;
 
-            a {
+            span {
                 background-color: rgba(204, 204, 204, 0.4);
                 border: 0;
                 color: transparent;

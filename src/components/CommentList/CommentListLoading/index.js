@@ -6,7 +6,7 @@ export default function CommentListLoading({
 {
     const rendered = [];
     for (let i = 0; i < noOfItems; i++) {
-        rendered.push(<CommentItemLoading />);
+        rendered.push(<CommentItemLoading key={ i } />);
     }
 
     return (

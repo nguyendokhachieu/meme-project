@@ -6,7 +6,7 @@ export default function PostItemLoading({
 {
   const rendered = [];
   for (let i = 0; i < noOfItems; i++) {
-    rendered.push(<PIL />);
+    rendered.push(<PIL key={ i } />);
   }
   return rendered;
 }
@@ -16,13 +16,13 @@ function PIL() {
     <div className="post-item-loading">
       <div className="post-item">
         <div className="post-item-header">
-          <a className="post-item-avatar-link">
+          <div className="post-item-avatar-link">
             <div className="post-item-avatar"></div>
-          </a>
+          </div>
           <div className="post-item-info">
-            <a className="post-item-author">Hiếu</a>
+            <div className="post-item-author">Hiếu</div>
             <span className="post-item-time-ago">
-              <a>12/12/2021</a>
+              <span>12/12/2021</span>
             </span>
           </div>
         </div>
@@ -30,18 +30,18 @@ function PIL() {
           <p className="post-item-text">
           </p>
           <div className="post-item-image-wrap">
-            <a className="post-item-image-link"></a>
+            <span className="post-item-image-link"></span>
           </div>
         </div>
         <div className="post-item-footer">
-          <a className="post-item-show">
+          <span className="post-item-show">
             <i className="fas fa-heart post-footer-icon"></i>
             <span className="count">12121</span>
-          </a>
-          <a className="post-item-show">
+          </span>
+          <span className="post-item-show">
             <i className="fal fa-comment-dots post-footer-icon"></i>
             <span className="count">1211</span>
-          </a>
+          </span>
         </div>
       </div>
     </div>

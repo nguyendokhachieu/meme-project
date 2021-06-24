@@ -34,7 +34,8 @@ export default function Notification() {
     }
   }, [auth]);
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function getNotifications() {
       if (!hidden) {
         setLoading(true);
         const response = await NotificationService.get(id);
@@ -42,7 +43,10 @@ export default function Notification() {
         setLoading(false);
         setList(response.data.data || []);
       }
-  }, [hidden])
+    };
+
+    getNotifications();
+  }, [hidden, id])
 
   useEffect(() => {
     const click = (e) => {
@@ -61,7 +65,7 @@ export default function Notification() {
   }
 
   return (
-    <a className="header-notification" onClick={handleBellClick}>
+    <div className="header-notification" onClick={handleBellClick}>
       <i className="fad fa-bell icon-bell"></i>
       <section
         className={hidden ? `notification-box hidden` : `notification-box`}
@@ -85,6 +89,6 @@ export default function Notification() {
           }          
         </div>
       </section>
-    </a>
+    </div>
   );
 }

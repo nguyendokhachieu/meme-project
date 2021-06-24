@@ -12,6 +12,7 @@ export default function PostItemHeader({
   const [totalLikes, setTotalLikes] = useState(0);
   const [callingAPI, setCallingAPI] = useState(false);
   const [showNotif, setShowNotif] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const likeThisPost = async () => {
     if (!user.id) {
@@ -33,7 +34,7 @@ export default function PostItemHeader({
       setLiked(false);
       setTotalLikes(totalLikes - 1);
 
-      const response = await PostService.unlike(user.id, post.id);
+      await PostService.unlike(user.id, post.id);
 
       setCallingAPI(false);
     } else {
@@ -41,22 +42,30 @@ export default function PostItemHeader({
       setLiked(true);
       setTotalLikes(totalLikes + 1);
 
-      const response = await PostService.like(user.id, post.id);
+      await PostService.like(user.id, post.id);
 
       setCallingAPI(false);
     }
   }
 
-  useEffect(async () => {
-    if (user.id && post.id) {
-      const response = await PostService.checkLiked(user.id, post.id);
+  useEffect(() => {
+    async function check() {
+      if (loading) return;
 
-      setLiked(response.data.liked);
+      if (user.id && post.id) {
+        setLoading(true);
+        const response = await PostService.checkLiked(user.id, post.id);
+        
+        setLoading(false);
+        setLiked(response.data.liked);
+      }
+  
+      if (post) {
+        setTotalLikes(Number(post.liked_count));
+      }
     }
 
-    if (post) {
-      setTotalLikes(Number(post.liked_count));
-    }
+    check();
   }, [user, post]);
 
     return (
@@ -67,10 +76,10 @@ export default function PostItemHeader({
           content="Bạn chưa đăng nhập, đăng nhập để thả tym bài viết này"
         />
         <div className="post-item-footer">
-          <a className="post-item-show" onClick={ likeThisPost } >
+          <span className="post-item-show" onClick={ likeThisPost } >
             <i className={ liked ? 'fas fa-heart post-footer-icon active' : 'fal fa-heart post-footer-icon'}></i>
             <span className={ liked ? 'count active' : 'count'}>{ totalLikes }</span>
-          </a>
+          </span>
           <Link to={ `/post/${ post.id }` } className="post-item-show">
             <i className="fal fa-comment-dots post-footer-icon"></i>
             <span className="count">{ post.total_comments }</span>

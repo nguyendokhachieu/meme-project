@@ -78,7 +78,7 @@ export const PostService = {
     },
 
     checkLiked(user_id, post_id) {
-        return api.call().post('/post/checkLiked', JSON.stringify({
+        return api.call().post('/post/check/like', JSON.stringify({
             user_id,
             post_id,
         }), {

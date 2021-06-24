@@ -20,7 +20,7 @@ export default function CollapseOptions()
     return () => {
       document.removeEventListener('click', clickEventCallback);
     }
-  }, []);
+  }, [clickEventCallback]);
 
   return (
     <div className="collapse">

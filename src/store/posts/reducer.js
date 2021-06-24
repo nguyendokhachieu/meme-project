@@ -205,6 +205,8 @@ export const postsReducer = (state = initState, action) => {
                 if (Number(post.id) !== Number(deletedID)) {
                     return post;
                 } 
+
+                return true;
             })
 
             return {

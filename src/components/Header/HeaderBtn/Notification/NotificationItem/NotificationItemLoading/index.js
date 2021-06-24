@@ -5,15 +5,15 @@ export default function NotificationItemLoading({ noOfItems = 8 }) {
 
   for (let i = 0; i < noOfItems; i++) {
     rendered.push(
-      <a className="notification-item-loading">
-        <a className="profile-img-wrap">
+      <span className="notification-item-loading">
+        <span className="profile-img-wrap">
           <div className="img"></div>
-        </a>
-        <a className="text">
+        </span>
+        <span className="text">
           <p>Đang tải thông báo mới của bạn</p>
           <p>Đang tải</p>
-        </a>
-      </a>
+        </span>
+      </span>
     );
   }
 

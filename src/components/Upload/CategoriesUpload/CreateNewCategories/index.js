@@ -47,7 +47,7 @@ export default function CreateNewCategories({
 
   useEffect(() => {
     callingAPI === 2 && reloadCategoriesList(Math.random());
-  }, [callingAPI]);
+  }, [callingAPI, reloadCategoriesList]);
 
   useEffect(() => {
     setTimeout(() => {

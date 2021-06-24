@@ -12,7 +12,7 @@ export default function FormUpload({
   useEffect(() => {
     onFile(file);
     onStatus(status);
-  }, [file, status]);
+  }, [file, status, onFile, onStatus]);
 
   return (
     <form className="form-group">

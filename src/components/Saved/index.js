@@ -51,21 +51,27 @@ export default function Saved() {
         }
     }
 
-    useEffect(async () => {
-        if (loading) return;
+    useEffect(() => {
+        async function fetchSaved() {
+            if (loading) return;
+            
+            setLoading(true);
+            
+            dispatch(actFetchSavedPostsAsync({
+                page,
+                per_page,
+            })).finally(() => {
+                setLoading(false);
+            });
+        } 
+        
 
-        setLoading(true);
-        dispatch(actFetchSavedPostsAsync({
-            page,
-            per_page,
-        })).finally(() => {
-            setLoading(false);
-        });
-    }, []);
+        fetchSaved();
+    }, [dispatch, page, per_page]);
 
     useEffect(() => {
         loading && scrollToTop();
-    }, [loading]);
+    }, [loading, scrollToTop]);
     
     return (
         <div className="main-content">

@@ -4,10 +4,10 @@ export default function LeftLoading()
 {
   return (
     <div className="left-loading">
-        <a className="avatar-wrap">
+        <span className="avatar-wrap">
             <span className="img"/>
-        </a>
-        <a className="fullname">Loading</a>
+        </span>
+        <span className="fullname">Loading</span>
     </div>
   );
 }

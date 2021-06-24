@@ -9,10 +9,10 @@ export default function Edit({
 
   return (
     <li className="option-item">
-      <a className="item-link" onClick={ e => { dispatch(actShowEditModal(id)) } }>
+      <span className="item-link" onClick={ e => { dispatch(actShowEditModal(id)) } }>
         <i className="fad fa-edit item-icon"></i>
         Sửa bài viết
-      </a>
+      </span>
     </li>
   );
 }

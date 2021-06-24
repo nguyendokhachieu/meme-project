@@ -51,7 +51,7 @@ export default function Modal({
                 setOuterLoadingState(true);
             }   
         })
-    }, []);
+    }, [setOuterLoadingState, setOuterShowState]);
 
     return (
         <div className={ innerHide ? 'float-modal-wrap hide' : 'float-modal-wrap' }>

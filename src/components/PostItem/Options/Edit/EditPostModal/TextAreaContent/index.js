@@ -17,7 +17,7 @@ export default function TextAreaContent({
 
   useEffect(() => {
     onContent(innerContent);
-  }, [innerContent]);
+  }, [innerContent, onContent]);
 
   useEffect(() => {
     setInnerContent(content);

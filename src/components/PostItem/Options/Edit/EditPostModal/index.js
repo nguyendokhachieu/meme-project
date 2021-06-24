@@ -32,18 +32,22 @@ export default function EditPostModal() {
             && dispatch(actHideEditModal());
   }
 
-  useEffect(async () => {
-    if (postID) {
-      setFetchingFirst(true);
-      
-      const response = await PostService.getDetailPostById(postID);
-
-      setFetchingFirst(false);
-      setContent(response.data.data[0].content);
-      setIMGURL(response.data.data[0].img_url ? response.data.data[0].img_url : null);
-      setFile(null);
-      setDeleteCurrentImage(false);
+  useEffect(() => {
+    async function get() {
+      if (postID) {
+        setFetchingFirst(true);
+        
+        const response = await PostService.getDetailPostById(postID);
+  
+        setFetchingFirst(false);
+        setContent(response.data.data[0].content);
+        setIMGURL(response.data.data[0].img_url ? response.data.data[0].img_url : null);
+        setFile(null);
+        setDeleteCurrentImage(false);
+      }
     }
+
+    get();
   }, [postID]);
 
   useEffect(() => {

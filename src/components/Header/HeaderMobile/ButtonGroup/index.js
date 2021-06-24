@@ -47,10 +47,10 @@ export default function ButtonGroup() {
       {
         auth  
           ? (
-            <a className="btn btn-item" onClick={ handleLogout }>
+            <span className="btn btn-item" onClick={ handleLogout }>
               <i className="fal fa-sign-out nav-icon"></i>
               Đăng xuất
-            </a>
+            </span>
           )
           : null
       }

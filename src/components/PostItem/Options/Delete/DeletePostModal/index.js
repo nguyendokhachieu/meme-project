@@ -6,7 +6,7 @@ import { useHistory, useLocation } from "react-router";
 
 import { PostService } from "../../../../../services/posts";
 
-import { actHideDeleteModal } from "../../../../../store/modals/actions";
+import { actHideDeletePostModal } from "../../../../../store/modals/actions";
 import { actDeletePost } from "../../../../../store/posts/actions";
 import { actShowNotificationCard } from "../../../../../store/notifications/actions";
 
@@ -37,7 +37,7 @@ export default function DeletePostModal() {
 
     if (response.data.deleted) {
       dispatch(actDeletePost(postID, isProfilePage));
-      dispatch(actHideDeleteModal());
+      dispatch(actHideDeletePostModal());
       dispatch(actShowNotificationCard("Xóa bài viết thành công"));
       history.location.pathname.includes('post') && history.push('/');
 
@@ -51,7 +51,7 @@ export default function DeletePostModal() {
     showDeleteModal 
       && modalRef.current 
         && !modalRef.current.contains(e.target) 
-          && dispatch(actHideDeleteModal());
+          && dispatch(actHideDeletePostModal());
   }
 
   useEffect(() => {
@@ -78,7 +78,7 @@ export default function DeletePostModal() {
             </button>
             <button 
               className={ callingAPI ? 'btn cancel disabled' : 'btn cancel' } 
-              onClick={ e => { dispatch(actHideDeleteModal()) } }
+              onClick={ e => { dispatch(actHideDeletePostModal()) } }
             >
               Hủy bỏ
             </button>

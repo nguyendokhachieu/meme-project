@@ -48,14 +48,18 @@ export default function UserOptions({
     setCallingAPI(false);
   }
   
-  useEffect(async () => {
-    if (id) {
-      const res = await UserService.isFollowing(id, userInfo.user_id);
-
-      if (res.data.isFollowing) {
-        setIsFollowing(true);
+  useEffect(() => {
+    async function check() {
+      if (id) {
+        const res = await UserService.isFollowing(id, userInfo.user_id);
+  
+        if (res.data.isFollowing) {
+          setIsFollowing(true);
+        }
       }
     }
+
+    check();
   }, [id, userInfo]);
 
   const clickEventCallback = useCallback(e => {
@@ -76,7 +80,7 @@ export default function UserOptions({
         !isThisPerson
           ? id
             ? (
-              <a 
+              <button 
                 className={ isFollowing ? 'follow-btn btn following' : 'follow-btn btn not-following gray-color'}
                 onClick={ e => { followOrUnfollow('+'); isFollowing && setShowDropdown(prev => !prev); } } ref={ dropdownRef }
               >
@@ -90,14 +94,14 @@ export default function UserOptions({
                     ? null 
                     : (
                       <section className={ showDropdown ? "dropdown show" : "dropdown" } >
-                        <a className="btn dropdown-btn" onClick={ e => { e.stopPropagation(); followOrUnfollow('-') } }>
+                        <button className="btn dropdown-btn" onClick={ e => { e.stopPropagation(); followOrUnfollow('-') } }>
                           <i className="fad fa-user-minus icon"></i>
                           Hủy theo dõi
-                        </a>
+                        </button>
                       </section>
                     )
                 }
-              </a>
+              </button>
             )
             : null
           : null

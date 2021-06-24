@@ -24,13 +24,13 @@ export default function NotificationItem({ notification = {} }) {
       }
       className="item"
     >
-      <a className="profile-img-wrap">
+      <div className="profile-img-wrap">
         <img src={link} alt="ava" />
-      </a>
-      <a className="text">
+      </div>
+      <span className="text">
         {notification.content}
-        <a className="date">{timeAgo}</a>
-      </a>
+        <span className="date">{timeAgo}</span>
+      </span>
     </Link>
   );
 }

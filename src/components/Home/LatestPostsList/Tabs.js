@@ -43,7 +43,10 @@ export default function Tabs({
         loadingForLatest, 
         loadingForFollowing, 
         hasMoreForLatest, 
-        hasMoreForFollowing
+        hasMoreForFollowing,
+        hasMore,
+        loading,
+        posts,
     ]
   );
   

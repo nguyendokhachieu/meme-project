@@ -7,7 +7,8 @@ export const useAuthorization = () => {
     const dispatch = useDispatch();
     const [auth, setAuth] = useState(false);
     
-    useEffect(async () => {
+    useEffect(() => {
+      async function check() {
         if (localStorage.getItem('tstring')) {
           try {
             const response = await UserService.auth(localStorage.getItem('tstring'));
@@ -20,7 +21,10 @@ export const useAuthorization = () => {
             
           }
         }
-      }, []);
+      }
+
+      check();
+    }, [dispatch]);
 
       return {
           auth,

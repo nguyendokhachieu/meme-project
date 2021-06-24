@@ -12,44 +12,51 @@ export function useLatestPostsScroll({
   const [loading, setLoading] = useState(false);
   const { posts, page, hasMore } = useSelector(state => state.posts);
 
-  useEffect(async () => {
-    if (!fetch) return;
-
-    if (scrolledPercentY > 15) {
-      if (loading) {
-        return;
+  useEffect(() => {
+    async function fetchPosts() {
+      if (!fetch) return;
+  
+      if (scrolledPercentY > 15) {
+        if (loading) {
+          return;
+        }
+        
+        if (!hasMore) {
+          return;
+        }
+  
+        setLoading(true);
+  
+        dispatch(actFetchPostsPaginationAsync({
+          page: page + 1,
+          per_page: 3,
+        })).finally(() => {
+          setLoading(false);
+        });
       }
-      
-      if (!hasMore) {
-        return;
-      }
+    }
 
+    fetchPosts();
+  }, [scrolledPercentY, fetch, dispatch, hasMore, page]);
+
+  useEffect(() => {
+    async function fetchMore() {
+      if (!fetch) return;
+  
+      if (loading) return;
+  
       setLoading(true);
-
+  
       dispatch(actFetchPostsPaginationAsync({
-        page: page + 1,
+        page: 1,
         per_page: 3,
       })).finally(() => {
         setLoading(false);
       });
     }
-  }, [scrolledPercentY, fetch]);
 
-  useEffect(async () => {
-    if (!fetch) return;
-
-    if (loading) return;
-
-    setLoading(true);
-
-    dispatch(actFetchPostsPaginationAsync({
-      page: 1,
-      per_page: 3,
-    })).finally(() => {
-      setLoading(false);
-    });
-
-  }, [fetch]);
+    fetchMore();
+  }, [fetch, dispatch]);
   
   return {
     posts,

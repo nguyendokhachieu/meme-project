@@ -46,9 +46,9 @@ export default function UserStatistics({
 
   useEffect(() => {
     if (countFollowed === '+') {
-      setFollower(follower + 1);
+      setFollower(prev => prev + 1);
     } else {
-      setFollower(follower - 1);
+      setFollower(prev => prev - 1);
     }
   }, [countFollowed]);
 

@@ -52,34 +52,38 @@ export default function Search({
         });
     }
 
-    useEffect(async () => {
-        setPage(prev => 1);
-        setResults([]);
-        setLoading(true);
-        setHasMore(true);
-
-        let response = null;
-
-        if (searchBy === 'posts') {
-            response = await SearchService.getPosts({
-                q,
-                page: 1,
-                per_page: 5,
-                order_by: orderBy,
-                order_dir: orderDir,
-            });
-        } else {
-            response = await SearchService.getUsers({
-                q,
-                page: 1,
-                per_page: 5,
-            });
+    useEffect(() => {
+        async function getSearch() {
+            setPage(prev => 1);
+            setResults([]);
+            setLoading(true);
+            setHasMore(true);
+    
+            let response = null;
+    
+            if (searchBy === 'posts') {
+                response = await SearchService.getPosts({
+                    q,
+                    page: 1,
+                    per_page: 5,
+                    order_by: orderBy,
+                    order_dir: orderDir,
+                });
+            } else {
+                response = await SearchService.getUsers({
+                    q,
+                    page: 1,
+                    per_page: 5,
+                });
+            }
+    
+            response.data.data && response.data.data.length === 0 && setHasMore(false);
+            setLoading(false);
+            setResults(response.data.data || []);
+            
         }
 
-        response.data.data && response.data.data.length === 0 && setHasMore(false);
-        setLoading(false);
-        setResults(response.data.data || []);
-        
+        getSearch();
     }, [q, orderBy, orderDir, searchBy]);
 
     return (

@@ -28,28 +28,32 @@ export default function DetailPost({
   const [hasErrors, setHasErrors] = useState(false);
   const { scrollToTop } = useScrollToTop();
 
-  useEffect(async () => {
-    setHasErrors(false);
-    scrollToTop();
-    
-    if (!isNaN(postID)) {
-      await dispatch(actFetchDetailPostAsync(postID));
-
-      if (!post.id) {
+  useEffect(() => {
+    async function fetchDetailPost() {
+      setHasErrors(false);
+      scrollToTop();
+      
+      if (!isNaN(postID)) {
+        await dispatch(actFetchDetailPostAsync(postID));
+  
+        if (!post.id) {
+          setHasErrors(true);
+        }
+  
+      } else {
         setHasErrors(true);
       }
-
-    } else {
-      setHasErrors(true);
     }
-  }, [post.id, dispatch, postID]);
+
+    fetchDetailPost();
+  }, [post.id, dispatch, postID, scrollToTop]);
   
   useEffect(() => {
     return () => {
       dispatch(actClearDetailPost());
       dispatch(actResetCountTotalComments());
     }
-  }, [postID]);
+  }, [postID, dispatch]);
 
   if (hasErrors) {
     return <NotFound />;

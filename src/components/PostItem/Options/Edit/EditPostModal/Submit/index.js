@@ -65,7 +65,7 @@ export default function Submit({
 
   useEffect(() => {
     isLoading(loading);
-  }, [loading]);
+  }, [loading, isLoading]);
 
   return (
     <>

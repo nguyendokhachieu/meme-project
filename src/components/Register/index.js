@@ -53,12 +53,12 @@ export default function Register() {
   useEffect(() => {
     redirect && dispatch(actShowNotificationCard('Đăng ký tài khoản thành công, vui lòng đăng nhập lại!'));
     redirect && history.push('/login');
-  }, [redirect]);
+  }, [redirect, history, dispatch]);
 
   useEffect(() => {
     auth && dispatch(actShowNotificationCard('Bạn đã đăng nhập!'));
     auth && history.push('/');
-  }, [auth]);
+  }, [auth, history, dispatch]);
 
   return (
     <div className="main-content">

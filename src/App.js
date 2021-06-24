@@ -20,6 +20,7 @@ import NotificationCard from "./components/shared/NotificationCard";
 import LoadingGlobal from "./components/shared/LoadingGlobal";
 import EditPostModal from "./components/PostItem/Options/Edit/EditPostModal";
 import DeletePostModal from "./components/PostItem/Options/Delete/DeletePostModal";
+import DeleteCommentModal from "./components/CommentItem/Options/Delete/DeleteCommentModal";
 
 import { actHideNotificationCard } from "./store/notifications/actions";
 import { actSetHomePageTabs } from "./store/posts/actions";
@@ -35,13 +36,13 @@ function App() {
     show && setTimeout(() => {
       dispatch(actHideNotificationCard());
     }, 5000);
-  }, [show]);
+  }, [show, dispatch]);
 
   useEffect(() => {
     localStorage.getItem('home-tab') 
       ? dispatch(actSetHomePageTabs(localStorage.getItem('home-tab')))
       : localStorage.setItem('home-tab', 'latest');
-  }, []);
+  }, [dispatch]);
 
   return (
       <div className="body-wrapper">
@@ -75,6 +76,7 @@ function App() {
         <LoadingGlobal />
         <EditPostModal />
         <DeletePostModal />
+        <DeleteCommentModal />
       </div>
   );
 }

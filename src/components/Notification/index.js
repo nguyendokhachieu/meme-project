@@ -21,12 +21,16 @@ export default function Notification() {
         }
     }, [auth]);
 
-    useEffect(async () => {
-        setLoading(true);
-        const response = await NotificationService.getAll(id);
+    useEffect(() => {
+        async function getAll() {
+            setLoading(true);
+            const response = await NotificationService.getAll(id);
+    
+            setLoading(false);
+            setList(response.data.data || []);
+        }
 
-        setLoading(false);
-        setList(response.data.data || []);
+        getAll();
     }, [id]);
 
     if (!showThis) {

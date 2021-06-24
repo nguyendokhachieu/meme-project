@@ -8,7 +8,7 @@ export default function OrderDir({
 
   useEffect(() => {
     onOrderDirChange(orderDir);
-  }, [orderDir]);
+  }, [orderDir, onOrderDirChange]);
 
   return (
     <div className="order">

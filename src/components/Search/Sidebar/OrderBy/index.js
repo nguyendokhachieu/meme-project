@@ -8,7 +8,7 @@ export default function OrderBy({
 
   useEffect(() => {
     onOrderByChange(orderBy);
-  }, [orderBy]);
+  }, [orderBy, onOrderByChange]);
 
   return (
     <div className="order">

@@ -26,11 +26,11 @@ export default function Sidebar({
       <h2 className="title" onClick={ e => { setShowFilter(prev => !prev) } }>
         <i className="fad fa-filter icon"></i>
         <span className="text">Bộ lọc tìm kiếm</span>
-        <a className="indicator">
+        <span className="indicator">
           {
             showFilter ? "Ẩn" : "Hiển thị"
           }
-        </a>
+        </span>
       </h2>
       {
         showFilter

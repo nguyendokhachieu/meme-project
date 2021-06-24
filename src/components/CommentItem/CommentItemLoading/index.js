@@ -4,26 +4,26 @@ export default function CommentItemLoading() {
   return (
     <div className="comment-item-loading">
       <div className="comment-item-inner-wrap">
-        <a className="comment-avatar-wrap">
+        <div className="comment-avatar-wrap">
           <div className="img" />
-        </a>
+        </div>
         <div className="comment-content">
           <p className="comment-author">
-            <a className="comment-author-name">
-              hidfhsdifhdsifnhdsfnsdkfnsdkdfsedf
-            </a>
-            <a className="comment-author-time-ago">10 năm trước</a>
+            <span className="comment-author-name">
+              Loading.............................
+            </span>
+            <span className="comment-author-time-ago">10 năm trước</span>
           </p>
           <p className="comment-text">Đang tải</p>
           <div className="comment-footer">
-            <a className="comment-show">
+            <span className="comment-show">
               <i className="fal fa-heart icon"></i>
               <span className="count">69</span>
-            </a>
-            <a href="#" className="comment-show">
+            </span>
+            <span href="#" className="comment-show">
               <i className="fal fa-comment-dots icon"></i>
               <span className="count">69</span>
-            </a>
+            </span>
           </div>
         </div>
       </div>

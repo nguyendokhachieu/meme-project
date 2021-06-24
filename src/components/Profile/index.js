@@ -42,33 +42,41 @@ export default function Profile({
     });
   }
 
-  useEffect(async () => {
-    setLoadingUser(true);
-
-    const response = await UserService.getUserInfoByUserId(id);
-
-    if (response) setLoadingUser(false);
-
-    if (response.data.status === 200) {
-      setUserInfo(response.data.data);
-    } else {
-      history.push('/404-not-found');
+  useEffect(() => {
+    async function get() {
+      setLoadingUser(true);
+  
+      const response = await UserService.getUserInfoByUserId(id);
+  
+      if (response) setLoadingUser(false);
+  
+      if (response.data.status === 200) {
+        setUserInfo(response.data.data);
+      } else {
+        history.push('/404-not-found');
+      }
     }
-  }, [id]);
 
-  useEffect(async () => {
-    setLoadingPosts(true);
+    get();
+  }, [id, history]);
 
-    dispatch(actFetchPostsByUserIdPaginationAsync({
-      user_id: id,
-      page: 1,
-      per_page: 3,
-    })).then(() => {
-      setLoadingPosts(false);
-    }).catch(() => {
-      setLoadingPosts(false);
-    });
-  }, [id]);
+  useEffect(() => {
+    async function fetchPosts() {
+      setLoadingPosts(true);
+  
+      dispatch(actFetchPostsByUserIdPaginationAsync({
+        user_id: id,
+        page: 1,
+        per_page: 3,
+      })).then(() => {
+        setLoadingPosts(false);
+      }).catch(() => {
+        setLoadingPosts(false);
+      });
+    } 
+
+    fetchPosts();
+  }, [id, dispatch]);
 
   return (
     <div className="main-content">

@@ -17,15 +17,15 @@ export default function Image({
 
   useEffect(() => {
     onImgURL(innerImgURL);
-  }, [innerImgURL]);
+  }, [innerImgURL, onImgURL]);
 
   useEffect(() => {
     onFile(innerFile);
-  }, [innerFile]);
+  }, [innerFile, onFile]);
 
   useEffect(() => {
     onDeleteCurrentImage(innerDeleteCurrentImage);
-  }, [innerDeleteCurrentImage]);
+  }, [innerDeleteCurrentImage, onDeleteCurrentImage]);
 
   useEffect(() => {
     setInnerFile(file);

@@ -49,7 +49,7 @@ export default function CategoriesListByUser({ hidden }) {
         setIsLoading(false);
       });
     }
-  }, [auth, user]);
+  }, [auth, user, dispatch]);
 
   return (
     <div className={ hidden ? 'main-col-4 user-list hidden' : 'main-col-4 user-list' }>

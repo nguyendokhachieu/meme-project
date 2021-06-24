@@ -16,7 +16,7 @@ export default function FormAddComment({
   const dispatch = useDispatch();
   const textAreaRef = useRef();
 
-  const [content, setContent] = useState(null);
+  const [content, setContent] = useState('');
 
   const { auth } = useAuthorization();
   const { id, img_url, name } = useSelector(state => state.user);

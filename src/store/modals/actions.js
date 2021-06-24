@@ -1,21 +1,40 @@
 export const ACT_SHOW_EDIT_MODAL = 'ACT_SHOW_EDIT_MODAL';
 export const ACT_HIDE_EDIT_MODAL = 'ACT_HIDE_EDIT_MODAL';
 
-export const ACT_SHOW_DELETE_MODAL = 'ACT_SHOW_DELETE_MODAL';
-export const ACT_HIDE_DELETE_MODAL = 'ACT_HIDE_DELETE_MODAL';
+export const ACT_SHOW_DELETE_POST_MODAL = 'ACT_SHOW_DELETE_POST_MODAL';
+export const ACT_HIDE_DELETE_POST_MODAL = 'ACT_HIDE_DELETE_POST_MODAL';
 
-export const actShowDeleteModal = (postID) => {
+export const ACT_SHOW_DELETE_COMMENT_MODAL = 'ACT_SHOW_DELETE_COMMENT_MODAL';
+export const ACT_HIDE_DELETE_COMMENT_MODAL = 'ACT_HIDE_DELETE_COMMENT_MODAL';
+
+export const actShowDeleteCommentModal = (commentID, comment_user_id) => {
     return {
-        type: ACT_SHOW_DELETE_MODAL,
+        type: ACT_SHOW_DELETE_COMMENT_MODAL,
+        payload: {
+            commentID,
+            comment_user_id
+        }
+    }
+}
+
+export const actHideDeleteCommentModal = () => {
+    return {
+        type: ACT_HIDE_DELETE_COMMENT_MODAL
+    }
+}
+
+export const actShowDeletePostModal = (postID) => {
+    return {
+        type: ACT_SHOW_DELETE_POST_MODAL,
         payload: {
             postID,
         }
     }
 }
 
-export const actHideDeleteModal = () => {
+export const actHideDeletePostModal = () => {
     return {
-        type: ACT_HIDE_DELETE_MODAL
+        type: ACT_HIDE_DELETE_POST_MODAL
     }
 }
 

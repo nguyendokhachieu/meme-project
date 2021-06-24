@@ -29,18 +29,18 @@ export default function Categories({
       <div className="container">
         <section className="categories-page">
           <div className="categories-tab-mobile">
-            <a 
+            <div 
               onClick={ () => { handleTabClick('general') } } 
               className={ tab === 'general' ? 'item active' : 'item' }
             >
               Danh mục hiện có
-            </a>
-            <a 
+            </div>
+            <div 
               onClick={ () => { handleTabClick('yourself') } } 
               className={ tab === 'yourself' ? 'item active' : 'item' }
             >
               Quản lý danh mục của bạn
-            </a>
+            </div>
           </div>
           <div className="col-wrap">
             <CategoriesList 

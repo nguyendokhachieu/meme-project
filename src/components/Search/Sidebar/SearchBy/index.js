@@ -8,7 +8,7 @@ export default function SearchBy({
   
   useEffect(() => {
     onSearchByChange(searchBy);
-  }, [searchBy]);
+  }, [searchBy, onSearchByChange]);
 
   return (
     <div className="order">

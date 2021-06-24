@@ -28,10 +28,10 @@ export default function ProfileDropView({
                     ? <LeftLoading />
                     : (
                         <div className="left">
-                            <a className="avatar-wrap">
+                            <div className="avatar-wrap">
                                 <img src={ link } className="img" alt="ava" />
-                            </a>
-                            <a className="fullname">{ userInfo.name }</a>
+                            </div>
+                            <span className="fullname">{ userInfo.name }</span>
                         </div>
                     )
             }

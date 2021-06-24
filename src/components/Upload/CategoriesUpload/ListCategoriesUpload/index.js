@@ -25,22 +25,26 @@ export default function ListCategoriesUpload({
 
   useEffect(() => {
     categoriesList(selected);
-  }, [selected]);
+  }, [selected, categoriesList]);
 
-  useEffect(async () => {
-    try {
-      setIsLoading(true);
-      
-      const response = await CategoryService.getAllCategories({
-        order_by: 'name',
-        order_dir: 'ASC',
-      });
-
-      setIsLoading(false);
-      response.data.data && setCategories(prev => [...response.data.data]);
-    } catch (error) {
-      
+  useEffect(() => {
+    async function get() {
+      try {
+        setIsLoading(true);
+        
+        const response = await CategoryService.getAllCategories({
+          order_by: 'name',
+          order_dir: 'ASC',
+        });
+  
+        setIsLoading(false);
+        response.data.data && setCategories(prev => [...response.data.data]);
+      } catch (error) {
+        
+      }
     }
+
+    get();
   }, [reloadCategoriesList]);
 
   return (

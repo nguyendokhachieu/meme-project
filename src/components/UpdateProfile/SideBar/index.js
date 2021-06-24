@@ -20,7 +20,7 @@ export default function SideBar({
 
     setToggleSideBar(true);
     toggleSideBar(true);
-  }, [width]);
+  }, [width, toggleSideBar]);
 
   return (
       <div className={ toggleSidebar ? 'update-profile-side-bar' : 'update-profile-side-bar hide' }>

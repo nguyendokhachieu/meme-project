@@ -19,7 +19,7 @@ const initState = {
         post_id: null,
         user_name: null,
         user_img_url: null, 
-        created_at: null, user_name: null, 
+        created_at: null,
         liked_count: 0,
     }
 };
@@ -101,6 +101,8 @@ export const commentsReducer = (state = initState, action) => {
                 if (Number(cmt.id) !== Number(deletedID)) {
                     return cmt;
                 } 
+
+                return true;
             })
 
             return {

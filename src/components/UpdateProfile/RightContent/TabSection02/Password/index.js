@@ -21,7 +21,7 @@ export default function Password()
           <i className="fas fa-circle" style={{ margin: '0 0.15rem', fontSize: "1rem" }}></i>
         </span>
       </span>
-      <a
+      <span
         className="edit col"
         onClick={ e => { history.push({
           pathname: '/change-password',
@@ -32,7 +32,7 @@ export default function Password()
       >
         <i className="fad fa-pencil-alt icon"></i>
         <span className="text">Chỉnh sửa</span>
-      </a>
+      </span>
     </div>
   );
 }

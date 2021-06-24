@@ -28,7 +28,7 @@ export function useCommentsList(postID)
         }
 
         dispatch(actFetchAllCommentsByPostIdAsync(postID, 1, 5));
-    }, [postID]);
+    }, [postID, dispatch]);
 
     return {
         listComment,

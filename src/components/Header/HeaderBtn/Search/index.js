@@ -10,11 +10,11 @@ export default function Search() {
 
 
   return (
-    <a 
+    <span 
       className="header-search-btn"
       onClick={ e => { dispatch(actShowSearch()) } }
     >
       <i className="fad fa-search icon"></i>
-    </a>
+    </span>
   );
 }

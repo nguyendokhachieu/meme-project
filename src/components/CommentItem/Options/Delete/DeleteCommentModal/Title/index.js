@@ -1,7 +1,7 @@
 import "./title.scss";
 
 import { useDispatch } from "react-redux";
-import { actHideDeletePostModal } from "../../../../../../store/modals/actions";
+import { actHideDeleteCommentModal } from "../../../../../../store/modals/actions";
 
 export default function Title({
   loading = false,
@@ -12,13 +12,13 @@ export default function Title({
   return (
     <h4 className="title">
       <i className="fad fa-trash-alt icon"></i>
-      Xóa bài viết
+      Xóa bình luận
       {
         !loading
           ? null 
           : <span className="loading"><i className="fad fa-circle-notch fa-spin icon loading-icon"></i></span>
       }
-      <i className="fal fa-times icon close-icon" onClick={ e => { dispatch(actHideDeletePostModal()) } }></i>
+      <i className="fal fa-times icon close-icon" onClick={ e => { dispatch(actHideDeleteCommentModal()) } }></i>
     </h4>
   );
 }

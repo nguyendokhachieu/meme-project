@@ -4,22 +4,22 @@ export default function UserProfileLoading() {
   return (
     <div className="user-content-loading">
       <div className="user-image-wrap">
-        <a href className="user-image-wrap-link">
+        <div className="user-image-wrap-link">
           <div className="user-image" />
-        </a>
+        </div>
       </div>
       <div className="user-info">
         <div className="user-info-username">
-          <h3></h3>
+          <h3>loading</h3>
         </div>
         <div className="user-info-options">
-          <a className="mr-1 btn btn-transparent-bc">Theo dõi</a>
-          <a to="change-password" className="mr-1 btn btn-transparent-bc">
+          <span className="mr-1 btn btn-transparent-bc">Theo dõi</span>
+          <span className="mr-1 btn btn-transparent-bc">
             Đổi mật khẩu
-          </a>
-          <a to="/update" className="btn btn-transparent-bc">
+          </span>
+          <span className="btn btn-transparent-bc">
             Change Profile
-          </a>
+          </span>
         </div>
         <div className="user-info-statistic">
           <p className="statistic-item">

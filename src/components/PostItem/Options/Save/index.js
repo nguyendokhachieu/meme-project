@@ -44,22 +44,25 @@ export default function Save({
     }
   }
 
-  useEffect(async () => {
-    if (loading) return;
-
-    if (id) {
-      setLoading(true);
-      const response = await PostService.checkSaved(id);
-      setLoading(false);
-
-      response?.data && response.data.is_saved && setIsSaved(true);
+  useEffect(() => {
+    async function check() {
+      if (loading) return;
+  
+      if (id) {
+        setLoading(true);
+        const response = await PostService.checkSaved(id);
+        setLoading(false);
+  
+        response?.data && response.data.is_saved && setIsSaved(true);
+      }
     }
 
+    check();
   }, [id])
 
   return (
-    <li className="option-item">
-      <a className="item-link" onClick={ e => { setShowOptions(false); save(id); } }>
+    <div className="option-item">
+      <div className="item-link" onClick={ e => { setShowOptions(false); save(id); } }>
         {
           !isSaved 
             ? (
@@ -75,7 +78,7 @@ export default function Save({
               </>
             )
         }
-      </a>
-    </li>
+      </div>
+    </div>
   );
 }

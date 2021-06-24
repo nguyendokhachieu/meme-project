@@ -55,7 +55,7 @@ export default function ProfileImage() {
   }
 
   return (
-    <a className="header-profile-img" onClick={ handleProfileClick }>
+    <div className="header-profile-img" onClick={ handleProfileClick }>
       <img
         className="avatar-img"
         src={ link }
@@ -68,26 +68,26 @@ export default function ProfileImage() {
         <div className="content">
           <div className="profile-link">
             <Link to={ `/profile?id=${ user.id }` } className="profile-link-wrap">
-              <a className="profile-img-wrap">
+              <div className="profile-img-wrap">
                 <img src={ link } className="profile-img" alt="ava" />
-              </a>
-              <a className="info">
-                <a className="name">{ user.name }</a>
-              </a>
+              </div>
+              <div className="info">
+                <span className="name">{ user.name }</span>
+              </div>
             </Link>
           </div>
           <div className="profile-link">
             <Link to="/upload" className="upload-link">
               <i className="fad fa-plus-circle icon"></i>
-              <a className="text">Bài viết mới</a>
+              <span className="text">Bài viết mới</span>
             </Link>
           </div>
-          <a className="logout-link" onClick={ handleLogout }>
+          <div className="logout-link" onClick={ handleLogout }>
             <i className="fad fa-sign-out icon"></i>
-            <a className="text">Đăng xuất</a>
-          </a>
+            <span className="text">Đăng xuất</span>
+          </div>
         </div>
       </section>
-    </a>
+    </div>
   );
 }
