@@ -166,6 +166,7 @@ export const actFetchPostsByUserIdPaginationAsync = ({
                 per_page,
                 total_user_posts: Number(response.data.total_user_posts),
                 posts: !response.data.data ? [] : response.data.data,
+                hasMore: response.data.data.length === 0 ? false : true, 
             }))
         } catch (error) {
             
@@ -177,7 +178,8 @@ const actFetchPostsByUserIdPagination = ({
     page,
     per_page,
     total_user_posts,
-    posts
+    posts, 
+    hasMore,
 }) => {
     return {
         type: ACT_FETCH_POSTS_BY_USER_ID_PAGINATION,
@@ -186,6 +188,7 @@ const actFetchPostsByUserIdPagination = ({
             per_page,
             total_user_posts,
             posts,
+            hasMore,
         }
     }
 }

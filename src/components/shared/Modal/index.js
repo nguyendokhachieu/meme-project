@@ -2,7 +2,6 @@ import "./modal.scss";
 
 import { useEffect, useState } from "react";
 import ModalUserItem from "../ModalUserItem";
-import ModalPostItem from "../ModalPostItem";
 
 const className = "float-modal-wrap";
 
@@ -27,14 +26,6 @@ export default function Modal({
                     <ModalUserItem 
                         key={ i }
                         user={ list[i] } 
-                        closeModal={ val => { setInnerHide(true) } } 
-                    />
-                )
-            } else if (type === 'postItem') {
-                arrayRendered.push(
-                    <ModalPostItem 
-                        key={ i }
-                        post={ list[i] } 
                         closeModal={ val => { setInnerHide(true) } } 
                     />
                 )

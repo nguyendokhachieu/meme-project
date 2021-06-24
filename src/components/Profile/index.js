@@ -8,6 +8,7 @@ import { UserService } from "../../services/user";
 import { actFetchPostsByUserIdPaginationAsync } from "../../store/posts/actions";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileDropView from "./ProfileDropView";
+import UserPostsList from "./UserPostsList";
 
 export default function Profile({ 
   id,
@@ -89,7 +90,8 @@ export default function Profile({
               : <UserProfileInfomation userInfo={ userInfo } />
           }
           <h3 className="user-posts-list-title">Danh sách bài viết</h3>
-            <div className="user-posts-list">
+            <UserPostsList />
+            {/* <div className="user-posts-list">
               <div className="container">
                 <div className="col-wrap">
                   <div className="main-col-8">
@@ -113,7 +115,7 @@ export default function Profile({
                   <div className="main-col-4"></div>
                 </div>
               </div>
-          </div>
+          </div> */}
         </section>
       </div>
     </div>

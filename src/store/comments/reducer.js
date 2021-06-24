@@ -102,7 +102,6 @@ export const commentsReducer = (state = initState, action) => {
                     return cmt;
                 } 
 
-                return true;
             })
 
             return {

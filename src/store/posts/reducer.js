@@ -32,7 +32,8 @@ const initState = {
         page: 1,
         per_page: 5,
         total_user_posts: 0,
-        posts: [],
+        list: [],
+        hasMore: true,
     },
 
     detailPost: {
@@ -178,7 +179,7 @@ export const postsReducer = (state = initState, action) => {
                     content: action.payload.newContent,
                 },
                 user: {
-                    posts: action.payload.isProfilePage && state.user.posts.map(post => {
+                    list: action.payload.isProfilePage && state.user.list.map(post => {
                         if (Number(post.id) === Number(editID)) {
                             return {
                                 ...post,
@@ -200,13 +201,12 @@ export const postsReducer = (state = initState, action) => {
         case ACT_DELETE_POST:
             const deletedID = action.payload.id;
 
-            const copied = action.payload.isProfilePage ? [...state.user.posts] : [...state.posts];
+            const copied = action.payload.isProfilePage ? [...state.user.list] : [...state.posts];
             const newList = copied.filter(post => {
                 if (Number(post.id) !== Number(deletedID)) {
                     return post;
                 } 
 
-                return true;
             })
 
             return {
@@ -217,7 +217,7 @@ export const postsReducer = (state = initState, action) => {
                 ],
                 user: {
                     total_user_posts: state.user.total_user_posts - 1,
-                    posts: [
+                    list: [
                         ...newList,
                     ]
                 }
@@ -246,12 +246,13 @@ export const postsReducer = (state = initState, action) => {
                     page: action.payload.page,
                     per_page: action.payload.per_page,
                     total_user_posts: action.payload.total_user_posts,
-                    posts: action.payload.page === 1
+                    list: action.payload.page === 1
                             ? action.payload.posts
                             : [
-                                ...state.user.posts,
+                                ...state.user.list,
                                 ...action.payload.posts,
-                            ]
+                            ],
+                    hasMore: action.payload.hasMore,
                 }
             }
         default:
