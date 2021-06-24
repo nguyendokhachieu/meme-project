@@ -1,4 +1,4 @@
-import { ACT_LOGIN_SUCCESSFULLY, ACT_AUTHORIZATION } from "./actions";
+import { ACT_LOGIN, ACT_AUTHORIZATION } from "./actions";
 
 const initState = {
     token: null,
@@ -16,7 +16,7 @@ const initState = {
 
 export const userReducer = (state = initState, action) => {
     switch (action.type) {
-        case ACT_LOGIN_SUCCESSFULLY:
+        case ACT_LOGIN:
             localStorage.setItem('tstring', action.payload.userData.token);
             
             return {

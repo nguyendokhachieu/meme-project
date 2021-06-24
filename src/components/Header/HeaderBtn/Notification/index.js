@@ -1,17 +1,17 @@
 import "./notification.scss";
+
 import { useEffect, useState } from "react";
-import { useAuthorization } from "../../../../hooks/useAuthorization";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 import NotificationItem from "./NotificationItem";
 import NotificationItemLoading from "./NotificationItem/NotificationItemLoading";
 import { NotificationService } from "../../../../services/notifications";
-import { Link } from "react-router-dom";
 
 export default function Notification() {
   const [hidden, setHidden] = useState(true);
-  const { auth } = useAuthorization();
   const [showThis, setShowThis] = useState(false);
-  const { id } = useSelector(state => state.user);
+  const { id, token } = useSelector(state => state.user);
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -27,12 +27,12 @@ export default function Notification() {
   };
 
   useEffect(() => {
-    if (auth) {
+    if (token) {
       setShowThis(true);
     } else {
       setShowThis(false);
     }
-  }, [auth]);
+  }, [token]);
 
   useEffect(() => {
     async function getNotifications() {

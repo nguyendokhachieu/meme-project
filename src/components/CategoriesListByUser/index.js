@@ -2,7 +2,7 @@ import "./style.css";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAuthorization } from "../../hooks/useAuthorization";
+
 import { actFetchUserCategoriesAsync } from "../../store/categories/actions";
 import CategoryItem from "../shared/CategoryItem";
 
@@ -10,7 +10,7 @@ export default function CategoriesListByUser({ hidden }) {
   const dispatch = useDispatch();
   const [hasMoreItems, setHasMoreItems] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const { auth } = useAuthorization();
+  const { token } = useSelector(state => state.user);
   const { user, categories } = useSelector(state => state);
 
   const handleLoadMore = () => {
@@ -36,7 +36,7 @@ export default function CategoriesListByUser({ hidden }) {
   }
 
   useEffect(() => {
-    if (auth) {
+    if (token) {
       setIsLoading(true);
 
       dispatch(actFetchUserCategoriesAsync({
@@ -49,13 +49,13 @@ export default function CategoriesListByUser({ hidden }) {
         setIsLoading(false);
       });
     }
-  }, [auth, user, dispatch]);
+  }, [token, user, dispatch]);
 
   return (
     <div className={ hidden ? 'main-col-4 user-list hidden' : 'main-col-4 user-list' }>
       <h3 className="featured-posts-header">Quản lý danh mục của bạn</h3>
       {
-        auth 
+        token 
           ? (
             <p className="notification notification-auth">
               Danh sách các danh mục mà bạn đã sử dụng cho các bài viết của mình
@@ -64,7 +64,7 @@ export default function CategoriesListByUser({ hidden }) {
           : null
       }
       {
-        auth 
+        token 
           ? (
             <p className="my-categories-count">
               Có tổng cộng { categories.user.total_user_categories } danh mục
@@ -73,7 +73,7 @@ export default function CategoriesListByUser({ hidden }) {
           : null
       }
       {
-        !auth
+        !token
           ? (
             <p className="notification">
               Bạn chưa đăng nhập, xin vui lòng đăng nhập để xem danh sách các danh mục mà bạn đã sử dụng cho các bài viết của mình. 
@@ -91,7 +91,7 @@ export default function CategoriesListByUser({ hidden }) {
       }
       <div align="center">
         {
-          auth
+          token
             ? (
               hasMoreItems 
                 ?   (

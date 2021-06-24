@@ -2,10 +2,9 @@ import "./register.scss";
 
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { UserService } from "../../services/user";
-import { useAuthorization } from "../../hooks/useAuthorization"; 
 import { actShowNotificationCard } from "../../store/notifications/actions";
 import Input from "../shared/Input";
 
@@ -22,7 +21,7 @@ export default function Register() {
   const [redirect, setRedirect] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const { auth } = useAuthorization();
+  const { token } = useSelector(state => state.user);
 
   const register = async (e) => {
     e.preventDefault();
@@ -56,9 +55,9 @@ export default function Register() {
   }, [redirect, history, dispatch]);
 
   useEffect(() => {
-    auth && dispatch(actShowNotificationCard('Bạn đã đăng nhập!'));
-    auth && history.push('/');
-  }, [auth, history, dispatch]);
+    token && dispatch(actShowNotificationCard('Bạn đã đăng nhập!'));
+    token && history.push('/');
+  }, [token, history, dispatch]);
 
   return (
     <div className="main-content">

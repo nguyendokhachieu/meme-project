@@ -24,6 +24,7 @@ import DeleteCommentModal from "./components/CommentItem/Options/Delete/DeleteCo
 
 import { actHideNotificationCard } from "./store/notifications/actions";
 import { actSetHomePageTabs } from "./store/posts/actions";
+import { actFetchMeAsync } from "./store/user/actions";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,10 @@ function App() {
     localStorage.getItem('home-tab') 
       ? dispatch(actSetHomePageTabs(localStorage.getItem('home-tab')))
       : localStorage.setItem('home-tab', 'latest');
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(actFetchMeAsync());
   }, [dispatch]);
 
   return (

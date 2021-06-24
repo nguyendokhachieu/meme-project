@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useAuthorization } from "../../../../hooks/useAuthorization";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function ButtonGroup() {
-  const { auth } = useAuthorization();
+  const { token } = useSelector(state => state.user);
 
   const handleLogout = () => {
     localStorage.setItem('tstring', '');
@@ -25,7 +25,7 @@ export default function ButtonGroup() {
   return (
     <div className="btn-group">
       {
-        auth 
+        token 
           ? (
             <Link to="/upload" className="btn btn-item">
               <i className="fad fa-upload nav-icon"></i>
@@ -35,7 +35,7 @@ export default function ButtonGroup() {
           : null
       }
       {
-        !auth
+        !token
           ? (
             <Link to="/login" className="btn btn-item">
               <i className="fad fa-sign-in nav-icon"></i>
@@ -45,7 +45,7 @@ export default function ButtonGroup() {
           : null
       }
       {
-        auth  
+        token  
           ? (
             <span className="btn btn-item" onClick={ handleLogout }>
               <i className="fal fa-sign-out nav-icon"></i>

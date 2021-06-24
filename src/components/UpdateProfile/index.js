@@ -1,22 +1,24 @@
 import "./update-profile.scss";
+
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 import SideBar from "./SideBar";
 import RightContent from "./RightContent";
 import NotificationCard from "../shared/NotificationCard";
-import { useAuthorization } from "../../hooks/useAuthorization";
-import { useEffect, useState } from "react";
 
 export default function UpdateProfile() {
-  const { auth } = useAuthorization();
+  const { token } = useSelector(state => state.user);
   const [show, setShow] = useState(false);
   const [toggleSidebar, setToggleSideBar] = useState(true);
 
   useEffect(() => {
-    if (!auth) {
+    if (!token) {
       setShow(true);
     } else {
       setShow(false);
     }
-  }, [auth]);
+  }, [token]);
 
   return (
     <div className="main-content">

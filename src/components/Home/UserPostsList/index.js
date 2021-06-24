@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAuthorization } from "./../../../hooks/useAuthorization";
+
 import PostItem from "../../PostItem";
 
 import { actFetchPostsByUserIdPaginationAsync } from "../../../store/posts/actions";
@@ -9,8 +9,8 @@ export default function UserPostsList() {
     const dispatch = useDispatch();
     const [hasMoreItems, setHasMoreItems] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
-    const { auth } = useAuthorization();
     const { user, posts } = useSelector(state => state);
+    const { token } = useSelector(state => state.user);
 
     const handleLoadMore = () => {
       if (isLoading) {
@@ -23,7 +23,7 @@ export default function UserPostsList() {
 
       setIsLoading(true);
 
-      if (auth) {
+      if (token) {
         dispatch(actFetchPostsByUserIdPaginationAsync({
             page: posts.user.page + 1,
             per_page: 2,
@@ -38,20 +38,20 @@ export default function UserPostsList() {
     }
   
     useEffect(async () => {
-        if (auth) {
+        if (token) {
             await dispatch(actFetchPostsByUserIdPaginationAsync({
                 page: 1,
                 per_page: 2,
                 user_id: Number(user.id)
             }));
         }
-    }, [auth, user]);
+    }, [token, user]);
 
   return (
     <div className="main-col-4">
       <h3 className="featured-posts-header">Bài viết của bạn</h3>
       {
-        !auth
+        !token
           ? (
               <p className="notification">
                 Bạn chưa đăng nhập. Vui lòng đăng nhập để tiếp tục
@@ -74,7 +74,7 @@ export default function UserPostsList() {
         {
           hasMoreItems 
           ?   (
-                  auth 
+                  token 
                     ? (
                       <button className="btn btn-transparent-bc" onClick={ handleLoadMore }>
                         { isLoading ? <i className="fa fa-spinner fa-spin"></i> : "Tải thêm" }

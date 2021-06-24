@@ -1,14 +1,13 @@
 import "./style.scss";
 
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
-import Input from "./../shared/Input";
-import { UserService } from "../../services/user";
 import { actShowNotificationCard } from "../../store/notifications/actions";
-import { actLoginSuccessfully } from "../../store/user/actions";
-import { useAuthorization } from "../../hooks/useAuthorization";
+import { actLoginAsync } from "../../store/user/actions";
+
+import Input from "./../shared/Input";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -16,46 +15,44 @@ export default function Login() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   const [hasErrors, setHasErrors] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const { auth } = useAuthorization();
+  const { token } = useSelector(state => state.user); 
 
-  const login = async (e) => {
+  const login = e => {
     e.preventDefault();
 
-    if (loading) {
-      return;
-    }
-    
+    if (loading) return;
+    if (token) return;
+
     setHasErrors(false); 
     setLoading(true);
-    const response = await UserService.login(username, password);
 
-    setLoading(false);
-    
-    if (response.data.status === 200) {
-      dispatch(actLoginSuccessfully(response.data.user));
+    dispatch(actLoginAsync(username, password)).then(res => {
+      setLoading(false);
 
-      setIsLoggedIn(true);   
-      setHasErrors(false);   
-    } else {
-      setUsername('');
-      setPassword('');
-      setHasErrors(true);
+      if (res.ok) {
+        history.push('/');
+        dispatch(actShowNotificationCard('Đăng nhập thành công!'));
+      } else {
+        setUsername('');
+        setPassword('');
+        setHasErrors(true);
 
-      document.getElementById('username').focus();
-    }
+        document.getElementById('username').focus();
+      }
+    });
   }
 
   useEffect(() => {
     document.getElementById('username').focus();
   }, []);
 
-  if (isLoggedIn || auth) {    
-    dispatch(actShowNotificationCard("Đăng nhập thành công!"));
+  if (token) {    
     history.push('/');
+    dispatch(actShowNotificationCard("Đăng nhập thành công!"));
   }
 
   return (
@@ -121,7 +118,7 @@ export default function Login() {
             <div className="route">
               <button 
                 className="go-back-btn" 
-                onClick={ e => { history.push('/') }}
+                onClick={ () => { history.push('/') }}
               >
                   Quay về trang chủ
               </button>

@@ -2,7 +2,6 @@ import "./form-add-comment.scss";
 
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAuthorization } from "../../hooks/useAuthorization";
 
 import { actCreateNewCommentAsync } from "../../store/comments/actions";
 import { actShowNotificationCard } from "../../store/notifications/actions";
@@ -18,8 +17,7 @@ export default function FormAddComment({
 
   const [content, setContent] = useState('');
 
-  const { auth } = useAuthorization();
-  const { id, img_url, name } = useSelector(state => state.user);
+  const { id, img_url, name, token } = useSelector(state => state.user);
 
   const autoSize = elem => {
     elem.style.height = "5px";
@@ -40,7 +38,7 @@ export default function FormAddComment({
       return;
     }
 
-    if (!auth || !id) {
+    if (!token) {
       dispatch(actShowNotificationCard('Hãy đăng nhập để bình luận!'));
 
       return;

@@ -1,15 +1,15 @@
 import "./profile-image.scss";
+
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useAvatarLinkSrc } from "../../../../hooks/useAvatarLinkSrc";
-import { useAuthorization } from "../../../../hooks/useAuthorization";
 import { Link } from "react-router-dom";
+
+import { useAvatarLinkSrc } from "../../../../hooks/useAvatarLinkSrc";
 
 export default function ProfileImage() {
   const [hidden, setHidden] = useState(true);
-  const { user } = useSelector(state => state);
-  const { link } = useAvatarLinkSrc({ user_id: user.id, user_img_url: user.img_url });
-  const { auth } = useAuthorization();
+  const { token, img_url, id, name } = useSelector(state => state.user);
+  const { link } = useAvatarLinkSrc({ user_id: id, user_img_url: img_url });
   const [showThis, setShowThis] = useState(false);
 
   const handleLogout = () => {
@@ -31,12 +31,12 @@ export default function ProfileImage() {
   }
 
   useEffect(() => {
-    if (auth) {
+    if (token) {
       setShowThis(true);
     } else {
       setShowThis(false);
     }
-  }, [auth]);
+  }, [token]);
 
   useEffect(() => {
     const click = (e) => {
@@ -67,12 +67,12 @@ export default function ProfileImage() {
       >
         <div className="content">
           <div className="profile-link">
-            <Link to={ `/profile?id=${ user.id }` } className="profile-link-wrap">
+            <Link to={ `/profile?id=${ id }` } className="profile-link-wrap">
               <div className="profile-img-wrap">
                 <img src={ link } className="profile-img" alt="ava" />
               </div>
               <div className="info">
-                <span className="name">{ user.name }</span>
+                <span className="name">{ name }</span>
               </div>
             </Link>
           </div>

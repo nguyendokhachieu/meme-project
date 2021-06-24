@@ -1,21 +1,21 @@
 import "./new-post.scss";
 import { useEffect, useState } from "react";
-import { useAuthorization } from "../../../../hooks/useAuthorization";
+import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router";
 
 export default function Notification() {
   const { pathname } = useLocation();
   const history = useHistory();
-  const { auth } = useAuthorization();
   const [showThis, setShowThis] = useState(false);
+  const { token } = useSelector(state => state.user);
 
   useEffect(() => {
-    if (auth) {
+    if (token) {
       setShowThis(true);
     } else {
       setShowThis(false);
     }
-  }, [auth]);
+  }, [token]);
 
   if (!showThis) {
     return null;
