@@ -1,9 +1,10 @@
 import "./style.scss";
 
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { actShowCategoryPostModal } from "../../../store/modals/actions";
+import { useEffect } from "react";
 
 export default function CategoryItem({
   category,
@@ -11,14 +12,23 @@ export default function CategoryItem({
 }) 
 {
   const dispatch = useDispatch();
+  const location = useLocation();
   
+  useEffect(() => {
+    if (location.search && location.search.length !== 0) {
+      if (!isNaN(location.search.substr(4, location.search.length))) {
+        dispatch(actShowCategoryPostModal(location.search.substr(4, location.search.length)));
+      }
+    }
+  }, [location, dispatch]);
+
   if (!category) {
     return null;
   }
 
   return (
     <Link 
-        to={ `/categories` } 
+        to={ `/categories?id=${ category.id }` } 
         className={ small ? 'tags-item size-small' : 'tags-item' }
         onClick={ () => { dispatch(actShowCategoryPostModal(category.id)) } }
     >
