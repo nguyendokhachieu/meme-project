@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { PostService } from "../../../../services/posts";
 
@@ -14,10 +14,13 @@ export default function Save({
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const { token } = useSelector(state => state.user);
 
   const save = async id => {
     if (loading) return;
     
+    if (!token) return;
+
     setLoading(true);
 
     if (!isSaved) {
@@ -48,7 +51,7 @@ export default function Save({
     async function check() {
       if (loading) return;
   
-      if (id) {
+      if (id && token) {
         setLoading(true);
         const response = await PostService.checkSaved(id);
         setLoading(false);
@@ -59,6 +62,8 @@ export default function Save({
 
     check();
   }, [id])
+
+  if (!token) return null;
 
   return (
     <div className="option-item">

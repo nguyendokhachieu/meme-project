@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
     show && setTimeout(() => {
       dispatch(actHideNotificationCard());
-    }, 5000);
+    }, 8000);
   }, [show, dispatch]);
 
   useEffect(() => {

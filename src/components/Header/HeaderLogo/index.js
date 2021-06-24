@@ -22,7 +22,7 @@ export default function HeaderLogo() {
   const fetchNew = () => {
     if (loading) return;
 
-    if (!user_id) return;
+    if ( tab === 'following' && !user_id) return;
 
     setLoading(true);
 
@@ -39,7 +39,7 @@ export default function HeaderLogo() {
     return (
         <div 
           className="header-logo" 
-          onClick={ e => { dispatch(actShowLoading()); scrollToTop(); setTimeout(fetchNew, 1000) } }
+          onClick={ () => { dispatch(actShowLoading()); scrollToTop(); setTimeout(fetchNew, 1000) } }
         >
           <Link to="/" className="header-logo-link">
             Meme
