@@ -6,6 +6,7 @@ export default function CategoryItemLoading({ noOfItems = 30 }) {
   for (let i = 0; i < noOfItems; i++) {
     load.push(
       <span 
+        key={ i }
         className="tags-item-loading" 
         style={ { paddingLeft: `${ Math.round(Math.random() * 10) }rem` } }
       >

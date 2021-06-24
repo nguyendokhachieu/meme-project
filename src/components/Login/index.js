@@ -80,7 +80,7 @@ export default function Login() {
               <p className="login-error-icon-wrap"><i className="fad fa-exclamation login-error-icon"></i></p>
               <p className="login-error-text">Username hoặc password không hợp lệ. Vui lòng kiểm tra lại</p>
             </div>
-            <form action className="form-login" onSubmit={ login } >
+            <form className="form-login" onSubmit={ login } >
               <div className="form-ctl-wrap">
                 <i className="fad fa-user icon"></i>
                 <Input 

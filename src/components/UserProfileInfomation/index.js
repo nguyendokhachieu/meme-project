@@ -12,6 +12,8 @@ export default function UserProfileInfomation({
 }) {
   const [countFollowed, setCountFollowed] = useState('');
 
+  if (!userInfo) return;
+
   return (
     <div className="user-content">
       <UserAvatar userInfo={ userInfo } />

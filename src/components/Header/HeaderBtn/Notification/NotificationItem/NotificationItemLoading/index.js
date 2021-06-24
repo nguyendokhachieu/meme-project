@@ -5,7 +5,7 @@ export default function NotificationItemLoading({ noOfItems = 8 }) {
 
   for (let i = 0; i < noOfItems; i++) {
     rendered.push(
-      <span className="notification-item-loading">
+      <span className="notification-item-loading" key={ i }>
         <span className="profile-img-wrap">
           <div className="img"></div>
         </span>

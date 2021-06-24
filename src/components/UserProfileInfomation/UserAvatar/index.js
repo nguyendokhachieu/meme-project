@@ -7,9 +7,9 @@ export default function UserAvatar({
 
   return (
     <div className="user-image-wrap">
-      <a href className="user-image-wrap-link">
+      <div className="user-image-wrap-link">
         <img src={ link } className="user-image" alt="avatar" />
-      </a>
+      </div>
     </div>
   );
 }

@@ -94,10 +94,10 @@ export default function UserOptions({
                     ? null 
                     : (
                       <section className={ showDropdown ? "dropdown show" : "dropdown" } >
-                        <button className="btn dropdown-btn" onClick={ e => { e.stopPropagation(); followOrUnfollow('-') } }>
+                        <span className="btn dropdown-btn" onClick={ e => { e.stopPropagation(); followOrUnfollow('-') } }>
                           <i className="fad fa-user-minus icon"></i>
                           Hủy theo dõi
-                        </button>
+                        </span>
                       </section>
                     )
                 }

@@ -35,7 +35,8 @@ export default function CategoriesList({
                                 } else if (cate.name.toLowerCase().includes(searchString.toLowerCase())) {
                                     return cate;
                                 }
-                                return;
+
+                                return true; 
                             }).map(cate => {
                                     return <CategoryItem key={ cate.id } category={ cate } />;
                                 }

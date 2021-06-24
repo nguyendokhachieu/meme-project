@@ -40,8 +40,8 @@ export default function UserStatistics({
     setShow(false);
     setLoading(true);
     setHasErrors(false);
-    setFollowing(Number(userInfo.count_following));
-    setFollower(Number(userInfo.count_follower));
+    setFollowing(Number( userInfo.count_following || 0));
+    setFollower(Number(userInfo.count_follower || 0));
   }, [userInfo]);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function UserStatistics({
       <p className="statistic-item">
         <i className="fad fa-newspaper left-statistic-icon"></i>
         <span className="statistic-item-text">Bài viết: </span>
-        <span className="statistic-item-count">{ userInfo.count_posts }</span>
+        <span className="statistic-item-count">{ userInfo?.count_posts }</span>
       </p>
       <p className="statistic-item">
         <i className="fal fa-user-friends left-statistic-icon"></i>

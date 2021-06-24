@@ -1,25 +1,17 @@
 import "./notification.scss";
-import NotificationItem from "../Header/HeaderBtn/Notification/NotificationItem";
-import NotificationItemLoading from "../Header/HeaderBtn/Notification/NotificationItem/NotificationItemLoading";
-import { useAuthorization } from "../../hooks/useAuthorization";
-import { NotificationService } from "../../services/notifications";
+
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
+import NotificationItem from "../Header/HeaderBtn/Notification/NotificationItem";
+import NotificationItemLoading from "../Header/HeaderBtn/Notification/NotificationItem/NotificationItemLoading";
+
+import { NotificationService } from "../../services/notifications";
+
 export default function Notification() {
-    const { auth } = useAuthorization();
-    const [showThis, setShowThis] = useState(true);
     const { id } = useSelector(state => state.user);
     const [list, setList] = useState([]);
     const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        if (!auth) {
-            setShowThis(false);
-        } else {
-            setShowThis(true);
-        }
-    }, [auth]);
 
     useEffect(() => {
         async function getAll() {
@@ -32,10 +24,6 @@ export default function Notification() {
 
         getAll();
     }, [id]);
-
-    if (!showThis) {
-        return null;
-    }
 
     return (
         <div className="main-content">
@@ -53,7 +41,7 @@ export default function Notification() {
                                         ? <div className="load">Bạn chưa có thông báo nào</div>
                                         : (
                                             list.map(item => {
-                                                return <NotificationItem notification={ item } key={ item } />
+                                                return <NotificationItem notification={ item } key={ item.created_at } />
                                             })
                                         )
                             }
