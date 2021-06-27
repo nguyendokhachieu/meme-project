@@ -5,6 +5,47 @@ export const ACT_FETCH_CATEGORIES = 'ACT_FETCH_CATEGORIES';
 export const ACT_FETCH_ALL_CATEGORIES = 'ACT_FETCH_ALL_CATEGORIES';
 export const ACT_FETCH_USER_CATEGORIES = 'ACT_FETCH_USER_CATEGORIES';
 export const ACT_FETCH_POSTS_BY_CATEGORIES = 'ACT_FETCH_POSTS_BY_CATEGORIES';
+export const ACT_SELECT_ONE_CATEGORY = 'ACT_SELECT_ONE_CATEGORY';
+export const ACT_REMOVE_SELECT_ONE_CATEGORY = 'ACT_REMOVE_SELECT_ONE_CATEGORY';
+export const ACT_CREATE_NEW_CATEGORY = 'ACT_CREATE_NEW_CATEGORY';
+
+export const actCreateNewCategoryAsync = (categoryText = '') => {
+    return async dispatch => {
+        if (!categoryText) return;
+
+        try {
+            const response = await CategoryService.createNewCategory(categoryText);
+
+            if (response.data.created_new_category) {
+                await dispatch(actFetchAllCategoriesAsync());
+                dispatch(actSelectOneCategory(response.data.inserted_id));
+                return { ok: true, message: '' };
+            } 
+
+            return { ok: false, message: response.data.message };
+        } catch (error) {
+            
+        }
+    }
+}
+
+export const actSelectOneCategory = (categoryId) => {
+    return {
+        type: ACT_SELECT_ONE_CATEGORY,
+        payload: {
+            categoryId,
+        }
+    }
+}
+
+export const actRemoveSelectOneCategory = (categoryId) => {
+    return {
+        type: ACT_REMOVE_SELECT_ONE_CATEGORY,
+        payload: {
+            categoryId,
+        }
+    }
+}
 
 export const actFetchPostsByCategoryAsync = (id = null, page = 1, per_page = 5) => {
     return async dispatch => {
@@ -45,21 +86,25 @@ export const actFetchUserCategoriesAsync = ({
     order_dir = 'ASC',
 }) => {
     return async (dispatch) => {
-        const response = await CategoryService.getUserCategoriesByUserIdPagination({
-            user_id,
-            page,
-            per_page,
-            order_by,
-            order_dir,
-        });
-
-        dispatch(actFetchUserCategories({
-            page,
-            per_page,
-            total_user_categories: Number(response.data.total_user_categories),
-            categories: response.data.data ? response.data.data : [],
-            hasMore: response.data.data.length === 0 ? false : true,
-        }))
+        try {
+            const response = await CategoryService.getUserCategoriesByUserIdPagination({
+                user_id,
+                page,
+                per_page,
+                order_by,
+                order_dir,
+            });
+    
+            dispatch(actFetchUserCategories({
+                page,
+                per_page,
+                total_user_categories: Number(response.data.total_user_categories),
+                categories: response.data.data ? response.data.data : [],
+                hasMore: response.data.data.length === 0 ? false : true,
+            }))
+        } catch (error) {
+            
+        }
     }
 }
 
@@ -87,12 +132,16 @@ export const actFetchAllCategoriesAsync = ({
     order_dir = 'ASC',
 } = {}) => {
     return async (dispatch) => {
-        const response = await CategoryService.getAllCategories({
-            order_by,
-            order_dir,
-        });
-
-        dispatch(actFetchAllCategories(response.data.data));
+        try {
+            const response = await CategoryService.getAllCategories({
+                order_by,
+                order_dir,
+            });
+    
+            dispatch(actFetchAllCategories(response.data.data));
+        } catch (error) {
+            
+        }
     }
 }
 

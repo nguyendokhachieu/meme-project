@@ -10,6 +10,25 @@ export const ACT_FETCH_SAVED_POSTS = 'ACT_FETCH_SAVED_POSTS';
 export const ACT_DELETE_SAVED_POSTS = 'ACT_DELETE_SAVED_POSTS';
 export const ACT_FETCH_POSTS_BY_FOLLOWING_USERS = 'ACT_FETCH_POSTS_BY_FOLLOWING_USERS';
 export const ACT_SET_HOMEPAGE_TABS = 'ACT_SET_HOMEPAGE_TABS';
+export const ACT_UPLOAD_NEW_POST = 'ACT_UPLOAD_NEW_POST';
+
+export const actUploadNewPostAsync = (formData = null) => {
+    return async () => {
+        if (!formData) return;
+
+        try {
+            const response = await PostService.upload(formData);
+
+            if (response.data.status === 404) {
+                return { ok: false, message: response.data.message };
+            }
+
+            return { ok: true, message: '' };
+        } catch (error) {
+            
+        }
+    }
+}
 
 export const actSetHomePageTabs = (tabName) => {    
     return {

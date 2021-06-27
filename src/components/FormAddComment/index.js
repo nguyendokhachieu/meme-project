@@ -20,7 +20,7 @@ export default function FormAddComment({
   const { id, img_url, name, token } = useSelector(state => state.user);
 
   const autoSize = elem => {
-    elem.style.height = "5px";
+    // elem.style.height = "5px";
     elem.style.height = elem.scrollHeight + "px";
   }
 

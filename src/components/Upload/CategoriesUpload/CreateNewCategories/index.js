@@ -3,21 +3,21 @@ import "./create-new-categories.scss";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { CategoryService } from "../../../../services/categories";
 import { actShowNotificationCard } from "../../../../store/notifications/actions";
+import { actCreateNewCategoryAsync } from "../../../../store/categories/actions";
 
-export default function CreateNewCategories({
-  reloadCategoriesList = function() {}
-}) 
+export default function CreateNewCategories() 
 {
   const dispatch = useDispatch();
   const inputRef = useRef();
   const [showForm, setShowForm] = useState(false);
   const [content, setContent] = useState('');
-  const [callingAPI, setCallingAPI] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const createNewCategory = async e => {
     e.preventDefault();
+
+    if (loading) return;
 
     if (content === '') {
       dispatch(actShowNotificationCard("Nội dung rỗng"));
@@ -32,22 +32,15 @@ export default function CreateNewCategories({
 
     setContent('');
     setShowForm(false);
-    setCallingAPI(1);
+    setLoading(true);
 
-    const response = await CategoryService.createNewCategory(content);
+    dispatch(actCreateNewCategoryAsync(content)).then(response => {
+      setLoading(false);
 
-    setCallingAPI(2);
-
-    if (response.data.created_new_category) {
-      dispatch(actShowNotificationCard("Thêm danh mục thành công"));
-    } else {
-      dispatch(actShowNotificationCard(response.data.message));
-    }
+      if (response.ok) dispatch(actShowNotificationCard("Thêm danh mục thành công"));
+      else dispatch(actShowNotificationCard(response.message));
+    })
   }
-
-  useEffect(() => {
-    callingAPI === 2 && reloadCategoriesList(Math.random());
-  }, [callingAPI, reloadCategoriesList]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -65,15 +58,15 @@ export default function CreateNewCategories({
       </h4>
       <div className="inner">
         <p className="caption">
-          <span className="text">Thêm một danh mục có liên quan đến bài viết của bạn mà chưa có trong danh sách trên</span>
+          <span className="text">Thêm một danh mục vào danh sách trên</span>
         </p>
         <div className="create">
           <button 
             className="btn create-new-btn" 
-            onClick={ e => { setShowForm(true) } }
+            onClick={ () => { setShowForm(true) } }
           >
             {
-              callingAPI === 1
+              loading
                 ? <i className="fa fa-spinner fa-spin icon"></i>
                 : <i className="fal fa-plus icon"></i>
             }

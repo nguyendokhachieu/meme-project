@@ -1,51 +1,38 @@
 import "./list-categories.scss";
 
 import { useEffect, useState } from "react";
-import { CategoryService } from "../../../../services/categories";
+import { useDispatch, useSelector } from "react-redux";
+
+import {  actFetchAllCategoriesAsync, 
+          actSelectOneCategory, 
+          actRemoveSelectOneCategory } from "../../../../store/categories/actions";
 
 export default function ListCategoriesUpload({
-  categoriesList = function() {},
-  query,
-  reloadCategoriesList = false,
+  query
 }) 
 {
-  const [categories, setCategories] = useState([]);
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
-  const [selected, setSelected] = useState([]);
+  const { categories } = useSelector(state => state.categories);
 
   const handleSelectCategory = e => {
     e.target.checked 
-      ? setSelected(prev => [...prev, e.target.value])
-      : setSelected(prev => {
-        return prev.filter(id => {
-          return id !== e.target.value;
-        })
-      })
+      ? dispatch(actSelectOneCategory(Number(e.target.value)))
+      : dispatch(actRemoveSelectOneCategory(Number(e.target.value)))
   }
 
   useEffect(() => {
-    categoriesList(selected);
-  }, [selected, categoriesList]);
+    if (isLoading) return;
 
-  useEffect(() => {
-    async function get() {
-      try {
-        setIsLoading(true);
-        
-        const response = await CategoryService.getAllCategories({
-          order_by: 'name',
-          order_dir: 'ASC',
-        });
-  
-        setIsLoading(false);
-        response.data.data && setCategories(prev => [...response.data.data]);
-      } catch (error) {
-        
-      }
-    }
+    setIsLoading(true);
 
-    get();
-  }, [reloadCategoriesList]);
+    dispatch(actFetchAllCategoriesAsync({
+      order_by: 'name',
+      order_dir: 'ASC',
+    })).finally(() => {
+      setIsLoading(false);
+    });
+  }, []);
 
   return (
     <div className="categories-list-section">

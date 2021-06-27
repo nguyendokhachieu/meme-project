@@ -1,6 +1,7 @@
 import "./upload.scss";
 
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import FormUpload from "./FormUpload";
 import ImagePreview from "./ImagePreview";
@@ -10,14 +11,22 @@ import UploadButton from "./UploadButton";
 import { useScrollToTop } from "../../hooks/useScrollToTop";
 
 export default function Upload() {
-  const [categoriesList, setCategoriesList] = useState([]);
+  const dispatch = useDispatch();
   const [file, setFile] = useState({name: ''});
   const [status, setStatus] = useState('');
+  const { list } = useSelector(state => state.categories.selectedUpload);
   const { scrollToTop } = useScrollToTop();
 
   useEffect(() => {
     scrollToTop();
   }, []);
+
+  useEffect(() => {
+    window.onbeforeunload = function () {
+      if (list.length > 0 || file.name !== '' || status.trim().length !== 0) return true;
+      return null;
+    };
+  });
 
   return (
     <div className="main-content">
@@ -38,9 +47,8 @@ export default function Upload() {
                 <UploadButton 
                   file={ file }
                   status={ status }
-                  categoriesList={ categoriesList }
                 />
-                <CategoriesUpload categoriesList={ list => { setCategoriesList(list) } } />
+                <CategoriesUpload />
               </div>
             </div>
           </div>

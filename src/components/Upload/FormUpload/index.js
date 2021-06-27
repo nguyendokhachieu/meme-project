@@ -21,14 +21,15 @@ export default function FormUpload({
           <i className="fal fa-plus-circle icon"></i>
           Bài viết mới
         </label>
-        <TextArea
+        <textarea
           name="caption"
           id="caption"
           className="form-control caption-input"
           placeholder="Bạn đang nghĩ gì?"
-          onChange={ val => { setStatus(val) } }
+          onChange={ e => { setStatus(e.target.value) } }
           value={ status }
-          rows={9}
+          rows={ 10 }
+          cols={ 1 }
         />
       </div>
       <div className="form-control-wrap form-file-wrap">
