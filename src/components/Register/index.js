@@ -4,21 +4,21 @@ import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { UserService } from "../../services/user";
+import { actRegisterAsync } from "../../store/user/actions";
 import { actShowNotificationCard } from "../../store/notifications/actions";
 import Input from "../shared/Input";
 
 export default function Register() {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const [username, setUsername] = useState('');
   const [fullname, setFullname] = useState('');
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
 
-  const [hasErrors, setHasErrors] = useState('hasnot'); // has, hasnot, password_mismatch
+  const [hasErrors, setHasErrors] = useState(false);
   const [message, setMessage] = useState('');
-  const [redirect, setRedirect] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const { token } = useSelector(state => state.user);
@@ -26,33 +26,35 @@ export default function Register() {
   const register = async (e) => {
     e.preventDefault();
 
+    if (loading) return;
+
     if (password !== rePassword) {
-      setHasErrors('password_mismatch');
-    } else {
-      setHasErrors('hasnot');
-
-      setLoading(true);
-      const response = await UserService.register({
-        username,
-        fullname,
-        password,
-        rePassword
-      });
-
-      setLoading(false);
-      if (response.data.status === 200) {
-        setRedirect(true);
-      } else {
-        setHasErrors('has');
-        setMessage(response.data.message);
-      }
+      setHasErrors(true);
+      setMessage("Password không hợp lệ");
+      return;
     }
-  }
 
-  useEffect(() => {
-    redirect && dispatch(actShowNotificationCard('Đăng ký tài khoản thành công, vui lòng đăng nhập lại!'));
-    redirect && history.push('/login');
-  }, [redirect, history, dispatch]);
+    setHasErrors(false);
+    setMessage('');
+    setLoading(true);
+
+    dispatch(actRegisterAsync({
+      username,
+      fullname,
+      password,
+      rePassword,
+    })).then(response => {
+      setLoading(false);
+
+      if (response.ok) {
+        history.push('/login');
+        dispatch(actShowNotificationCard('Đăng ký tài khoản thành công, vui lòng đăng nhập lại!'));
+      } else {
+        setHasErrors(true);
+        setMessage(response.message);
+      }
+    });
+  }
 
   useEffect(() => {
     token && dispatch(actShowNotificationCard('Bạn đã đăng nhập!'));
@@ -75,13 +77,9 @@ export default function Register() {
               }
               <span className="register-title-text">Đăng ký một tài khoản</span>
             </h2>
-            <div className={ hasErrors === 'has' ? "register-error active" : "register-error" }>
+            <div className={ hasErrors ? "register-error active" : "register-error" }>
               <p className="register-error-icon-wrap"><i className="fad fa-exclamation register-error-icon"></i></p>
-              <p className="register-error-text">{ message }. Vui lòng kiểm tra lại</p>
-            </div>
-            <div className={ hasErrors === 'password_mismatch' ? "register-error active" : "register-error" }>
-              <p className="register-error-icon-wrap"><i className="fad fa-exclamation register-error-icon"></i></p>
-              <p className="register-error-text">Password không hợp lệ. Vui lòng kiểm tra lại</p>
+              <p className="register-error-text">{ message }</p>
             </div>
             <form className="form-register" onSubmit={ register }>
               <div className="form-ctl-wrap">

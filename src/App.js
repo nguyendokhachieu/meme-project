@@ -29,7 +29,7 @@ import { actFetchMeAsync } from "./store/user/actions";
 
 function App() {
   const dispatch = useDispatch();
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const { show, content, showLink, href, linkContent } = useSelector(state => state.notifications);
   
   const isShowHeader = !['/login', '/register'].includes(pathname);
