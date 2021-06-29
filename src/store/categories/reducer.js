@@ -9,6 +9,8 @@ import {
     ACT_CLEAR_CATEGORIES_BY_POST_ID,
 } from "./actions";
 
+import { ACT_DELETE_POST, ACT_EDIT_POST } from "../posts/actions";
+
 export const generateKeyCategoriesHash = (id) => `category-id-${id}`;
 
 const initState = {
@@ -43,6 +45,44 @@ const initState = {
 
 export const categoriesReducer = (state = initState, action) => {
     switch (action.type) {
+        case ACT_EDIT_POST: 
+            const editID = action.payload.id;
+            
+            return {
+                ...state,
+                postsByCategoryId: {
+                    list: state.postsByCategoryId.list.map(post => {
+                            if (Number(post.id) === Number(editID)) {
+                                return {
+                                    ...post,
+                                    img_url: action.payload.newImgUrl 
+                                                ? action.payload.newImgUrl 
+                                                : action.payload.deleteCurrentImage 
+                                                    ? null 
+                                                    : post.img_url,
+                                    content: action.payload.newContent,
+                                }
+                            } 
+
+                            return post;
+                        }
+                    )
+                }
+            }
+
+
+        case ACT_DELETE_POST:
+            const deletedPostId = action.payload.id;
+
+            return {
+                ...state,
+                postsByCategoryId: {
+                    list: state.postsByCategoryId.list.filter(post => {
+                        return post.id !== deletedPostId && post;
+                    })
+                }
+            }
+
         case ACT_CLEAR_CATEGORIES_BY_POST_ID:
             return {
                 ...state,

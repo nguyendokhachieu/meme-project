@@ -11,7 +11,6 @@ export const ACT_CREATE_NEW_CATEGORY = 'ACT_CREATE_NEW_CATEGORY';
 export const ACT_FETCH_CATEGORIES_BY_POST_ID = 'ACT_FETCH_CATEGORIES_BY_POST_ID';
 export const ACT_CLEAR_CATEGORIES_BY_POST_ID = 'ACT_CLEAR_CATEGORIES_BY_POST_ID';
 
-
 export const actClearCategoriesByPostId = () => {
     return {
         type: ACT_CLEAR_CATEGORIES_BY_POST_ID,
