@@ -64,8 +64,10 @@ export const actCreateNewCommentAsync = (content, user_id, post_id, user_img_url
 
             if (response.data.created_new_comment) {
                 dispatch(actCreateNewComment(id, content, user_id, post_id, user_img_url, created_at, user_name, liked_count));   
+
+                return { ok: true, message: '' };
             } else {
-                dispatch(actShowNotificationCard(response.data.message));
+                return { ok: false, message: response.data.message };
             }
         } catch (error) {
             

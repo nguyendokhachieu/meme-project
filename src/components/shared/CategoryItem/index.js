@@ -2,9 +2,9 @@ import "./style.scss";
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { actShowCategoryPostModal } from "../../../store/modals/actions";
 import { actRemoveSelectOneCategory } from "../../../store/categories/actions";
 
 export default function CategoryItem({
@@ -19,7 +19,7 @@ export default function CategoryItem({
   useEffect(() => {
     if (location.search && location.search.length !== 0) {
       if (!isNaN(location.search.substr(4, location.search.length))) {
-        hasClickEvent && dispatch(actShowCategoryPostModal(location.search.substr(4, location.search.length)));
+        
       }
     }
   }, [location, dispatch]);
@@ -34,9 +34,8 @@ export default function CategoryItem({
         hasClickEvent 
           ? (
             <Link 
-                to={ `/categories?id=${ category.id }` } 
+                to={ `/categories/${ category.id }` } 
                 className={ small ? 'tags-item size-small' : 'tags-item' }
-                onClick={ () => { hasClickEvent && dispatch(actShowCategoryPostModal(category.id)) } }
             >
                 <span className="tags-text">{ category.name }</span>
             </Link>

@@ -1,6 +1,5 @@
 import "./form-upload.scss";
 import { useEffect, useState } from "react";
-import TextArea from "../../shared/TextArea";
 
 export default function FormUpload({
   onFile = function() {},
@@ -28,7 +27,7 @@ export default function FormUpload({
           placeholder="Bạn đang nghĩ gì?"
           onChange={ e => { setStatus(e.target.value) } }
           value={ status }
-          rows={ 10 }
+          rows={ 5 }
           cols={ 1 }
         />
       </div>

@@ -5,39 +5,40 @@ import {
     ACT_HIDE_DELETE_POST_MODAL,
     ACT_SHOW_DELETE_COMMENT_MODAL,
     ACT_HIDE_DELETE_COMMENT_MODAL,
-    ACT_SHOW_CATEGORY_POST_MODAL,
-    ACT_HIDE_CATEGORY_POST_MODAL,
+    ACT_SHOW_POST_CATEGORIES_MODAL,
+    ACT_HIDE_POST_CATEGORIES_MODAL,
 } from "./actions";
 
 const initState = {
     showEditModal: false,
     showDeleteModal: false,
+
     postID: null,
 
     showDeleteCommentModal: false,
     commentID: null,
     comment_user_id: null,
 
-    showCategoryPostModal: false,
-    category_id: null,
+    showPostCategoriesModal: false,
 }
 
 export const modalsReducer = (state = initState, action) => {
     switch (action.type) {
-        case ACT_SHOW_CATEGORY_POST_MODAL:
+
+        case ACT_SHOW_POST_CATEGORIES_MODAL:
             return {
                 ...state,
-                showCategoryPostModal: true,
-                category_id: action.payload.id,
+                showPostCategoriesModal: true,
+                postID: action.payload.postID,
             }
 
-        case ACT_HIDE_CATEGORY_POST_MODAL:
+        case ACT_HIDE_POST_CATEGORIES_MODAL:
             return {
                 ...state,
-                showCategoryPostModal: false,
-                category_id: null,
+                showPostCategoriesModal: false,
+                postID: null,
             }
-
+    
         case ACT_SHOW_DELETE_COMMENT_MODAL:
             return {
                 ...state,

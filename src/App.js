@@ -12,6 +12,7 @@ import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 import UploadPage from "./pages/UploadPage";
 import CategoriesPage from "./pages/CategoriesPage";
+import PostsByCategoryIdPage from "./pages/PostsByCategoryIdPage";
 import NotificationPage from "./pages/NotificationPage";
 import SearchPage from "./pages/SearchPage";
 import SavedPostsPage from "./pages/SavedPostsPage";
@@ -21,15 +22,16 @@ import LoadingGlobal from "./components/shared/LoadingGlobal";
 import EditPostModal from "./components/PostItem/Options/Edit/EditPostModal";
 import DeletePostModal from "./components/PostItem/Options/Delete/DeletePostModal";
 import DeleteCommentModal from "./components/CommentItem/Options/Delete/DeleteCommentModal";
-import ModalCategoryPost from "./components/shared/CategoryItem/ModalCategoryPost";
+import ShowPostCategoriesModal from "./components/PostItem/Options/ShowCategories/ShowPostCategoriesModal";
 
 import { actHideNotificationCard } from "./store/notifications/actions";
 import { actSetHomePageTabs } from "./store/posts/actions";
 import { actFetchMeAsync } from "./store/user/actions";
+import { actFetchAllCategoriesAsync } from "./store/categories/actions";
 
 function App() {
   const dispatch = useDispatch();
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
   const { show, content, showLink, href, linkContent } = useSelector(state => state.notifications);
   
   const isShowHeader = !['/login', '/register'].includes(pathname);
@@ -48,6 +50,11 @@ function App() {
 
   useEffect(() => {
     dispatch(actFetchMeAsync());
+    
+    dispatch(actFetchAllCategoriesAsync({
+      order_by: 'name',
+      order_dir: 'ASC',
+    }))
   }, [dispatch]);
 
   return (
@@ -61,7 +68,8 @@ function App() {
           <Route path="/notifications"><NotificationPage /></Route>
           <Route path="/saved"><SavedPostsPage /></Route>
           <Route path="/search"><SearchPage /></Route>
-          <Route path="/categories"><CategoriesPage /></Route>
+          <Route exact path="/categories"><CategoriesPage /></Route>
+          <Route exact path="/categories/:id"><PostsByCategoryIdPage /></Route>
           <Route path="/upload"><UploadPage /></Route>
           <Route path="/update"><UpdateProfilePage /></Route> 
           <Route path="/register"><RegisterPage /></Route>
@@ -83,7 +91,7 @@ function App() {
         <EditPostModal />
         <DeletePostModal />
         <DeleteCommentModal />
-        <ModalCategoryPost />
+        <ShowPostCategoriesModal />
       </div>
   );
 }

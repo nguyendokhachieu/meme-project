@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { actSetHomePageTabs } from "../../../store/posts/actions";
 import { useLatestPostsScroll } from "../../../hooks/useLatestPostsScroll";
 import { useFollowingUsersPostsScroll } from "../../../hooks/useFollowingUsersPostsScroll";
-import { useLocation } from "react-router";
 
 export default function Tabs({
     posts = function() {},
@@ -13,7 +12,6 @@ export default function Tabs({
 }) 
 {
   const dispatch = useDispatch();
-  const location = useLocation();
   const { homepageTab: tab } = useSelector(state => state.posts);
   const { id: user_id } = useSelector(state => state.user);
 

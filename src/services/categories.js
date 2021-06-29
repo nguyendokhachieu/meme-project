@@ -61,5 +61,13 @@ export const CategoryService = {
                 'Content-Type': 'application/json',
             }
         })
+    },
+
+    getPostCategories(post_id) {
+        return api.call().get('/category/get/post', {
+            params: {
+                post_id,
+            }
+        })
     }
 };

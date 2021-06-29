@@ -7,21 +7,21 @@ export const ACT_HIDE_DELETE_POST_MODAL = 'ACT_HIDE_DELETE_POST_MODAL';
 export const ACT_SHOW_DELETE_COMMENT_MODAL = 'ACT_SHOW_DELETE_COMMENT_MODAL';
 export const ACT_HIDE_DELETE_COMMENT_MODAL = 'ACT_HIDE_DELETE_COMMENT_MODAL';
 
-export const ACT_SHOW_CATEGORY_POST_MODAL = 'ACT_SHOW_CATEGORY_POST_MODAL';
-export const ACT_HIDE_CATEGORY_POST_MODAL = 'ACT_HIDE_CATEGORY_POST_MODAL';
+export const ACT_SHOW_POST_CATEGORIES_MODAL = 'ACT_SHOW_POST_CATEGORIES_MODAL'; // show single post has categories added
+export const ACT_HIDE_POST_CATEGORIES_MODAL = 'ACT_HIDE_POST_CATEGORIES_MODAL';
 
-export const actShowCategoryPostModal = (id) => {
+export const actShowPostCategoriesModal = postID => {
     return {
-        type: ACT_SHOW_CATEGORY_POST_MODAL,
+        type: ACT_SHOW_POST_CATEGORIES_MODAL,
         payload: {
-            id,
+            postID,
         }
     }
 }
 
-export const actHideCategoryPostModal = () => {
+export const actHidePostCategoriesModal = () => {
     return {
-        type: ACT_HIDE_CATEGORY_POST_MODAL,
+        type: ACT_HIDE_POST_CATEGORIES_MODAL,
     }
 }
 

@@ -21,14 +21,18 @@
                         padding-bottom: 4rem;
 
                         .end-of-list {
-                            padding-top: 4rem;
+                            margin-top: 2rem;
+                            padding: 4rem;
+                            border-radius: 5px;
+                            box-shadow: 0 0 2px 0 #ccc;
                             color: #999;
                             font-size: 1.6rem;
                             display: flex;
                             align-items: center;
                             justify-content: center;
+                            background-color: #fff;
 
-                            .end-icon {
+                            .icon {
                                 margin: 0 1rem;
                                 font-size: 2rem;
                             }

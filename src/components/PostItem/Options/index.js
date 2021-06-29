@@ -1,9 +1,13 @@
 import "./options.scss";
+
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+
+
 import Delete from "./Delete";
 import Edit from "./Edit";
 import Save from "./Save";
+import ShowCategories from "./ShowCategories";
 
 export default function Options({
   post
@@ -36,6 +40,7 @@ export default function Options({
           <ul className="list-items">
             <li className="option-item public">
               <Save id={ post.id } setShowOptions={ val => { setShowOptions(val) } } />
+              <ShowCategories id={ post.id } setShowOptions={ val => { setShowOptions(val) } } />
             </li>
             {
               !isThisPerson 

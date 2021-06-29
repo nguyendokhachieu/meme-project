@@ -94,28 +94,13 @@
             padding: 0.25rem 0;
             color: $text-color;
 
-            display: flex;
-            align-items: center;
-
             .content {
                 word-break: break-word;
-                align-self: flex-start;
-                flex: 0.8;
 
                 .view-more {
                     margin: 0 0.5rem;
                     color: $text-color;
                     font-weight: 500;
-                }
-            }
-
-            .image-link-right-side {
-                margin-left: 1rem;
-                flex: 0.2;
-
-                .img {
-                    border-radius: 5px;
-                    overflow: hidden;
                 }
             }
         }

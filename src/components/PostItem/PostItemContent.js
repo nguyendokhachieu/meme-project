@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function PostItemHeader({
     post,
-    showRightSideImage = false,
 }) 
 {
   const location = useLocation();
@@ -25,45 +24,21 @@ export default function PostItemHeader({
                 : post.content
             }
           </span>
-          {
-            post.img_url && showRightSideImage 
-              ? (
-                <Link to={ `/post/${ post.id }` } className="image-link-right-side">
-                  <img
-                    className="img"
-                    src=
-                    {
-                      post.img_url
-                        ? post.img_url
-                        : null
-                    }
-                    alt=""
-                  />
-                </Link>
-              )
-              : null
-          }
         </p>
-        {
-          showRightSideImage
-            ? null
-            : (
-              <div className="post-item-image-wrap">
-                <Link to={ `/post/${ post.id }` } className="post-item-image-link">
-                  <img
-                    className="post-item-image"
-                    src=
-                    {
-                      post.img_url
-                        ? post.img_url
-                        : null
-                    }
-                    alt=""
-                  />
-                </Link>
-              </div>
-            )
-        }
+        <div className="post-item-image-wrap">
+          <Link to={ `/post/${ post.id }` } className="post-item-image-link">
+            <img
+              className="post-item-image"
+              src=
+              {
+                post.img_url
+                  ? post.img_url
+                  : null
+              }
+              alt=""
+            />
+          </Link>
+        </div>
       </div>
     );
 }

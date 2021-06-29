@@ -5,17 +5,17 @@ import {
     ACT_FETCH_POSTS_BY_CATEGORIES,
     ACT_SELECT_ONE_CATEGORY,
     ACT_REMOVE_SELECT_ONE_CATEGORY,
+    ACT_FETCH_CATEGORIES_BY_POST_ID,
+    ACT_CLEAR_CATEGORIES_BY_POST_ID,
 } from "./actions";
 
 export const generateKeyCategoriesHash = (id) => `category-id-${id}`;
 
 const initState = {
-    page: 1,
-    per_page: 5,
     total_categories: 0,
-    categoriesPaging: [],
     categories: [],
     categoriesHash: {},
+
     selectedUpload: {
         list: [],
     },
@@ -34,11 +34,30 @@ const initState = {
         hasMore: true,
         list: [],
         category_id: null,
+    },
+
+    categoriesByPostId: {
+        list: [],
     }
 }
 
 export const categoriesReducer = (state = initState, action) => {
     switch (action.type) {
+        case ACT_CLEAR_CATEGORIES_BY_POST_ID:
+            return {
+                ...state,
+                categoriesByPostId: {
+                    list: [],
+                }
+            }
+
+        case ACT_FETCH_CATEGORIES_BY_POST_ID: 
+            return {
+                ...state,
+                categoriesByPostId: {
+                    list: action.payload.list,
+                }
+            }
 
         case ACT_SELECT_ONE_CATEGORY:
             return {
@@ -76,6 +95,7 @@ export const categoriesReducer = (state = initState, action) => {
             return {
                 ...state,
                 postsByCategoryId: {
+                    ...state.postsByCategoryId,
                     page: action.payload.page,
                     per_page: action.payload.per_page,
                     hasMore: action.payload.hasMore,

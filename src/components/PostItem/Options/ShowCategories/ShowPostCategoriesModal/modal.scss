@@ -1,0 +1,87 @@
+@import "../../../../../assets/css/variables.scss";
+
+.show-categories-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 105;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    transition: all 0.25s ease;
+    visibility: visible;
+    opacity: 1;
+
+    .inner-modal {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        background-color: #fff;
+        width: 700px;
+        transform: translate(-350px, 0);
+        border-radius: 5px;
+        box-shadow: 0 0 3px 0 #ccc;
+        padding: 2rem;
+        
+        .content {
+            height: auto;
+
+            .items {
+                padding: 1rem;
+                max-height: 25rem;
+                overflow: auto;
+
+                .loading {
+                    text-align: center;
+                    font-size: 1.6rem;
+                    color: #999;
+
+                    .icon {
+                        color: rgb(100, 100, 100);
+                        font-size: 2.2rem;
+                        padding: 0 1rem;
+                    }
+                }
+            }
+
+            .items::-webkit-scrollbar {
+                width: 1rem;
+            }
+               
+            .items::-webkit-scrollbar-track {
+                border-radius: 5px;
+            }
+            
+            .items::-webkit-scrollbar-thumb {
+                background-color: #ccc;
+                outline: none;
+                border-radius: 5px;
+            }
+
+            .submit {
+                .cancel {
+                    border: 1px solid $base-color;
+                    color: $base-color;
+                }
+
+                .cancel.disabled {
+                    pointer-events: none;
+                    color: #ccc;
+                    border-color: #ccc;
+                }
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            left: 50%;
+            width: 90%;
+            transform: translate(-50%, 0);
+        }
+    }
+}
+
+.show-categories-modal.hidden {
+    visibility: hidden;
+    opacity: 0;
+}

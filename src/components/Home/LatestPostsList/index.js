@@ -8,7 +8,7 @@ export default function LatestPostsList() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  
+
   return (
     <div className="main-col-8">
       <Tabs 
@@ -24,19 +24,19 @@ export default function LatestPostsList() {
                 return <PostItem key={ post.id } post={post} />;
               })
             ) 
-            : <PostItemLoading />
+            : null
           }
           {
             loading 
-            ? <PostItemLoading noOfItems={ 2 } />
+            ? <PostItemLoading noOfItems={ 4 } />
             : null
           }
           {
             !hasMore 
               ? (
                 <div className="end-of-list">
-                  <i className="fad fa-times-circle end-icon"></i>
-                  Không còn bài viết để hiển thị
+                  <i className="fal fa-smile-beam icon"></i>
+                  Đã hết bài viết rồi!
                 </div>
               )
               : null

@@ -44,6 +44,9 @@
                     padding: 1rem;
                     transition: all 0.15s ease;
                     cursor: pointer;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
     
                     .item-icon {
                         display: inline-block;

@@ -8,6 +8,44 @@ export const ACT_FETCH_POSTS_BY_CATEGORIES = 'ACT_FETCH_POSTS_BY_CATEGORIES';
 export const ACT_SELECT_ONE_CATEGORY = 'ACT_SELECT_ONE_CATEGORY';
 export const ACT_REMOVE_SELECT_ONE_CATEGORY = 'ACT_REMOVE_SELECT_ONE_CATEGORY';
 export const ACT_CREATE_NEW_CATEGORY = 'ACT_CREATE_NEW_CATEGORY';
+export const ACT_FETCH_CATEGORIES_BY_POST_ID = 'ACT_FETCH_CATEGORIES_BY_POST_ID';
+export const ACT_CLEAR_CATEGORIES_BY_POST_ID = 'ACT_CLEAR_CATEGORIES_BY_POST_ID';
+
+
+export const actClearCategoriesByPostId = () => {
+    return {
+        type: ACT_CLEAR_CATEGORIES_BY_POST_ID,
+    }
+}
+
+export const actFetchCategoriesByPostIdAsync = (postID = null) => {
+    return async dispatch => {
+        if (!postID) return;
+
+        try {
+            const response = await CategoryService.getPostCategories(postID);
+
+            if (response.data.status === 200) {
+                dispatch(actFetchCategoriesByPostId(response.data.data));
+
+                return { ok: true };
+            }
+
+            return { ok: false };
+        } catch (error) {
+            
+        }
+    }
+}
+
+const actFetchCategoriesByPostId = (list) => {
+    return {
+        type: ACT_FETCH_CATEGORIES_BY_POST_ID,
+        payload: {
+            list,
+        }
+    }
+}
 
 export const actCreateNewCategoryAsync = (categoryText = '') => {
     return async dispatch => {
@@ -47,7 +85,11 @@ export const actRemoveSelectOneCategory = (categoryId) => {
     }
 }
 
-export const actFetchPostsByCategoryAsync = (id = null, page = 1, per_page = 5) => {
+export const actFetchPostsByCategoryAsync = ({
+    id = null, 
+    page = 1, 
+    per_page = 5
+}) => {
     return async dispatch => {
         if (!id) return;
 
@@ -58,14 +100,26 @@ export const actFetchPostsByCategoryAsync = (id = null, page = 1, per_page = 5) 
                 per_page,
             });
 
-            dispatch(actFetchPostsByCategory(id, response.data.data, page, per_page, response.data.data.length === 0 ? false : true));
+            dispatch(actFetchPostsByCategory({
+                id, 
+                list: response.data.data, 
+                page, 
+                per_page, 
+                hasMore: response.data.data.length === 0 ? false : true
+            }));
         } catch (error) {
             
         }
     }
 }
 
-const actFetchPostsByCategory = (category_id, list, page, per_page, hasMore) => {
+const actFetchPostsByCategory = ({
+    category_id, 
+    list, 
+    page, 
+    per_page, 
+    hasMore
+}) => {
     return {
         type: ACT_FETCH_POSTS_BY_CATEGORIES,
         payload: {
