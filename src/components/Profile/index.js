@@ -53,7 +53,7 @@ export default function Profile({
               : <UserProfileInfomation userInfo={ userInfo } />
           }
           <h3 className="user-posts-list-title">Danh sách bài viết</h3>
-            <UserPostsList />
+            <UserPostsList user_id={ id } />
         </section>
       </div>
     </div>

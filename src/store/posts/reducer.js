@@ -33,7 +33,7 @@ const initState = {
         per_page: 5,
         total_user_posts: 0,
         list: [],
-        hasMore: true,
+        hasMore: false,
     },
 
     detailPost: {

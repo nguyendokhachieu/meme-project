@@ -23,11 +23,6 @@ export default function EditPostModal() {
   const [loading, setLoading] = useState(false);
   const [fetchingFirst, setFetchingFirst] = useState(false);
 
-  const autoSize = elem => {
-    elem.style.height = "5px";
-    elem.style.height = elem.scrollHeight + "px";
-  }
-
   const clickEventCallback = e => {
       showEditModal 
         && modalRef.current 
@@ -74,8 +69,9 @@ export default function EditPostModal() {
                   : (
                       <textarea
                         className="f-c"
-                        onChange={ e => { setContent(e.target.value); autoSize(e.target) } }
-                        // rows={ 1 }
+                        onChange={ e => { setContent(e.target.value) } }
+                        rows={ 5 }
+                        cols={ 1 }
                         value={ content }
                       />
                   )

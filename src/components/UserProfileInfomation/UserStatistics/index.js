@@ -33,12 +33,12 @@ export default function UserStatistics({
         <span className="statistic-item-text">Bài viết: </span>
         <span className="statistic-item-count">{ userInfo?.count_posts }</span>
       </p>
-      <p className="statistic-item" onClick={ () => dispatch(actShowPeopleModal({ user_id: userInfo.user_id, type: 'follower' })) }>
+      <p className="statistic-item people" onClick={ () => dispatch(actShowPeopleModal({ user_id: userInfo.user_id, type: 'follower' })) }>
         <i className="fal fa-user-friends left-statistic-icon"></i>
         <span className="statistic-item-text">Được theo dõi: </span>
         <span className="statistic-item-count">{ follower }</span>
       </p>
-      <p className="statistic-item" onClick={ () => dispatch(actShowPeopleModal({ user_id: userInfo.user_id, type: 'following' })) }>
+      <p className="statistic-item people" onClick={ () => dispatch(actShowPeopleModal({ user_id: userInfo.user_id, type: 'following' })) }>
         <i className="fal fa-user-plus left-statistic-icon"></i>
         <span className="statistic-item-text">Đang theo dõi: </span>
         <span className="statistic-item-count">{ following }</span>
