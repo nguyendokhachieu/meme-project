@@ -23,6 +23,7 @@ import EditPostModal from "./components/PostItem/Options/Edit/EditPostModal";
 import DeletePostModal from "./components/PostItem/Options/Delete/DeletePostModal";
 import DeleteCommentModal from "./components/CommentItem/Options/Delete/DeleteCommentModal";
 import ShowPostCategoriesModal from "./components/PostItem/Options/ShowCategories/ShowPostCategoriesModal";
+import ShowPeopleModal from "./components/UserProfileInfomation/UserStatistics/ShowPeopleModal";
 
 import { actHideNotificationCard } from "./store/notifications/actions";
 import { actSetHomePageTabs } from "./store/posts/actions";
@@ -92,6 +93,7 @@ function App() {
         <DeletePostModal />
         <DeleteCommentModal />
         <ShowPostCategoriesModal />
+        <ShowPeopleModal />
       </div>
   );
 }

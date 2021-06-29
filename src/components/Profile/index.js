@@ -40,7 +40,7 @@ export default function Profile({
 
   useEffect(() => {
     scrollToTop();
-  }, [])
+  }, [id])
 
   return (
     <div className="main-content">

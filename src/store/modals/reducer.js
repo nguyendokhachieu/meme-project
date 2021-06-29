@@ -7,6 +7,8 @@ import {
     ACT_HIDE_DELETE_COMMENT_MODAL,
     ACT_SHOW_POST_CATEGORIES_MODAL,
     ACT_HIDE_POST_CATEGORIES_MODAL,
+    ACT_SHOW_PEOPLE_MODAL,
+    ACT_HIDE_PEOPLE_MODAL,
 } from "./actions";
 
 const initState = {
@@ -20,10 +22,27 @@ const initState = {
     comment_user_id: null,
 
     showPostCategoriesModal: false,
+
+    showPeopleModal: false,
+    peopleModalType: 'following',
+    userId: null,
 }
 
 export const modalsReducer = (state = initState, action) => {
     switch (action.type) {
+        case ACT_SHOW_PEOPLE_MODAL:
+            return {
+                ...state,
+                showPeopleModal: true,
+                peopleModalType: action.payload.type,
+                userId: action.payload.user_id,
+            }
+
+        case ACT_HIDE_PEOPLE_MODAL:
+            return {
+                ...state,
+                showPeopleModal: false,
+            }
 
         case ACT_SHOW_POST_CATEGORIES_MODAL:
             return {

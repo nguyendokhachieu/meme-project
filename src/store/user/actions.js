@@ -2,6 +2,103 @@ import { UserService } from "../../services/user";
 
 export const ACT_LOGIN = 'ACT_LOGIN';
 
+export const ACT_FETCH_FOLLOWING_USERS = 'ACT_FETCH_FOLLOWING_USERS';
+export const ACT_FETCH_FOLLOWERS = 'ACT_FETCH_FOLLOWERS';
+
+export const actFetchFollowersAsync = ({
+    user_id = null,
+    page = 1,
+    per_page = 5,
+}) => {
+    return async dispatch => {
+        if (!user_id) return;
+
+        try {
+            const response = await UserService.getListPeopleFollowYou({
+                user_id,
+                page,
+                per_page,
+            });
+
+            if (response.data.status === 200) {
+                dispatch(actFetchFollowers({
+                    list: response.data.data || [],
+                    page,
+                    per_page,
+                }));
+
+                return { ok: true };
+            }
+
+            return { ok: false };
+        } catch (error) {
+            return { ok: false };
+        }
+    }
+}
+
+export const actFetchFollowers = ({
+    list = [],
+    page,
+    per_page,
+}) => {
+    return {
+        type: ACT_FETCH_FOLLOWERS,
+        payload: {
+            list,
+            page,
+            per_page,
+        }
+    }
+}
+
+export const actFetchFollowingUsersAsync = ({
+    user_id = null,
+    page = 1,
+    per_page = 5,
+}) => {
+    return async dispatch => {
+        if (!user_id) return;
+
+        try {
+            const response = await UserService.getListPeopleYouFollowing({
+                user_id,
+                page,
+                per_page,
+            });
+
+            if (response.data.status === 200) {
+                dispatch(actFetchFollowingUsers({
+                    list: response.data.data || [],
+                    page,
+                    per_page,
+                }));
+
+                return { ok: true };
+            }
+
+            return { ok: false };
+        } catch (error) {
+            return { ok: false };
+        }
+    }
+}
+
+export const actFetchFollowingUsers = ({
+    list = [],
+    page,
+    per_page,
+}) => {
+    return {
+        type: ACT_FETCH_FOLLOWING_USERS,
+        payload: {
+            list,
+            page,
+            per_page,
+        }
+    }
+}
+
 export const actRegisterAsync = ({
     username = '',
     fullname = '',
@@ -9,7 +106,7 @@ export const actRegisterAsync = ({
     rePassword = '',
 } = {}) => 
 {
-    return async dispatch => {
+    return async () => {
         if (!username) return;
         if (!fullname) return;
         if (!password) return;

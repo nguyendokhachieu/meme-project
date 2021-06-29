@@ -46,18 +46,30 @@ export const UserService = {
         })
     },
 
-    getListPeopleFollowYou(user_id) {
-        return api.call().get('/user/getListPeopleFollowYou', {
+    getListPeopleFollowYou({
+        user_id,
+        page = 1,
+        per_page = 5,
+    }) {
+        return api.call().get('/user/get/followers', {
             params: {
                 user_id,
+                page,
+                per_page,
             }
         })
     },
 
-    getListPeopleYouFollowing(user_id) {
-        return api.call().get('/user/getListPeopleYouFollowing', {
+    getListPeopleYouFollowing({
+        user_id,
+        page = 1,
+        per_page = 5,
+    }) {
+        return api.call().get('/user/get/following', {
             params: {
                 user_id,
+                page,
+                per_page
             }
         })
     },
