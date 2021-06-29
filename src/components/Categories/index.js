@@ -39,13 +39,13 @@ export default function Categories({
           <div className="categories-tab-mobile">
             <div 
               onClick={ () => { handleTabClick('general') } } 
-              className={ tab === 'general' ? 'item active' : 'item' }
+              className={ tab === 'general' ? 'tab-item active' : 'tab-item' }
             >
               Danh mục hiện có
             </div>
             <div 
               onClick={ () => { handleTabClick('yourself') } } 
-              className={ tab === 'yourself' ? 'item active' : 'item' }
+              className={ tab === 'yourself' ? 'tab-item active' : 'tab-item' }
             >
               Quản lý danh mục của bạn
             </div>

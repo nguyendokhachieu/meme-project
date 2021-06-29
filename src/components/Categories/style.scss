@@ -13,7 +13,7 @@
                 margin-bottom: 1rem;
                 display: none;
 
-                .item {
+                .tab-item {
                     width: 50%;
                     display: flex;
                     align-items: center;
@@ -31,7 +31,7 @@
                     }
                 }
 
-                .item.active {
+                .tab-item.active {
                     font-weight: bold;
                     border-bottom-width: 2px;
                     border-bottom-color: #999;

@@ -1,5 +1,4 @@
 import Logo from "./Logo";
-import Search from "./Search";
 import Nav from "./Nav";
 import ButtonGroup from "./ButtonGroup";
 import Control from "./Control";
@@ -15,7 +14,6 @@ export default function HeaderMobile() {
             <span className="tooltip">Đóng lại</span>
           </span>
           <Logo />
-          <Search />
           <Nav />
           <ButtonGroup />
         </div>
