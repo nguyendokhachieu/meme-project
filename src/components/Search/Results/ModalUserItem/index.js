@@ -1,5 +1,5 @@
 import "./modal-user-item.scss";
-import { useAvatarLinkSrc } from "../../../hooks/useAvatarLinkSrc";
+import { useAvatarLinkSrc } from "../../../../hooks/useAvatarLinkSrc";
 import { Link } from "react-router-dom";
 
 export default function ModalUserItem({
@@ -13,7 +13,7 @@ export default function ModalUserItem({
   }
 
   return (
-    <Link to={ `/profile?id=${ user.user_id }` } className="modal-user-item" onClick={ handleCloseModal } >
+    <Link to={ `/profile?id=${ user.user_id }` } className="user-item" onClick={ handleCloseModal } >
       <div className="avatar-link-wrap">
         <img src={ link } alt="avatar" />
       </div>

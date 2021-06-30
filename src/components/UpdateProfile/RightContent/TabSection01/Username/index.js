@@ -15,7 +15,7 @@ export default function Username({
     <div className="row">
       <span className="name col">Username</span>
       <span className="content col">
-        <span className="rendered">{ innerRendered }</span>
+        <span className="rendered disabled">{ innerRendered }</span>
       </span>
       <span className={ showEditButton ? `edit col` : `edit col disabled` } >
         <i className="fad fa-pencil-alt icon"></i>

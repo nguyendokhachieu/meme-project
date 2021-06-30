@@ -52,7 +52,7 @@ export default function UserPostsList({
         <div className="col-wrap">
           <div className="main-col-8">
               {
-                list.length !== 0 && (
+                list && list.length !== 0 && (
                   list.map(post => {
                     return <PostItem post={ post } key={ post.id } />
                   })

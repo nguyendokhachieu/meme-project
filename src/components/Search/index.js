@@ -91,7 +91,7 @@ export default function Search({
 
     useEffect(() => {
         scrollToTop();
-    });
+    }, []);
 
     return (
         <div className="main-content">

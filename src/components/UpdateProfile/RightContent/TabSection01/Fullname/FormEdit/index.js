@@ -1,15 +1,19 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
 import { UserService } from "../../../../../../services/user";
+import { actShowNotificationCard } from "../../../../../../store/notifications/actions";
+import { actShowLoading, actHideLoading } from "../../../../../../store/loading/actions";
 
 export default function FormEdit({ 
     setHideForm = function() {},
     setContentRendered = function() {},
     hidden = true, 
-    showNotif = function() {},
-    contentNotif = function() {},
 }) 
 {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
+  const [loading, setLoading] = useState(false);
 
   if (hidden) {
     return null;
@@ -18,27 +22,40 @@ export default function FormEdit({
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    showNotif(false);
-    contentNotif('');
+    if (loading) return;
 
     if (name.trim() === '') {
-      contentNotif('Họ và tên không được rỗng');
-      showNotif(true);
-
+      dispatch(actShowNotificationCard('Họ và tên không được rỗng'));
       return;
     }
 
     const frm = new FormData();
     frm.append('name', name);
 
-    const response = await UserService.update(frm);
+    try {
+      setLoading(true);
+      dispatch(actShowLoading());
 
-    contentNotif(response.data.message);
-    showNotif(true);
+      const response = await UserService.update(frm);
 
-    setContentRendered(name);
-    setName('');
-    setHideForm(true);
+      setLoading(false);
+      dispatch(actHideLoading());
+      
+      if (response.data.status === 200) {
+        setContentRendered(name);
+        setName('');
+        setHideForm(true);
+  
+        dispatch(actShowNotificationCard(response.data.message));
+        return;
+      }
+  
+      dispatch(actShowNotificationCard(response.data.message));
+      setName('');
+      setHideForm(true);
+    } catch (error) {
+      dispatch(actShowNotificationCard("Lỗi mạng"));
+    }
   }
 
   return (
@@ -53,7 +70,7 @@ export default function FormEdit({
       </div>
       <div className="control-wrap">
         <input type="submit" className="edit-button" value="Sửa thông tin" />
-        <input type="submit" className="edit-button" value="Hủy" onClick={ e => { setHideForm(true) } } />
+        <input type="submit" className="edit-button" value="Hủy" onClick={ () => { setHideForm(true) } } />
       </div>
     </form>
   );

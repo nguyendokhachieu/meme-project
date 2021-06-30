@@ -1,7 +1,13 @@
 @import "./../../assets/css/variables.scss";
 
+.disabled-body-scroll {
+    height: 100%;
+    overflow-y: hidden;
+}
+
 .main-content {
     margin-top: 5rem !important;
+    height: 100vh !important;
     
     .update-profile-wrap {
         margin-top: 5rem;

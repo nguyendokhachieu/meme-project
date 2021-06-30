@@ -29,6 +29,12 @@
           color: rgb(53, 53, 53);
           padding: 0.5rem;
           cursor: pointer;
+
+          .toggle-icon {
+            font-size: 2.2rem;
+            margin-left: -0.25rem;
+            color: #999;
+          }
         }
 
         .text {
@@ -56,11 +62,13 @@
         flex-direction: column;
         margin-bottom: 1rem;
         padding-bottom: 1rem;
-        border-bottom: 1px solid rgb(221, 221, 221);
 
         .nav-item {
+          margin-bottom: 1rem;
+          padding-bottom: 1rem;
+
           &:not(:last-child) {
-            margin-bottom: 0.5rem;
+            border-bottom: 1px solid rgb(221, 221, 221);
           }
 
           .nav-item-link {
@@ -70,7 +78,7 @@
             font-size: 1.6rem;
             transition: all 0.15s ease;
 
-            color: $base-color;
+            color: $base-color-lighter;
             width: 100%;
             border-radius: 10px;
 
@@ -80,6 +88,7 @@
 
             .icon {
               margin-right: 1rem;
+              width: 3rem;
               font-size: 2.2rem;
             }
             
@@ -87,23 +96,28 @@
               background-color: #eee;
               cursor: pointer;
             }
+
+            &:active {
+              background-color: #ccc;
+            }
           }
 
+
           .nav-item-link.active {
-            font-weight: bold;
+            background-color: #eee;
             font-size: 1.6rem;
+            color: $base-color;
           }
         }
       }
     }
 
     .side-bar-wrap::-webkit-scrollbar {
-      width: 1rem;
+      width: 0.75rem;
     }
       
     .side-bar-wrap::-webkit-scrollbar-track {
         border-radius: 5px;
-        box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
     }
     
     .side-bar-wrap::-webkit-scrollbar-thumb {

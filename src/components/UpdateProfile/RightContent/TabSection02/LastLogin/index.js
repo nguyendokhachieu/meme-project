@@ -7,7 +7,7 @@ export default function LastLogin({
     <div className="row">
       <span className="name col">Đăng nhập lần cuối vào</span>
       <span className="content col">
-        <span className="rendered">
+        <span className="rendered flex-column disabled">
           <span>{time}</span>
           <span>{date}</span>
         </span>

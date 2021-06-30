@@ -4,7 +4,6 @@ import { Route, Switch, useLocation } from "react-router-dom";
 
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
-import ChangePasswordPage from "./pages/ChangePasswordPage";
 import UpdateProfilePage from "./pages/UpdateProfilePage";
 import DetailPostPage from "./pages/DetailPostPage";
 import LoginPage from "./pages/LoginPage";
@@ -77,7 +76,6 @@ function App() {
           <Route path="/profile"><ProfilePage /></Route> 
           <Route path="/login"><LoginPage /></Route>
           <Route path="/post/:postID"><DetailPostPage /></Route>
-          <Route path="/change-password"><ChangePasswordPage /></Route>
           <Route path="/" exact><HomePage /></Route>
           <Route><NotFoundPage /></Route>
         </Switch>

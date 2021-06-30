@@ -16,7 +16,7 @@ export default function AccountSettings({
 
   return (
     <li className="option-item">
-      <Link to="/update" className="item-link" onClick={ () => { setShowOptions(false) } }>
+      <Link to="/update/general" className="item-link" onClick={ () => { setShowOptions(false) } }>
         <i className="fad fa-cogs item-icon"></i>
         Quản lý tài khoản của bạn
       </Link>

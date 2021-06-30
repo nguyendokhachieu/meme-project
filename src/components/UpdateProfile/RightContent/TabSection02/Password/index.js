@@ -24,9 +24,9 @@ export default function Password()
       <span
         className="edit col"
         onClick={ e => { history.push({
-          pathname: '/change-password',
+          pathname: '/update/privacy/change-password',
           state: {
-            history: '/update#02-privacy'
+            history: '/update/privacy'
           },
         }) } }
       >

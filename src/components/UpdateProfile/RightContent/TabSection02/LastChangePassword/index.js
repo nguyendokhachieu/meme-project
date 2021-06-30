@@ -7,7 +7,7 @@ export default function LastChangePassword({
     <div className="row">
       <span className="name col">Thay đổi mật khẩu gần nhất vào</span>
       <span className="content col">
-        <span className="rendered">
+        <span className="rendered flex-column disabled">
           <span>{time}</span>
           <span>{date}</span>
         </span>

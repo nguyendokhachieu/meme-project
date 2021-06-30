@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import { actRemoveSelectOneCategory } from "../../../store/categories/actions";
+import { actHidePostCategoriesModal } from "../../../store/modals/actions";
 
 export default function CategoryItem({
   category,
@@ -15,7 +16,7 @@ export default function CategoryItem({
 {
   const dispatch = useDispatch();
   const location = useLocation();
-  
+
   useEffect(() => {
     if (location.search && location.search.length !== 0) {
       if (!isNaN(location.search.substr(4, location.search.length))) {
@@ -36,6 +37,7 @@ export default function CategoryItem({
             <Link 
                 to={ `/categories/${ category.id }` } 
                 className={ small ? 'tags-item size-small' : 'tags-item' }
+                onClick={ () => dispatch(actHidePostCategoriesModal()) }
             >
                 <span className="tags-text">{ category.name }</span>
             </Link>

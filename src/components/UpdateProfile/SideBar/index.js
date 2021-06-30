@@ -1,6 +1,7 @@
 import "./side-bar.scss";
 import { useEffect, useState } from 'react';
-import { NavHashLink } from 'react-router-hash-link';
+import { NavLink } from "react-router-dom";
+
 import { useWindowSize } from "../../../hooks/useWindowSize"; 
 
 export default function SideBar({
@@ -18,8 +19,8 @@ export default function SideBar({
       return;
     } 
 
-    setToggleSideBar(true);
-    toggleSideBar(true);
+    // setToggleSideBar(true);
+    // toggleSideBar(true);
   }, [width, toggleSideBar]);
 
   return (
@@ -31,31 +32,39 @@ export default function SideBar({
             <label 
               htmlFor="userInfo-toggle" 
               className="userInfo-toggle" 
-              onClick={ e => { toggleSideBar(!toggleSidebar); setToggleSideBar(prev => !prev); } }
+              onClick={ () => { toggleSideBar(!toggleSidebar); setToggleSideBar(prev => !prev);  } }
             >
-              <i className="far fa-bars icon"></i>
+              <i className="far fa-bars toggle-icon"></i>
             </label>
           </h3>
           <ul className="nav">
             <li className="nav-item">
-              <NavHashLink
-                smooth
-                to="/update#01-general"
+              <NavLink
+                to="/update/general"
                 activeClassName="active"
                 className="nav-item-link"
               >
                 <i className="fad fa-list-alt icon"></i>
                 <span className="text">Thông tin chung</span>
-              </NavHashLink>
-              <NavHashLink
-                smooth
-                to="/update#02-privacy"
+              </NavLink>
+              <NavLink
+                to="/update/privacy"
                 activeClassName="active"
                 className="nav-item-link"
               >
                 <i className="fad fa-user-shield icon"></i>
                 <span className="text">Quyền riêng tư</span>
-              </NavHashLink>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="/update/profile"
+                activeClassName="active"
+                className="nav-item-link"
+              >
+                <i className="fad fa-list-alt icon"></i>
+                <span className="text">Trang cá nhân</span>
+              </NavLink>
             </li>
           </ul>
         </div>

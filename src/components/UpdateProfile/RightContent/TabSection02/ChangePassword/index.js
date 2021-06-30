@@ -4,15 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
-import { actShowNotificationCard } from "../../store/notifications/actions";
-import { UserService } from "../../services/user";
+import { actShowNotificationCard } from "../../../../../store/notifications/actions";
+import { UserService } from "../../../../../services/user";
 
 export default function ChangePassword() {
   const dispatch = useDispatch();
   const history = useHistory();
   
   const oldPassInputRef = useRef();
-  const [showRoute, setShowRoute] = useState(false);
   
   const [oldPass, setOldPass] = useState('');
   const [newPass, setNewPass] = useState('');
@@ -25,39 +24,33 @@ export default function ChangePassword() {
   const changePassword = async e => {
     e.preventDefault();
 
+    if (loading) return;
+    
     setLoading(true);
+    
     const response = await UserService.changePassword(oldPass, newPass, renewPass);
 
     setLoading(false);
 
-    if (response.data.status === 404) {
-      setHasErrors(true);
-      setOldPass('');
-      setNewPass('');
-      setRenewPass('');
-      setErrorText(response.data.message);
-      oldPassInputRef.current && oldPassInputRef.current.focus();
-    } else {
+    if (response.data.status === 200) {
       localStorage.setItem('tstring', '');
-
-      dispatch(actShowNotificationCard('Thay đổi mật khẩu thành công. Vui lòng đăng nhập lại!'));
-      setHasErrors(false);
+      window.location.assign('/login');
       
-      history.push('/login');
-    }
+      dispatch(actShowNotificationCard('Thay đổi mật khẩu thành công. Vui lòng đăng nhập lại!'));
+      return;
+    } 
+
+    setHasErrors(true);
+    setOldPass('');
+    setNewPass('');
+    setRenewPass('');
+    setErrorText(response.data.message);
+    oldPassInputRef.current && oldPassInputRef.current.focus();
   }
 
   useEffect(() => {
     oldPassInputRef.current && oldPassInputRef.current.focus();
   }, []);
-
-  useEffect(() => {
-    if (history && history.action === 'PUSH') {
-      if (history.location && history.location.state && history.location.state.history) {
-        setShowRoute(true);
-      }
-    }
-  }, [history]);
 
   return (
     <div className="main-content">
@@ -127,18 +120,14 @@ export default function ChangePassword() {
                 />
               </div>
             </form>
-            {
-              showRoute && (
-                <div className="route">
-                  <button 
-                    className="go-back-btn" 
-                    onClick={ e => { history.push('/update#02-privacy') }}
-                  >
-                      Quay về trang cập nhật
-                  </button>
-                </div>
-              )
-            }
+            <div className="route">
+              <button 
+                className="go-back-btn" 
+                onClick={ () => { history.push('/update/privacy') }}
+              >
+                  Quay về <strong>Quyền riêng tư</strong>
+              </button>
+            </div>
           </section>
         </div>
       </div>

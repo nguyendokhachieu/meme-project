@@ -1,6 +1,6 @@
 import "./results.scss";
 
-import ModalUserItem from "../../shared/ModalUserItem";
+import ModalUserItem from "./ModalUserItem";
 import PostItem from "../../PostItem";
 import PostItemLoading from "../../PostItem/PostItemLoading";
 

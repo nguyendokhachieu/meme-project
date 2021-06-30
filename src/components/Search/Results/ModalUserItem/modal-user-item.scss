@@ -1,4 +1,4 @@
-.modal-user-item {
+.user-item {
     display: flex;
     justify-content: flex-start;
     border-radius: 7px;
@@ -9,8 +9,8 @@
     transition: all 0.15s ease;
 
     .avatar-link-wrap {
-        width: 4rem;
-        height: 4rem;
+        width: 5rem;
+        height: 5rem;
         border: 1px solid #ccc;
         overflow: hidden;
         border-radius: 69px;
@@ -29,7 +29,7 @@
         color: rgb(49, 49, 49);
 
         .user-info-name {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 500;
         }
 

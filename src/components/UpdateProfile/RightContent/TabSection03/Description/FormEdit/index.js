@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
+import striptags from "striptags";
+
+import { UserService } from "../../../../../../services/user";
 import { actShowNotificationCard } from "../../../../../../store/notifications/actions";
 import { actShowLoading, actHideLoading } from "../../../../../../store/loading/actions";
-import { UserService } from "../../../../../../services/user";
 
 export default function FormEdit({ 
     setHideForm = function() {},
@@ -12,25 +14,25 @@ export default function FormEdit({
 }) 
 {
   const dispatch = useDispatch();
-  const [sex, setSex] = useState(-1);
+  const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
 
   if (hidden) {
     return null;
   }
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     if (loading) return;
 
-    if (Number(sex) === -1) {
-      dispatch(actShowNotificationCard('Bạn chưa chọn giới tính!'));
+    if (striptags(description).trim() === '') {
+      dispatch(actShowNotificationCard('Mô tả rỗng!'));
       return;
     }
 
     const frm = new FormData();
-    frm.append('sex', sex);
+    frm.append('description', description);
 
     try {
       setLoading(true);
@@ -40,36 +42,33 @@ export default function FormEdit({
 
       setLoading(false);
       dispatch(actHideLoading());
-
+      
       if (response.data.status === 200) {
-        setContentRendered(Number(sex) === 1 ? 'Nam' : 'Nữ');
-        setSex(-1);
+        setContentRendered(description);
+        setDescription('');
         setHideForm(true);
-
-        dispatch(actShowNotificationCard('Cập nhật giới tính thành công'));
+  
+        dispatch(actShowNotificationCard(response.data.message));
         return;
       }
-
-      setSex(-1);
-      setHideForm(true);
+  
       dispatch(actShowNotificationCard(response.data.message));
+      setDescription('');
+      setHideForm(true);
     } catch (error) {
-      dispatch(actShowNotificationCard('Lỗi mạng!'));
+      dispatch(actShowNotificationCard("Lỗi mạng"));
     }
   }
 
   return (
     <form className="form-edit" onSubmit={ handleSubmit }>
       <div className="control-wrap">
-        <select 
-          className="edit-select" 
-          id="sex" 
-          onChange={ e => { setSex(e.target.value) } }
-        >
-          <option value="-1">Chọn giới tính</option>
-          <option value="0">Nữ</option>
-          <option value="1">Nam</option>
-        </select>
+        <textarea 
+          type="text" 
+          id="name" 
+          className="edit-input" 
+          onChange={ e => { setDescription(e.target.value) } } 
+        />
       </div>
       <div className="control-wrap">
         <input type="submit" className="edit-button" value="Sửa thông tin" />
