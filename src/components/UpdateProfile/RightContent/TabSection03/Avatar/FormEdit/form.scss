@@ -1,0 +1,25 @@
+.control-wrap {
+
+    .icon {
+        color: blue;
+        margin: 0 1rem;
+        font-size: 2.2rem;
+    }
+
+    .file-label {
+        color: blue;
+        cursor: pointer;
+    }
+}
+
+.control-wrap.disabled {
+    .icon {
+        color: #ccc;
+        pointer-events: none;
+    }
+
+    .file-label {
+        pointer-events: none;
+        color: #ccc;
+    }
+}

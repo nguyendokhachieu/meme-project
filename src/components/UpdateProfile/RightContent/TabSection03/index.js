@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
+
 import Description from "./Description";
+import Avatar from "./Avatar";
 
 export function TabSection03() 
 {
@@ -10,6 +12,7 @@ export function TabSection03()
       <h3 className="tab-title">Trang cá nhân</h3>
       <div className="inner-container">
         <Description rendered={ user.description } />
+        <Avatar rendered={ user.img_url } />
       </div>
     </section>
   );
