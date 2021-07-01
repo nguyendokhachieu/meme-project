@@ -5,6 +5,52 @@ export const ACT_LOGIN = 'ACT_LOGIN';
 export const ACT_FETCH_FOLLOWING_USERS = 'ACT_FETCH_FOLLOWING_USERS';
 export const ACT_FETCH_FOLLOWERS = 'ACT_FETCH_FOLLOWERS';
 
+export const ACT_FETCH_USER_SUGGESTIONS = 'ACT_FETCH_USER_SUGGESTIONS';
+
+export const actFetchUserSuggestionsAsync = ({
+    page = 1,
+    per_page = 5,
+}) => {
+    return async dispatch => {
+        try {
+            const response = await UserService.getSuggestions({
+                page,
+                per_page,
+            });
+
+            if (response.data.status === 200) {
+                dispatch(actFetchUserSuggestions({
+                    page,
+                    per_page,
+                    list: response.data.data || [],
+                }));
+
+                return { ok: true };
+            }
+            
+            return { ok: false };
+
+        } catch (error) {
+            return { ok: false };
+        }
+    }
+}
+
+const actFetchUserSuggestions = ({
+    page = 1,
+    per_page = 5,
+    list,
+}) => {
+    return {
+        type: ACT_FETCH_USER_SUGGESTIONS,
+        payload: {
+            page,
+            per_page,
+            list,
+        }
+    }
+}
+
 export const actFetchFollowersAsync = ({
     user_id = null,
     page = 1,

@@ -17,13 +17,8 @@ export default function UserOptions({
   const [showDropdown, setShowDropdown] = useState(false);
 
   const followOrUnfollow = async (sign) => {
-    if (callingAPI) {
-      return;
-    }
-
-    if (!id) {
-      return;
-    }
+    if (callingAPI) return;
+    if (!id) return;
 
     setCallingAPI(true);
 
@@ -50,6 +45,8 @@ export default function UserOptions({
   
   useEffect(() => {
     async function check() {
+      if (isThisPerson) return;
+      
       if (id) {
         const res = await UserService.isFollowing(id, userInfo.user_id);
   

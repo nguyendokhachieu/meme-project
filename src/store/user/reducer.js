@@ -1,6 +1,7 @@
 import { ACT_LOGIN, 
          ACT_FETCH_FOLLOWING_USERS, 
-         ACT_FETCH_FOLLOWERS } from "./actions";
+         ACT_FETCH_FOLLOWERS,
+         ACT_FETCH_USER_SUGGESTIONS } from "./actions";
 
 import { ACT_HIDE_PEOPLE_MODAL } from "../modals/actions";
 
@@ -29,11 +30,35 @@ const initState = {
         page: 1,
         per_page: 5,
         hasMore: true,
+    },
+
+    suggestions: {
+        list: [],
+        page: 1,
+        per_page: 5,
+        hasMore: true,
     }
 }
 
 export const userReducer = (state = initState, action) => {
     switch (action.type) {
+        case ACT_FETCH_USER_SUGGESTIONS:
+            return {
+                ...state,
+                suggestions: {
+                    ...state.suggestions,
+                    page: action.payload.page,
+                    per_page: action.payload.per_page,
+                    hasMore: action.payload.list.length === 0 ? false : true,
+                    list: action.payload.page === 1
+                            ? action.payload.list
+                            : [
+                                ...state.suggestions.list,
+                                ...action.payload.list
+                            ]
+                }
+            }
+
         case ACT_HIDE_PEOPLE_MODAL: 
             return {
                 ...state,

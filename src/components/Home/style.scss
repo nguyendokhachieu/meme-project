@@ -63,13 +63,20 @@
                 align-items: stretch;
                 margin-bottom: 1rem;
 
+                .suggestions-tab {
+                    display: none;
+                    
+                    @media screen and (max-width: 992px) {
+                        display: block;
+                    }
+                }
+
                 .tab {
                     width: calc(50% - 0.5rem);
                     padding: 1rem;
                     font-size: 1.6rem;
                     text-align: center;
                     border-radius: 5px;
-                    background: linear-gradient(transparent, #fff);
                     color: #999;
                     cursor: pointer;
                     position: relative;
@@ -106,6 +113,7 @@
                     font-weight: 500;
                     color: rgb(55, 55, 255);
                     cursor: default;
+                    background: linear-gradient(transparent, #fff);
 
                     &:hover::after {
                         transform: translateX(-100%);
@@ -145,6 +153,11 @@
                         transform: translateX(-100%);
                     }
                 }
+            }
+
+            .home-tabs.disabled {
+                display: none;
+                pointer-events: none;
             }
             
             .notification {

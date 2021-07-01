@@ -10,7 +10,7 @@ export default function LatestPostsList() {
   const [hasMore, setHasMore] = useState(true);
 
   return (
-    <div className="main-col-8">
+    <>
       <Tabs 
         posts={ p => setPosts(p) }
         loading={ l => setLoading(l) }
@@ -42,6 +42,6 @@ export default function LatestPostsList() {
               : null
           }
       </div>
-    </div>
+    </>
   );
 }

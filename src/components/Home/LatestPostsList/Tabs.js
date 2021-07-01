@@ -51,7 +51,7 @@ export default function Tabs({
   );
   
   return (
-    <div className="home-tabs"> 
+    <div className="home-tabs disabled"> 
         <div 
             className={ tab === 'latest' ? 'tab active' : 'tab' }
             onClick={ () => { dispatch(actSetHomePageTabs('latest')) } }
@@ -63,6 +63,12 @@ export default function Tabs({
             onClick={ () => { user_id && dispatch(actSetHomePageTabs('following')) } }
         >
             Đang theo dõi
+        </div>
+        <div 
+            className={ !user_id ? 'tab suggestions-tab disabled' : tab === 'suggestions' ? 'tab suggestions-tab active' : 'tab suggestions-tab'  }
+            onClick={ () => { user_id && dispatch(actSetHomePageTabs('suggestions')) } }
+        >
+            Gợi ý theo dõi
         </div>
     </div>
   );

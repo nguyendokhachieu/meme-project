@@ -39,9 +39,9 @@ export const UserService = {
     },
 
     getUserInfoByUserId(id) {
-        return api.call().get('/user/getUserInfoByUserId', {
+        return api.call().get('/user/get/user', {
             params: {
-                user_id: Number(id) 
+                user_id: id
             }
         })
     },
@@ -87,7 +87,7 @@ export const UserService = {
     },
 
     isFollowing(user_id, follow_user_id) {
-        return api.call().post('/user/isFollowing', JSON.stringify({
+        return api.call().post('/user/check/following', JSON.stringify({
             user_id,
             follow_user_id,
         }), {
@@ -133,6 +133,25 @@ export const UserService = {
             headers: {
                 'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
                 'Content-Type': 'multipart/form-data',
+            }
+        })
+    },
+
+    getSuggestions({
+        page = 1,
+        per_page = 5,
+    }) 
+    {
+        const token = localStorage.getItem('tstring');
+
+        return api.call().get('/user/get/suggestions', {
+            headers: {
+                'Authorization': 'Bearer ' + unescape(encodeURIComponent(token)),
+                'Content-Type': 'multipart/form-data',
+            },
+            params: {
+                page,
+                per_page,
             }
         })
     }

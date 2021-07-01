@@ -1,0 +1,82 @@
+@import "../../../assets/css/variables.scss";
+
+.suggestions {
+    position: sticky;
+    top: 7.4rem;
+    max-height: 0;
+    min-height: calc(100vh - 7.4rem - 0.5rem); // 0.5rem to space against bottom
+    overflow: auto;
+
+    .suggestions-section {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 0 10px 0 #eee;
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1rem;
+            
+            h2 {
+                font-size: 2rem;
+                line-height: 1;
+                font-weight: 500;
+            }
+
+            .more {
+                .text {
+                    font-size: 1.6rem;
+                    letter-spacing: 0rem;
+                    color: $base-color;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .users {
+
+            .load {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .icon {
+                    font-size: 2.2rem;
+                    color: #999;
+                }
+            }
+
+            .empty {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                color: #999;
+                font-size: 1.6rem;
+                padding: 0.5rem 0;
+
+                .icon {
+                    margin-right: 1rem;
+                    color: #999;
+                    font-size: 2.2rem;
+                }
+            }
+        }
+    }
+
+}
+.suggestions::-webkit-scrollbar {
+    width: 0.75rem;
+}
+
+.suggestions::-webkit-scrollbar-track {
+    border-radius: 5px;
+}
+
+.suggestions::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    outline: none;
+    border-radius: 5px;
+}
