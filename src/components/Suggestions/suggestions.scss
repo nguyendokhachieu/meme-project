@@ -1,0 +1,107 @@
+.suggestions-section-page {
+    margin: 7.4rem 0 2rem 0;
+
+    .inner-suggestions-content {
+        max-width: 100%;
+        width: 60rem;
+        margin: 0 auto;
+
+        .title {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 1px 0px #ccc;
+            margin-bottom: 1rem;
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .pre {
+            font-size: 1.6rem;
+            text-align: center;
+            padding: 1rem;
+            color: #999;
+            background-color: #fff;
+            border-radius: 5px;
+
+            .icon {
+                margin: 0 1rem;
+            }
+        }
+
+        .items {
+            border-radius: 10px;
+        }
+
+        .end {
+            margin-top: 1rem;
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 3px 0px #ccc;
+
+            .text {
+                font-size: 1.6rem;
+                color: #999;
+
+                .icon {
+                    margin: 0 1rem 0 0.5rem;
+                    font-size: 2rem;
+                }
+            }
+
+            .loading {
+                text-align: center;
+
+                .icon-wrap {
+
+                    .icon {
+                        font-size: 3rem;
+                    }
+                }
+            }
+        }
+
+        .pagination {
+            text-align: center;
+
+            .paging {
+                border: 0;
+                color: #999;
+                
+                &:hover {
+                    background-color: #fff;
+                    color: #999;
+                    
+                    .left {
+                        font-weight: 500;
+                        transform: translateX(-5px);
+                    }
+                    
+                    .right {
+                        font-weight: 500;
+                        transform: translateX(5px);
+                    }
+                }
+                
+                .icon {
+                    transition: all 0.25s ease;
+                    margin: 0 1rem;
+                }
+            }
+
+            .paging.disabled {
+                pointer-events: none;
+                color: #ccc;
+
+                &:hover {
+                    .left, .right {
+                        transform: none;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+.drop-view {
+    position: fixed;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    z-index: 12;
+    background-color: #fff;
+    box-shadow: 0 0 1px 0 #ccc;
+    transform: translateY(-15.5rem);
+    transition: all 0.25s ease;
+
+    .container {
+        height: 100%;
+        display: flex;
+
+        .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            .icon-wrap {
+                width: 4rem;
+                height: 4rem;
+                border-radius: 69px;
+                border: 1px solid #eee;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 1rem;
+
+                .icon {
+                    color: #999;
+                    font-size: 2.2rem;
+                }
+            }
+
+            .text {
+                font-size: 1.8rem;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.drop-view.show {
+    transform: translateY(0);
+}

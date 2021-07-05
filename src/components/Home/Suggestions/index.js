@@ -1,7 +1,8 @@
+import "./suggestions.scss";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { actFetchUserSuggestionsAsync } from "../../../store/user/actions";
-import "./suggestions.scss";
 
 import UserItem from "./UserItem";
 
@@ -29,9 +30,9 @@ export default function Suggestions() {
       <section className="suggestions-section">
         <div className="title">
           <h2>Gợi ý theo dõi</h2>
-          <div className="more">
-            {/* <span className="text">Xem nhiều hơn</span> */}
-          </div>
+          <Link to="/suggestions" className="more">
+            <span className="text">Xem nhiều hơn</span>
+          </Link>
         </div>
         <div className="users">
           {

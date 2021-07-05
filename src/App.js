@@ -15,6 +15,7 @@ import PostsByCategoryIdPage from "./pages/PostsByCategoryIdPage";
 import NotificationPage from "./pages/NotificationPage";
 import SearchPage from "./pages/SearchPage";
 import SavedPostsPage from "./pages/SavedPostsPage";
+import SuggestionsPage from "./pages/SuggestionsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import NotificationCard from "./components/shared/NotificationCard";
 import LoadingGlobal from "./components/shared/LoadingGlobal";
@@ -67,6 +68,7 @@ function App() {
         <Switch>
           <Route path="/notifications"><NotificationPage /></Route>
           <Route path="/saved"><SavedPostsPage /></Route>
+          <Route path="/suggestions"><SuggestionsPage /></Route>
           <Route path="/search"><SearchPage /></Route>
           <Route exact path="/categories"><CategoriesPage /></Route>
           <Route exact path="/categories/:id"><PostsByCategoryIdPage /></Route>
